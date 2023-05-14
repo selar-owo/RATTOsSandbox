@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/brickhitsound1.mp3-40514513655acc82f1d68c69f9752810.mp3str"
+
+[deps]
+
+source_file="res://sounds/breakSounds/brickhitsound1.mp3"
+dest_files=[ "res://.import/brickhitsound1.mp3-40514513655acc82f1d68c69f9752810.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

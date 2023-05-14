@@ -1,0 +1,23 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/snd_wngdng6.wav-2ff6832d1d1b7628b8af0292fa98c475.sample"
+
+[deps]
+
+source_file="res://sounds/all undertale sounds/snd_wngdng6.wav"
+dest_files=[ "res://.import/snd_wngdng6.wav-2ff6832d1d1b7628b8af0292fa98c475.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

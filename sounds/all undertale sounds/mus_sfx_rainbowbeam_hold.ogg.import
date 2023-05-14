@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/mus_sfx_rainbowbeam_hold.ogg-ad0c90017ef400b674ea06337d6c746c.oggstr"
+
+[deps]
+
+source_file="res://sounds/all undertale sounds/mus_sfx_rainbowbeam_hold.ogg"
+dest_files=[ "res://.import/mus_sfx_rainbowbeam_hold.ogg-ad0c90017ef400b674ea06337d6c746c.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

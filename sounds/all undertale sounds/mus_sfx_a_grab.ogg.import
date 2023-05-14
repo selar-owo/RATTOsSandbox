@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/mus_sfx_a_grab.ogg-8e497f02da82714ed3b3d63ff7165cd1.oggstr"
+
+[deps]
+
+source_file="res://sounds/all undertale sounds/mus_sfx_a_grab.ogg"
+dest_files=[ "res://.import/mus_sfx_a_grab.ogg-8e497f02da82714ed3b3d63ff7165cd1.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

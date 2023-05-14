@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/woodhitsound1.mp3-aba5b75dc2ab587a73d61131744c576a.mp3str"
+
+[deps]
+
+source_file="res://sounds/breakSounds/woodhitsound1.mp3"
+dest_files=[ "res://.import/woodhitsound1.mp3-aba5b75dc2ab587a73d61131744c576a.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

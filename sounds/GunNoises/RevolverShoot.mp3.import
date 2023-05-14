@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/RevolverShoot.mp3-d4cf8463f83e0090d34e531a64b7064f.mp3str"
+
+[deps]
+
+source_file="res://sounds/GunNoises/RevolverShoot.mp3"
+dest_files=[ "res://.import/RevolverShoot.mp3-d4cf8463f83e0090d34e531a64b7064f.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

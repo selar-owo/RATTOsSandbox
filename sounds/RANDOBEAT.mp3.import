@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/RANDOBEAT.mp3-1057a60c62ee7e7acd544c9df1f868d0.mp3str"
+
+[deps]
+
+source_file="res://sounds/RANDOBEAT.mp3"
+dest_files=[ "res://.import/RANDOBEAT.mp3-1057a60c62ee7e7acd544c9df1f868d0.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/amogos.mp3-0dc1cc1affb88892e5044df4f4be81c0.mp3str"
+
+[deps]
+
+source_file="res://sounds/amogos.mp3"
+dest_files=[ "res://.import/amogos.mp3-0dc1cc1affb88892e5044df4f4be81c0.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

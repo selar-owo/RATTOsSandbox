@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/auraBuddy2.mp3-a42eb5b2493202d2a0428d8d0417209f.mp3str"
+
+[deps]
+
+source_file="res://sounds/auraBuddy2.mp3"
+dest_files=[ "res://.import/auraBuddy2.mp3-a42eb5b2493202d2a0428d8d0417209f.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

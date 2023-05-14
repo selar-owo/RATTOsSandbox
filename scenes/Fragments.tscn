@@ -1,0 +1,68 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://sprites/Fragments/particle.png" type="Texture" id=1]
+[ext_resource path="res://scripts/Fragments.gd" type="Script" id=2]
+
+[sub_resource type="Curve" id=24]
+_data = [ Vector2( 0, 1 ), 0.0, -0.0430873, 0, 0, Vector2( 0.921429, 0 ), -2.87299, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=5]
+curve = SubResource( 24 )
+
+[sub_resource type="ParticlesMaterial" id=13]
+flag_disable_z = true
+spread = 180.0
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 73.17
+angular_velocity = 720.0
+angular_velocity_random = 1.0
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+linear_accel = -7.32
+scale_curve = SubResource( 5 )
+anim_offset = 1.0
+anim_offset_random = 1.0
+
+[sub_resource type="Gradient" id=8]
+colors = PoolColorArray( 1, 1, 1, 1, 1, 1, 1, 0 )
+
+[sub_resource type="GradientTexture" id=9]
+gradient = SubResource( 8 )
+
+[sub_resource type="Curve" id=10]
+max_value = 1.5
+_data = [ Vector2( 0, 1.13693 ), 0.0, 0.0, 0, 0, Vector2( 0.992857, 0 ), -0.804546, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=11]
+curve = SubResource( 10 )
+
+[sub_resource type="ParticlesMaterial" id=12]
+flag_disable_z = true
+spread = 180.0
+gravity = Vector3( 0, 100, 0 )
+initial_velocity = 48.78
+angular_velocity = 720.0
+angular_velocity_random = 0.5
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+scale_curve = SubResource( 11 )
+color_ramp = SubResource( 9 )
+
+[node name="Fragments" type="Particles2D"]
+emitting = false
+amount = 5
+lifetime = 0.4
+one_shot = true
+speed_scale = 2.24
+local_coords = false
+process_material = SubResource( 13 )
+texture = ExtResource( 1 )
+script = ExtResource( 2 )
+
+[node name="Break" type="Particles2D" parent="."]
+emitting = false
+amount = 5
+one_shot = true
+explosiveness = 1.0
+local_coords = false
+process_material = SubResource( 12 )

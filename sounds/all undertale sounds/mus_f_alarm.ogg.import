@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/mus_f_alarm.ogg-4ed701467632f6d2f8549ffeead2261a.oggstr"
+
+[deps]
+
+source_file="res://sounds/all undertale sounds/mus_f_alarm.ogg"
+dest_files=[ "res://.import/mus_f_alarm.ogg-4ed701467632f6d2f8549ffeead2261a.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

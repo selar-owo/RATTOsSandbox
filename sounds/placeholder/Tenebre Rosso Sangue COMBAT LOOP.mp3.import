@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Tenebre Rosso Sangue COMBAT LOOP.mp3-8f0833bd26a8d440731876581d27e807.mp3str"
+
+[deps]
+
+source_file="res://sounds/placeholder/Tenebre Rosso Sangue COMBAT LOOP.mp3"
+dest_files=[ "res://.import/Tenebre Rosso Sangue COMBAT LOOP.mp3-8f0833bd26a8d440731876581d27e807.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

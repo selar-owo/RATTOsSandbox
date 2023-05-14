@@ -1,0 +1,248 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://sounds/GunNoises/Bazooka.ogg" type="AudioStream" id=1]
+[ext_resource path="res://sprites/shotgun.png" type="Texture" id=2]
+[ext_resource path="res://scripts/GunHandler.gd" type="Script" id=3]
+[ext_resource path="res://sprites/BazookaHeld.png" type="Texture" id=4]
+[ext_resource path="res://sprites/pewpew.png" type="Texture" id=5]
+
+[sub_resource type="AtlasTexture" id=4]
+flags = 1
+atlas = ExtResource( 2 )
+region = Rect2( 0, 0, 39, 9 )
+
+[sub_resource type="AtlasTexture" id=5]
+flags = 1
+atlas = ExtResource( 2 )
+region = Rect2( 39, 0, 39, 9 )
+
+[sub_resource type="SpriteFrames" id=3]
+animations = [ {
+"frames": [ SubResource( 4 ), SubResource( 5 ) ],
+"loop": false,
+"name": "default",
+"speed": 20.0
+} ]
+
+[sub_resource type="Animation" id=6]
+resource_name = "NewRecoil"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/path = NodePath("WeaponSprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4 ),
+"transitions": PoolRealArray( -2, -2, 1 ),
+"update": 0,
+"values": [ Vector2( -5, 0.5 ), Vector2( 5, 0.5 ), Vector2( 0, 0.5 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("WeaponSprite:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( -2, 1 ),
+"update": 0,
+"values": [ Vector2( 0.9, 1.1 ), Vector2( 1, 1 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("WeaponSprite/Flash:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.025, 0.4 ),
+"transitions": PoolRealArray( -2, 1, 1 ),
+"update": 1,
+"values": [ true, false, false ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("WeaponSprite/Flash:energy")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.025, 0.4 ),
+"transitions": PoolRealArray( -2, 1, 1 ),
+"update": 0,
+"values": [ 2.0, 0.0, 1.0 ]
+}
+
+[sub_resource type="Animation" id=7]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("GunSprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0.5 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("GunSprite:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("GunSprite:offset")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 30, 0 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("WeaponSprite:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0.5 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("WeaponSprite:scale")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("WeaponSprite/Flash:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("WeaponSprite/Flash:energy")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 1.0 ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("WeaponSprite/Flash:scale")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=8]
+resource_name = "Recoil"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("GunSprite:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4 ),
+"transitions": PoolRealArray( 0.5, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0.95, 1.05 ), Vector2( 1, 1 ), Vector2( 1, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("GunSprite:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4 ),
+"transitions": PoolRealArray( -2, -2, -2 ),
+"update": 0,
+"values": [ Vector2( -0.5, 0 ), Vector2( 0.5, 0 ), Vector2( 0, 0 ) ]
+}
+
+[node name="Bazooka" type="Node2D"]
+script = ExtResource( 3 )
+gun_id = 4
+damage = 75.0
+cooldown_time = 3.0
+recoil_amount = 15.0
+projectile = true
+UI_sprite = "res://sprites/BazookaHotbar.png"
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+
+[node name="GunShoot" type="AudioStreamPlayer2D" parent="."]
+position = Vector2( 27, 0 )
+stream = ExtResource( 1 )
+volume_db = -4.112
+
+[node name="GunSprite" type="AnimatedSprite" parent="."]
+visible = false
+position = Vector2( 0, 0.5 )
+frames = SubResource( 3 )
+frame = 1
+offset = Vector2( 30, 0 )
+
+[node name="WeaponSprite" type="Sprite" parent="."]
+position = Vector2( 0, 0.5 )
+texture = ExtResource( 4 )
+offset = Vector2( 26, 0 )
+
+[node name="Flash" type="Light2D" parent="WeaponSprite"]
+visible = false
+position = Vector2( 61, -0.5 )
+texture = ExtResource( 5 )
+
+[node name="ProjectilePosition" type="Node2D" parent="."]
+position = Vector2( 39, 0 )
+
+[node name="Recoil" type="AnimationPlayer" parent="."]
+anims/NewRecoil = SubResource( 6 )
+anims/RESET = SubResource( 7 )
+anims/Recoil = SubResource( 8 )
+
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

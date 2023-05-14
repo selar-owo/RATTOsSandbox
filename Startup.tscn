@@ -1,0 +1,97 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://LinkText.tres" type="DynamicFont" id=1]
+[ext_resource path="res://Startup.gd" type="Script" id=3]
+
+[sub_resource type="Animation" id=1]
+resource_name = "New Anim"
+length = 10.0
+
+[sub_resource type="Animation" id=2]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("ColorRect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ) ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "Startup"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/path = NodePath("ColorRect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[node name="Startup" type="Node2D"]
+script = ExtResource( 3 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+"anims/New Anim" = SubResource( 1 )
+anims/RESET = SubResource( 2 )
+anims/Startup = SubResource( 3 )
+
+[node name="Label" type="Label" parent="."]
+margin_left = 24.0
+margin_top = 19.0
+margin_right = 386.0
+margin_bottom = 282.0
+custom_fonts/font = ExtResource( 1 )
+text = "the main menu music is
+sourced from dm dokuro
+
+go support him, he is awesome :)))"
+
+[node name="LinkButton" type="LinkButton" parent="."]
+margin_left = 93.0
+margin_top = 185.0
+margin_right = 239.0
+margin_bottom = 199.0
+custom_fonts/font = ExtResource( 1 )
+text = "send me to the dokuro"
+
+[node name="Button" type="Button" parent="."]
+margin_left = 781.0
+margin_top = 542.0
+margin_right = 1005.0
+margin_bottom = 582.0
+text = "i wanna play game"
+
+[node name="CheckBox" type="CheckBox" parent="."]
+visible = false
+margin_left = 8.0
+margin_top = 573.0
+margin_right = 264.0
+margin_bottom = 597.0
+text = "never make this menu appear again"
+
+[node name="ColorRect" type="ColorRect" parent="."]
+modulate = Color( 1, 1, 1, 0 )
+margin_left = -9.0
+margin_top = -12.0
+margin_right = 1041.0
+margin_bottom = 618.0
+mouse_filter = 2
+color = Color( 0.168627, 0.168627, 0.168627, 1 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
+[connection signal="button_up" from="LinkButton" to="." method="_on_LinkButton_button_up"]
+[connection signal="button_up" from="Button" to="." method="_on_Button_button_up"]

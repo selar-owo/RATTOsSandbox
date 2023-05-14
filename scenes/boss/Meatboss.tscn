@@ -1,0 +1,199 @@
+[gd_scene load_steps=29 format=2]
+
+[ext_resource path="res://sounds/spookysound1.mp3" type="AudioStream" id=1]
+[ext_resource path="res://sprites/meatbossFucker.png" type="Texture" id=2]
+[ext_resource path="res://sounds/meatmanaura.mp3" type="AudioStream" id=3]
+[ext_resource path="res://scripts/Meatboss.gd" type="Script" id=4]
+[ext_resource path="res://sprites/meatbosslayersohase2anim.png" type="Texture" id=5]
+[ext_resource path="res://sounds/hover.wav" type="AudioStream" id=6]
+[ext_resource path="res://sounds/all undertale sounds/snd_hurt1.wav" type="AudioStream" id=7]
+[ext_resource path="res://sounds/all undertale sounds/snd_hurtbeef.wav" type="AudioStream" id=8]
+
+[sub_resource type="AtlasTexture" id=1]
+flags = 1
+atlas = ExtResource( 2 )
+region = Rect2( 0, 0, 875, 641 )
+
+[sub_resource type="AtlasTexture" id=2]
+flags = 1
+atlas = ExtResource( 2 )
+region = Rect2( 875, 0, 875, 641 )
+
+[sub_resource type="AtlasTexture" id=3]
+flags = 1
+atlas = ExtResource( 2 )
+region = Rect2( 1750, 0, 875, 641 )
+
+[sub_resource type="AtlasTexture" id=4]
+flags = 1
+atlas = ExtResource( 2 )
+region = Rect2( 2625, 0, 875, 641 )
+
+[sub_resource type="AtlasTexture" id=5]
+flags = 1
+atlas = ExtResource( 2 )
+region = Rect2( 3500, 0, 875, 641 )
+
+[sub_resource type="AtlasTexture" id=6]
+flags = 1
+atlas = ExtResource( 2 )
+region = Rect2( 4375, 0, 875, 641 )
+
+[sub_resource type="AtlasTexture" id=7]
+flags = 1
+atlas = ExtResource( 2 )
+region = Rect2( 5250, 0, 875, 641 )
+
+[sub_resource type="AtlasTexture" id=8]
+flags = 1
+atlas = ExtResource( 2 )
+region = Rect2( 6125, 0, 875, 641 )
+
+[sub_resource type="AtlasTexture" id=15]
+flags = 1
+atlas = ExtResource( 5 )
+region = Rect2( 0, 0, 875, 641 )
+
+[sub_resource type="AtlasTexture" id=16]
+flags = 1
+atlas = ExtResource( 5 )
+region = Rect2( 875, 0, 875, 641 )
+
+[sub_resource type="AtlasTexture" id=17]
+flags = 1
+atlas = ExtResource( 5 )
+region = Rect2( 1750, 0, 875, 641 )
+
+[sub_resource type="AtlasTexture" id=18]
+flags = 1
+atlas = ExtResource( 5 )
+region = Rect2( 2625, 0, 875, 641 )
+
+[sub_resource type="AtlasTexture" id=19]
+flags = 1
+atlas = ExtResource( 5 )
+region = Rect2( 3500, 0, 875, 641 )
+
+[sub_resource type="AtlasTexture" id=20]
+flags = 1
+atlas = ExtResource( 5 )
+region = Rect2( 4375, 0, 875, 641 )
+
+[sub_resource type="SpriteFrames" id=9]
+animations = [ {
+"frames": [ SubResource( 1 ), SubResource( 2 ), SubResource( 3 ), SubResource( 4 ), SubResource( 5 ), SubResource( 6 ), SubResource( 7 ), SubResource( 8 ) ],
+"loop": true,
+"name": "default",
+"speed": 15.0
+}, {
+"frames": [ SubResource( 15 ), SubResource( 16 ), SubResource( 17 ), SubResource( 18 ), SubResource( 19 ), SubResource( 20 ) ],
+"loop": true,
+"name": "phase2",
+"speed": 15.0
+} ]
+
+[sub_resource type="RectangleShape2D" id=10]
+extents = Vector2( 138.5, 39.5 )
+
+[sub_resource type="Animation" id=11]
+resource_name = "Idle"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("AnimatedSprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( -2, -2 ),
+"update": 0,
+"values": [ Vector2( -200, 0 ), Vector2( -200, -25 ) ]
+}
+
+[sub_resource type="Animation" id=12]
+length = 0.001
+
+[sub_resource type="RectangleShape2D" id=13]
+extents = Vector2( 81.25, 88.75 )
+
+[sub_resource type="RectangleShape2D" id=14]
+extents = Vector2( 258.75, 173.75 )
+
+[node name="Meatboss" type="KinematicBody2D"]
+scale = Vector2( 0.4, 0.4 )
+script = ExtResource( 4 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+position = Vector2( -200, -24.9479 )
+frames = SubResource( 9 )
+frame = 3
+playing = true
+flip_h = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2( -102.5, -3.5 )
+shape = SubResource( 10 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "Idle"
+anims/Idle = SubResource( 11 )
+anims/RESET = SubResource( 12 )
+
+[node name="Aura" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 3 )
+volume_db = -27.04
+
+[node name="Start" type="AudioStreamPlayer2D" parent="."]
+position = Vector2( -18, 4 )
+stream = ExtResource( 1 )
+volume_db = -6.24
+
+[node name="DashAlert" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 6 )
+volume_db = -4.857
+pitch_scale = 0.22
+
+[node name="DashNoise" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 7 )
+volume_db = -10.101
+pitch_scale = 0.5
+
+[node name="SpawnMinions" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 8 )
+volume_db = -9.613
+pitch_scale = 0.33
+
+[node name="MeatBossHitbox" type="Area2D" parent="."]
+visible = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MeatBossHitbox"]
+position = Vector2( 6.25, 46.25 )
+shape = SubResource( 13 )
+
+[node name="HurtHitbox" type="Area2D" parent="."]
+visible = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtHitbox"]
+position = Vector2( -98.75, 41.25 )
+shape = SubResource( 14 )
+
+[node name="Phase1Delay" type="Timer" parent="."]
+wait_time = 3.0
+autostart = true
+
+[node name="Phase2Delay" type="Timer" parent="."]
+wait_time = 2.0
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.1
+autostart = true
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+
+[node name="Tween" type="Tween" parent="."]
+
+[connection signal="area_entered" from="MeatBossHitbox" to="." method="_on_MeatBossHitbox_area_entered"]
+[connection signal="timeout" from="Phase1Delay" to="." method="_on_Phase1Delay_timeout"]
+[connection signal="timeout" from="Phase2Delay" to="." method="_on_Phase2Delay_timeout"]

@@ -1,0 +1,23 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/mus_piano1.wav-aaf9f2f794d25fe5653398e96bb8f8d8.sample"
+
+[deps]
+
+source_file="res://sounds/all undertale sounds/mus_piano1.wav"
+dest_files=[ "res://.import/mus_piano1.wav-aaf9f2f794d25fe5653398e96bb8f8d8.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

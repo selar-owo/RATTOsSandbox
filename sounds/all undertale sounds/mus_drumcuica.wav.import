@@ -1,0 +1,23 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/mus_drumcuica.wav-da4cf61fe5d18733f6b35e1e4c788332.sample"
+
+[deps]
+
+source_file="res://sounds/all undertale sounds/mus_drumcuica.wav"
+dest_files=[ "res://.import/mus_drumcuica.wav-da4cf61fe5d18733f6b35e1e4c788332.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

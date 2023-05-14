@@ -1,0 +1,163 @@
+[gd_scene load_steps=21 format=2]
+
+[ext_resource path="res://scripts/MainWorld.gd" type="Script" id=1]
+[ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scenes/UI.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scenes/DefaultWorldEnv.tres" type="Environment" id=4]
+[ext_resource path="res://sprites/grass.png" type="Texture" id=5]
+[ext_resource path="res://sprites/healthbar.png" type="Texture" id=6]
+[ext_resource path="res://sprites/water.png" type="Texture" id=7]
+[ext_resource path="res://scenes/Camera2D.tscn" type="PackedScene" id=8]
+[ext_resource path="res://scenes/useables/wisetree.tscn" type="PackedScene" id=9]
+[ext_resource path="res://My-Font-SVG-Font-2023.1.5-5.57.38.ttf" type="DynamicFontData" id=10]
+[ext_resource path="res://sounds/ambience/GMConstruct  Ambience  Lake.mp3" type="AudioStream" id=11]
+[ext_resource path="res://scenes/otherstuffidk/Music.tscn" type="PackedScene" id=12]
+[ext_resource path="res://sprites/arrow.png" type="Texture" id=13]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 433, 10 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 433, 10 )
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 433, 8.5 )
+
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 433, 10 )
+
+[sub_resource type="Shader" id=5]
+code = "shader_type canvas_item;
+
+void fragment() {
+    float red = 41.0;
+    float green = 0.32; // boobs i love huge fat boobs
+    float blue = 1.0; \\\\
+    float alpha = 1.0;
+
+    alpha = mod(TIME,1.0); //gets the result of removing 1 from TIME until it becomes less than 1
+
+    COLOR = vec4(red,green,blue,alpha);
+}"
+
+[sub_resource type="ShaderMaterial" id=6]
+shader = SubResource( 5 )
+
+[sub_resource type="DynamicFont" id=7]
+font_data = ExtResource( 10 )
+
+[node name="TestLands" type="Node2D"]
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Music" parent="." instance=ExtResource( 12 )]
+
+[node name="Ambience" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 11 )
+volume_db = -7.28
+autoplay = true
+
+[node name="Water" type="TextureRect" parent="."]
+margin_left = -2669.0
+margin_top = -1808.0
+margin_right = 2621.0
+margin_bottom = 1948.0
+mouse_filter = 2
+texture = ExtResource( 7 )
+stretch_mode = 2
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="ColorRect" type="ColorRect" parent="Water"]
+margin_left = 2507.0
+margin_top = 2302.0
+margin_right = 3381.0
+margin_bottom = 2823.0
+mouse_filter = 2
+color = Color( 1, 1, 1, 0.14902 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Grass" type="TextureRect" parent="."]
+margin_left = -151.0
+margin_top = 505.0
+margin_right = 695.0
+margin_bottom = 1007.0
+mouse_filter = 2
+texture = ExtResource( 5 )
+stretch_mode = 2
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Border" type="StaticBody2D" parent="."]
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Border"]
+position = Vector2( 262, 495 )
+shape = SubResource( 1 )
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Border"]
+position = Vector2( -161, 655 )
+rotation = -1.5708
+shape = SubResource( 2 )
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Border"]
+position = Vector2( 282, 1015.5 )
+shape = SubResource( 3 )
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Border"]
+position = Vector2( 705, 700 )
+rotation = -1.5708
+shape = SubResource( 4 )
+
+[node name="Arrow" type="Sprite" parent="."]
+self_modulate = Color( 1, 1, 1, 0.0705882 )
+position = Vector2( -280, 823 )
+rotation = -2.31944
+texture = ExtResource( 13 )
+
+[node name="Player" parent="." instance=ExtResource( 2 )]
+position = Vector2( 259, 821 )
+
+[node name="Camera2D" parent="Player" instance=ExtResource( 8 )]
+
+[node name="Objects" type="Node2D" parent="."]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2( 272, 749 )
+smoothing_enabled = true
+
+[node name="Sprite" type="Sprite" parent="."]
+visible = false
+material = SubResource( 6 )
+position = Vector2( -1201, 559 )
+scale = Vector2( 3.11648, 27.9531 )
+texture = ExtResource( 6 )
+
+[node name="wisetree" parent="." instance=ExtResource( 9 )]
+position = Vector2( -1085, 806 )
+dont_spawn = true
+
+[node name="DontSpawn" type="Node" parent="wisetree"]
+
+[node name="UI" parent="." instance=ExtResource( 3 )]
+
+[node name="Label" type="Label" parent="."]
+margin_left = -415.0
+margin_top = -1347.0
+margin_right = -375.0
+margin_bottom = -1272.0
+custom_fonts/font = SubResource( 7 )
+text = "GET THE FUCK OUT OF HERE GOD I HATE YOU SO MUCH"
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = ExtResource( 4 )
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]

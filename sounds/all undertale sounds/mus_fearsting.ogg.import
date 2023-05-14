@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/mus_fearsting.ogg-d8f188e07905af528d0b97e247782dea.oggstr"
+
+[deps]
+
+source_file="res://sounds/all undertale sounds/mus_fearsting.ogg"
+dest_files=[ "res://.import/mus_fearsting.ogg-d8f188e07905af528d0b97e247782dea.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

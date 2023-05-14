@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/steelbreak.mp3-e0813fc60b016dbfca5364a876e1107f.mp3str"
+
+[deps]
+
+source_file="res://sounds/breakSounds/steelbreak.mp3"
+dest_files=[ "res://.import/steelbreak.mp3-e0813fc60b016dbfca5364a876e1107f.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

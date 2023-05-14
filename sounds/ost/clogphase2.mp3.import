@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/clogphase2.mp3-0d4645ff432ec5551c82874d2b2129b4.mp3str"
+
+[deps]
+
+source_file="res://sounds/ost/clogphase2.mp3"
+dest_files=[ "res://.import/clogphase2.mp3-0d4645ff432ec5551c82874d2b2129b4.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

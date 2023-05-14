@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Ultrakill P2 Cerberus Room Theme.mp3-e4f6b3cf6f70276da928f95c32241c46.mp3str"
+
+[deps]
+
+source_file="res://sounds/Ultrakill P2 Cerberus Room Theme.mp3"
+dest_files=[ "res://.import/Ultrakill P2 Cerberus Room Theme.mp3-e4f6b3cf6f70276da928f95c32241c46.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

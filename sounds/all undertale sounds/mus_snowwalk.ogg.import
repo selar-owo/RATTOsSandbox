@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/mus_snowwalk.ogg-2708916cd0328ce06c9137fa519dab84.oggstr"
+
+[deps]
+
+source_file="res://sounds/all undertale sounds/mus_snowwalk.ogg"
+dest_files=[ "res://.import/mus_snowwalk.ogg-2708916cd0328ce06c9137fa519dab84.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

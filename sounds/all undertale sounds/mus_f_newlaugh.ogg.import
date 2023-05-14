@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/mus_f_newlaugh.ogg-e4712e3ffba056bc79ea74db0599ac97.oggstr"
+
+[deps]
+
+source_file="res://sounds/all undertale sounds/mus_f_newlaugh.ogg"
+dest_files=[ "res://.import/mus_f_newlaugh.ogg-e4712e3ffba056bc79ea74db0599ac97.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

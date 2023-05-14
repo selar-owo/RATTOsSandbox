@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/GorbnusthemeEXTENDEDANDMODIFIED.mp3-a8be9374d9d4e20e1da4ceabf41ec1bf.mp3str"
+
+[deps]
+
+source_file="res://sounds/ost/GorbnusthemeEXTENDEDANDMODIFIED.mp3"
+dest_files=[ "res://.import/GorbnusthemeEXTENDEDANDMODIFIED.mp3-a8be9374d9d4e20e1da4ceabf41ec1bf.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

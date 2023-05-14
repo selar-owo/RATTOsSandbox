@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/snd_mushroomdance.ogg-620fe3da5e56feb489ea45f7aa4ab85c.oggstr"
+
+[deps]
+
+source_file="res://sounds/all undertale sounds/snd_mushroomdance.ogg"
+dest_files=[ "res://.import/snd_mushroomdance.ogg-620fe3da5e56feb489ea45f7aa4ab85c.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

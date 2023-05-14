@@ -1,0 +1,51 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://yea.tres" type="DynamicFont" id=1]
+[ext_resource path="res://LinkText.tres" type="DynamicFont" id=2]
+[ext_resource path="res://scripts/ModMenu.gd" type="Script" id=3]
+
+[node name="ModMenu" type="Node2D"]
+script = ExtResource( 3 )
+
+[node name="Title" type="Label" parent="."]
+margin_left = 13.0
+margin_right = 240.0
+margin_bottom = 59.0
+custom_fonts/font = ExtResource( 1 )
+text = "mod menu"
+
+[node name="Title" type="Label" parent="Title"]
+margin_top = 50.0
+margin_right = 117.0
+margin_bottom = 80.0
+custom_fonts/font = ExtResource( 2 )
+text = "very buggy and might crash your game :)"
+
+[node name="CreateMod" type="Button" parent="."]
+margin_left = 13.0
+margin_top = 122.0
+margin_right = 128.0
+margin_bottom = 152.0
+shortcut_in_tooltip = false
+text = "create mod"
+
+[node name="LoadMod" type="Button" parent="."]
+margin_left = 13.0
+margin_top = 163.0
+margin_right = 128.0
+margin_bottom = 193.0
+shortcut_in_tooltip = false
+text = "load mod"
+
+[node name="Exit" type="LinkButton" parent="."]
+margin_left = 893.0
+margin_top = 528.0
+margin_right = 1007.0
+margin_bottom = 587.0
+focus_mode = 2
+mouse_default_cursor_shape = 0
+custom_fonts/font = ExtResource( 1 )
+text = "exit"
+underline = 2
+
+[connection signal="button_up" from="Exit" to="." method="_on_Exit_button_up"]

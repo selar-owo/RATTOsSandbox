@@ -1,0 +1,23 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/mus_sfx_swipe.wav-1b1af0d8f86d63ac60dc4fb31d1c55ae.sample"
+
+[deps]
+
+source_file="res://sounds/all undertale sounds/mus_sfx_swipe.wav"
+dest_files=[ "res://.import/mus_sfx_swipe.wav-1b1af0d8f86d63ac60dc4fb31d1c55ae.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

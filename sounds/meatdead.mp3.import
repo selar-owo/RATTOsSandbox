@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/meatdead.mp3-36ea7d0539dee7a4098d611545977424.mp3str"
+
+[deps]
+
+source_file="res://sounds/meatdead.mp3"
+dest_files=[ "res://.import/meatdead.mp3-36ea7d0539dee7a4098d611545977424.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/y2mate.com - Rain sounds.mp3-d25a9f9dbca1be52470814b88cb3795c.mp3str"
+
+[deps]
+
+source_file="res://sounds/ambience/y2mate.com - Rain sounds.mp3"
+dest_files=[ "res://.import/y2mate.com - Rain sounds.mp3-d25a9f9dbca1be52470814b88cb3795c.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

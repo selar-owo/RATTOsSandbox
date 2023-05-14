@@ -1,0 +1,577 @@
+[gd_scene load_steps=48 format=2]
+
+[ext_resource path="res://sprites/TheTerraria.png" type="Texture" id=1]
+[ext_resource path="res://sounds/TheTerrariaSwing.wav" type="AudioStream" id=2]
+[ext_resource path="res://sprites/TheTerrariaParticle.png" type="Texture" id=3]
+[ext_resource path="res://sprites/TheTerrariaSlash.png" type="Texture" id=4]
+[ext_resource path="res://scripts/TheTerraria.gd" type="Script" id=5]
+[ext_resource path="res://sprites/TheTerrariaAnim.png" type="Texture" id=6]
+
+[sub_resource type="CanvasItemMaterial" id=2]
+blend_mode = 1
+
+[sub_resource type="Curve" id=3]
+_data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 0.960674, 0 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=4]
+curve = SubResource( 3 )
+
+[sub_resource type="ParticlesMaterial" id=5]
+flag_disable_z = true
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+scale_curve = SubResource( 4 )
+color = Color( 2, 2, 2, 0.31 )
+
+[sub_resource type="CanvasItemMaterial" id=6]
+blend_mode = 1
+
+[sub_resource type="Gradient" id=7]
+offsets = PoolRealArray( 0, 0.00645161, 0.470968, 1 )
+colors = PoolColorArray( 0, 0, 0, 0, 0.478431, 0.478431, 0.478431, 0, 1, 1, 1, 1, 1, 1, 1, 0 )
+
+[sub_resource type="GradientTexture" id=8]
+gradient = SubResource( 7 )
+
+[sub_resource type="ParticlesMaterial" id=9]
+flag_disable_z = true
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 94.12
+angular_velocity = 720.0
+angular_velocity_random = 1.0
+orbit_velocity = 1.0
+orbit_velocity_random = 0.0
+color_ramp = SubResource( 8 )
+
+[sub_resource type="ParticlesMaterial" id=10]
+flag_disable_z = true
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 94.12
+angular_velocity = 720.0
+angular_velocity_random = 1.0
+orbit_velocity = 1.0
+orbit_velocity_random = 0.0
+color_ramp = SubResource( 8 )
+
+[sub_resource type="CanvasItemMaterial" id=14]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id=15]
+blend_mode = 1
+
+[sub_resource type="Gradient" id=16]
+offsets = PoolRealArray( 0, 0.522581, 1 )
+colors = PoolColorArray( 0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 1 )
+
+[sub_resource type="GradientTexture" id=17]
+gradient = SubResource( 16 )
+
+[sub_resource type="ParticlesMaterial" id=18]
+flag_disable_z = true
+direction = Vector3( -1, 0, 0 )
+spread = 0.0
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 39.61
+angular_velocity = 85.54
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+linear_accel = 79.21
+color_ramp = SubResource( 17 )
+
+[sub_resource type="ParticlesMaterial" id=19]
+flag_disable_z = true
+spread = 0.0
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 39.61
+angular_velocity = -85.54
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+linear_accel = 79.21
+color_ramp = SubResource( 17 )
+
+[sub_resource type="RectangleShape2D" id=20]
+extents = Vector2( 10, 28.2846 )
+
+[sub_resource type="Animation" id=11]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( -3, 37 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sprite:rotation_degrees")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ -165.0 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Sprite:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Sprite/SlashRight:self_modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 4, 4, 4, 0.28 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("Sprite/SlashLeft:self_modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 4, 4, 4, 0.28 ) ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("Sprite/SlashRight/SlashRightParticle:self_modulate")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ) ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("Sprite/SlashLeft/SlashLeftParticle:self_modulate")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ) ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("..:shoot_projectile")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
+tracks/9/type = "value"
+tracks/9/path = NodePath("../SwingAudio:playing")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
+
+[sub_resource type="Animation" id=1]
+resource_name = "SwingLoop"
+length = 2.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.4, 1, 1.4 ),
+"transitions": PoolRealArray( -2, -2, -2, -2 ),
+"update": 0,
+"values": [ 0.0, -165.0, 120.0, -180.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.4, 1 ),
+"transitions": PoolRealArray( -2, -2, -2 ),
+"update": 0,
+"values": [ Vector2( 30.0001, 25.9999 ), Vector2( 3.7809, 37.2922 ), Vector2( -9.54311, 57.4711 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sprite:rotation_degrees")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.4, 1 ),
+"transitions": PoolRealArray( -2, -2, -2 ),
+"update": 0,
+"values": [ -240.0, -210.0, -165.0 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Sprite:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.4, 0.7, 1, 1.2, 1.4 ),
+"transitions": PoolRealArray( -2, -2, -2, -2, -2, -2 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 1, 1 ), Vector2( 0.7, 1.3 ), Vector2( 1, 1 ), Vector2( 0.7, 1.3 ), Vector2( 1, 1 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Sprite/SlashRight:self_modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0.000117315, 1, 1.225, 1.39992, 1.4 ),
+"transitions": PoolRealArray( -2, -2, -2, -2, -2 ),
+"update": 0,
+"values": [ Color( 4, 4, 4, 0 ), Color( 4, 4, 4, 0 ), Color( 4, 4, 4, 0.388235 ), Color( 4, 4, 4, 0 ), Color( 4, 4, 4, 0 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("Sprite/SlashLeft:self_modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 0.4, 0.7, 1 ),
+"transitions": PoolRealArray( -2, -2, -2, -2 ),
+"update": 0,
+"values": [ Color( 4, 4, 4, 0 ), Color( 4, 4, 4, 0 ), Color( 4, 4, 4, 0.388235 ), Color( 4, 4, 4, 0 ) ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("Sprite/SlashRight/SlashRightParticle:self_modulate")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( -6.36117e-06, 1, 1.2, 1.4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("Sprite/SlashLeft/SlashLeftParticle:self_modulate")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0, 0.4, 0.7, 1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("..:shoot_projectile")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0.725, 1.175, 1.18679, 1.2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ true, true, true, true ]
+}
+tracks/9/type = "value"
+tracks/9/path = NodePath("../SwingAudio:playing")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = false
+tracks/9/keys = {
+"times": PoolRealArray( 0.672872, 1.12667 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, true ]
+}
+
+[sub_resource type="Animation" id=12]
+resource_name = "Glowing"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( -2, -2 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 4, 4, 4, 1 ) ]
+}
+
+[sub_resource type="Animation" id=13]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="AtlasTexture" id=21]
+flags = 1
+atlas = ExtResource( 6 )
+region = Rect2( 0, 0, 20, 56 )
+
+[sub_resource type="AtlasTexture" id=22]
+flags = 1
+atlas = ExtResource( 6 )
+region = Rect2( 20, 0, 20, 56 )
+
+[sub_resource type="AtlasTexture" id=23]
+flags = 1
+atlas = ExtResource( 6 )
+region = Rect2( 40, 0, 20, 56 )
+
+[sub_resource type="AtlasTexture" id=24]
+flags = 1
+atlas = ExtResource( 6 )
+region = Rect2( 60, 0, 20, 56 )
+
+[sub_resource type="AtlasTexture" id=25]
+flags = 1
+atlas = ExtResource( 6 )
+region = Rect2( 80, 0, 20, 56 )
+
+[sub_resource type="AtlasTexture" id=26]
+flags = 1
+atlas = ExtResource( 6 )
+region = Rect2( 100, 0, 20, 56 )
+
+[sub_resource type="AtlasTexture" id=27]
+flags = 1
+atlas = ExtResource( 6 )
+region = Rect2( 120, 0, 20, 56 )
+
+[sub_resource type="AtlasTexture" id=28]
+flags = 1
+atlas = ExtResource( 6 )
+region = Rect2( 140, 0, 20, 56 )
+
+[sub_resource type="AtlasTexture" id=29]
+flags = 1
+atlas = ExtResource( 6 )
+region = Rect2( 160, 0, 20, 56 )
+
+[sub_resource type="AtlasTexture" id=30]
+flags = 1
+atlas = ExtResource( 6 )
+region = Rect2( 180, 0, 20, 56 )
+
+[sub_resource type="AtlasTexture" id=31]
+flags = 1
+atlas = ExtResource( 6 )
+region = Rect2( 200, 0, 20, 56 )
+
+[sub_resource type="AtlasTexture" id=32]
+flags = 1
+atlas = ExtResource( 6 )
+region = Rect2( 220, 0, 20, 56 )
+
+[sub_resource type="AtlasTexture" id=33]
+flags = 1
+atlas = ExtResource( 6 )
+region = Rect2( 240, 0, 20, 56 )
+
+[sub_resource type="AtlasTexture" id=34]
+flags = 1
+atlas = ExtResource( 6 )
+region = Rect2( 260, 0, 20, 56 )
+
+[sub_resource type="AtlasTexture" id=35]
+flags = 1
+atlas = ExtResource( 6 )
+region = Rect2( 280, 0, 20, 56 )
+
+[sub_resource type="AtlasTexture" id=36]
+flags = 1
+atlas = ExtResource( 6 )
+region = Rect2( 300, 0, 20, 56 )
+
+[sub_resource type="AtlasTexture" id=37]
+flags = 1
+atlas = ExtResource( 6 )
+region = Rect2( 320, 0, 20, 56 )
+
+[sub_resource type="AtlasTexture" id=38]
+flags = 1
+atlas = ExtResource( 6 )
+region = Rect2( 340, 0, 20, 56 )
+
+[sub_resource type="AtlasTexture" id=39]
+flags = 1
+atlas = ExtResource( 6 )
+region = Rect2( 360, 0, 20, 56 )
+
+[sub_resource type="AtlasTexture" id=40]
+flags = 1
+atlas = ExtResource( 6 )
+region = Rect2( 380, 0, 20, 56 )
+
+[sub_resource type="SpriteFrames" id=41]
+animations = [ {
+"frames": [ SubResource( 21 ), SubResource( 22 ), SubResource( 23 ), SubResource( 24 ), SubResource( 25 ), SubResource( 26 ), SubResource( 27 ), SubResource( 28 ), SubResource( 29 ), SubResource( 30 ), SubResource( 31 ), SubResource( 32 ), SubResource( 33 ), SubResource( 34 ), SubResource( 35 ), SubResource( 36 ), SubResource( 37 ), SubResource( 38 ), SubResource( 39 ), SubResource( 40 ) ],
+"loop": true,
+"name": "default",
+"speed": 15.0
+} ]
+
+[node name="TheTerraria" type="KinematicBody2D"]
+rotation = -1.57079
+script = ExtResource( 5 )
+
+[node name="SwingSprites" type="Node2D" parent="."]
+
+[node name="Sprite" type="Sprite" parent="SwingSprites"]
+position = Vector2( -3, 37 )
+rotation = -2.87979
+texture = ExtResource( 1 )
+
+[node name="SwordScaleThing" type="Particles2D" parent="SwingSprites/Sprite"]
+show_behind_parent = true
+material = SubResource( 2 )
+process_material = SubResource( 5 )
+texture = ExtResource( 1 )
+
+[node name="SurroundingParticles" type="Particles2D" parent="SwingSprites/Sprite"]
+material = SubResource( 6 )
+position = Vector2( 12.2583, -4.76806 )
+rotation = -1.57079
+amount = 10
+lifetime = 2.0
+process_material = SubResource( 9 )
+texture = ExtResource( 3 )
+
+[node name="SurroundingParticles2" type="Particles2D" parent="SwingSprites/Sprite"]
+material = SubResource( 6 )
+position = Vector2( 7.49026, -17.0264 )
+rotation = -3.14159
+lifetime = 0.5
+local_coords = false
+process_material = SubResource( 10 )
+texture = ExtResource( 3 )
+
+[node name="SlashLeft" type="Sprite" parent="SwingSprites/Sprite"]
+self_modulate = Color( 4, 4, 4, 0.28 )
+show_behind_parent = true
+material = SubResource( 14 )
+position = Vector2( -6.44382, -0.671951 )
+scale = Vector2( 0.497775, 1 )
+texture = ExtResource( 4 )
+
+[node name="SlashLeftParticle" type="Particles2D" parent="SwingSprites/Sprite/SlashLeft"]
+self_modulate = Color( 1, 1, 1, 0 )
+material = SubResource( 15 )
+position = Vector2( 8.28052, 0.3638 )
+process_material = SubResource( 18 )
+texture = ExtResource( 1 )
+
+[node name="SlashRight" type="Sprite" parent="SwingSprites/Sprite"]
+self_modulate = Color( 4, 4, 4, 0.28 )
+show_behind_parent = true
+material = SubResource( 14 )
+position = Vector2( 6.89764, -0.977325 )
+scale = Vector2( 0.497775, 1 )
+texture = ExtResource( 4 )
+flip_h = true
+
+[node name="SlashRightParticle" type="Particles2D" parent="SwingSprites/Sprite/SlashRight"]
+self_modulate = Color( 1, 1, 1, 0 )
+material = SubResource( 15 )
+position = Vector2( -18.5217, 0.669178 )
+process_material = SubResource( 19 )
+texture = ExtResource( 1 )
+
+[node name="SwordArea" type="Area2D" parent="SwingSprites/Sprite"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SwingSprites/Sprite/SwordArea"]
+shape = SubResource( 20 )
+disabled = true
+
+[node name="SpawnPoint" type="Node2D" parent="SwingSprites/Sprite"]
+position = Vector2( -0.0818768, -24.9917 )
+
+[node name="SwingAnimation" type="AnimationPlayer" parent="SwingSprites"]
+anims/RESET = SubResource( 11 )
+anims/SwingLoop = SubResource( 1 )
+
+[node name="GlowAnimation" type="AnimationPlayer" parent="SwingSprites"]
+autoplay = "Glowing"
+anims/Glowing = SubResource( 12 )
+anims/RESET = SubResource( 13 )
+
+[node name="BackSprite" type="AnimatedSprite" parent="."]
+visible = false
+position = Vector2( 1.99998, -11 )
+rotation = -1.309
+frames = SubResource( 41 )
+frame = 8
+playing = true
+
+[node name="SwingAudio" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 2 )
+
+[connection signal="area_entered" from="SwingSprites/Sprite/SwordArea" to="." method="_on_SwordArea_area_entered"]

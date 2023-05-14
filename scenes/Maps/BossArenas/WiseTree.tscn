@@ -1,0 +1,248 @@
+[gd_scene load_steps=19 format=2]
+
+[ext_resource path="res://sandthemeian.tres" type="Theme" id=1]
+[ext_resource path="res://scenes/UI.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scenes/boss/Meatboss.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scenes/Camera2D.tscn" type="PackedScene" id=5]
+[ext_resource path="res://MinecraftFive-Bold.ttf" type="DynamicFontData" id=6]
+[ext_resource path="res://scripts/MainWorld.gd" type="Script" id=7]
+[ext_resource path="res://LinkText.tres" type="DynamicFont" id=8]
+[ext_resource path="res://sprites/cured-pork-3.png" type="Texture" id=9]
+[ext_resource path="res://sounds/SCREECHOFATHOUSANDSUNS.mp3" type="AudioStream" id=10]
+[ext_resource path="res://sounds/ost/GorbnusthemeEXTENDEDANDMODIFIED.mp3" type="AudioStream" id=11]
+
+[sub_resource type="StyleBoxFlat" id=5]
+bg_color = Color( 0.054902, 0.717647, 0, 1 )
+skew = Vector2( 1, 0 )
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color( 0.0784314, 0.352941, 0, 1 )
+border_blend = true
+
+[sub_resource type="StyleBoxFlat" id=6]
+bg_color = Color( 0.462745, 0.121569, 0.121569, 1 )
+skew = Vector2( 1, 0 )
+
+[sub_resource type="DynamicFont" id=7]
+size = 70
+outline_size = 3
+outline_color = Color( 0, 0, 0, 0.737255 )
+font_data = ExtResource( 6 )
+
+[sub_resource type="Environment" id=11]
+background_mode = 4
+ambient_light_energy = 1.87
+dof_blur_far_amount = 1.0
+glow_enabled = true
+glow_intensity = 0.04
+glow_strength = 1.56
+glow_bloom = 0.62
+glow_blend_mode = 1
+glow_hdr_luminance_cap = 62.6
+adjustment_enabled = true
+adjustment_brightness = 1.38
+adjustment_saturation = 1.09
+
+[sub_resource type="RectangleShape2D" id=8]
+extents = Vector2( 2049.5, 222 )
+
+[sub_resource type="Animation" id=9]
+resource_name = "Flash"
+length = 5.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("Meatboss/a:playing")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("UI/Blindness:color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 4 ),
+"transitions": PoolRealArray( 2, 2 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=10]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Meatboss/a:playing")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("UI/Blindness:color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ) ]
+}
+
+[node name="MeatLands" type="Node2D"]
+script = ExtResource( 7 )
+
+[node name="ambione" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 11 )
+volume_db = -13.52
+autoplay = true
+
+[node name="dARKNESS" type="CanvasModulate" parent="."]
+color = Color( 0.407843, 0.0392157, 0.0392157, 1 )
+
+[node name="ColorRect" type="ColorRect" parent="."]
+margin_left = -2738.0
+margin_top = -1488.0
+margin_right = 3411.0
+margin_bottom = 2997.0
+mouse_filter = 2
+color = Color( 1, 0, 0, 1 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Background" type="Sprite" parent="."]
+self_modulate = Color( 0.45098, 0.45098, 0.45098, 1 )
+position = Vector2( 438, 356.5 )
+scale = Vector2( 3.61938, 2.61042 )
+texture = ExtResource( 9 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Decorations" type="Node2D" parent="."]
+
+[node name="Player" parent="." instance=ExtResource( 4 )]
+position = Vector2( 417, 408 )
+teleport_allowed = false
+noclip_allowed = false
+
+[node name="Camera2D" parent="Player" instance=ExtResource( 5 )]
+
+[node name="IngameObjects" type="Node2D" parent="."]
+
+[node name="Objects" type="Node2D" parent="."]
+
+[node name="Trees" type="Node2D" parent="."]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2( 441, 349 )
+zoom = Vector2( 2, 2 )
+
+[node name="UI" parent="." instance=ExtResource( 2 )]
+start_transition = false
+
+[node name="HEALTHBARREALNOFAKE" type="ProgressBar" parent="UI"]
+visible = false
+margin_left = 23.0
+margin_top = 11.0
+margin_right = 474.0
+margin_bottom = 45.0
+custom_styles/fg = SubResource( 5 )
+custom_styles/bg = SubResource( 6 )
+value = 100.0
+
+[node name="ProgressBar2" type="ProgressBar" parent="UI"]
+modulate = Color( 1, 1, 1, 0.431373 )
+show_behind_parent = true
+margin_left = 243.0
+margin_top = 36.0
+margin_right = 665.0
+margin_bottom = 60.0
+rect_scale = Vector2( 1.2, 1.2 )
+mouse_filter = 2
+theme = ExtResource( 1 )
+max_value = 2000.0
+value = 1000.0
+percent_visible = false
+
+[node name="Label" type="Label" parent="UI/ProgressBar2"]
+margin_right = 2108.0
+margin_bottom = 121.0
+rect_scale = Vector2( 0.2, 0.2 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 7 )
+text = "5000"
+align = 1
+valign = 1
+
+[node name="Label2" type="Label" parent="UI/ProgressBar2"]
+margin_top = -30.0
+margin_right = 422.0
+margin_bottom = 24.0
+custom_fonts/font = ExtResource( 8 )
+text = "clog the devourer"
+align = 1
+
+[node name="Blindness" type="ColorRect" parent="UI"]
+margin_left = -50.0
+margin_top = -16.0
+margin_right = 1049.0
+margin_bottom = 639.0
+mouse_filter = 2
+color = Color( 1, 1, 1, 0 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="balls" type="WorldEnvironment" parent="."]
+environment = SubResource( 11 )
+
+[node name="Shirt" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Shirt"]
+position = Vector2( 209, -491 )
+shape = SubResource( 8 )
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Shirt"]
+position = Vector2( 382, 1204 )
+shape = SubResource( 8 )
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Shirt"]
+position = Vector2( -830, 535 )
+rotation = -1.57079
+shape = SubResource( 8 )
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Shirt"]
+position = Vector2( 1706, 522 )
+rotation = -1.57079
+shape = SubResource( 8 )
+
+[node name="Meatboss" parent="." instance=ExtResource( 3 )]
+position = Vector2( -169, -68 )
+
+[node name="a" type="AudioStreamPlayer2D" parent="Meatboss"]
+stream = ExtResource( 10 )
+volume_db = 6.24
+
+[node name="Flash" type="AnimationPlayer" parent="."]
+anims/Flash = SubResource( 9 )
+anims/RESET = SubResource( 10 )
+
+[connection signal="animation_finished" from="Flash" to="Meatboss" method="_on_Flash_animation_finished"]

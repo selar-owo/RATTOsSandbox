@@ -1,0 +1,174 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://MinecraftFive-Bold.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://scripts/DamageNumber.gd" type="Script" id=2]
+
+[sub_resource type="DynamicFont" id=4]
+size = 20
+outline_size = 2
+outline_color = Color( 0.207843, 0, 0.117647, 1 )
+font_data = ExtResource( 1 )
+
+[sub_resource type="Animation" id=3]
+resource_name = "Big"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Label:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( -0.025, 0.175, 0.575 ),
+"transitions": PoolRealArray( -2, -2, -2 ),
+"update": 0,
+"values": [ Vector2( -80, 0 ), Vector2( -80, -25 ), Vector2( -80, 10 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Label:rect_scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1, 0.375 ),
+"transitions": PoolRealArray( -2, -2, -2 ),
+"update": 0,
+"values": [ Vector2( 0.9, 0.3 ), Vector2( 0.3, 0.9 ), Vector2( 0.6, 0.6 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Label:self_modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 0.482353, 0, 0, 0 ), Color( 1, 0.513726, 0.513726, 1 ), Color( 1, 0.368627, 0.368627, 1 ), Color( 0.619608, 0.137255, 0.137255, 0 ) ]
+}
+
+[sub_resource type="Animation" id=1]
+resource_name = "Normal"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Label:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.025, 0.325 ),
+"transitions": PoolRealArray( -2, -2, -2 ),
+"update": 0,
+"values": [ Color( 0.592157, 0, 0, 0.72549 ), Color( 1, 0.152941, 0.152941, 0.72549 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Label:rect_position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.025, 0.35 ),
+"transitions": PoolRealArray( -2, 2, -2 ),
+"update": 0,
+"values": [ Vector2( -80, -15 ), Vector2( -80, -25 ), Vector2( -80, 10 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Label:rect_scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.025, 0.35 ),
+"transitions": PoolRealArray( -2, 2, -2 ),
+"update": 0,
+"values": [ Vector2( 0.9, 0.3 ), Vector2( 0.6, 0.6 ), Vector2( 0.3, 0.9 ) ]
+}
+
+[sub_resource type="Animation" id=2]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Label:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Label:rect_position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( -80, -15 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Label:rect_scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0.6, 0.6 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Label:rect_size")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 160, 30 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Label:rect_rotation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+
+[node name="DamageNumber" type="KinematicBody2D"]
+script = ExtResource( 2 )
+
+[node name="Label" type="Label" parent="."]
+margin_left = -80.0
+margin_top = -15.0
+margin_right = 80.0
+margin_bottom = 15.0
+rect_scale = Vector2( 0.6, 0.6 )
+rect_pivot_offset = Vector2( 80.2137, 15.3553 )
+custom_fonts/font = SubResource( 4 )
+text = "6"
+align = 1
+valign = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "Big"
+anims/Big = SubResource( 3 )
+anims/Normal = SubResource( 1 )
+anims/RESET = SubResource( 2 )
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]

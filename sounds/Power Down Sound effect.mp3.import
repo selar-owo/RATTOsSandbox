@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Power Down Sound effect.mp3-5b4f95dbca0bb867df718fbe4e7ca144.mp3str"
+
+[deps]
+
+source_file="res://sounds/Power Down Sound effect.mp3"
+dest_files=[ "res://.import/Power Down Sound effect.mp3-5b4f95dbca0bb867df718fbe4e7ca144.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

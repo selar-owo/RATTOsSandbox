@@ -1,0 +1,23 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/snd_floweytalk2.wav-4cdd4ba3ef0b1a9f7f8ae4358696147b.sample"
+
+[deps]
+
+source_file="res://sounds/all undertale sounds/snd_floweytalk2.wav"
+dest_files=[ "res://.import/snd_floweytalk2.wav-4cdd4ba3ef0b1a9f7f8ae4358696147b.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

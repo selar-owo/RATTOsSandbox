@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/mus_elevator_last.ogg-55475264dfe29c078f17f23caf50143d.oggstr"
+
+[deps]
+
+source_file="res://sounds/all undertale sounds/mus_elevator_last.ogg"
+dest_files=[ "res://.import/mus_elevator_last.ogg-55475264dfe29c078f17f23caf50143d.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

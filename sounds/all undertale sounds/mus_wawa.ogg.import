@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/mus_wawa.ogg-7b59d1742c6435b381fe571448466ddc.oggstr"
+
+[deps]
+
+source_file="res://sounds/all undertale sounds/mus_wawa.ogg"
+dest_files=[ "res://.import/mus_wawa.ogg-7b59d1742c6435b381fe571448466ddc.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

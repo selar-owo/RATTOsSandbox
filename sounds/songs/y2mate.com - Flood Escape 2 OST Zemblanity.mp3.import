@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/y2mate.com - Flood Escape 2 OST Zemblanity.mp3-0ef58f29017e4ab5611479b378c9ece0.mp3str"
+
+[deps]
+
+source_file="res://sounds/songs/y2mate.com - Flood Escape 2 OST Zemblanity.mp3"
+dest_files=[ "res://.import/y2mate.com - Flood Escape 2 OST Zemblanity.mp3-0ef58f29017e4ab5611479b378c9ece0.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

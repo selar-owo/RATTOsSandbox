@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/mus_intronoise.ogg-b70258f5ba87519cae0cc904ab22e1ab.oggstr"
+
+[deps]
+
+source_file="res://sounds/all undertale sounds/mus_intronoise.ogg"
+dest_files=[ "res://.import/mus_intronoise.ogg-b70258f5ba87519cae0cc904ab22e1ab.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

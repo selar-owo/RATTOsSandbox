@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Screach.mp3-d19691c1c6092afdbbefa1103db1e245.mp3str"
+
+[deps]
+
+source_file="res://sounds/Screach.mp3"
+dest_files=[ "res://.import/Screach.mp3-d19691c1c6092afdbbefa1103db1e245.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

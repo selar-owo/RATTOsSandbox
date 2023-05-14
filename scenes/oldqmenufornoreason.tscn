@@ -1,0 +1,732 @@
+[gd_scene load_steps=29 format=2]
+
+[ext_resource path="res://rainyhearts.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://MinecraftFive-Bold.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://sprites/bobm24.png" type="Texture" id=3]
+[ext_resource path="res://sprites/PussyGame.png" type="Texture" id=4]
+[ext_resource path="res://sprites/placeholderIceCreamIcon.png" type="Texture" id=5]
+[ext_resource path="res://sprites/chmees.png" type="Texture" id=6]
+[ext_resource path="res://scripts/summon_object.gd" type="Script" id=7]
+[ext_resource path="res://sprites/undoIcon.png" type="Texture" id=8]
+[ext_resource path="res://sprites/thebuba.jpg" type="Texture" id=9]
+[ext_resource path="res://sprites/on.png" type="Texture" id=10]
+[ext_resource path="res://sprites/deAllIcon.png" type="Texture" id=11]
+[ext_resource path="res://sprites/footballIcon.png" type="Texture" id=12]
+[ext_resource path="res://sprites/amog.png" type="Texture" id=13]
+[ext_resource path="res://sprites/woodblockicon.png" type="Texture" id=14]
+[ext_resource path="res://sprites/carIcon.png" type="Texture" id=15]
+[ext_resource path="res://sprites/pistonicon.png" type="Texture" id=16]
+[ext_resource path="res://sprites/1 rat.jpg" type="Texture" id=17]
+
+[sub_resource type="DynamicFont" id=1]
+size = 30
+outline_size = 2
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 11
+outline_size = 1
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 11
+outline_size = 2
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=4]
+size = 10
+outline_size = 2
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 2 )
+
+[sub_resource type="Animation" id=5]
+resource_name = "Blocks"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rect_position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.5 ),
+"transitions": PoolRealArray( 1 ),
+"update": 3,
+"values": [ Vector2( 31, 23 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:rect_size")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.5 ),
+"transitions": PoolRealArray( 1 ),
+"update": 3,
+"values": [ Vector2( 115, 47 ) ]
+}
+
+[sub_resource type="Animation" id=6]
+resource_name = "Mobs"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rect_position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.5 ),
+"transitions": PoolRealArray( 1 ),
+"update": 3,
+"values": [ Vector2( 151, 23 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:rect_size")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.5 ),
+"transitions": PoolRealArray( 1 ),
+"update": 3,
+"values": [ Vector2( 84, 47 ) ]
+}
+
+[sub_resource type="Animation" id=7]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 254, 23 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:rect_size")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 112, 47 ) ]
+}
+
+[sub_resource type="Animation" id=8]
+resource_name = "Useables"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rect_position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.5 ),
+"transitions": PoolRealArray( 1 ),
+"update": 3,
+"values": [ Vector2( 245, 23 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:rect_size")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.5 ),
+"transitions": PoolRealArray( 1 ),
+"update": 3,
+"values": [ Vector2( 135, 47 ) ]
+}
+
+[sub_resource type="Animation" id=9]
+resource_name = "funny"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rect_position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.5 ),
+"transitions": PoolRealArray( 1 ),
+"update": 3,
+"values": [ Vector2( 385, 23 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:rect_size")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.5 ),
+"transitions": PoolRealArray( 1 ),
+"update": 3,
+"values": [ Vector2( 131, 47 ) ]
+}
+
+[sub_resource type="DynamicFont" id=10]
+size = 23
+outline_size = 2
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=11]
+size = 15
+outline_size = 1
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 2 )
+
+[node name="Node" type="Node"]
+
+[node name="QMenuOLD" type="Node2D" parent="."]
+visible = false
+
+[node name="background" type="ColorRect" parent="QMenuOLD"]
+margin_left = 31.0
+margin_top = 23.0
+margin_right = 991.0
+margin_bottom = 516.0
+rect_pivot_offset = Vector2( -239, -62 )
+mouse_filter = 2
+color = Color( 0, 0, 0, 0.192157 )
+
+[node name="ColorRect" type="ColorRect" parent="QMenuOLD/background"]
+margin_right = 960.0
+margin_bottom = 47.0
+color = Color( 0, 0, 0, 0.521569 )
+
+[node name="ColorRect2" type="ColorRect" parent="QMenuOLD/background"]
+margin_left = 833.0
+margin_top = 47.0
+margin_right = 960.0
+margin_bottom = 493.0
+color = Color( 0, 0, 0, 0.4 )
+
+[node name="DevLabel" type="Label" parent="QMenuOLD"]
+visible = false
+modulate = Color( 1, 1, 1, 0.784314 )
+margin_left = 5.0
+margin_top = 5.0
+margin_right = 274.0
+margin_bottom = 19.0
+text = "Alpha version 0.1 (it very brokey)"
+
+[node name="que maneu" type="Label" parent="QMenuOLD"]
+visible = false
+margin_left = 43.0
+margin_top = 32.0
+margin_right = 227.0
+margin_bottom = 61.0
+custom_fonts/font = SubResource( 1 )
+text = "the fuckin menu"
+
+[node name="Items" type="Node2D" parent="QMenuOLD"]
+
+[node name="Blocks" type="Node2D" parent="QMenuOLD/Items"]
+visible = false
+
+[node name="woodBlock" type="TextureButton" parent="QMenuOLD/Items/Blocks"]
+margin_left = 44.0
+margin_top = 77.0
+margin_right = 121.0
+margin_bottom = 154.0
+texture_normal = ExtResource( 14 )
+expand = true
+script = ExtResource( 7 )
+
+[node name="background2" type="ColorRect" parent="QMenuOLD/Items/Blocks/woodBlock"]
+show_behind_parent = true
+margin_right = 77.0
+margin_bottom = 77.0
+mouse_filter = 2
+color = Color( 0, 0, 0, 0.192157 )
+
+[node name="Label" type="Label" parent="QMenuOLD/Items/Blocks/woodBlock"]
+visible = false
+margin_left = -5.0
+margin_top = 37.0
+margin_right = 83.0
+margin_bottom = 78.0
+custom_colors/font_color = Color( 1, 1, 1, 0.533333 )
+custom_fonts/font = SubResource( 2 )
+text = "wood
+block"
+align = 1
+valign = 1
+
+[node name="football" type="TextureButton" parent="QMenuOLD/Items/Blocks"]
+margin_left = 144.0
+margin_top = 77.0
+margin_right = 221.0
+margin_bottom = 154.0
+texture_normal = ExtResource( 12 )
+expand = true
+script = ExtResource( 7 )
+
+[node name="background2" type="ColorRect" parent="QMenuOLD/Items/Blocks/football"]
+show_behind_parent = true
+margin_right = 77.0
+margin_bottom = 77.0
+mouse_filter = 2
+color = Color( 0, 0, 0, 0.192157 )
+
+[node name="Label" type="Label" parent="QMenuOLD/Items/Blocks/football"]
+visible = false
+margin_left = -5.0
+margin_top = 57.0
+margin_right = 83.0
+margin_bottom = 76.0
+custom_colors/font_color = Color( 1, 1, 1, 0.533333 )
+custom_fonts/font = SubResource( 2 )
+text = "football"
+align = 1
+valign = 1
+
+[node name="cheese" type="TextureButton" parent="QMenuOLD/Items/Blocks"]
+margin_left = 244.0
+margin_top = 77.0
+margin_right = 321.0
+margin_bottom = 154.0
+texture_normal = ExtResource( 6 )
+expand = true
+script = ExtResource( 7 )
+
+[node name="background2" type="ColorRect" parent="QMenuOLD/Items/Blocks/cheese"]
+show_behind_parent = true
+margin_right = 77.0
+margin_bottom = 77.0
+mouse_filter = 2
+color = Color( 0, 0, 0, 0.192157 )
+
+[node name="Label" type="Label" parent="QMenuOLD/Items/Blocks/cheese"]
+visible = false
+margin_left = -5.0
+margin_top = 57.0
+margin_right = 83.0
+margin_bottom = 76.0
+custom_colors/font_color = Color( 1, 1, 1, 0.533333 )
+custom_fonts/font = SubResource( 2 )
+text = "cheese"
+align = 1
+valign = 1
+
+[node name="Mobs" type="Node2D" parent="QMenuOLD/Items"]
+visible = false
+
+[node name="rat" type="TextureButton" parent="QMenuOLD/Items/Mobs"]
+margin_left = 44.0
+margin_top = 77.0
+margin_right = 121.0
+margin_bottom = 154.0
+texture_normal = ExtResource( 17 )
+expand = true
+script = ExtResource( 7 )
+
+[node name="background2" type="ColorRect" parent="QMenuOLD/Items/Mobs/rat"]
+show_behind_parent = true
+margin_right = 77.0
+margin_bottom = 77.0
+mouse_filter = 2
+color = Color( 0, 0, 0, 0.192157 )
+
+[node name="Label" type="Label" parent="QMenuOLD/Items/Mobs/rat"]
+visible = false
+margin_left = -42.0
+margin_top = 24.0
+margin_right = 121.0
+margin_bottom = 109.0
+custom_colors/font_color = Color( 1, 0, 0, 0.533333 )
+custom_fonts/font = SubResource( 2 )
+text = "rat"
+align = 1
+valign = 1
+
+[node name="Interactable" type="Node2D" parent="QMenuOLD/Items"]
+visible = false
+
+[node name="vehicle" type="TextureButton" parent="QMenuOLD/Items/Interactable"]
+margin_left = 44.0
+margin_top = 77.0
+margin_right = 121.0
+margin_bottom = 154.0
+texture_normal = ExtResource( 15 )
+expand = true
+script = ExtResource( 7 )
+
+[node name="background2" type="ColorRect" parent="QMenuOLD/Items/Interactable/vehicle"]
+show_behind_parent = true
+margin_right = 77.0
+margin_bottom = 77.0
+mouse_filter = 2
+color = Color( 0, 0, 0, 0.192157 )
+
+[node name="Label" type="Label" parent="QMenuOLD/Items/Interactable/vehicle"]
+visible = false
+margin_left = -5.0
+margin_top = 49.0
+margin_right = 83.0
+margin_bottom = 90.0
+custom_colors/font_color = Color( 1, 1, 1, 0.533333 )
+custom_fonts/font = SubResource( 2 )
+text = "vehicle"
+align = 1
+valign = 1
+
+[node name="piston" type="TextureButton" parent="QMenuOLD/Items/Interactable"]
+margin_left = 144.0
+margin_top = 77.0
+margin_right = 221.0
+margin_bottom = 154.0
+texture_normal = ExtResource( 16 )
+expand = true
+script = ExtResource( 7 )
+
+[node name="background2" type="ColorRect" parent="QMenuOLD/Items/Interactable/piston"]
+show_behind_parent = true
+margin_right = 77.0
+margin_bottom = 77.0
+mouse_filter = 2
+color = Color( 0, 0, 0, 0.192157 )
+
+[node name="Label" type="Label" parent="QMenuOLD/Items/Interactable/piston"]
+visible = false
+margin_left = -5.0
+margin_top = 46.0
+margin_right = 83.0
+margin_bottom = 87.0
+custom_colors/font_color = Color( 1, 1, 1, 0.533333 )
+custom_fonts/font = SubResource( 2 )
+text = "piston"
+align = 1
+valign = 1
+
+[node name="iceCream" type="TextureButton" parent="QMenuOLD/Items/Interactable"]
+margin_left = 244.0
+margin_top = 77.0
+margin_right = 321.0
+margin_bottom = 154.0
+texture_normal = ExtResource( 5 )
+expand = true
+script = ExtResource( 7 )
+
+[node name="background2" type="ColorRect" parent="QMenuOLD/Items/Interactable/iceCream"]
+show_behind_parent = true
+margin_right = 77.0
+margin_bottom = 77.0
+mouse_filter = 2
+color = Color( 0, 0, 0, 0.192157 )
+
+[node name="Label" type="Label" parent="QMenuOLD/Items/Interactable/iceCream"]
+visible = false
+margin_left = -5.0
+margin_top = 46.0
+margin_right = 83.0
+margin_bottom = 87.0
+custom_colors/font_color = Color( 1, 1, 1, 0.533333 )
+custom_fonts/font = SubResource( 2 )
+text = "ice cream"
+align = 1
+valign = 1
+
+[node name="pussyGame" type="TextureButton" parent="QMenuOLD/Items/Interactable"]
+margin_left = 344.0
+margin_top = 77.0
+margin_right = 421.0
+margin_bottom = 154.0
+texture_normal = ExtResource( 4 )
+expand = true
+script = ExtResource( 7 )
+
+[node name="background2" type="ColorRect" parent="QMenuOLD/Items/Interactable/pussyGame"]
+show_behind_parent = true
+margin_right = 77.0
+margin_bottom = 77.0
+mouse_filter = 2
+color = Color( 0, 0, 0, 0.192157 )
+
+[node name="Label" type="Label" parent="QMenuOLD/Items/Interactable/pussyGame"]
+visible = false
+margin_left = -5.0
+margin_top = 46.0
+margin_right = 83.0
+margin_bottom = 87.0
+custom_colors/font_color = Color( 1, 1, 1, 0.533333 )
+custom_fonts/font = SubResource( 2 )
+text = "pussy cat"
+align = 1
+valign = 1
+
+[node name="funny" type="Node2D" parent="QMenuOLD/Items"]
+
+[node name="bubba" type="TextureButton" parent="QMenuOLD/Items/funny"]
+margin_left = 44.0
+margin_top = 77.0
+margin_right = 121.0
+margin_bottom = 154.0
+texture_normal = ExtResource( 9 )
+expand = true
+script = ExtResource( 7 )
+
+[node name="background2" type="ColorRect" parent="QMenuOLD/Items/funny/bubba"]
+show_behind_parent = true
+margin_right = 77.0
+margin_bottom = 77.0
+mouse_filter = 2
+color = Color( 0, 0, 0, 0.192157 )
+
+[node name="Label" type="Label" parent="QMenuOLD/Items/funny/bubba"]
+visible = false
+margin_left = -43.0
+margin_top = -4.0
+margin_right = 120.0
+margin_bottom = 81.0
+custom_colors/font_color = Color( 1, 1, 1, 0.533333 )
+custom_fonts/font = SubResource( 2 )
+text = "ugly
+ass
+fucking
+cat"
+align = 1
+valign = 1
+
+[node name="thisThing" type="TextureButton" parent="QMenuOLD/Items/funny"]
+margin_left = 144.0
+margin_top = 77.0
+margin_right = 221.0
+margin_bottom = 154.0
+texture_normal = ExtResource( 13 )
+expand = true
+script = ExtResource( 7 )
+
+[node name="background2" type="ColorRect" parent="QMenuOLD/Items/funny/thisThing"]
+show_behind_parent = true
+margin_right = 77.0
+margin_bottom = 77.0
+mouse_filter = 2
+color = Color( 0, 0, 0, 0.192157 )
+
+[node name="Label" type="Label" parent="QMenuOLD/Items/funny/thisThing"]
+visible = false
+margin_left = -42.0
+margin_top = 26.0
+margin_right = 121.0
+margin_bottom = 111.0
+custom_colors/font_color = Color( 1, 1, 1, 0.533333 )
+custom_fonts/font = SubResource( 2 )
+text = "amog"
+align = 1
+valign = 1
+
+[node name="bobm" type="TextureButton" parent="QMenuOLD/Items/funny"]
+margin_left = 244.0
+margin_top = 77.0
+margin_right = 321.0
+margin_bottom = 154.0
+texture_normal = ExtResource( 3 )
+expand = true
+script = ExtResource( 7 )
+
+[node name="background2" type="ColorRect" parent="QMenuOLD/Items/funny/bobm"]
+show_behind_parent = true
+margin_right = 77.0
+margin_bottom = 77.0
+mouse_filter = 2
+color = Color( 0, 0, 0, 0.192157 )
+
+[node name="Label" type="Label" parent="QMenuOLD/Items/funny/bobm"]
+visible = false
+margin_left = -42.0
+margin_top = 26.0
+margin_right = 121.0
+margin_bottom = 111.0
+custom_colors/font_color = Color( 1, 1, 1, 0.533333 )
+custom_fonts/font = SubResource( 2 )
+text = "bobm"
+align = 1
+valign = 1
+
+[node name="Options" type="Node2D" parent="QMenuOLD"]
+
+[node name="Physics" type="TextureButton" parent="QMenuOLD/Options"]
+margin_left = 942.0
+margin_top = 86.0
+margin_right = 986.0
+margin_bottom = 108.0
+texture_normal = ExtResource( 10 )
+expand = true
+
+[node name="Label" type="Label" parent="QMenuOLD/Options/Physics"]
+margin_left = -65.0
+margin_top = 3.0
+margin_right = 41.0
+margin_bottom = 33.0
+custom_fonts/font = SubResource( 3 )
+text = "physics"
+
+[node name="menuCloses" type="TextureButton" parent="QMenuOLD/Options"]
+margin_left = 942.0
+margin_top = 130.0
+margin_right = 986.0
+margin_bottom = 152.0
+texture_normal = ExtResource( 10 )
+expand = true
+
+[node name="Label" type="Label" parent="QMenuOLD/Options/menuCloses"]
+margin_left = -72.0
+margin_top = -8.0
+margin_right = 7.0
+margin_bottom = 31.0
+custom_fonts/font = SubResource( 4 )
+text = "close menu
+on select"
+
+[node name="undo" type="TextureButton" parent="QMenuOLD/Options"]
+margin_left = 948.0
+margin_top = 28.0
+margin_right = 984.0
+margin_bottom = 64.0
+texture_normal = ExtResource( 8 )
+expand = true
+
+[node name="deleteall" type="TextureButton" parent="QMenuOLD/Options"]
+margin_left = 902.0
+margin_top = 28.0
+margin_right = 938.0
+margin_bottom = 64.0
+texture_normal = ExtResource( 11 )
+expand = true
+
+[node name="addTag" type="Node2D" parent="QMenuOLD/Options"]
+visible = false
+
+[node name="LineEdit" type="LineEdit" parent="QMenuOLD/Options/addTag"]
+margin_left = 872.0
+margin_top = 376.0
+margin_right = 988.0
+margin_bottom = 427.0
+max_length = 20
+placeholder_text = "add tag :)))"
+
+[node name="tags" type="Label" parent="QMenuOLD/Options/addTag"]
+margin_left = 880.0
+margin_top = 223.0
+margin_right = 983.0
+margin_bottom = 374.0
+
+[node name="backBox" type="ColorRect" parent="QMenuOLD"]
+margin_left = 254.0
+margin_top = 23.0
+margin_right = 366.0
+margin_bottom = 70.0
+color = Color( 0, 0, 0, 0.215686 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="QMenuOLD/backBox"]
+anims/Blocks = SubResource( 5 )
+anims/Mobs = SubResource( 6 )
+anims/RESET = SubResource( 7 )
+anims/Useables = SubResource( 8 )
+anims/funny = SubResource( 9 )
+
+[node name="Blocks" type="LinkButton" parent="QMenuOLD"]
+margin_left = 35.0
+margin_top = 27.0
+margin_right = 140.0
+margin_bottom = 65.0
+custom_colors/font_color_focus = Color( 1, 1, 1, 1 )
+custom_fonts/font = SubResource( 10 )
+enabled_focus_mode = 0
+text = "Blocks"
+underline = 2
+
+[node name="Mobs" type="LinkButton" parent="QMenuOLD"]
+margin_left = 157.0
+margin_top = 27.0
+margin_right = 236.0
+margin_bottom = 65.0
+custom_colors/font_color_focus = Color( 1, 1, 1, 1 )
+custom_fonts/font = SubResource( 10 )
+enabled_focus_mode = 0
+text = "Mobs"
+underline = 2
+
+[node name="Interactable" type="LinkButton" parent="QMenuOLD"]
+margin_left = 249.0
+margin_top = 27.0
+margin_right = 377.0
+margin_bottom = 65.0
+custom_colors/font_color_focus = Color( 1, 1, 1, 1 )
+custom_fonts/font = SubResource( 10 )
+enabled_focus_mode = 0
+text = "Useable"
+underline = 2
+
+[node name="Funny" type="LinkButton" parent="QMenuOLD"]
+margin_left = 391.0
+margin_top = 27.0
+margin_right = 519.0
+margin_bottom = 65.0
+custom_colors/font_color_focus = Color( 1, 1, 1, 1 )
+custom_fonts/font = SubResource( 10 )
+enabled_focus_mode = 0
+text = "funny :))"
+underline = 2
+
+[node name="VNumber" type="Label" parent="QMenuOLD"]
+modulate = Color( 1, 1, 1, 0.145098 )
+margin_left = 5.0
+margin_top = -1.0
+margin_right = 101.0
+margin_bottom = 22.0
+custom_fonts/font = SubResource( 11 )
+text = "0.3 alpha"
+
+[connection signal="button_down" from="QMenuOLD/Items/Blocks/woodBlock" to="QMenuOLD/Items/Blocks/woodBlock" method="_on_woodBlock_button_down"]
+[connection signal="mouse_entered" from="QMenuOLD/Items/Blocks/woodBlock" to="QMenuOLD/Items/Blocks/woodBlock" method="_mouse_entered"]
+[connection signal="mouse_exited" from="QMenuOLD/Items/Blocks/woodBlock" to="QMenuOLD/Items/Blocks/woodBlock" method="_mouse_exited"]
+[connection signal="button_down" from="QMenuOLD/Items/Blocks/football" to="QMenuOLD/Items/Blocks/football" method="_on_football_button_down"]
+[connection signal="mouse_entered" from="QMenuOLD/Items/Blocks/football" to="QMenuOLD/Items/Blocks/football" method="_mouse_entered"]
+[connection signal="mouse_exited" from="QMenuOLD/Items/Blocks/football" to="QMenuOLD/Items/Blocks/football" method="_mouse_exited"]
+[connection signal="button_down" from="QMenuOLD/Items/Blocks/cheese" to="QMenuOLD/Items/Blocks/cheese" method="_on_cheese_button_down"]
+[connection signal="mouse_entered" from="QMenuOLD/Items/Blocks/cheese" to="QMenuOLD/Items/Blocks/cheese" method="_mouse_entered"]
+[connection signal="mouse_exited" from="QMenuOLD/Items/Blocks/cheese" to="QMenuOLD/Items/Blocks/cheese" method="_mouse_exited"]
+[connection signal="button_down" from="QMenuOLD/Items/Mobs/rat" to="QMenuOLD/Items/Mobs/rat" method="_on_rat_button_down"]
+[connection signal="mouse_entered" from="QMenuOLD/Items/Mobs/rat" to="QMenuOLD/Items/Mobs/rat" method="_mouse_entered"]
+[connection signal="mouse_exited" from="QMenuOLD/Items/Mobs/rat" to="QMenuOLD/Items/Mobs/rat" method="_mouse_exited"]
+[connection signal="button_down" from="QMenuOLD/Items/Interactable/vehicle" to="QMenuOLD/Items/Interactable/vehicle" method="_on_vehicle_button_down"]
+[connection signal="mouse_entered" from="QMenuOLD/Items/Interactable/vehicle" to="QMenuOLD/Items/Interactable/vehicle" method="_mouse_entered"]
+[connection signal="mouse_exited" from="QMenuOLD/Items/Interactable/vehicle" to="QMenuOLD/Items/Interactable/vehicle" method="_mouse_exited"]
+[connection signal="button_down" from="QMenuOLD/Items/Interactable/piston" to="QMenuOLD/Items/Interactable/piston" method="_on_piston_button_down"]
+[connection signal="mouse_entered" from="QMenuOLD/Items/Interactable/piston" to="QMenuOLD/Items/Interactable/piston" method="_mouse_entered"]
+[connection signal="mouse_exited" from="QMenuOLD/Items/Interactable/piston" to="QMenuOLD/Items/Interactable/piston" method="_mouse_exited"]
+[connection signal="button_down" from="QMenuOLD/Items/Interactable/iceCream" to="QMenuOLD/Items/Interactable/iceCream" method="_on_iceCream_button_down"]
+[connection signal="mouse_entered" from="QMenuOLD/Items/Interactable/iceCream" to="QMenuOLD/Items/Interactable/iceCream" method="_mouse_entered"]
+[connection signal="mouse_exited" from="QMenuOLD/Items/Interactable/iceCream" to="QMenuOLD/Items/Interactable/iceCream" method="_mouse_exited"]
+[connection signal="button_down" from="QMenuOLD/Items/Interactable/pussyGame" to="QMenuOLD/Items/Interactable/pussyGame" method="_on_pussyGame_button_down"]
+[connection signal="mouse_entered" from="QMenuOLD/Items/Interactable/pussyGame" to="QMenuOLD/Items/Interactable/pussyGame" method="_mouse_entered"]
+[connection signal="mouse_exited" from="QMenuOLD/Items/Interactable/pussyGame" to="QMenuOLD/Items/Interactable/pussyGame" method="_mouse_exited"]
+[connection signal="button_down" from="QMenuOLD/Items/funny/bubba" to="QMenuOLD/Items/funny/bubba" method="_on_bubba_button_down"]
+[connection signal="mouse_entered" from="QMenuOLD/Items/funny/bubba" to="QMenuOLD/Items/funny/bubba" method="_mouse_entered"]
+[connection signal="mouse_exited" from="QMenuOLD/Items/funny/bubba" to="QMenuOLD/Items/funny/bubba" method="_mouse_exited"]
+[connection signal="button_down" from="QMenuOLD/Items/funny/thisThing" to="QMenuOLD/Items/funny/thisThing" method="_on_thisThing_button_down"]
+[connection signal="mouse_entered" from="QMenuOLD/Items/funny/thisThing" to="QMenuOLD/Items/funny/thisThing" method="_mouse_entered"]
+[connection signal="mouse_exited" from="QMenuOLD/Items/funny/thisThing" to="QMenuOLD/Items/funny/thisThing" method="_mouse_exited"]
+[connection signal="button_down" from="QMenuOLD/Items/funny/bobm" to="QMenuOLD/Items/funny/bobm" method="_on_button_down"]
+[connection signal="mouse_entered" from="QMenuOLD/Items/funny/bobm" to="QMenuOLD/Items/funny/bobm" method="_mouse_entered"]
+[connection signal="mouse_exited" from="QMenuOLD/Items/funny/bobm" to="QMenuOLD/Items/funny/bobm" method="_mouse_exited"]

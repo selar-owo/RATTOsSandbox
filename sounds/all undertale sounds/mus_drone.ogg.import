@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/mus_drone.ogg-452a24778cb6426dae9a21efb15d24c6.oggstr"
+
+[deps]
+
+source_file="res://sounds/all undertale sounds/mus_drone.ogg"
+dest_files=[ "res://.import/mus_drone.ogg-452a24778cb6426dae9a21efb15d24c6.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

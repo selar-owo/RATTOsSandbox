@@ -1,0 +1,72 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://sprites/BazookaRocketSprite.png" type="Texture" id=1]
+[ext_resource path="res://scripts/Rocket.gd" type="Script" id=2]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 12.5, 4 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 9.5, 1 )
+
+[sub_resource type="CanvasItemMaterial" id=3]
+blend_mode = 1
+
+[sub_resource type="Gradient" id=4]
+offsets = PoolRealArray( 0, 0.103226, 0.251613, 0.43871, 0.625806, 1 )
+colors = PoolColorArray( 1, 1, 1, 1, 1, 0.891567, 0.707031, 1, 0.836426, 0.412913, 0.186235, 1, 0.855957, 0.298327, 0.1304, 1, 0.852051, 0.179729, 0.179729, 1, 0, 0, 0, 1 )
+
+[sub_resource type="GradientTexture" id=5]
+gradient = SubResource( 4 )
+
+[sub_resource type="Curve" id=6]
+max_value = 1.5
+_data = [ Vector2( 0, 1.5 ), 0.0, 0.0, 0, 0, Vector2( 0.966292, 0 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=7]
+curve = SubResource( 6 )
+
+[sub_resource type="ParticlesMaterial" id=8]
+flag_disable_z = true
+spread = 10.0
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 19.8
+angular_velocity = 720.0
+angular_velocity_random = 1.0
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+scale_curve = SubResource( 7 )
+color_ramp = SubResource( 5 )
+
+[node name="Rocket" type="KinematicBody2D"]
+script = ExtResource( 2 )
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 0, 0.5 )
+texture = ExtResource( 1 )
+
+[node name="HurtHitbox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtHitbox"]
+position = Vector2( 4.5, 0 )
+shape = SubResource( 1 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 5.5, 0 )
+shape = SubResource( 2 )
+disabled = true
+
+[node name="Particles2D" type="Particles2D" parent="."]
+show_behind_parent = true
+material = SubResource( 3 )
+position = Vector2( -4, 0 )
+rotation = -3.14159
+scale = Vector2( 2, 2 )
+z_index = -1
+amount = 100
+lifetime = 0.5
+local_coords = false
+process_material = SubResource( 8 )
+
+[connection signal="area_entered" from="HurtHitbox" to="." method="_on_RocketArea_area_entered"]
+[connection signal="body_entered" from="HurtHitbox" to="." method="_on_HurtHitbox_body_entered"]

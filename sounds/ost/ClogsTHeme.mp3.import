@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/ClogsTHeme.mp3-33786fd29883de21f487890984f8a648.mp3str"
+
+[deps]
+
+source_file="res://sounds/ost/ClogsTHeme.mp3"
+dest_files=[ "res://.import/ClogsTHeme.mp3-33786fd29883de21f487890984f8a648.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

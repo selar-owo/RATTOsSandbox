@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://EAS (online-video-cutter.com).webm" type="VideoStream" id=1]
+[ext_resource path="res://scripts/EAS.gd" type="Script" id=2]
+
+[node name="EAS" type="Node2D"]
+script = ExtResource( 2 )
+
+[node name="VideoPlayer" type="VideoPlayer" parent="."]
+margin_left = -21.0
+margin_top = -21.0
+margin_right = 471.0
+margin_bottom = 339.0
+rect_scale = Vector2( 2.2, 1.8 )
+stream = ExtResource( 1 )
+volume_db = -22.08
+autoplay = true
+expand = false
+
+[connection signal="finished" from="VideoPlayer" to="." method="_on_VideoPlayer_finished"]

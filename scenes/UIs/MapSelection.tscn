@@ -1,0 +1,244 @@
+[gd_scene load_steps=14 format=2]
+
+[ext_resource path="res://sprites/MapSelectTemplate.png" type="Texture" id=1]
+[ext_resource path="res://sprites/Blank.png" type="Texture" id=2]
+[ext_resource path="res://scripts/MapSelection.gd" type="Script" id=3]
+[ext_resource path="res://sprites/IslandImage.png" type="Texture" id=4]
+[ext_resource path="res://sprites/TestLandsImage.png" type="Texture" id=5]
+[ext_resource path="res://MinecraftFive-Bold.ttf" type="DynamicFontData" id=6]
+[ext_resource path="res://sprites/BadConstructImage.png" type="Texture" id=7]
+[ext_resource path="res://sprites/MapSelectTemplateSelected.png" type="Texture" id=8]
+[ext_resource path="res://sprites/tiletest.png" type="Texture" id=9]
+[ext_resource path="res://scenes/UIs/Exit.tscn" type="PackedScene" id=10]
+
+[sub_resource type="DynamicFont" id=2]
+size = 17
+outline_size = 1
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 6 )
+
+[sub_resource type="DynamicFont" id=4]
+size = 30
+outline_size = 3
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 6 )
+
+[sub_resource type="DynamicFont" id=5]
+outline_size = 2
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 6 )
+
+[node name="MapSelection" type="Node2D"]
+script = ExtResource( 3 )
+
+[node name="Tween" type="Tween" parent="."]
+
+[node name="MapSelections" type="Control" parent="."]
+margin_left = -13.0
+margin_top = -10.0
+margin_right = 27.0
+margin_bottom = 30.0
+rect_scale = Vector2( 1.2, 1.2 )
+
+[node name="TestLands" type="TextureButton" parent="MapSelections"]
+margin_left = 23.0
+margin_top = 35.0
+margin_right = 362.0
+margin_bottom = 79.0
+rect_scale = Vector2( 1.2, 1.2 )
+texture_normal = ExtResource( 1 )
+texture_hover = ExtResource( 8 )
+expand = true
+
+[node name="Label" type="Label" parent="MapSelections/TestLands"]
+margin_left = 143.0
+margin_top = 9.0
+margin_right = 264.0
+margin_bottom = 35.0
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 2 )
+text = "tilemap"
+
+[node name="TestLands" type="TextureRect" parent="MapSelections/TestLands"]
+show_behind_parent = true
+margin_left = 6.0
+margin_top = 6.0
+margin_right = 117.0
+margin_bottom = 34.0
+rect_scale = Vector2( 1.2, 1.2 )
+texture = ExtResource( 9 )
+expand = true
+
+[node name="BadConstruct" type="TextureButton" parent="MapSelections"]
+margin_left = 23.0
+margin_top = 85.0
+margin_right = 362.0
+margin_bottom = 129.0
+rect_scale = Vector2( 1.2, 1.2 )
+texture_normal = ExtResource( 1 )
+texture_hover = ExtResource( 8 )
+expand = true
+
+[node name="Label" type="Label" parent="MapSelections/BadConstruct"]
+margin_left = 143.0
+margin_top = 9.0
+margin_right = 303.0
+margin_bottom = 35.0
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 2 )
+text = "bad construct"
+
+[node name="BadConstruct" type="TextureRect" parent="MapSelections/BadConstruct"]
+show_behind_parent = true
+margin_left = 6.0
+margin_top = 6.0
+margin_right = 118.0
+margin_bottom = 34.0
+rect_scale = Vector2( 1.2, 1.2 )
+texture = ExtResource( 7 )
+expand = true
+
+[node name="Blank" type="TextureButton" parent="MapSelections"]
+margin_left = 23.0
+margin_top = 135.0
+margin_right = 362.0
+margin_bottom = 179.0
+rect_scale = Vector2( 1.2, 1.2 )
+texture_normal = ExtResource( 1 )
+texture_hover = ExtResource( 8 )
+expand = true
+
+[node name="Label" type="Label" parent="MapSelections/Blank"]
+margin_left = 143.0
+margin_top = 9.0
+margin_right = 303.0
+margin_bottom = 35.0
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 2 )
+text = "blank, nothing"
+
+[node name="Blank" type="TextureRect" parent="MapSelections/Blank"]
+show_behind_parent = true
+margin_left = 5.0
+margin_top = 4.0
+margin_right = 116.0
+margin_bottom = 34.0
+rect_scale = Vector2( 1.2, 1.2 )
+texture = ExtResource( 2 )
+expand = true
+
+[node name="Flatlands" type="TextureButton" parent="MapSelections"]
+margin_left = 23.0
+margin_top = 185.0
+margin_right = 362.0
+margin_bottom = 229.0
+rect_scale = Vector2( 1.2, 1.2 )
+texture_normal = ExtResource( 1 )
+texture_hover = ExtResource( 8 )
+expand = true
+
+[node name="Label" type="Label" parent="MapSelections/Flatlands"]
+margin_left = 143.0
+margin_top = 9.0
+margin_right = 303.0
+margin_bottom = 35.0
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 2 )
+text = "flatlands"
+
+[node name="Flatlands" type="TextureRect" parent="MapSelections/Flatlands"]
+show_behind_parent = true
+margin_left = 5.0
+margin_top = 4.0
+margin_right = 117.0
+margin_bottom = 34.0
+rect_scale = Vector2( 1.2, 1.2 )
+texture = ExtResource( 5 )
+expand = true
+
+[node name="Island" type="TextureButton" parent="MapSelections"]
+margin_left = 23.0
+margin_top = 235.0
+margin_right = 362.0
+margin_bottom = 279.0
+rect_scale = Vector2( 1.2, 1.2 )
+texture_normal = ExtResource( 1 )
+texture_hover = ExtResource( 8 )
+expand = true
+
+[node name="Label" type="Label" parent="MapSelections/Island"]
+margin_left = 143.0
+margin_top = 9.0
+margin_right = 303.0
+margin_bottom = 35.0
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 2 )
+text = "island"
+
+[node name="Island" type="TextureRect" parent="MapSelections/Island"]
+show_behind_parent = true
+margin_left = 5.0
+margin_top = 4.0
+margin_right = 158.0
+margin_bottom = 34.0
+rect_scale = Vector2( 1.2, 1.2 )
+texture = ExtResource( 4 )
+expand = true
+
+[node name="SelectMap" type="Label" parent="."]
+margin_left = 666.0
+margin_top = 20.0
+margin_right = 880.0
+margin_bottom = 65.0
+rect_scale = Vector2( 1.5, 1.5 )
+custom_fonts/font = SubResource( 4 )
+text = "Select Map"
+align = 1
+
+[node name="MapInfo" type="Label" parent="."]
+modulate = Color( 1, 1, 1, 0.74902 )
+margin_left = 665.0
+margin_top = 86.0
+margin_right = 878.0
+margin_bottom = 372.0
+rect_scale = Vector2( 1.5, 1.5 )
+custom_fonts/font = SubResource( 5 )
+align = 1
+
+[node name="Exit" parent="." instance=ExtResource( 10 )]
+margin_left = 929.0
+margin_top = 555.0
+margin_right = 1014.0
+margin_bottom = 600.0
+
+[node name="go to fakiling" type="Button" parent="."]
+visible = false
+margin_left = 54.0
+margin_top = 359.0
+margin_right = 440.0
+margin_bottom = 561.0
+text = "go to facility"
+
+[connection signal="button_up" from="MapSelections/TestLands" to="." method="_on_TestLands_button_up"]
+[connection signal="mouse_entered" from="MapSelections/TestLands" to="." method="_on_TestLands_mouse_entered"]
+[connection signal="mouse_entered" from="MapSelections/TestLands" to="MapSelections/TestLands" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="MapSelections/TestLands" to="." method="_on_mouse_exited"]
+[connection signal="mouse_exited" from="MapSelections/TestLands" to="MapSelections/TestLands" method="_on_mouse_exited"]
+[connection signal="button_up" from="MapSelections/BadConstruct" to="." method="_on_BadConstruct_button_up"]
+[connection signal="mouse_entered" from="MapSelections/BadConstruct" to="." method="_on_BadConstruct_mouse_entered"]
+[connection signal="mouse_entered" from="MapSelections/BadConstruct" to="MapSelections/BadConstruct" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="MapSelections/BadConstruct" to="." method="_on_mouse_exited"]
+[connection signal="mouse_exited" from="MapSelections/BadConstruct" to="MapSelections/BadConstruct" method="_on_mouse_exited"]
+[connection signal="button_up" from="MapSelections/Blank" to="." method="_on_Blank_button_up"]
+[connection signal="mouse_entered" from="MapSelections/Blank" to="." method="_on_Blank_mouse_entered"]
+[connection signal="mouse_entered" from="MapSelections/Blank" to="MapSelections/Blank" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="MapSelections/Blank" to="." method="_on_mouse_exited"]
+[connection signal="mouse_exited" from="MapSelections/Blank" to="MapSelections/Blank" method="_on_mouse_exited"]
+[connection signal="button_up" from="MapSelections/Flatlands" to="." method="_on_Flatlands_button_up"]
+[connection signal="mouse_entered" from="MapSelections/Flatlands" to="." method="_on_Flatlands_mouse_entered"]
+[connection signal="mouse_exited" from="MapSelections/Flatlands" to="." method="_on_mouse_exited"]
+[connection signal="button_up" from="MapSelections/Island" to="." method="_on_Island_button_up"]
+[connection signal="mouse_entered" from="MapSelections/Island" to="." method="_on_Island_mouse_entered"]
+[connection signal="mouse_exited" from="MapSelections/Island" to="." method="_on_mouse_exited"]
+[connection signal="button_up" from="Exit" to="." method="_on_Exit_button_up"]
+[connection signal="button_up" from="go to fakiling" to="." method="_on_go_to_fakiling_button_up"]

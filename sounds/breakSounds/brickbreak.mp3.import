@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/brickbreak.mp3-747e583fed2d425130660dcf14014d69.mp3str"
+
+[deps]
+
+source_file="res://sounds/breakSounds/brickbreak.mp3"
+dest_files=[ "res://.import/brickbreak.mp3-747e583fed2d425130660dcf14014d69.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

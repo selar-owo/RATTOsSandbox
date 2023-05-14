@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/mus_bgflameA.ogg-4a21ae652da1a721120a22c07881b34f.oggstr"
+
+[deps]
+
+source_file="res://sounds/all undertale sounds/mus_bgflameA.ogg"
+dest_files=[ "res://.import/mus_bgflameA.ogg-4a21ae652da1a721120a22c07881b34f.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

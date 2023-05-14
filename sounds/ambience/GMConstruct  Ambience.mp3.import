@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/GMConstruct  Ambience.mp3-2875fd3c46ad77ded24f08326a431c83.mp3str"
+
+[deps]
+
+source_file="res://sounds/ambience/GMConstruct  Ambience.mp3"
+dest_files=[ "res://.import/GMConstruct  Ambience.mp3-2875fd3c46ad77ded24f08326a431c83.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

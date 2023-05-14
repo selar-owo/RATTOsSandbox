@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/mus_disturbing.ogg-38077293f667727be332ac7a21755718.oggstr"
+
+[deps]
+
+source_file="res://sounds/all undertale sounds/mus_disturbing.ogg"
+dest_files=[ "res://.import/mus_disturbing.ogg-38077293f667727be332ac7a21755718.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

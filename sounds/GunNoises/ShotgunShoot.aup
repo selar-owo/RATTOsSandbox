@@ -1,0 +1,70 @@
+<?xml version="1.0" standalone="no" ?>
+<!DOCTYPE project PUBLIC "-//audacityproject-1.3.0//DTD//EN" "http://audacity.sourceforge.net/xml/audacityproject-1.3.0.dtd" >
+<project xmlns="http://audacity.sourceforge.net/xml/" projname="ShotgunShoot_data" version="1.3.0" audacityversion="2.3.3" sel0="0.0000000000" sel1="0.0000000000" vpos="0" h="0.0000000000" zoom="96.7451647564" rate="44100.0" snapto="off" selectionformat="hh:mm:ss + milliseconds" frequencyformat="Hz" bandwidthformat="octaves">
+	<tags>
+		<tag name="Software" value="Lavf58.26.101"/>
+		<tag name="major_brand" value="dash"/>
+		<tag name="minor_version" value="0"/>
+		<tag name="compatible_brands" value="iso6mp41"/>
+	</tags>
+	<wavetrack name="y2mate.com - Saiga Shotgun Single Shot Sound Effect" isSelected="1" height="108" minimized="0" channel="0" linked="1" mute="0" solo="0" rate="44100" gain="1.0" pan="0.0" colorindex="0">
+		<waveclip offset="0.00000000" colorindex="0">
+			<sequence maxsamples="262144" sampleformat="262159" numsamples="22792">
+				<waveblock start="0">
+					<simpleblockfile filename="e0808457.au" len="22792" min="-0.102306" max="0.101935" rms="0.027112"/>
+				</waveblock>
+			</sequence>
+			<envelope numpoints="0"/>
+		</waveclip>
+	</wavetrack>
+	<wavetrack name="y2mate.com - Saiga Shotgun Single Shot Sound Effect" isSelected="1" height="108" minimized="0" channel="1" linked="0" mute="0" solo="0" rate="44100" gain="1.0" pan="0.0" colorindex="0">
+		<waveclip offset="0.00000000" colorindex="0">
+			<sequence maxsamples="262144" sampleformat="262159" numsamples="22792">
+				<waveblock start="0">
+					<simpleblockfile filename="e0808147.au" len="22792" min="-0.102306" max="0.101935" rms="0.027112"/>
+				</waveblock>
+			</sequence>
+			<envelope numpoints="0"/>
+		</waveclip>
+	</wavetrack>
+	<wavetrack name="y2mate.com - Revolver Sound Effect" isSelected="0" height="86" minimized="0" channel="0" linked="1" mute="0" solo="0" rate="44100" gain="1.0" pan="0.0" colorindex="0">
+		<waveclip offset="0.00000000" colorindex="0">
+			<sequence maxsamples="262144" sampleformat="262159" numsamples="30085">
+				<waveblock start="0">
+					<simpleblockfile filename="e0808a70.au" len="30085" min="-0.293159" max="0.287896" rms="0.029378"/>
+				</waveblock>
+			</sequence>
+			<envelope numpoints="0"/>
+		</waveclip>
+	</wavetrack>
+	<wavetrack name="y2mate.com - Revolver Sound Effect" isSelected="0" height="108" minimized="0" channel="1" linked="0" mute="0" solo="0" rate="44100" gain="1.0" pan="0.0" colorindex="0">
+		<waveclip offset="0.00000000" colorindex="0">
+			<sequence maxsamples="262144" sampleformat="262159" numsamples="30085">
+				<waveblock start="0">
+					<simpleblockfile filename="e08087ea.au" len="30085" min="-0.287326" max="0.293385" rms="0.031865"/>
+				</waveblock>
+			</sequence>
+			<envelope numpoints="0"/>
+		</waveclip>
+	</wavetrack>
+	<wavetrack name="y2mate.com - FREE Revolver Spinning And Shooting  Sound Effect" isSelected="0" height="128" minimized="0" channel="0" linked="1" mute="0" solo="0" rate="44100" gain="1.0" pan="0.0" colorindex="0">
+		<waveclip offset="0.00000000" colorindex="0">
+			<sequence maxsamples="262144" sampleformat="262159" numsamples="8661">
+				<waveblock start="0">
+					<simpleblockfile filename="e0808e5e.au" len="8661" min="-0.154195" max="0.155475" rms="0.035908"/>
+				</waveblock>
+			</sequence>
+			<envelope numpoints="0"/>
+		</waveclip>
+	</wavetrack>
+	<wavetrack name="y2mate.com - FREE Revolver Spinning And Shooting  Sound Effect" isSelected="0" height="128" minimized="0" channel="1" linked="0" mute="0" solo="0" rate="44100" gain="1.0" pan="0.0" colorindex="0">
+		<waveclip offset="0.00000000" colorindex="0">
+			<sequence maxsamples="262144" sampleformat="262159" numsamples="8661">
+				<waveblock start="0">
+					<simpleblockfile filename="e0808f62.au" len="8661" min="-0.152685" max="0.149798" rms="0.03472"/>
+				</waveblock>
+			</sequence>
+			<envelope numpoints="0"/>
+		</waveclip>
+	</wavetrack>
+</project>

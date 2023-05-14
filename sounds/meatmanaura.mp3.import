@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/meatmanaura.mp3-4f6936be105f9a7f4487762e3f45e053.mp3str"
+
+[deps]
+
+source_file="res://sounds/meatmanaura.mp3"
+dest_files=[ "res://.import/meatmanaura.mp3-4f6936be105f9a7f4487762e3f45e053.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

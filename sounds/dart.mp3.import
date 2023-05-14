@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/dart.mp3-ac0b58c52cf1bd241ed58b84b41d2086.mp3str"
+
+[deps]
+
+source_file="res://sounds/dart.mp3"
+dest_files=[ "res://.import/dart.mp3-ac0b58c52cf1bd241ed58b84b41d2086.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

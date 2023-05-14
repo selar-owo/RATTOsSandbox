@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/birdsong.mp3-d73ba575e0c0f54c4b88ac29043eed2f.mp3str"
+
+[deps]
+
+source_file="res://sounds/ost/birdsong.mp3"
+dest_files=[ "res://.import/birdsong.mp3-d73ba575e0c0f54c4b88ac29043eed2f.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

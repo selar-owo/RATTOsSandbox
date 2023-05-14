@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/mus_whoopee.ogg-9cc7c1c6189ac97f819cc31e7adf512f.oggstr"
+
+[deps]
+
+source_file="res://sounds/all undertale sounds/mus_whoopee.ogg"
+dest_files=[ "res://.import/mus_whoopee.ogg-9cc7c1c6189ac97f819cc31e7adf512f.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

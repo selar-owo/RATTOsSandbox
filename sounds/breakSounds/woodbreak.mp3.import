@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/woodbreak.mp3-259d307ea0583e8e7db7d03c2d940cfe.mp3str"
+
+[deps]
+
+source_file="res://sounds/breakSounds/woodbreak.mp3"
+dest_files=[ "res://.import/woodbreak.mp3-259d307ea0583e8e7db7d03c2d940cfe.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

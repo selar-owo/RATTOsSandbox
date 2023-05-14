@@ -1,0 +1,177 @@
+[gd_scene load_steps=23 format=2]
+
+[ext_resource path="res://pr9CkUh16h5_nySB.webm" type="VideoStream" id=1]
+[ext_resource path="res://scripts/death.gd" type="Script" id=2]
+[ext_resource path="res://sprites/1 rat.jpg" type="Texture" id=3]
+[ext_resource path="res://sprites/death/frame8.png" type="Texture" id=4]
+[ext_resource path="res://sprites/death/frame1.png" type="Texture" id=5]
+[ext_resource path="res://sprites/death/frame3.png" type="Texture" id=6]
+[ext_resource path="res://sprites/death/frame5.png" type="Texture" id=7]
+[ext_resource path="res://sprites/death/frame7.png" type="Texture" id=8]
+[ext_resource path="res://sprites/death/frame9.png" type="Texture" id=9]
+[ext_resource path="res://sprites/death/frame12.png" type="Texture" id=10]
+[ext_resource path="res://sprites/death/frame10.png" type="Texture" id=11]
+[ext_resource path="res://sprites/death/frame16.png" type="Texture" id=12]
+[ext_resource path="res://sprites/death/frame15.png" type="Texture" id=13]
+[ext_resource path="res://sprites/death/frame11.png" type="Texture" id=14]
+[ext_resource path="res://sprites/death/frame13.png" type="Texture" id=15]
+[ext_resource path="res://sprites/death/frame14.png" type="Texture" id=16]
+[ext_resource path="res://sounds/owie.mp3" type="AudioStream" id=17]
+
+[sub_resource type="Animation" id=1]
+resource_name = "New Anim"
+length = 15.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 15 ),
+"transitions": PoolRealArray( -0.5, -0.5 ),
+"update": 0,
+"values": [ Vector2( 992, 204 ), Vector2( -177, 233 ) ]
+}
+
+[sub_resource type="Animation" id=2]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 992, 204 ) ]
+}
+
+[sub_resource type="SpriteFrames" id=3]
+animations = [ {
+"frames": [ ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 8 ), ExtResource( 8 ), ExtResource( 8 ), ExtResource( 8 ), ExtResource( 4 ), ExtResource( 9 ), ExtResource( 11 ), ExtResource( 14 ), ExtResource( 10 ), ExtResource( 15 ), ExtResource( 16 ), ExtResource( 13 ), ExtResource( 12 ) ],
+"loop": false,
+"name": "default",
+"speed": 10.0
+} ]
+
+[sub_resource type="Animation" id=4]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("AnimatedSprite:playing")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("AnimatedSprite:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("OWWWWW:playing")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
+
+[sub_resource type="Animation" id=5]
+resource_name = "die"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("AnimatedSprite:playing")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("AnimatedSprite:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 0 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("OWWWWW:playing")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.9 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+
+[node name="death" type="Node2D"]
+script = ExtResource( 2 )
+
+[node name="OLD" type="Node2D" parent="."]
+
+[node name="VideoPlayer" type="VideoPlayer" parent="OLD"]
+visible = false
+margin_left = -5.0
+margin_top = -4.0
+margin_right = 1034.0
+margin_bottom = 610.0
+stream = ExtResource( 1 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="OLD"]
+root_node = NodePath("../..")
+"anims/New Anim" = SubResource( 1 )
+anims/RESET = SubResource( 2 )
+
+[node name="Sprite" type="Sprite" parent="OLD"]
+visible = false
+modulate = Color( 1, 1, 1, 0.0705882 )
+position = Vector2( 992, 204 )
+scale = Vector2( 3.21729, 2.39618 )
+texture = ExtResource( 3 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+position = Vector2( 512, 300 )
+frames = SubResource( 3 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "die"
+anims/RESET = SubResource( 4 )
+anims/die = SubResource( 5 )
+
+[node name="OWWWWW" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 17 )
+volume_db = -24.762
+
+[connection signal="finished" from="OLD/VideoPlayer" to="." method="_on_VideoPlayer_finished"]

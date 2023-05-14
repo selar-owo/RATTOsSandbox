@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/boomboxshotdeadbroken.mp3-a4e31f4020c433bea82f8a3de3562815.mp3str"
+
+[deps]
+
+source_file="res://sounds/boomboxshotdeadbroken.mp3"
+dest_files=[ "res://.import/boomboxshotdeadbroken.mp3-a4e31f4020c433bea82f8a3de3562815.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

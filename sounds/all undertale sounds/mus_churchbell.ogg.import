@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/mus_churchbell.ogg-d00be8a1ccd9f1a8206c260d16b302cf.oggstr"
+
+[deps]
+
+source_file="res://sounds/all undertale sounds/mus_churchbell.ogg"
+dest_files=[ "res://.import/mus_churchbell.ogg-d00be8a1ccd9f1a8206c260d16b302cf.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/steelhitsound1.mp3-1fa61247eeb7659fc4d0b2e7faf7e583.mp3str"
+
+[deps]
+
+source_file="res://sounds/breakSounds/steelhitsound1.mp3"
+dest_files=[ "res://.import/steelhitsound1.mp3-1fa61247eeb7659fc4d0b2e7faf7e583.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

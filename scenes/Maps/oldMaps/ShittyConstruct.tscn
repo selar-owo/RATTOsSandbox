@@ -1,0 +1,976 @@
+[gd_scene load_steps=30 format=2]
+
+[ext_resource path="res://sprites/grass.png" type="Texture" id=1]
+[ext_resource path="res://sprites/water.png" type="Texture" id=2]
+[ext_resource path="res://sprites/ground.png" type="Texture" id=3]
+[ext_resource path="res://scripts/MainWorld.gd" type="Script" id=4]
+[ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=5]
+[ext_resource path="res://scenes/UI.tscn" type="PackedScene" id=6]
+[ext_resource path="res://scripts/Roof.gd" type="Script" id=7]
+[ext_resource path="res://sprites/bricks.png" type="Texture" id=8]
+[ext_resource path="res://scenes/cars/car.tscn" type="PackedScene" id=9]
+[ext_resource path="res://scenes/blocks/woodBlock.tscn" type="PackedScene" id=10]
+[ext_resource path="res://scenes/blocks/Tree.tscn" type="PackedScene" id=11]
+[ext_resource path="res://scenes/blocks/spikes.tscn" type="PackedScene" id=12]
+[ext_resource path="res://scenes/Camera2D.tscn" type="PackedScene" id=13]
+[ext_resource path="res://scenes/DefaultWorldEnv.tres" type="Environment" id=14]
+[ext_resource path="res://sounds/ambience/GMConstruct  Ambience.mp3" type="AudioStream" id=15]
+[ext_resource path="res://scenes/otherstuffidk/Music.tscn" type="PackedScene" id=16]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 149.5, 8 )
+
+[sub_resource type="RectangleShape2D" id=5]
+extents = Vector2( 230.5, 8.5 )
+
+[sub_resource type="RectangleShape2D" id=6]
+extents = Vector2( 226, 7.99998 )
+
+[sub_resource type="RectangleShape2D" id=7]
+extents = Vector2( 106, 8.5 )
+
+[sub_resource type="RectangleShape2D" id=8]
+extents = Vector2( 102, 8 )
+
+[sub_resource type="RectangleShape2D" id=9]
+extents = Vector2( 64.5, 8 )
+
+[sub_resource type="RectangleShape2D" id=10]
+extents = Vector2( 90.5001, 8.9996 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 8, 271 )
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 27, 7 )
+
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 27.5, 7 )
+
+[sub_resource type="RectangleShape2D" id=11]
+extents = Vector2( 133.5, 264 )
+
+[sub_resource type="Animation" id=12]
+resource_name = "Inside"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray(  ),
+"transitions": PoolRealArray(  ),
+"update": 0,
+"values": [  ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+
+[sub_resource type="Animation" id=13]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+
+[node name="ShittyConstruct" type="Node2D"]
+script = ExtResource( 4 )
+
+[node name="Music" parent="." instance=ExtResource( 16 )]
+
+[node name="Ambience" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 15 )
+volume_db = -7.289
+autoplay = true
+
+[node name="Decorations" type="Node2D" parent="."]
+
+[node name="Water" type="TextureRect" parent="Decorations"]
+margin_left = -2728.0
+margin_top = -49957.0
+margin_right = 2562.0
+margin_bottom = 2076.0
+mouse_filter = 2
+texture = ExtResource( 2 )
+stretch_mode = 2
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Foliage" type="Node2D" parent="Decorations"]
+
+[node name="Grass" type="TextureRect" parent="Decorations/Foliage"]
+margin_left = -1453.0
+margin_top = -650.0
+margin_right = 825.0
+margin_bottom = 1313.0
+mouse_filter = 2
+texture = ExtResource( 1 )
+expand = true
+stretch_mode = 2
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Floors" type="Node2D" parent="Decorations"]
+
+[node name="Floor" type="TextureRect" parent="Decorations/Floors"]
+margin_left = -1078.0
+margin_top = 844.0
+margin_right = 827.0
+margin_bottom = 1314.0
+mouse_filter = 2
+texture = ExtResource( 3 )
+stretch_mode = 2
+
+[node name="Floor2" type="TextureRect" parent="Decorations/Floors"]
+margin_left = -1121.0
+margin_top = 56.0
+margin_right = -698.0
+margin_bottom = 1314.0
+mouse_filter = 2
+texture = ExtResource( 3 )
+stretch_mode = 2
+
+[node name="Floor5" type="TextureRect" parent="Decorations/Floors"]
+margin_left = -1451.0
+margin_top = 107.0
+margin_right = -698.0
+margin_bottom = 620.0
+mouse_filter = 2
+texture = ExtResource( 3 )
+stretch_mode = 2
+
+[node name="Floor4" type="TextureRect" parent="Decorations/Floors"]
+modulate = Color( 0.890196, 0.890196, 0.890196, 1 )
+margin_left = -1060.0
+margin_top = 691.0
+margin_right = -761.0
+margin_bottom = 1264.0
+mouse_filter = 2
+texture = ExtResource( 3 )
+stretch_mode = 2
+
+[node name="Floor11" type="TextureRect" parent="Decorations/Floors"]
+modulate = Color( 0.890196, 0.890196, 0.890196, 1 )
+margin_left = -1060.0
+margin_top = 901.0
+margin_right = 781.0
+margin_bottom = 1264.0
+mouse_filter = 2
+texture = ExtResource( 3 )
+stretch_mode = 2
+
+[node name="Floor10" type="TextureRect" parent="Decorations/Floors"]
+modulate = Color( 0.768627, 0.768627, 0.768627, 1 )
+margin_left = -1060.0
+margin_top = 133.0
+margin_right = -761.0
+margin_bottom = 691.0
+mouse_filter = 2
+texture = ExtResource( 3 )
+stretch_mode = 2
+
+[node name="Floor3" type="TextureRect" parent="Decorations/Floors"]
+margin_left = 263.0
+margin_top = -617.0
+margin_right = 778.0
+margin_bottom = -83.0
+mouse_filter = 2
+texture = ExtResource( 3 )
+stretch_mode = 2
+
+[node name="Floor8" type="TextureRect" parent="Decorations/Floors"]
+modulate = Color( 0.890196, 0.890196, 0.890196, 1 )
+margin_left = 280.0
+margin_top = -464.0
+margin_right = 545.0
+margin_bottom = -327.0
+mouse_filter = 2
+texture = ExtResource( 3 )
+stretch_mode = 2
+
+[node name="Floor9" type="TextureRect" parent="Decorations/Floors"]
+modulate = Color( 0.890196, 0.890196, 0.890196, 1 )
+margin_left = 280.0
+margin_top = -327.0
+margin_right = 406.0
+margin_bottom = -103.0
+mouse_filter = 2
+texture = ExtResource( 3 )
+stretch_mode = 2
+
+[node name="Floor6" type="TextureRect" parent="Decorations/Floors"]
+modulate = Color( 0.768627, 0.768627, 0.768627, 1 )
+margin_left = 529.0
+margin_top = -592.0
+margin_right = 741.0
+margin_bottom = -107.0
+mouse_filter = 2
+texture = ExtResource( 3 )
+stretch_mode = 2
+
+[node name="Floor7" type="TextureRect" parent="Decorations/Floors"]
+modulate = Color( 0.768627, 0.768627, 0.768627, 1 )
+margin_left = 296.0
+margin_top = -578.0
+margin_right = 530.0
+margin_bottom = -446.0
+mouse_filter = 2
+texture = ExtResource( 3 )
+expand = true
+stretch_mode = 2
+
+[node name="Walls" type="Node2D" parent="Decorations"]
+
+[node name="TextureRect" type="TextureRect" parent="Decorations/Walls"]
+margin_left = -1060.0
+margin_top = 133.0
+margin_right = -1044.0
+margin_bottom = 691.0
+texture = ExtResource( 8 )
+stretch_mode = 2
+
+[node name="TextureRect6" type="TextureRect" parent="Decorations/Walls"]
+margin_left = 725.0
+margin_top = -592.0
+margin_right = 741.0
+margin_bottom = -106.0
+texture = ExtResource( 8 )
+stretch_mode = 2
+
+[node name="TextureRect8" type="TextureRect" parent="Decorations/Walls"]
+margin_left = 528.0
+margin_top = -576.0
+margin_right = 544.0
+margin_bottom = -446.0
+texture = ExtResource( 8 )
+stretch_mode = 2
+
+[node name="TextureRect13" type="TextureRect" parent="Decorations/Walls"]
+margin_left = 280.0
+margin_top = -575.0
+margin_right = 296.0
+margin_bottom = -446.0
+texture = ExtResource( 8 )
+stretch_mode = 2
+
+[node name="TextureRect10" type="TextureRect" parent="Decorations/Walls"]
+margin_left = 529.0
+margin_top = -327.0
+margin_right = 545.0
+margin_bottom = -106.0
+texture = ExtResource( 8 )
+stretch_mode = 2
+
+[node name="TextureRect7" type="TextureRect" parent="Decorations/Walls"]
+margin_left = 545.0
+margin_top = -123.0
+margin_right = 725.0
+margin_bottom = -106.0
+texture = ExtResource( 8 )
+stretch_mode = 2
+
+[node name="TextureRect9" type="TextureRect" parent="Decorations/Walls"]
+margin_left = 544.0
+margin_top = -592.0
+margin_right = 725.0
+margin_bottom = -575.0
+texture = ExtResource( 8 )
+stretch_mode = 2
+
+[node name="TextureRect12" type="TextureRect" parent="Decorations/Walls"]
+margin_left = 280.0
+margin_top = -592.0
+margin_right = 725.0
+margin_bottom = -575.0
+texture = ExtResource( 8 )
+stretch_mode = 2
+
+[node name="TextureRect11" type="TextureRect" parent="Decorations/Walls"]
+margin_left = 347.0
+margin_top = -464.0
+margin_right = 528.0
+margin_bottom = -446.0
+texture = ExtResource( 8 )
+stretch_mode = 2
+
+[node name="TextureRect4" type="TextureRect" parent="Decorations/Walls"]
+margin_left = -1044.0
+margin_top = 677.0
+margin_right = -989.0
+margin_bottom = 691.0
+texture = ExtResource( 8 )
+expand = true
+stretch_mode = 2
+
+[node name="TextureRect5" type="TextureRect" parent="Decorations/Walls"]
+margin_left = -831.0
+margin_top = 677.0
+margin_right = -777.0
+margin_bottom = 691.0
+texture = ExtResource( 8 )
+expand = true
+stretch_mode = 2
+
+[node name="TextureRect3" type="TextureRect" parent="Decorations/Walls"]
+margin_left = -777.0
+margin_top = 149.0
+margin_right = -761.0
+margin_bottom = 691.0
+texture = ExtResource( 8 )
+stretch_mode = 2
+
+[node name="TextureRect2" type="TextureRect" parent="Decorations/Walls"]
+margin_left = -1044.0
+margin_top = 133.0
+margin_right = -761.0
+margin_bottom = 149.0
+texture = ExtResource( 8 )
+stretch_mode = 2
+
+[node name="Collision" type="Node2D" parent="Decorations"]
+
+[node name="Collisions" type="StaticBody2D" parent="Decorations/Collision"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Decorations/Collision/Collisions"]
+position = Vector2( -910.5, 141 )
+shape = SubResource( 1 )
+
+[node name="CollisionShape2D6" type="CollisionShape2D" parent="Decorations/Collision/Collisions"]
+position = Vector2( 510.5, -583.5 )
+shape = SubResource( 5 )
+
+[node name="CollisionShape2D9" type="CollisionShape2D" parent="Decorations/Collision/Collisions"]
+position = Vector2( 733.001, -349 )
+rotation = -1.57079
+shape = SubResource( 6 )
+
+[node name="CollisionShape2D7" type="CollisionShape2D" parent="Decorations/Collision/Collisions"]
+position = Vector2( 635, -114.5 )
+shape = SubResource( 7 )
+
+[node name="CollisionShape2D8" type="CollisionShape2D" parent="Decorations/Collision/Collisions"]
+position = Vector2( 537, -225 )
+rotation = -1.57079
+shape = SubResource( 8 )
+
+[node name="CollisionShape2D10" type="CollisionShape2D" parent="Decorations/Collision/Collisions"]
+position = Vector2( 536, -510.5 )
+rotation = -1.57079
+shape = SubResource( 9 )
+
+[node name="CollisionShape2D12" type="CollisionShape2D" parent="Decorations/Collision/Collisions"]
+position = Vector2( 437.5, -455 )
+rotation = -3.14159
+shape = SubResource( 10 )
+
+[node name="CollisionShape2D11" type="CollisionShape2D" parent="Decorations/Collision/Collisions"]
+position = Vector2( 288, -510.5 )
+rotation = -1.57079
+shape = SubResource( 9 )
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Decorations/Collision/Collisions"]
+position = Vector2( -1052, 420 )
+shape = SubResource( 2 )
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Decorations/Collision/Collisions"]
+position = Vector2( -769, 420 )
+shape = SubResource( 2 )
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Decorations/Collision/Collisions"]
+position = Vector2( -804, 684 )
+shape = SubResource( 3 )
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="Decorations/Collision/Collisions"]
+position = Vector2( -1016.5, 684 )
+shape = SubResource( 4 )
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2( -269, 290 )
+zoom = Vector2( 4, 4 )
+smoothing_enabled = true
+
+[node name="Player" parent="." instance=ExtResource( 5 )]
+position = Vector2( -583, 920 )
+
+[node name="Camera2D" parent="Player" instance=ExtResource( 13 )]
+
+[node name="IngameObjects" type="Node2D" parent="."]
+
+[node name="woodBlock" parent="IngameObjects" instance=ExtResource( 10 )]
+position = Vector2( -956, 526 )
+rotation = -0.261799
+mode = 0
+dont_spawn = true
+
+[node name="DontSpawn" type="Node" parent="IngameObjects/woodBlock"]
+
+[node name="woodBlock2" parent="IngameObjects" instance=ExtResource( 10 )]
+position = Vector2( -988, 403 )
+rotation = -0.261799
+mode = 0
+dont_spawn = true
+
+[node name="DontSpawn" type="Node" parent="IngameObjects/woodBlock2"]
+
+[node name="woodBlock3" parent="IngameObjects" instance=ExtResource( 10 )]
+position = Vector2( -876, 488 )
+mode = 0
+dont_spawn = true
+
+[node name="DontSpawn" type="Node" parent="IngameObjects/woodBlock3"]
+
+[node name="woodBlock4" parent="IngameObjects" instance=ExtResource( 10 )]
+position = Vector2( -847, 331 )
+rotation = 0.261799
+mode = 0
+mass = 18.52
+dont_spawn = true
+
+[node name="DontSpawn" type="Node" parent="IngameObjects/woodBlock4"]
+
+[node name="woodBlock5" parent="IngameObjects" instance=ExtResource( 10 )]
+position = Vector2( -877, 368 )
+rotation = 0.458893
+mode = 0
+dont_spawn = true
+
+[node name="DontSpawn" type="Node" parent="IngameObjects/woodBlock5"]
+
+[node name="woodBlock6" parent="IngameObjects" instance=ExtResource( 10 )]
+position = Vector2( -900, 342 )
+rotation = 0.258201
+mode = 0
+dont_spawn = true
+
+[node name="DontSpawn" type="Node" parent="IngameObjects/woodBlock6"]
+
+[node name="woodBlock7" parent="IngameObjects" instance=ExtResource( 10 )]
+position = Vector2( -858, 404 )
+rotation = -1.86201
+mode = 0
+dont_spawn = true
+
+[node name="DontSpawn" type="Node" parent="IngameObjects/woodBlock7"]
+
+[node name="woodBlock8" parent="IngameObjects" instance=ExtResource( 10 )]
+position = Vector2( -819, 386 )
+mode = 0
+dont_spawn = true
+
+[node name="DontSpawn" type="Node" parent="IngameObjects/woodBlock8"]
+
+[node name="woodBlock9" parent="IngameObjects" instance=ExtResource( 10 )]
+position = Vector2( -945, 252 )
+mode = 0
+dont_spawn = true
+
+[node name="DontSpawn" type="Node" parent="IngameObjects/woodBlock9"]
+
+[node name="woodBlock10" parent="IngameObjects" instance=ExtResource( 10 )]
+position = Vector2( -979, 297 )
+mode = 0
+dont_spawn = true
+
+[node name="DontSpawn" type="Node" parent="IngameObjects/woodBlock10"]
+
+[node name="woodBlock11" parent="IngameObjects" instance=ExtResource( 10 )]
+position = Vector2( -857, 242 )
+rotation = -0.261799
+mode = 0
+dont_spawn = true
+
+[node name="DontSpawn" type="Node" parent="IngameObjects/woodBlock11"]
+
+[node name="woodBlock12" parent="IngameObjects" instance=ExtResource( 10 )]
+position = Vector2( -971, 214 )
+rotation = -0.523598
+mode = 0
+dont_spawn = true
+
+[node name="DontSpawn" type="Node" parent="IngameObjects/woodBlock12"]
+
+[node name="car" parent="IngameObjects" instance=ExtResource( 9 )]
+position = Vector2( -909, 230 )
+rotation = 1.57079
+mode = 0
+dont_spawn = true
+
+[node name="DontSpawn" type="Node" parent="IngameObjects/car"]
+
+[node name="woodBlock13" parent="IngameObjects" instance=ExtResource( 10 )]
+position = Vector2( -971, 670 )
+rotation = -0.261799
+mode = 0
+dont_spawn = true
+
+[node name="DontSpawn" type="Node" parent="IngameObjects/woodBlock13"]
+
+[node name="woodBlock14" parent="IngameObjects" instance=ExtResource( 10 )]
+position = Vector2( -941, 666 )
+rotation = 0.284155
+mode = 0
+dont_spawn = true
+
+[node name="DontSpawn" type="Node" parent="IngameObjects/woodBlock14"]
+
+[node name="woodBlock15" parent="IngameObjects" instance=ExtResource( 10 )]
+position = Vector2( -916, 670 )
+rotation = -0.0750156
+mode = 0
+dont_spawn = true
+
+[node name="DontSpawn" type="Node" parent="IngameObjects/woodBlock15"]
+
+[node name="woodBlock16" parent="IngameObjects" instance=ExtResource( 10 )]
+position = Vector2( -895, 686 )
+rotation = -0.0811952
+mode = 0
+dont_spawn = true
+
+[node name="DontSpawn" type="Node" parent="IngameObjects/woodBlock16"]
+
+[node name="woodBlock17" parent="IngameObjects" instance=ExtResource( 10 )]
+position = Vector2( -903, 639 )
+rotation = -0.114089
+mode = 0
+dont_spawn = true
+
+[node name="DontSpawn" type="Node" parent="IngameObjects/woodBlock17"]
+
+[node name="woodBlock18" parent="IngameObjects" instance=ExtResource( 10 )]
+position = Vector2( -860, 683 )
+rotation = 0.0948277
+mode = 0
+dont_spawn = true
+
+[node name="DontSpawn" type="Node" parent="IngameObjects/woodBlock18"]
+
+[node name="woodBlock19" parent="IngameObjects" instance=ExtResource( 10 )]
+position = Vector2( -868, 633 )
+rotation = 1.14985
+mode = 0
+dont_spawn = true
+
+[node name="DontSpawn" type="Node" parent="IngameObjects/woodBlock19"]
+
+[node name="woodBlock20" parent="IngameObjects" instance=ExtResource( 10 )]
+position = Vector2( -916, 571 )
+rotation = 1.65021
+mode = 0
+dont_spawn = true
+
+[node name="DontSpawn" type="Node" parent="IngameObjects/woodBlock20"]
+
+[node name="woodBlock22" parent="IngameObjects" instance=ExtResource( 10 )]
+position = Vector2( -849, 523 )
+rotation = 1.47722
+mode = 0
+dont_spawn = true
+
+[node name="DontSpawn" type="Node" parent="IngameObjects/woodBlock22"]
+
+[node name="woodBlock23" parent="IngameObjects" instance=ExtResource( 10 )]
+position = Vector2( -809, 639 )
+rotation = 1.57034
+mode = 0
+dont_spawn = true
+
+[node name="DontSpawn" type="Node" parent="IngameObjects/woodBlock23"]
+
+[node name="woodBlock24" parent="IngameObjects" instance=ExtResource( 10 )]
+position = Vector2( -1019, 656 )
+rotation = 0.690741
+mode = 0
+dont_spawn = true
+
+[node name="DontSpawn" type="Node" parent="IngameObjects/woodBlock24"]
+
+[node name="woodBlock21" parent="IngameObjects" instance=ExtResource( 10 )]
+position = Vector2( -959, 588 )
+rotation = 1.83259
+mode = 0
+dont_spawn = true
+
+[node name="DontSpawn" type="Node" parent="IngameObjects/woodBlock21"]
+
+[node name="woodBlock25" parent="IngameObjects" instance=ExtResource( 10 )]
+position = Vector2( -315.959, 67.5379 )
+rotation = 0.261799
+mode = 0
+dont_spawn = true
+
+[node name="DontSpawn" type="Node" parent="IngameObjects/woodBlock25"]
+
+[node name="woodBlock26" parent="IngameObjects" instance=ExtResource( 10 )]
+position = Vector2( -298.572, 72.1966 )
+rotation = 0.261799
+mode = 0
+dont_spawn = true
+
+[node name="DontSpawn" type="Node" parent="IngameObjects/woodBlock26"]
+
+[node name="woodBlock27" parent="IngameObjects" instance=ExtResource( 10 )]
+position = Vector2( -281.185, 76.8553 )
+rotation = 0.261799
+mode = 0
+dont_spawn = true
+
+[node name="DontSpawn" type="Node" parent="IngameObjects/woodBlock27"]
+
+[node name="woodBlock28" parent="IngameObjects" instance=ExtResource( 10 )]
+position = Vector2( -263.54, 80.5481 )
+rotation = 0.261799
+mode = 0
+dont_spawn = true
+
+[node name="DontSpawn" type="Node" parent="IngameObjects/woodBlock28"]
+
+[node name="woodBlock29" parent="IngameObjects" instance=ExtResource( 10 )]
+position = Vector2( -246.153, 85.2069 )
+rotation = 0.261799
+mode = 0
+dont_spawn = true
+
+[node name="DontSpawn" type="Node" parent="IngameObjects/woodBlock29"]
+
+[node name="woodBlock30" parent="IngameObjects" instance=ExtResource( 10 )]
+position = Vector2( -229.733, 89.6068 )
+rotation = 0.261799
+mode = 0
+dont_spawn = true
+
+[node name="DontSpawn" type="Node" parent="IngameObjects/woodBlock30"]
+
+[node name="woodBlock31" parent="IngameObjects" instance=ExtResource( 10 )]
+position = Vector2( -234.65, 107.959 )
+rotation = 0.261799
+mode = 0
+dont_spawn = true
+
+[node name="DontSpawn" type="Node" parent="IngameObjects/woodBlock31"]
+
+[node name="woodBlock32" parent="IngameObjects" instance=ExtResource( 10 )]
+position = Vector2( -239.309, 125.346 )
+rotation = 0.261799
+mode = 0
+dont_spawn = true
+
+[node name="DontSpawn" type="Node" parent="IngameObjects/woodBlock32"]
+
+[node name="woodBlock33" parent="IngameObjects" instance=ExtResource( 10 )]
+position = Vector2( -243.709, 141.767 )
+rotation = 0.261799
+mode = 0
+dont_spawn = true
+
+[node name="DontSpawn" type="Node" parent="IngameObjects/woodBlock33"]
+
+[node name="woodBlock34" parent="IngameObjects" instance=ExtResource( 10 )]
+position = Vector2( -250, 159 )
+rotation = 0.261799
+mode = 0
+dont_spawn = true
+
+[node name="DontSpawn" type="Node" parent="IngameObjects/woodBlock34"]
+
+[node name="woodBlock35" parent="IngameObjects" instance=ExtResource( 10 )]
+position = Vector2( -268.911, 154.684 )
+rotation = 0.261799
+mode = 0
+dont_spawn = true
+
+[node name="DontSpawn" type="Node" parent="IngameObjects/woodBlock35"]
+
+[node name="woodBlock36" parent="IngameObjects" instance=ExtResource( 10 )]
+position = Vector2( -321.842, 85.6316 )
+rotation = 0.261799
+mode = 0
+dont_spawn = true
+
+[node name="DontSpawn" type="Node" parent="IngameObjects/woodBlock36"]
+
+[node name="woodBlock37" parent="IngameObjects" instance=ExtResource( 10 )]
+position = Vector2( -326.501, 103.018 )
+rotation = 0.261799
+mode = 0
+dont_spawn = true
+
+[node name="DontSpawn" type="Node" parent="IngameObjects/woodBlock37"]
+
+[node name="woodBlock38" parent="IngameObjects" instance=ExtResource( 10 )]
+position = Vector2( -331.16, 120.405 )
+rotation = 0.261799
+mode = 0
+dont_spawn = true
+
+[node name="DontSpawn" type="Node" parent="IngameObjects/woodBlock38"]
+
+[node name="woodBlock39" parent="IngameObjects" instance=ExtResource( 10 )]
+position = Vector2( -336.784, 137.533 )
+rotation = 0.261799
+mode = 0
+dont_spawn = true
+
+[node name="DontSpawn" type="Node" parent="IngameObjects/woodBlock39"]
+
+[node name="woodBlock40" parent="IngameObjects" instance=ExtResource( 10 )]
+position = Vector2( -319.398, 142.192 )
+rotation = 0.261799
+mode = 0
+dont_spawn = true
+
+[node name="DontSpawn" type="Node" parent="IngameObjects/woodBlock40"]
+
+[node name="woodBlock41" parent="IngameObjects" instance=ExtResource( 10 )]
+position = Vector2( 461, -144 )
+rotation = -0.26014
+mode = 0
+dont_spawn = true
+
+[node name="DontSpawn" type="Node" parent="IngameObjects/woodBlock41"]
+
+[node name="woodBlock42" parent="IngameObjects" instance=ExtResource( 10 )]
+position = Vector2( 426, -187 )
+rotation = -2.19195
+mode = 0
+dont_spawn = true
+
+[node name="DontSpawn" type="Node" parent="IngameObjects/woodBlock42"]
+
+[node name="woodBlock43" parent="IngameObjects" instance=ExtResource( 10 )]
+position = Vector2( 429, -105 )
+rotation = -1.33092
+mode = 0
+dont_spawn = true
+
+[node name="DontSpawn" type="Node" parent="IngameObjects/woodBlock43"]
+
+[node name="woodBlock44" parent="IngameObjects" instance=ExtResource( 10 )]
+position = Vector2( 477, -177 )
+rotation = -1.85715
+mode = 0
+dont_spawn = true
+
+[node name="DontSpawn" type="Node" parent="IngameObjects/woodBlock44"]
+
+[node name="woodBlock45" parent="IngameObjects" instance=ExtResource( 10 )]
+position = Vector2( 488, -230 )
+rotation = 1.309
+mode = 0
+dont_spawn = true
+
+[node name="DontSpawn" type="Node" parent="IngameObjects/woodBlock45"]
+
+[node name="woodBlock46" parent="IngameObjects" instance=ExtResource( 10 )]
+position = Vector2( 460, -207 )
+rotation = 0.233848
+mode = 0
+dont_spawn = true
+
+[node name="DontSpawn" type="Node" parent="IngameObjects/woodBlock46"]
+
+[node name="woodBlock47" parent="IngameObjects" instance=ExtResource( 10 )]
+position = Vector2( 437, -283 )
+rotation = -2.61431
+mode = 0
+dont_spawn = true
+
+[node name="DontSpawn" type="Node" parent="IngameObjects/woodBlock47"]
+
+[node name="woodBlock48" parent="IngameObjects" instance=ExtResource( 10 )]
+position = Vector2( 446, -237 )
+rotation = -1.69482
+mode = 0
+dont_spawn = true
+
+[node name="DontSpawn" type="Node" parent="IngameObjects/woodBlock48"]
+
+[node name="woodBlock49" parent="IngameObjects" instance=ExtResource( 10 )]
+position = Vector2( 510, -274 )
+rotation = 1.86244
+mode = 0
+dont_spawn = true
+
+[node name="DontSpawn" type="Node" parent="IngameObjects/woodBlock49"]
+
+[node name="woodBlock50" parent="IngameObjects" instance=ExtResource( 10 )]
+position = Vector2( 483, -277 )
+rotation = 0.727283
+mode = 0
+dont_spawn = true
+
+[node name="DontSpawn" type="Node" parent="IngameObjects/woodBlock50"]
+
+[node name="spikes" parent="IngameObjects" instance=ExtResource( 12 )]
+position = Vector2( 118, -48628 )
+dont_spawn = true
+
+[node name="DontSpawn" type="Node" parent="IngameObjects/spikes"]
+
+[node name="Objects" type="Node2D" parent="."]
+
+[node name="Trees" type="Node2D" parent="."]
+
+[node name="Tree" parent="Trees" instance=ExtResource( 11 )]
+position = Vector2( -466, 446 )
+
+[node name="Tree2" parent="Trees" instance=ExtResource( 11 )]
+position = Vector2( -475, 754 )
+
+[node name="Tree3" parent="Trees" instance=ExtResource( 11 )]
+position = Vector2( -287, 527 )
+
+[node name="Tree4" parent="Trees" instance=ExtResource( 11 )]
+position = Vector2( -481, 324 )
+
+[node name="Tree5" parent="Trees" instance=ExtResource( 11 )]
+position = Vector2( -497, 152 )
+
+[node name="Tree6" parent="Trees" instance=ExtResource( 11 )]
+position = Vector2( -703, -65 )
+
+[node name="Tree7" parent="Trees" instance=ExtResource( 11 )]
+position = Vector2( -349, -83 )
+
+[node name="Tree8" parent="Trees" instance=ExtResource( 11 )]
+position = Vector2( -631, 139 )
+
+[node name="Tree9" parent="Trees" instance=ExtResource( 11 )]
+position = Vector2( -1200, -23 )
+
+[node name="Tree10" parent="Trees" instance=ExtResource( 11 )]
+position = Vector2( -913, -65 )
+
+[node name="Tree11" parent="Trees" instance=ExtResource( 11 )]
+position = Vector2( -1242, -185 )
+
+[node name="Tree12" parent="Trees" instance=ExtResource( 11 )]
+position = Vector2( -919, -206 )
+
+[node name="Tree13" parent="Trees" instance=ExtResource( 11 )]
+position = Vector2( -1068, -98 )
+
+[node name="Tree14" parent="Trees" instance=ExtResource( 11 )]
+position = Vector2( -53, -167 )
+
+[node name="Tree15" parent="Trees" instance=ExtResource( 11 )]
+position = Vector2( -125, 61 )
+
+[node name="Tree16" parent="Trees" instance=ExtResource( 11 )]
+position = Vector2( 472, 114 )
+
+[node name="Tree17" parent="Trees" instance=ExtResource( 11 )]
+position = Vector2( 157, -47 )
+
+[node name="Tree18" parent="Trees" instance=ExtResource( 11 )]
+position = Vector2( 630, 94 )
+
+[node name="Tree19" parent="Trees" instance=ExtResource( 11 )]
+position = Vector2( 477, -14 )
+
+[node name="Tree28" parent="Trees" instance=ExtResource( 11 )]
+position = Vector2( 491, 214 )
+
+[node name="Tree29" parent="Trees" instance=ExtResource( 11 )]
+position = Vector2( 185, 428 )
+
+[node name="Tree32" parent="Trees" instance=ExtResource( 11 )]
+position = Vector2( 74, 706 )
+
+[node name="Tree33" parent="Trees" instance=ExtResource( 11 )]
+position = Vector2( 447, 631 )
+
+[node name="Tree30" parent="Trees" instance=ExtResource( 11 )]
+position = Vector2( -36, 161 )
+
+[node name="Tree31" parent="Trees" instance=ExtResource( 11 )]
+position = Vector2( -59, 508 )
+
+[node name="Tree20" parent="Trees" instance=ExtResource( 11 )]
+position = Vector2( -511, -38 )
+
+[node name="Tree21" parent="Trees" instance=ExtResource( 11 )]
+position = Vector2( -862, -571 )
+
+[node name="Tree22" parent="Trees" instance=ExtResource( 11 )]
+position = Vector2( -637, -274 )
+
+[node name="Tree23" parent="Trees" instance=ExtResource( 11 )]
+position = Vector2( -1137, -454 )
+
+[node name="Tree24" parent="Trees" instance=ExtResource( 11 )]
+position = Vector2( -1284, -532 )
+
+[node name="Tree25" parent="Trees" instance=ExtResource( 11 )]
+position = Vector2( -1329, 4 )
+
+[node name="Tree26" parent="Trees" instance=ExtResource( 11 )]
+position = Vector2( -127, -466 )
+
+[node name="Tree27" parent="Trees" instance=ExtResource( 11 )]
+position = Vector2( -390, -391 )
+
+[node name="Roofs" type="Node2D" parent="."]
+visible = false
+
+[node name="Roof" type="TextureRect" parent="Roofs"]
+margin_left = -1044.0
+margin_top = 149.0
+margin_right = -777.0
+margin_bottom = 677.0
+texture = ExtResource( 8 )
+expand = true
+stretch_mode = 2
+script = ExtResource( 7 )
+
+[node name="Area2D" type="Area2D" parent="Roofs/Roof"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Roofs/Roof/Area2D"]
+position = Vector2( 133.5, 264 )
+shape = SubResource( 11 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Roofs/Roof"]
+anims/Inside = SubResource( 12 )
+anims/RESET = SubResource( 13 )
+
+[node name="UI" parent="." instance=ExtResource( 6 )]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = ExtResource( 14 )
+
+[connection signal="area_entered" from="Roofs/Roof/Area2D" to="Roofs/Roof" method="_on_Area2D_area_entered"]
+[connection signal="area_exited" from="Roofs/Roof/Area2D" to="Roofs/Roof" method="_on_Area2D_area_exited"]

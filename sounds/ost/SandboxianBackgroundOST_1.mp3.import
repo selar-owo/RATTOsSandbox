@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/SandboxianBackgroundOST_1.mp3-1736ec5c6cab2562ad8736163b7e9701.mp3str"
+
+[deps]
+
+source_file="res://sounds/ost/SandboxianBackgroundOST_1.mp3"
+dest_files=[ "res://.import/SandboxianBackgroundOST_1.mp3-1736ec5c6cab2562ad8736163b7e9701.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

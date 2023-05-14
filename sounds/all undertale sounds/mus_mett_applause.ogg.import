@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/mus_mett_applause.ogg-53ac8770e3a80c91d73e19830d25ba60.oggstr"
+
+[deps]
+
+source_file="res://sounds/all undertale sounds/mus_mett_applause.ogg"
+dest_files=[ "res://.import/mus_mett_applause.ogg-53ac8770e3a80c91d73e19830d25ba60.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

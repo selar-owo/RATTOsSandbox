@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/mus_dogappear.ogg-043ad9e97fb3cdcb87cad60de585b58c.oggstr"
+
+[deps]
+
+source_file="res://sounds/all undertale sounds/mus_dogappear.ogg"
+dest_files=[ "res://.import/mus_dogappear.ogg-043ad9e97fb3cdcb87cad60de585b58c.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

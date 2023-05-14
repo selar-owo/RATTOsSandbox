@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/snd_ballchime.ogg-1e44b148f5524f9a96a2fc1e02cb059f.oggstr"
+
+[deps]
+
+source_file="res://sounds/all undertale sounds/snd_ballchime.ogg"
+dest_files=[ "res://.import/snd_ballchime.ogg-1e44b148f5524f9a96a2fc1e02cb059f.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

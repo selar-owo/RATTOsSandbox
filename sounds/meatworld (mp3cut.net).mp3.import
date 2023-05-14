@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/meatworld (mp3cut.net).mp3-9d366a7322ffcc75aad76519d389f327.mp3str"
+
+[deps]
+
+source_file="res://sounds/meatworld (mp3cut.net).mp3"
+dest_files=[ "res://.import/meatworld (mp3cut.net).mp3-9d366a7322ffcc75aad76519d389f327.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

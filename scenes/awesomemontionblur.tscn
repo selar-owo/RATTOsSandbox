@@ -1,0 +1,10 @@
+[gd_scene format=2]
+
+[node name="awesomeblur" type="ColorRect"]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -413.0
+margin_top = 389.0
+margin_right = 87.0
+margin_bottom = 668.0
+mouse_filter = 2

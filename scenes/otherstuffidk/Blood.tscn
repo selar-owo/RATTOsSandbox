@@ -1,0 +1,58 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://sounds/LiterallyAnythingHit.wav" type="AudioStream" id=1]
+[ext_resource path="res://scripts/Blood.gd" type="Script" id=2]
+[ext_resource path="res://scenes/otherstuffidk/NEWBLOOD.tres" type="Material" id=3]
+
+[sub_resource type="CanvasItemMaterial" id=1]
+
+[sub_resource type="Gradient" id=5]
+colors = PoolColorArray( 0.404785, 0.082222, 0.082222, 1, 0.211765, 0.137255, 0.137255, 0 )
+
+[sub_resource type="GradientTexture" id=6]
+gradient = SubResource( 5 )
+
+[sub_resource type="ParticlesMaterial" id=7]
+flag_disable_z = true
+spread = 180.0
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 69.3
+angular_velocity = 720.0
+angular_velocity_random = 1.0
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+radial_accel = -100.0
+color = Color( 0.317647, 0, 0, 1 )
+color_ramp = SubResource( 6 )
+
+[sub_resource type="CircleShape2D" id=8]
+radius = 25.0
+
+[node name="Blood" type="Particles2D"]
+material = SubResource( 1 )
+explosiveness = 1.0
+process_material = ExtResource( 3 )
+script = ExtResource( 2 )
+blood_amount = 8
+
+[node name="SmallerBlood" type="Particles2D" parent="."]
+explosiveness = 0.86
+process_material = SubResource( 7 )
+
+[node name="HealArea" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HealArea"]
+shape = SubResource( 8 )
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+
+[node name="Hurt" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 1 )
+volume_db = 8.0
+autoplay = true
+
+[connection signal="area_entered" from="HealArea" to="." method="_on_HealArea_area_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

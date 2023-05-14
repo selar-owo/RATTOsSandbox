@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/y2mate.com - Minecraft ender portal open sound.mp3-7e328af0a91e0ae3859a1cb0ea52f37f.mp3str"
+
+[deps]
+
+source_file="res://sounds/y2mate.com - Minecraft ender portal open sound.mp3"
+dest_files=[ "res://.import/y2mate.com - Minecraft ender portal open sound.mp3-7e328af0a91e0ae3859a1cb0ea52f37f.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

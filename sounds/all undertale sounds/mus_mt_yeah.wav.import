@@ -1,0 +1,23 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/mus_mt_yeah.wav-c35a1735ee24375a5e6dd56e018c0a00.sample"
+
+[deps]
+
+source_file="res://sounds/all undertale sounds/mus_mt_yeah.wav"
+dest_files=[ "res://.import/mus_mt_yeah.wav-c35a1735ee24375a5e6dd56e018c0a00.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0
