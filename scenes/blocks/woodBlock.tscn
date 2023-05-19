@@ -1,6 +1,6 @@
 [gd_scene load_steps=22 format=2]
 
-[ext_resource path="res://sprites/woodblock - Copy.png" type="Texture" id=1]
+[ext_resource path="res://sprites/woodblockActual.png" type="Texture" id=1]
 [ext_resource path="res://scripts/BlockHandler.gd" type="Script" id=2]
 [ext_resource path="res://scenes/Fragments.tscn" type="PackedScene" id=3]
 [ext_resource path="res://sprites/Fragments/SpriteOverlays.png" type="Texture" id=4]

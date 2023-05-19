@@ -7,6 +7,7 @@ onready var description = $Description
 onready var main_menu = $".."
 onready var loading_screen = $"../Camera2D/LoadingScreen"
 onready var button_press = $"../ButtonPress"
+onready var maps = $Maps
 
 func _ready():
 	description.text = "basic description" 
@@ -16,13 +17,16 @@ func _ready():
 func _process(delta):
 	map_name_follows_mouse()
 
-func load_map(map):
+func load_map(map,map_fallback):
 	button_press.play()
 	print("Loading Map Location: ",map)
 	randomize()
 	loading_screen.show()
 	yield(get_tree().create_timer(rand_range(0.5,0.7)),"timeout")
-	get_tree().change_scene_to(map)
+	if OS.get_name() == "HTML5":
+		get_tree().change_scene_to(map)
+	else:
+		get_tree().change_scene(map_fallback)
 
 func map_name_follows_mouse() -> void:
 	name_point.position = get_local_mouse_position()

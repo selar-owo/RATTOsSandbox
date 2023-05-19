@@ -80,6 +80,7 @@ quit - quits
 """
 #export(bool) var QmenuOpen:bool = false
 export(bool) var start_transition := true
+export(bool) var console_allowed := true
 
 func setup_UI_pic():
 	if Globals.slot2pic != "":
@@ -154,16 +155,18 @@ func _process(delta):
 	selected()
 	if console_line_edit.has_selection() or console_line_edit.has_focus():
 		player.movement_allowed = false
+		player.teleport_allowed = false
 		player.set_process_input(false)
 		player.set_process_unhandled_key_input(false)
 		player.set_process_unhandled_input(false)
 	elif !console_line_edit.has_selection() or !console_line_edit.has_focus():
 		player.movement_allowed = true
+		player.teleport_allowed = true
 		player.set_process_input(true)
 		player.set_process_unhandled_key_input(true)
 		player.set_process_unhandled_input(true)
 	
-	if Input.is_action_just_pressed("console"): console.visible = !console.visible
+	if Input.is_action_just_pressed("console") and console_allowed: console.visible = !console.visible
 
 func selected() -> void:
 	if Globals.slot1held: slot_1_background.modulate = Color(2,2,2,0.39)

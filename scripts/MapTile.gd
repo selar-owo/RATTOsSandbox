@@ -1,6 +1,7 @@
 extends TextureButton
 
 export var map_resource:Resource = preload("res://scenes/Maps/RainyIsland.tscn")
+export var map_fallback_string:String
 export var map_name:String = "Basic Name"
 export(String,MULTILINE) var map_desc = "Basic Description"
 
@@ -18,7 +19,7 @@ func _ready():
 	self.connect("button_up",self,"_on_press")
 
 func _on_press():
-	map_selection.load_map(map_resource)
+	map_selection.load_map(map_resource,map_fallback_string)
 
 func _on_hover(press):
 	emit_signal("toggle_name",press,map_name,map_desc)

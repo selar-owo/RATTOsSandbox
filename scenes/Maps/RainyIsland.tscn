@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/Camera2D.tscn" type="PackedScene" id=2]
@@ -23,12 +23,16 @@ colors = PoolColorArray( 1, 1, 1, 0, 1, 1, 1, 0.65098, 1.2, 1.2, 1.2, 0.65098, 1
 [sub_resource type="GradientTexture" id=3]
 gradient = SubResource( 2 )
 
+[sub_resource type="Curve" id=6]
+_data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 1 ), 0.0, 0.0, 0, 0 ]
+
 [sub_resource type="CurveTexture" id=4]
+curve = SubResource( 6 )
 
 [sub_resource type="ParticlesMaterial" id=1]
 trail_size_modifier = SubResource( 4 )
 emission_shape = 2
-emission_box_extents = Vector3( 4000, 4000, 1 )
+emission_box_extents = Vector3( 1000, 1000, 1 )
 flag_disable_z = true
 direction = Vector3( 0, 1, 0 )
 spread = 0.0
@@ -101,9 +105,9 @@ environment = ExtResource( 5 )
 
 [node name="Rain" type="Particles2D" parent="."]
 material = SubResource( 5 )
-position = Vector2( 111, -361 )
+position = Vector2( 181, -282 )
 z_index = 20
-amount = 280000
+amount = 40000
 lifetime = 2.0
 visibility_rect = Rect2( -1000, -1000.01, 2000, 2000 )
 local_coords = false

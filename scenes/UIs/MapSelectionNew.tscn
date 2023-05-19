@@ -92,9 +92,9 @@ __meta__ = {
 [node name="Title" type="TextureRect" parent="."]
 anchor_left = 0.5
 anchor_right = 0.5
-margin_left = 135.0
+margin_left = -377.0
 margin_top = 40.0
-margin_right = 889.0
+margin_right = 377.0
 margin_bottom = 105.0
 texture = ExtResource( 2 )
 expand = true
@@ -132,6 +132,7 @@ texture_hover = ExtResource( 7 )
 expand = true
 script = ExtResource( 8 )
 map_resource = ExtResource( 17 )
+map_fallback_string = "res://scenes/Maps/Flatlands.tscn"
 map_name = "Flatlands"
 map_desc = "good for testing stuff
 i guess"
@@ -156,6 +157,7 @@ texture_hover = ExtResource( 7 )
 expand = true
 script = ExtResource( 8 )
 map_resource = ExtResource( 18 )
+map_fallback_string = "res://scenes/Maps/MidConstruct.tscn"
 map_name = "Bad Construct"
 map_desc = "gm_construct
 but awesome"
@@ -179,6 +181,7 @@ texture_normal = ExtResource( 1 )
 texture_hover = ExtResource( 7 )
 expand = true
 script = ExtResource( 8 )
+map_fallback_string = "res://scenes/Maps/RainyIsland.tscn"
 map_name = "Rainy Island"
 map_desc = "texas right now"
 
@@ -202,6 +205,7 @@ texture_hover = ExtResource( 7 )
 expand = true
 script = ExtResource( 8 )
 map_resource = ExtResource( 16 )
+map_fallback_string = "res://scenes/Maps/Blank.tscn"
 map_name = "Blank, Nothing"
 map_desc = "Blank.
 Literally Nothing.
@@ -228,6 +232,7 @@ texture_hover = ExtResource( 7 )
 expand = true
 script = ExtResource( 8 )
 map_resource = ExtResource( 15 )
+map_fallback_string = "res://scenes/Maps/TilemapTest.tscn"
 map_name = "Tilemap Test"
 map_desc = "basic tilemap
 crazy"
