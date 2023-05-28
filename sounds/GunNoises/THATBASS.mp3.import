@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/THATBASS.mp3-296248821c671cd3c1ca49e89104d602.mp3str"
+
+[deps]
+
+source_file="res://sounds/GunNoises/THATBASS.mp3"
+dest_files=[ "res://.import/THATBASS.mp3-296248821c671cd3c1ca49e89104d602.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

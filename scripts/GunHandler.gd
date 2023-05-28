@@ -7,6 +7,7 @@ onready var shoot_noise := $GunShoot
 onready var shell := $Shell
 onready var recoil := $Recoil
 onready var projectile_position: Node2D = $ProjectilePosition
+onready var casing_position = $CasingPosition
 onready var inspect_anim: AnimationPlayer = $Inspect
 
 #item
@@ -30,6 +31,7 @@ the terraria - 5 (code in TheTerraria.gd)
 export(float) var damage := 20.0
 export(float) var cooldown_time := 0.5
 export(float) var recoil_amount := 10.0
+export(bool) var auto_shoot := true
 export(bool) var projectile := false
 var cooldown := false
 export(int) var slot := 0 #slot 0 is first slot 1 is second
@@ -79,20 +81,31 @@ func show_damage_number(collider,rayobj,defence):
 func cast_ray(rayobj):
 	shoot_noise.play()
 	recoil.seek(0.0,true)
-	recoil.play("NewRecoil")
+	recoil.play("ShootAnimation")
 	rayobj.force_raycast_update()
 	sprite.frame = 0
 	sprite.play("default")
 	cooldown = true
 	timer.start()
+	
+	if casing_position != null and Globals.casing:
+		var case := preload("res://scenes/particles/CasingParticle.tscn").instance()
+		get_parent().get_parent().get_parent().add_child(case)
+		case.global_position = casing_position.global_position
+		case.emitting = true
+		case.global_rotation = casing_position.global_rotation
+		case.z_index = -1
+	
 	if !rayobj.is_colliding():
+		create_line(projectile_position.global_position,projectile_position.global_position + Vector2(2000,0).rotated(global_rotation))
 		return
 	var collider = rayobj.get_collider()
 	var attack := Attack.new()
 	attack.weapon_type = gun_id_to_weapon_type(gun_id)
 	attack.attack_point = rayobj.get_collision_point()
 	attack.amount = damage
-	create_line(raycast.global_position,attack.attack_point)
+	create_line(projectile_position.global_position,attack.attack_point)
+	
 	if collider.get_name() == "HurtHitbox":
 		show_damage_number(collider,rayobj,collider.get_parent().defence)
 		if "detected_player" in collider.get_parent():
@@ -134,11 +147,8 @@ func eject_shell():
 
 func shoot():
 	if !Globals.insideVehicle:
-		var tween = get_tree().create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_ELASTIC)
 		if inspect_anim != null:
 			inspect_anim.play("RESET")
-		tween.tween_property(self,"rotation_degrees",rand_range(-recoil_amount,recoil_amount),0.5)
-		tween.play()
 #		rotation_degrees = lerp(rotation_degrees,rand_range(-recoil_amount,recoil_amount),0.1)
 		match projectile:
 			false:
@@ -150,13 +160,18 @@ func shoot():
 			true:
 				shoot_projectile("res://scenes/projectiles/Rocket.tscn")
 
+func recoil() -> void:
+	var tween = get_tree().create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_ELASTIC)
+	tween.tween_property(self,"rotation_degrees",rand_range(-recoil_amount,recoil_amount),0.5)
+	tween.play()
+
 func gun_handler():
 	if slot == 0:
 		self.visible = Globals.slot2held
 	if slot == 1:
 		self.visible = Globals.slot3held
 	
-	if Input.is_action_pressed("left_click") and !Globals.QmenuOpen:
+	if Input.is_action_pressed("left_click") and !Globals.QmenuOpen and auto_shoot or Input.is_action_just_pressed("left_click") and !Globals.QmenuOpen and !auto_shoot:
 		if !cooldown:
 			if slot == 0 and Globals.slot2held:
 				shoot()

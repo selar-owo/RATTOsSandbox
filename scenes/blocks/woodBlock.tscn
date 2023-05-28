@@ -1,10 +1,11 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=28 format=2]
 
 [ext_resource path="res://sprites/woodblockActual.png" type="Texture" id=1]
 [ext_resource path="res://scripts/BlockHandler.gd" type="Script" id=2]
 [ext_resource path="res://scenes/Fragments.tscn" type="PackedScene" id=3]
 [ext_resource path="res://sprites/Fragments/SpriteOverlays.png" type="Texture" id=4]
 [ext_resource path="res://sounds/breakSounds/woodhitsound1.mp3" type="AudioStream" id=5]
+[ext_resource path="res://sprites/Fragments/SpriteOverlays2.png" type="Texture" id=6]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 8, 8 )
@@ -338,11 +339,41 @@ flags = 1
 atlas = ExtResource( 4 )
 region = Rect2( 48, 0, 16, 16 )
 
+[sub_resource type="AtlasTexture" id=19]
+flags = 1
+atlas = ExtResource( 6 )
+region = Rect2( 0, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=20]
+flags = 1
+atlas = ExtResource( 6 )
+region = Rect2( 16, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=21]
+flags = 1
+atlas = ExtResource( 6 )
+region = Rect2( 32, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=22]
+flags = 1
+atlas = ExtResource( 6 )
+region = Rect2( 48, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=23]
+flags = 1
+atlas = ExtResource( 6 )
+region = Rect2( 64, 0, 16, 16 )
+
 [sub_resource type="SpriteFrames" id=12]
 animations = [ {
 "frames": [ SubResource( 13 ), SubResource( 14 ), SubResource( 15 ), SubResource( 16 ), SubResource( 17 ) ],
 "loop": true,
 "name": "default",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 19 ), SubResource( 20 ), SubResource( 21 ), SubResource( 22 ), SubResource( 23 ) ],
+"loop": true,
+"name": "default 2",
 "speed": 5.0
 } ]
 

@@ -27,6 +27,9 @@ func _ready():
 	UniversalWeather.show()
 
 func _process(delta):
+	if self.get_name() == "AllInOne":
+		player.camera_shake(0.4,1)
+	
 	map()
 	settingsUpdate()
 	SEX_MODE_FUNCTION()

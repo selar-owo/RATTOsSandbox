@@ -2,7 +2,7 @@ extends Node2D
 
 onready var spawn_area: Area2D = $SpawnArea
 onready var enemies: Node2D = $Enemies
-onready var navigation_2d: Navigation2D = $".."
+onready var navigation_2d := $"../../Enemies"
 var area_entered:bool = false
 
 """
@@ -15,6 +15,14 @@ POCmelee
 POCranged
 POCshotgun
 POCfast
+
+---
+
+AllInOne
+
+AIOangel
+AIOkneecaps
+
 ---
 
 """

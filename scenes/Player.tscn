@@ -428,6 +428,8 @@ cull_mode = 1
 polygon = PoolVector2Array( 7, -8, 7, -7, 8, -7, 8, 7, 7, 7, 7, 8, -7, 8, -7, 7, -8, 7, -8, -7, -7, -7, -7, -8 )
 
 [node name="Player" type="KinematicBody2D"]
+collision_layer = 5
+collision_mask = 5
 script = ExtResource( 2 )
 
 [node name="Walk" type="AudioStreamPlayer" parent="."]
@@ -452,7 +454,7 @@ self_modulate = Color( 0.666667, 0.780392, 1, 1 )
 material = SubResource( 38 )
 frames = SubResource( 11 )
 animation = "New Anim but Cooler"
-frame = 2
+frame = 6
 playing = true
 offset = Vector2( 26, 0 )
 

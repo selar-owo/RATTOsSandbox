@@ -37,8 +37,8 @@ var current_tip:String
 
 #version shit
 var version_number := [
-	"1.0.1" ,#the number
-	"revision", #the name
+	"1.1.0" ,#the number
+	"grenades, so cool!", #the name
 	"_beta", #like beta or like aplha
 ]
 
@@ -52,6 +52,7 @@ var physColor:Color = Color(0.666667, 0.780392, 1) #0.41,0.83,1
 var uitrans := 0.6
 var show_indicator := true
 var interact_with_physics := false
+var casing := false
 
 func _process(delta):
 	if Input.is_action_just_pressed("fullscreen"):

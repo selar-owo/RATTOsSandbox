@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/RevolverCOck.mp3-fc8513f58f9d8c056b0380bbac3bc998.mp3str"
+
+[deps]
+
+source_file="res://sounds/GunNoises/RevolverCOck.mp3"
+dest_files=[ "res://.import/RevolverCOck.mp3-fc8513f58f9d8c056b0380bbac3bc998.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

@@ -1,10 +1,13 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://sounds/GunNoises/ShotgunShoot.mp3" type="AudioStream" id=1]
 [ext_resource path="res://sprites/shotgun.png" type="Texture" id=2]
 [ext_resource path="res://scripts/GunHandler.gd" type="Script" id=3]
 [ext_resource path="res://sprites/ShotgunItemNew.png" type="Texture" id=4]
 [ext_resource path="res://sprites/pewpew.png" type="Texture" id=5]
+[ext_resource path="res://sprites/ShotgunAnimPump.png" type="Texture" id=6]
+[ext_resource path="res://sprites/ShotgunAnimSide.png" type="Texture" id=7]
+[ext_resource path="res://sounds/GunNoises/Pump.mp3" type="AudioStream" id=8]
 
 [sub_resource type="AtlasTexture" id=4]
 flags = 1
@@ -186,6 +189,90 @@ tracks/7/keys = {
 "update": 0,
 "values": [ Vector2( 1, 1 ) ]
 }
+tracks/8/type = "value"
+tracks/8/path = NodePath("WeaponSprite:rotation_degrees")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+tracks/9/type = "value"
+tracks/9/path = NodePath("WeaponSprite/ShotgunSide:scale")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ) ]
+}
+tracks/10/type = "value"
+tracks/10/path = NodePath("WeaponSprite/ShotgunSide:visible")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
+tracks/11/type = "value"
+tracks/11/path = NodePath("WeaponSprite:self_modulate")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+tracks/12/type = "value"
+tracks/12/path = NodePath("WeaponSprite/ShotgunSide/Pump:position")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 7, 1 ) ]
+}
+tracks/13/type = "value"
+tracks/13/path = NodePath("WeaponSprite/ShotgunSide:position")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 26, -0.5 ) ]
+}
+tracks/14/type = "value"
+tracks/14/path = NodePath("WeaponSprite/ShotgunSide/Pump2:playing")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
 
 [sub_resource type="Animation" id=8]
 resource_name = "Recoil"
@@ -213,6 +300,118 @@ tracks/1/keys = {
 "transitions": PoolRealArray( -2, -2, -2 ),
 "update": 0,
 "values": [ Vector2( -0.5, 0 ), Vector2( 0.5, 0 ), Vector2( 0, 0 ) ]
+}
+
+[sub_resource type="Animation" id=9]
+resource_name = "ShootAnimation"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("WeaponSprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4 ),
+"transitions": PoolRealArray( -2, -2, -2 ),
+"update": 0,
+"values": [ Vector2( -5, 0.5 ), Vector2( 4, 0.5 ), Vector2( 0, 0.5 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("WeaponSprite:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5, 0.9, 1.4, 1.8 ),
+"transitions": PoolRealArray( 1, -2, 1, -2, 1 ),
+"update": 0,
+"values": [ 0.0, 0.0, -30.0, -30.0, 0.0 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("WeaponSprite:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.5, 0.7, 0.9, 1.4, 1.6, 1.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 1, 1 ), Vector2( 1, 0 ), Vector2( 1, 1 ), Vector2( 1, 1 ), Vector2( 1, 0 ), Vector2( 1, 1 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("WeaponSprite/ShotgunSide:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.7, 1.6 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, false ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("WeaponSprite:self_modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.675, 0.7, 1.575, 1.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("WeaponSprite/ShotgunSide/Pump:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 1, 1.1, 1.25, 1.35 ),
+"transitions": PoolRealArray( 2, 1, 0.5, 1 ),
+"update": 0,
+"values": [ Vector2( 7, 1 ), Vector2( 4, 1 ), Vector2( 4, 1 ), Vector2( 7, 1 ) ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("WeaponSprite/ShotgunSide:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 1, 1.1, 1.25, 1.35 ),
+"transitions": PoolRealArray( 2, 1, 0.5, 1 ),
+"update": 0,
+"values": [ Vector2( 26, -0.5 ), Vector2( 25, -0.5 ), Vector2( 25, -0.5 ), Vector2( 26, -0.5 ) ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("WeaponSprite/Flash:visible")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0, 0.05 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("WeaponSprite/ShotgunSide/Pump2:playing")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0, 0.825 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
 }
 
 [node name="Shotgun" type="Node2D"]
@@ -247,6 +446,20 @@ visible = false
 position = Vector2( 46, -0.5 )
 texture = ExtResource( 5 )
 
+[node name="ShotgunSide" type="Sprite" parent="WeaponSprite"]
+visible = false
+position = Vector2( 26, -0.5 )
+texture = ExtResource( 7 )
+
+[node name="Pump" type="Sprite" parent="WeaponSprite/ShotgunSide"]
+position = Vector2( 7, 1 )
+texture = ExtResource( 6 )
+
+[node name="Pump2" type="AudioStreamPlayer2D" parent="WeaponSprite/ShotgunSide"]
+position = Vector2( 6, 0 )
+stream = ExtResource( 8 )
+volume_db = -13.938
+
 [node name="RayCast2D" type="RayCast2D" parent="."]
 position = Vector2( 37, 3.72529e-09 )
 rotation = -1.57079
@@ -275,5 +488,9 @@ collide_with_areas = true
 anims/NewRecoil = SubResource( 6 )
 anims/RESET = SubResource( 7 )
 anims/Recoil = SubResource( 8 )
+anims/ShootAnimation = SubResource( 9 )
+
+[node name="ProjectilePosition" type="Node2D" parent="."]
+position = Vector2( 32, 0 )
 
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

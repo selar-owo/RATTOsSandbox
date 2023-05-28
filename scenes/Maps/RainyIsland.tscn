@@ -20,17 +20,17 @@
 offsets = PoolRealArray( 0, 0.333333, 0.708333, 1 )
 colors = PoolColorArray( 1, 1, 1, 0, 1, 1, 1, 0.65098, 1.2, 1.2, 1.2, 0.65098, 1.2, 1.2, 1.2, 0 )
 
-[sub_resource type="GradientTexture" id=3]
+[sub_resource type="GradientTexture" id=7]
 gradient = SubResource( 2 )
 
 [sub_resource type="Curve" id=6]
 _data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 1 ), 0.0, 0.0, 0, 0 ]
 
-[sub_resource type="CurveTexture" id=4]
+[sub_resource type="CurveTexture" id=8]
 curve = SubResource( 6 )
 
 [sub_resource type="ParticlesMaterial" id=1]
-trail_size_modifier = SubResource( 4 )
+trail_size_modifier = SubResource( 8 )
 emission_shape = 2
 emission_box_extents = Vector3( 1000, 1000, 1 )
 flag_disable_z = true
@@ -41,7 +41,7 @@ initial_velocity = 400.0
 orbit_velocity = 0.0
 orbit_velocity_random = 0.0
 radial_accel = 18.95
-color_ramp = SubResource( 3 )
+color_ramp = SubResource( 7 )
 
 [node name="RainyIsland" type="Node2D"]
 script = ExtResource( 3 )

@@ -1,0 +1,882 @@
+[gd_scene load_steps=58 format=2]
+
+[ext_resource path="res://DestroyedRatto.png" type="Texture" id=1]
+[ext_resource path="res://sprites/MeatMan.png" type="Texture" id=2]
+[ext_resource path="res://sprites/DestroyedPlayButton.png" type="Texture" id=3]
+[ext_resource path="res://sprites/DestroyedPlayButtonSelected.png" type="Texture" id=4]
+[ext_resource path="res://scripts/MainMenuShattered.gd" type="Script" id=5]
+[ext_resource path="res://scenes/blocks/fire2d.shader" type="Shader" id=6]
+[ext_resource path="res://DestroyedSandbox.png" type="Texture" id=7]
+[ext_resource path="res://sounds/songs/tomp3.cc - Flood Escape 2 OST Lobby 2020 Version.mp3" type="AudioStream" id=8]
+[ext_resource path="res://sprites/No stars.jpg" type="Texture" id=9]
+[ext_resource path="res://sprites/BossBarCircleProgress.png" type="Texture" id=10]
+[ext_resource path="res://sounds/y2mate.com - Rat Sounds Effect.mp3" type="AudioStream" id=11]
+[ext_resource path="res://sounds/hover.wav" type="AudioStream" id=12]
+[ext_resource path="res://sounds/select.wav" type="AudioStream" id=13]
+[ext_resource path="res://LoadingScreen.tscn" type="PackedScene" id=14]
+[ext_resource path="res://sprites/MAINMENU-foreground.png" type="Texture" id=15]
+[ext_resource path="res://sprites/MAINMENU-background.png" type="Texture" id=16]
+[ext_resource path="res://sprites/MAINMENU-sky.png" type="Texture" id=17]
+[ext_resource path="res://sprites/MAINMENU-mountain.png" type="Texture" id=18]
+[ext_resource path="res://scripts/Camera2D.gd" type="Script" id=19]
+[ext_resource path="res://amoglo.png" type="Texture" id=20]
+[ext_resource path="res://sprites/SoCool.png" type="Texture" id=21]
+[ext_resource path="res://sprites/MapTile.png" type="Texture" id=22]
+[ext_resource path="res://scripts/ShakeSelf.gd" type="Script" id=23]
+[ext_resource path="res://LinkText.tres" type="DynamicFont" id=24]
+[ext_resource path="res://scripts/FIGHTME.gd" type="Script" id=25]
+
+[sub_resource type="Shader" id=36]
+code = "shader_type canvas_item;
+
+uniform float brightness = 1.5;
+uniform float ray_brightness = 10.0;
+uniform float gamma = 8.0;
+uniform float spot_brightness = 15.0;
+uniform float ray_density = 3.5;
+uniform float curvature = 15.0;
+uniform vec3 rgb = vec3(4.0, 1.0, 0.1);
+uniform float sin_freq = 13.0;
+//uniform sampler2D noiseTexture;  // use if you want a custom noise texture
+
+float hash( float n )
+{
+    return fract(sin(n)*43758.5453);
+}
+
+float noise( in vec2 x )
+{
+    // procedural noise:
+    x *= 1.75;
+    vec2 p = floor(x);
+    vec2 f = fract(x);
+
+    f = f * f * (3.0 - 2.0 * f);
+
+    float n = p.x + p.y * 57.0;
+
+    float res = mix(mix( hash(n+  0.0), hash(n+  1.0), f.x),
+                    mix( hash(n+ 57.0), hash(n+ 58.0), f.x), f.y);
+    return res;
+    
+    // To use your own noise from a texture, comment out the procedural noise stuff above and use this instead
+    //return texture(noiseTexture, x*.01).x;
+}
+
+float fbm( in vec2 p )
+{
+    vec2 part1 = vec2(0.80, 0.60);
+    vec2 part2 = vec2(-0.60, 0.80);
+    mat2 m2 = mat2(part1, part2);
+    
+    float z = 2.0;
+    float rz = 0.0;
+    p *= 0.25;
+    for (float i= 1.0; i < 6.0; i++)
+    {
+        rz += abs((noise(p) - 0.5) * 2.0) / z;
+        z = z * 2.0;
+        p = p * 2.0 * m2;
+    }
+    return rz;
+}
+
+void fragment()
+{
+    float t = -TIME * 0.03;
+    vec2 uv = UV.xy / (1.0 / TEXTURE_PIXEL_SIZE).xy - 0.5;
+    uv.x *= (1.0 / TEXTURE_PIXEL_SIZE).x / (1.0 / TEXTURE_PIXEL_SIZE).y;
+    uv *= curvature * 0.05 + 0.0001;
+    
+    float r  = sqrt(dot(uv, uv));
+    float x = dot(normalize(uv), vec2(0.5, 0.0)) + t;
+    float y = dot(normalize(uv), vec2(0.0, 0.5)) + t;
+    
+    float val;
+    val = fbm(vec2(r + y * ray_density, r + x * ray_density - y));
+    val = smoothstep(gamma * 0.02 - 0.1, ray_brightness + (gamma * 0.02 - 0.1) + 0.001, val);
+    val = sqrt(val);
+    
+    vec3 col = val / rgb;
+    col = clamp(1.0 - col, 0.0, 1.0);
+    col = mix(col, vec3(1.0), spot_brightness - r / 0.1 / curvature * 200.0 / brightness);
+    col = clamp(col, 0.0, 1.0);
+    col = pow(col, vec3(1.7));
+    
+    COLOR = vec4(col, 1.0);
+}"
+
+[sub_resource type="ShaderMaterial" id=10]
+shader = SubResource( 36 )
+shader_param/brightness = 1.5
+shader_param/ray_brightness = 20.0
+shader_param/gamma = 8.0
+shader_param/spot_brightness = 5.0
+shader_param/ray_density = 3.5
+shader_param/curvature = 30.0
+shader_param/rgb = Vector3( 4, 1, 0.1 )
+shader_param/sin_freq = 40.0
+
+[sub_resource type="OpenSimplexNoise" id=14]
+
+[sub_resource type="NoiseTexture" id=15]
+width = 1024
+seamless = true
+noise = SubResource( 14 )
+
+[sub_resource type="ShaderMaterial" id=13]
+shader = ExtResource( 6 )
+shader_param/root_color = Color( 0.862745, 0.694118, 0.239216, 1 )
+shader_param/tip_color = Color( 1, 0.301961, 0.164706, 1 )
+shader_param/fire_alpha = 0.032
+shader_param/fire_speed = Vector2( 0, 0.5 )
+shader_param/fire_aperture = 0.474
+shader_param/noise_tex = SubResource( 15 )
+
+[sub_resource type="CanvasItemMaterial" id=26]
+
+[sub_resource type="Shader" id=24]
+code = "/* 
+Original shader from Fubucci – https://www.febucci.com/2019/05/fire-shader/ 
+Converted to Godot Shader Language by Godot Shaders - godotshaders.com/shader/2D-fire/
+*/
+
+shader_type canvas_item;
+
+uniform sampler2D noise_tex;
+uniform sampler2D gradient_tex;
+
+uniform vec4 brighter_color : hint_color = vec4(1.0, 0.8, 0.0, 1.0);
+uniform vec4 middle_color : hint_color  = vec4(1.0, 0.56, 0.0, 1.0);
+uniform vec4 darker_color : hint_color  = vec4(0.64, 0.2, 0.05, 1.0);
+
+uniform float spread : hint_range(0.0, 1.0) = 0.5;
+
+void fragment()
+{
+	
+	float noise_value = texture(noise_tex, UV + vec2(0.0, TIME)).x;
+	// The .yx swizzle is when using the built in horizontal gradient texture. If you have a vertical gradient texture remove .yx
+	float gradient_value = texture(gradient_tex, UV.yx).x;
+	
+	gradient_value -= smoothstep(spread, spread + 0.5, length(UV + vec2(-0.5, -0.5)) / spread);
+	
+	float step1 = step(noise_value, gradient_value);
+	float step2 = step(noise_value, gradient_value - 0.2);
+	float step3 = step(noise_value, gradient_value - 0.4);
+	
+	vec3 bd_color = mix(brighter_color.rgb, darker_color.rgb, step1 - step2);
+	
+	vec4 color = vec4(bd_color, step1);
+	color.rgb = mix(color.rgb, middle_color.rgb, step2 - step3);
+	
+	COLOR = color;
+}"
+
+[sub_resource type="Gradient" id=19]
+
+[sub_resource type="GradientTexture" id=20]
+gradient = SubResource( 19 )
+
+[sub_resource type="OpenSimplexNoise" id=21]
+
+[sub_resource type="NoiseTexture" id=22]
+seamless = true
+noise = SubResource( 21 )
+
+[sub_resource type="ShaderMaterial" id=25]
+shader = SubResource( 24 )
+shader_param/brighter_color = Color( 1, 0.8, 0, 1 )
+shader_param/middle_color = Color( 1, 0.56, 0, 1 )
+shader_param/darker_color = Color( 0.64, 0.2, 0.05, 1 )
+shader_param/spread = 1.0
+shader_param/noise_tex = SubResource( 22 )
+shader_param/gradient_tex = SubResource( 20 )
+
+[sub_resource type="ShaderMaterial" id=27]
+shader = ExtResource( 6 )
+shader_param/root_color = Color( 1, 0.75, 0.3, 1 )
+shader_param/tip_color = Color( 1, 0.03, 0.001, 1 )
+shader_param/fire_alpha = 1.0
+shader_param/fire_speed = Vector2( 0, 1 )
+shader_param/fire_aperture = 0.22
+shader_param/noise_tex = SubResource( 22 )
+
+[sub_resource type="ShaderMaterial" id=23]
+shader = ExtResource( 6 )
+shader_param/root_color = Color( 1, 0.75, 0.3, 1 )
+shader_param/tip_color = Color( 1, 0.03, 0.001, 1 )
+shader_param/fire_alpha = 1.0
+shader_param/fire_speed = Vector2( 0, 1 )
+shader_param/fire_aperture = 0.22
+shader_param/noise_tex = SubResource( 22 )
+
+[sub_resource type="Animation" id=5]
+resource_name = "OptionsButton"
+length = 0.8
+
+[sub_resource type="Animation" id=1]
+resource_name = "PlayButton"
+length = 0.8
+tracks/0/type = "value"
+tracks/0/path = NodePath("Play:rect_scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.8 ),
+"transitions": PoolRealArray( 0.5, 1 ),
+"update": 0,
+"values": [ Vector2( 2, 2 ), Vector2( 1.5, 1.5 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Play/Sprite:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.8 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0.380392 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Play/Sprite:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.1, 0.8 ),
+"transitions": PoolRealArray( 1, 2, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1.011 ), Vector2( 1.2, 1.211 ), Vector2( 1.5, 1.511 ) ]
+}
+
+[sub_resource type="Animation" id=2]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Play:rect_scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1.5, 1.5 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Play/Sprite:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Play/Sprite:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Play:rect_size")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 200, 86 ) ]
+}
+
+[sub_resource type="Animation" id=8]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sandbox:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 219, 139 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Ratto:rect_position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 217, -138 ) ]
+}
+
+[sub_resource type="Animation" id=7]
+resource_name = "tITLTEBOV"
+length = 20.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sandbox:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 10 ),
+"transitions": PoolRealArray( -2, -2 ),
+"update": 0,
+"values": [ Vector2( 219, 139 ), Vector2( 219, 119 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Ratto:rect_position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 10 ),
+"transitions": PoolRealArray( -2, -2 ),
+"update": 0,
+"values": [ Vector2( 217, -138 ), Vector2( 217, -119 ) ]
+}
+
+[sub_resource type="Animation" id=11]
+resource_name = "Play"
+length = 20.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Play:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 10 ),
+"transitions": PoolRealArray( -2, -2 ),
+"update": 0,
+"values": [ Vector2( 384, 347 ), Vector2( 384, 327 ) ]
+}
+
+[sub_resource type="Animation" id=12]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Play:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 384, 347 ) ]
+}
+
+[sub_resource type="Environment" id=6]
+background_mode = 4
+ssao_radius = 10.04
+ssao_intensity = 11.64
+glow_enabled = true
+glow_intensity = 0.4
+glow_strength = 0.07
+glow_bloom = 0.08
+adjustment_enabled = true
+adjustment_brightness = 1.23
+adjustment_contrast = 0.82
+adjustment_saturation = 1.36
+
+[sub_resource type="Shader" id=16]
+code = "shader_type canvas_item;
+
+uniform sampler2D offset_image : hint_white;
+uniform float strength = 1.0;
+
+void fragment() {
+	vec4 output = texture(SCREEN_TEXTURE, SCREEN_UV);
+	
+	float shift = strength * texture(offset_image, SCREEN_UV).r / 100.0;
+	output.r = texture(SCREEN_TEXTURE, vec2(SCREEN_UV.x + shift, SCREEN_UV.y)).r;
+	output.g = texture(SCREEN_TEXTURE, SCREEN_UV).g;
+	output.b = texture(SCREEN_TEXTURE, vec2(SCREEN_UV.x - shift, SCREEN_UV.y)).b;
+	
+	COLOR = output;
+}"
+
+[sub_resource type="ShaderMaterial" id=17]
+shader = SubResource( 16 )
+shader_param/strength = 0.5
+
+[sub_resource type="Animation" id=28]
+resource_name = "FadeIn"
+length = 5.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("Fade:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+
+[sub_resource type="Animation" id=30]
+resource_name = "FadeOut"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("Fade:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=29]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Fade:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ) ]
+}
+
+[sub_resource type="Shader" id=32]
+code = "shader_type canvas_item;
+
+uniform float timeScaleFactor = .04;
+
+// Make sure to use a seamless noise texture
+uniform sampler2D noise_texture;
+
+float localTime() {
+	return TIME * timeScaleFactor;
+}
+
+mat2 makem2(float theta) {
+	float c = cos(theta);
+	float s = sin(theta);
+	return mat2(vec2(c, -s), vec2(s, c));
+}
+
+float noise(vec2 x) {
+	return texture(noise_texture, x * .01).x;
+}
+
+vec2 gradn(vec2 p) {
+	float ep = .09;
+	float gradx = noise(vec2(p.x + ep, p.y)) - noise(vec2(p.x - ep, p.y));
+	float grady = noise(vec2(p.x, p.y + ep)) - noise(vec2(p.x, p.y - ep));
+	return vec2(gradx, grady);
+}
+
+float flow(vec2 p) {
+	float z = 2.;
+	float rz = 0.;
+	vec2 bp = p;
+	
+	for(float i = 1.; i < 7.; ++i) {
+		p += localTime() * .6;
+		bp += localTime() * 1.9;
+		vec2 gr = gradn(i * p * .34 + localTime() * 1.);
+		gr *= makem2(localTime() * 6. - (.05 * p.x + 0.03 * p.y) * 40.);
+		p += gr * .5;
+		rz += (sin(noise(p) * 7.) *.5 + .5) / z;
+		p = mix(bp, p, .77);
+		z *= 1.4;
+		p *= 2.;
+		bp *= 1.9;
+	}
+	return rz;
+}
+
+void fragment() {
+	vec2 resolution = 1. / SCREEN_PIXEL_SIZE;
+	vec2 fragCoord = FRAGCOORD.xy;
+	fragCoord = vec2(fragCoord.x, resolution.y - fragCoord.y);
+	vec2 p = fragCoord / resolution - 0.5;
+	
+	p.x *= resolution.x / resolution.y;
+	p *= 3.;
+	
+	float rz = flow(p);
+	vec3 col = vec3(.2, .07, .01) / rz;
+	col = pow(col, vec3(1.4));
+	
+	COLOR = vec4(col, 1.0);
+}"
+
+[sub_resource type="OpenSimplexNoise" id=34]
+
+[sub_resource type="NoiseTexture" id=35]
+seamless = true
+noise = SubResource( 34 )
+
+[sub_resource type="ShaderMaterial" id=33]
+shader = SubResource( 32 )
+shader_param/timeScaleFactor = 2.0
+shader_param/noise_texture = SubResource( 35 )
+
+[sub_resource type="CanvasItemMaterial" id=31]
+blend_mode = 1
+
+[node name="MainMenu" type="Control"]
+pause_mode = 2
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 5 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="CoolEffect" type="CanvasModulate" parent="."]
+visible = false
+color = Color( 1.2, 1.4, 1.79, 1 )
+
+[node name="balls" type="CanvasModulate" parent="."]
+color = Color( 1.4, 1.2, 1, 1 )
+
+[node name="Tween" type="Tween" parent="."]
+
+[node name="Hover" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 12 )
+volume_db = -20.8
+pitch_scale = 0.79
+bus = "thisiswhatineedtobus.."
+
+[node name="MainMenu" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 8 )
+volume_db = -18.61
+pitch_scale = 0.58
+autoplay = true
+bus = "thisiswhatineedtobus.."
+
+[node name="rat squeaking" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 11 )
+
+[node name="ButtonPress" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 13 )
+volume_db = -20.8
+pitch_scale = 0.82
+bus = "thisiswhatineedtobus.."
+
+[node name="Decor" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Sky" type="ColorRect" parent="Decor"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -402.0
+margin_top = -804.0
+margin_right = 402.0
+margin_bottom = 228.0
+mouse_filter = 2
+color = Color( 0.0666667, 0.0509804, 0.0666667, 1 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Galaxy" type="TextureRect" parent="Decor"]
+margin_left = -984.0
+margin_top = -1408.0
+margin_right = 1940.0
+margin_bottom = 1516.0
+mouse_filter = 2
+texture = ExtResource( 9 )
+expand = true
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Sun" type="ColorRect" parent="Decor"]
+self_modulate = Color( 1, 1, 1, 0.45098 )
+material = SubResource( 10 )
+margin_left = -1060.0
+margin_top = -1961.0
+margin_right = 2046.0
+margin_bottom = 1145.0
+color = Color( 0, 0, 0, 0 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Grass" type="ColorRect" parent="Decor"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -514.0
+margin_top = 444.0
+margin_right = 514.0
+margin_bottom = 686.0
+mouse_filter = 2
+color = Color( 0.286275, 0.796078, 0.521569, 1 )
+
+[node name="MeatMan" type="Sprite" parent="Decor"]
+visible = false
+position = Vector2( 862, 161 )
+rotation = -0.261799
+scale = Vector2( 0.345, 0.345 )
+texture = ExtResource( 2 )
+
+[node name="SKY" type="Sprite" parent="Decor"]
+visible = false
+position = Vector2( 500, 100 )
+texture = ExtResource( 17 )
+
+[node name="MOUNTAINS" type="Sprite" parent="Decor"]
+visible = false
+position = Vector2( 500, 700 )
+texture = ExtResource( 18 )
+
+[node name="BG" type="Sprite" parent="Decor"]
+visible = false
+position = Vector2( 500, 700 )
+texture = ExtResource( 16 )
+
+[node name="FG" type="Sprite" parent="Decor"]
+visible = false
+position = Vector2( 500, 700 )
+texture = ExtResource( 15 )
+
+[node name="Fire" type="Sprite" parent="Decor"]
+material = SubResource( 13 )
+position = Vector2( 533, 335 )
+scale = Vector2( 43.8789, 26.1133 )
+texture = ExtResource( 10 )
+
+[node name="SoCool" type="TextureButton" parent="Decor"]
+self_modulate = Color( 3, 2.73, 2.73, 1 )
+material = SubResource( 26 )
+margin_left = 489.0
+margin_top = -418.0
+margin_right = 542.0
+margin_bottom = -366.0
+rect_scale = Vector2( 3, 3 )
+texture_normal = ExtResource( 22 )
+script = ExtResource( 23 )
+shake_amount = 2
+
+[node name="Sprite" type="Sprite" parent="Decor/SoCool"]
+show_behind_parent = true
+position = Vector2( 25.7013, 25.3728 )
+scale = Vector2( 0.219083, 0.205732 )
+texture = ExtResource( 21 )
+
+[node name="FireBall" type="Sprite" parent="Decor/SoCool"]
+visible = false
+self_modulate = Color( 1, 1, 1, 0.0666667 )
+show_behind_parent = true
+material = SubResource( 25 )
+position = Vector2( 14.6667, 134.333 )
+scale = Vector2( 0.499722, 0.816007 )
+texture = ExtResource( 20 )
+
+[node name="Fire2" type="Sprite" parent="Decor/SoCool"]
+self_modulate = Color( 1, 1, 1, 0.188235 )
+show_behind_parent = true
+material = SubResource( 27 )
+position = Vector2( 25.5657, 22.4112 )
+scale = Vector2( 0.0479799, 0.0813707 )
+texture = ExtResource( 20 )
+
+[node name="FireBall" type="Sprite" parent="Decor"]
+visible = false
+self_modulate = Color( 1, 1, 1, 0.188235 )
+material = SubResource( 23 )
+position = Vector2( 497, -409 )
+texture = ExtResource( 20 )
+
+[node name="Main" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="ColorRect" type="ColorRect" parent="Main"]
+visible = false
+anchor_top = 0.5
+anchor_bottom = 0.5
+margin_left = -438.0
+margin_top = -1255.0
+margin_right = 495.0
+margin_bottom = 1256.0
+mouse_filter = 2
+color = Color( 0, 0, 0, 0.317647 )
+
+[node name="Ratto" type="TextureRect" parent="Main"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -295.0
+margin_top = -138.0
+margin_right = -14.0
+margin_bottom = 70.0
+rect_scale = Vector2( 2, 2 )
+texture = ExtResource( 1 )
+expand = true
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Sandbox" type="TextureRect" parent="Main"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -293.0
+margin_top = 139.0
+margin_right = -12.0
+margin_bottom = 241.99
+rect_rotation = -2.05571
+rect_scale = Vector2( 2, 2 )
+texture = ExtResource( 7 )
+expand = true
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Play" type="TextureButton" parent="Main"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -128.0
+margin_top = 347.0
+margin_right = 72.0
+margin_bottom = 433.0
+rect_rotation = -15.0
+rect_scale = Vector2( 1.5, 1.5 )
+rect_pivot_offset = Vector2( 105.508, 43.6714 )
+focus_mode = 0
+enabled_focus_mode = 0
+texture_normal = ExtResource( 3 )
+texture_hover = ExtResource( 4 )
+expand = true
+
+[node name="Sprite" type="Sprite" parent="Main/Play"]
+self_modulate = Color( 1, 1, 1, 0 )
+show_behind_parent = true
+position = Vector2( 100.136, 42.6555 )
+texture = ExtResource( 4 )
+
+[node name="ButtonClickAnimation" type="AnimationPlayer" parent="Main"]
+anims/OptionsButton = SubResource( 5 )
+anims/PlayButton = SubResource( 1 )
+anims/RESET = SubResource( 2 )
+
+[node name="Titlebob" type="AnimationPlayer" parent="Main"]
+autoplay = "tITLTEBOV"
+anims/RESET = SubResource( 8 )
+anims/tITLTEBOV = SubResource( 7 )
+
+[node name="PlayAnimation" type="AnimationPlayer" parent="Main"]
+autoplay = "Play"
+anims/Play = SubResource( 11 )
+anims/RESET = SubResource( 12 )
+
+[node name="FightMeText" type="Node2D" parent="."]
+visible = false
+
+[node name="FIGHTME" type="Label" parent="FightMeText"]
+margin_left = 19.0
+margin_top = 15.0
+margin_right = 171.0
+margin_bottom = 45.0
+custom_colors/font_color = Color( 1, 0, 0, 1 )
+custom_fonts/font = ExtResource( 24 )
+text = "FIGHT ME."
+script = ExtResource( 25 )
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2( 512, 300 )
+current = true
+script = ExtResource( 19 )
+
+[node name="LoadingScreen" parent="Camera2D" instance=ExtResource( 14 )]
+visible = false
+
+[node name="Version" type="CanvasLayer" parent="."]
+layer = 2
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource( 6 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Funny" type="Sprite" parent="."]
+material = SubResource( 17 )
+position = Vector2( 589, -148 )
+scale = Vector2( 3.48333, 3.48333 )
+texture = ExtResource( 20 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Fades" type="AnimationPlayer" parent="."]
+autoplay = "FadeIn"
+anims/FadeIn = SubResource( 28 )
+anims/FadeOut = SubResource( 30 )
+anims/RESET = SubResource( 29 )
+
+[node name="Lava" type="ColorRect" parent="."]
+visible = false
+self_modulate = Color( 1, 1, 1, 0.658824 )
+material = SubResource( 33 )
+margin_left = -2629.0
+margin_top = -1892.0
+margin_right = 3746.0
+margin_bottom = 2228.0
+mouse_filter = 2
+
+[node name="Fade" type="ColorRect" parent="."]
+material = SubResource( 31 )
+margin_left = -2085.0
+margin_top = -1740.0
+margin_right = 3330.0
+margin_bottom = 2022.0
+mouse_filter = 2
+color = Color( 1, 1, 1, 0 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[connection signal="button_up" from="Decor/SoCool" to="." method="_on_SoCool_button_up"]
+[connection signal="mouse_entered" from="Decor/SoCool" to="." method="_on_MapTile_mouse_entered"]
+[connection signal="mouse_exited" from="Decor/SoCool" to="." method="_on_MapTile_mouse_exited"]
+[connection signal="button_up" from="Main/Play" to="." method="_on_Play_button_up"]
+[connection signal="mouse_entered" from="Main/Play" to="." method="_on_Play_mouse_entered"]
+[connection signal="animation_finished" from="Fades" to="." method="_on_Fades_animation_finished"]

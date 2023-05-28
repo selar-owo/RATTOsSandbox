@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/y2mate.com - Whispered Vows of Infamy ULTRAKILL Treachery First 91 Fanmade OST.mp3-81e3671f66cedbb8ec5976313c0f2268.mp3str"
+
+[deps]
+
+source_file="res://sounds/songs/y2mate.com - Whispered Vows of Infamy ULTRAKILL Treachery First 91 Fanmade OST.mp3"
+dest_files=[ "res://.import/y2mate.com - Whispered Vows of Infamy ULTRAKILL Treachery First 91 Fanmade OST.mp3-81e3671f66cedbb8ec5976313c0f2268.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

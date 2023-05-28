@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Pump.mp3-e8208d0ff189a04f5489847ce7280ed2.mp3str"
+
+[deps]
+
+source_file="res://sounds/GunNoises/Pump.mp3"
+dest_files=[ "res://.import/Pump.mp3-e8208d0ff189a04f5489847ce7280ed2.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0
