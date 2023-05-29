@@ -283,7 +283,6 @@ texture = ExtResource( 6 )
 [node name="littleshits" type="AnimatedSprite" parent="VisualsAndAudioTab/PhysGun/Sprite"]
 material = SubResource( 14 )
 frames = SubResource( 11 )
-frame = 6
 playing = true
 
 [node name="Glow" type="Sprite" parent="VisualsAndAudioTab/PhysGun/Sprite"]
