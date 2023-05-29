@@ -26,24 +26,36 @@ onready var mods = $ExperimentalTab/Mods
 
 signal hidePause
 
+var SHUTTHEFUCKUPDUMBASSSLIDER := true
+
 func _ready():
 	open_tab(0)
 	loadSettings()
 	slider_changed.volume_db = 1.055
 
 func _process(delta):
-	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Master"), Globals.volume)
+	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Master"), SaveSettings.load_cfg("VisualsAudio","Volume"))
 
 func loadSettings():
 	volume_slider.value = SaveSettings.load_cfg("VisualsAudio","Volume")
-	show_fps.pressed = Globals.fpsCounter
-	fullscreen.pressed = OS.window_fullscreen
-	music.pressed = Globals.musicToggle
-	glow.pressed = Globals.glowOn
-	phys_gun_color.color = Globals.physColor
-	show_use_indicator.pressed = Globals.show_indicator
-	mods.pressed = Globals.mods
-	main_menu_song.play()
+	show_fps.pressed = SaveSettings.load_cfg("VisualsAudio","ShowFPS")
+	fullscreen.pressed = SaveSettings.load_cfg("VisualsAudio","Fullscreen")
+	music.pressed = SaveSettings.load_cfg("Experimental","Music")
+	glow.pressed = SaveSettings.load_cfg("Experimental","Glow")
+	phys_gun_color.color = SaveSettings.load_cfg("VisualsAudio","PhysColor")
+	show_use_indicator.pressed = SaveSettings.load_cfg("VisualsAudio","ShowUseIndicator")
+	mods.pressed = SaveSettings.load_cfg("Experimental","Mods")
+	interact_with_physics.pressed = SaveSettings.load_cfg("Experimental","InteractPhysics")
+	
+	glow_physgun.self_modulate = SaveSettings.load_cfg("VisualsAudio","PhysColor")
+	littleshits.self_modulate = SaveSettings.load_cfg("VisualsAudio","PhysColor")
+	
+	
+	SHUTTHEFUCKUPDUMBASSSLIDER = false
+	
+	yield(get_tree().create_timer(0.1),"timeout")
+	if main_menu is Control:
+		main_menu_song.play()
 
 func _on_Exit_button_up() -> void:
 	if main_menu is Control:
@@ -78,34 +90,35 @@ func _on_Experimental_button_up():
 #fucking buttons
 func _on_Fullscreen_toggled(button_pressed):
 	OS.window_fullscreen = button_pressed
+	SaveSettings.save_cfg("VisualsAudio","Fullscreen",button_pressed)
 
 func _on_ShowFPS_toggled(button_pressed):
-	Globals.fpsCounter = button_pressed
+	SaveSettings.save_cfg("VisualsAudio","ShowFPS",button_pressed)
 
 func _on_Glow_toggled(button_pressed):
-	Globals.glowOn = button_pressed
+	SaveSettings.save_cfg("Experimental","Glow",button_pressed)
 
 func _on_ShowUseIndicator_toggled(button_pressed):
-	Globals.show_indicator = button_pressed
+	SaveSettings.save_cfg("VisualsAudio","ShowUseIndicator",button_pressed)
 
 func _on_PhysGunColor_color_changed(color):
-	Globals.physColor = color
+	SaveSettings.save_cfg("VisualsAudio","PhysColor",color)
 	glow_physgun.self_modulate = color
 	littleshits.self_modulate = color
 
 func _on_InteractWithPhysics_toggled(button_pressed):
-	Globals.interact_with_physics = button_pressed
+	SaveSettings.save_cfg("Experimental","InteractPhysics",button_pressed)
 
 func _on_Music_toggled(button_pressed):
-	Globals.musicToggle = button_pressed
+	SaveSettings.save_cfg("Experimental","Music",button_pressed)
 
 func _on_VolumeSlider_value_changed(value):
-	Globals.volume = value
-	SaveSettings.save_cfg("VisualsAudio","Volume",Globals.volume)
-	slider_changed.play()
+	SaveSettings.save_cfg("VisualsAudio","Volume",value)
+	if !SHUTTHEFUCKUPDUMBASSSLIDER:
+		slider_changed.play()
 
 func _on_ControlsButton_button_up():
 	controls.visible = !controls.visible
 
 func _on_Mods_toggled(button_pressed):
-	Globals.mods = button_pressed
+	SaveSettings.save_cfg("Experimental","Mods",button_pressed)

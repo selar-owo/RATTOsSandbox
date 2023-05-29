@@ -85,7 +85,7 @@ func agoodfunctionname():
 
 func settingsUpdate():
 	if worldenv != null:
-		worldenv.environment.glow_enabled = Globals.glowOn
+		worldenv.environment.glow_enabled = SaveSettings.load_cfg("Experimental","Glow")
 
 func map():
 	mapCam.current = Globals.mapOn

@@ -25,7 +25,7 @@ func _ready() -> void:
 
 func _process(delta):
 	move_bg_with_camera()
-	mods_button.visible = Globals.mods
+	mods_button.visible = SaveSettings.load_cfg("Experimental","Mods")
 
 func load_version_number():
 	var is_debug := ""

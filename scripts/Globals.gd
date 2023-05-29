@@ -32,28 +32,28 @@ var pistolEquip:bool = false
 var is_paused:bool = false
 var does_have_goober := false
 var QmenuOpen := false
-var camera_zoom := 0.55
+var camera_zoom := 0.65
 var current_tip:String
 
 #version shit
 var version_number := [
 	"1.1.0" ,#the number
-	"mods when mods", #the name
+	"Qualities", #the name
 	"_beta", #like beta or like aplha
 ]
 
 #settings
-var fpsCounter = true
-var playerSprite
-var glowOn := false
-var musicToggle := false
-var volume:float
-var physColor:Color = Color(0.666667, 0.780392, 1) #0.41,0.83,1
-var uitrans := 0.6
-var show_indicator := true
-var interact_with_physics := false
 var casing := false
-var mods := false
+var uitrans := 0.6
+#var fpsCounter = true
+#var playerSprite
+#var glowOn := false
+#var musicToggle := false
+#var volume:float
+#var physColor:Color = Color(0.666667, 0.780392, 1) #0.41,0.83,1
+#var show_indicator := true
+#var interact_with_physics := false
+#var mods := false
 
 func _process(delta):
 	if Input.is_action_just_pressed("fullscreen"):

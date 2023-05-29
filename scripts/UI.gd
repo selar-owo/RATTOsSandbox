@@ -191,7 +191,8 @@ func kriz_shut_the_fuck_up_omg_you_jojo_fag():
 		return
 
 func ui_trans_option():
-	bottomback.modulate.a = Globals.uitrans
+	pass
+#	bottomback.modulate.a = Globals.uitrans
 
 func pause_screen():
 	var options_open
@@ -214,7 +215,7 @@ func pause_screen():
 	optionsMenu.visible = optionsOn
 
 func fpsCounter(delta):
-	if Globals.fpsCounter == true:
+	if SaveSettings.load_cfg("VisualsAudio","ShowFPS") == true:
 		fps.text = str(round(1 / delta))
 		fps.show()
 	else:

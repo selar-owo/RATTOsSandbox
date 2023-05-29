@@ -47,8 +47,8 @@ func setPlayerTexture():
 		sprite.set_texture(Globals.playerSprite)
 
 func physColor():
-	held_sprite.self_modulate = Globals.physColor
-	phys_glow.self_modulate = Globals.physColor
+	held_sprite.self_modulate = SaveSettings.load_cfg("VisualsAudio","PhysColor")
+	phys_glow.self_modulate = SaveSettings.load_cfg("VisualsAudio","PhysColor")
 
 func _physics_process(delta: float) -> void:
 	if old_style == false:
@@ -93,9 +93,9 @@ func new_movement(delta):
 		input.x = Input.get_action_raw_strength("move_right") - Input.get_action_strength("move_left")
 		input.y = Input.get_action_strength("move_down") - Input.get_action_strength("move_up")
 		velocity = lerp(velocity,input * cur_speed,acceleration * delta)
-		move_and_slide(velocity,Vector2.UP,false,4,0.785398,!Globals.interact_with_physics)
+		move_and_slide(velocity,Vector2.UP,false,4,0.785398,!SaveSettings.load_cfg("Experimental","InteractPhysics"))
 		
-		if Globals.interact_with_physics:
+		if SaveSettings.load_cfg("Experimental","InteractPhysics"):
 			for index in get_slide_count():
 				var collision = get_slide_collision(index)
 				if collision.collider.is_class("RigidBody2D"):

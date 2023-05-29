@@ -161,7 +161,6 @@ margin_right = 1014.0
 margin_bottom = 600.0
 
 [node name="VisualsAndAudioTab" type="Control" parent="."]
-visible = false
 margin_left = 413.0
 margin_top = 90.0
 margin_right = 961.0
@@ -284,6 +283,7 @@ texture = ExtResource( 6 )
 [node name="littleshits" type="AnimatedSprite" parent="VisualsAndAudioTab/PhysGun/Sprite"]
 material = SubResource( 14 )
 frames = SubResource( 11 )
+frame = 6
 playing = true
 
 [node name="Glow" type="Sprite" parent="VisualsAndAudioTab/PhysGun/Sprite"]
@@ -371,6 +371,7 @@ t - teleport to cursor
 m - toggle map view"
 
 [node name="ExperimentalTab" type="Control" parent="."]
+visible = false
 margin_left = 413.0
 margin_top = 90.0
 margin_right = 961.0
@@ -439,6 +440,7 @@ icon_align = 1
 expand_icon = true
 
 [node name="Mods" type="CheckBox" parent="ExperimentalTab"]
+visible = false
 margin_left = -2.0
 margin_top = 148.0
 margin_right = 186.0

@@ -222,7 +222,7 @@ func set_keycard_sprite():
 		sprite.set_texture(ResourceLoader.load(str("res://sprites/POCkeycard",keycard_id,".png")))
 
 func useable_tag_indicator():
-	if useable and Globals.show_indicator:
+	if useable and SaveSettings.load_cfg("VisualsAudio","ShowUseIndicator"):
 		var useable_interaction_indicator := preload("res://scenes/UseableIndicator.tscn").instance()
 		print(self.get_name())
 		useable_interaction_indicator.hitbox_size = $InteractionArea/CollisionShape2D.shape.extents
