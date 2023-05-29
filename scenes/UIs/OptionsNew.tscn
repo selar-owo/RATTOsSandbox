@@ -267,10 +267,10 @@ custom_fonts/font = ExtResource( 2 )
 text = "physgun color"
 
 [node name="PhysGunColor" type="ColorPicker" parent="VisualsAndAudioTab/PhysGun"]
-margin_left = 407.0
-margin_top = 146.0
-margin_right = 715.0
-margin_bottom = 582.0
+margin_left = 411.0
+margin_top = 150.0
+margin_right = 719.0
+margin_bottom = 586.0
 rect_scale = Vector2( 0.5, 0.5 )
 presets_enabled = false
 presets_visible = false
@@ -284,7 +284,6 @@ texture = ExtResource( 6 )
 [node name="littleshits" type="AnimatedSprite" parent="VisualsAndAudioTab/PhysGun/Sprite"]
 material = SubResource( 14 )
 frames = SubResource( 11 )
-frame = 2
 playing = true
 
 [node name="Glow" type="Sprite" parent="VisualsAndAudioTab/PhysGun/Sprite"]
@@ -293,6 +292,7 @@ position = Vector2( 3.22575, -26.7742 )
 texture = ExtResource( 7 )
 
 [node name="PhysicsAndStuffTab" type="Control" parent="."]
+visible = false
 margin_left = 413.0
 margin_top = 90.0
 margin_right = 961.0
@@ -438,6 +438,20 @@ text = "glow"
 icon_align = 1
 expand_icon = true
 
+[node name="Mods" type="CheckBox" parent="ExperimentalTab"]
+margin_left = -2.0
+margin_top = 148.0
+margin_right = 186.0
+margin_bottom = 186.0
+rect_pivot_offset = Vector2( 50, 13 )
+focus_mode = 0
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_fonts/font = SubResource( 2 )
+enabled_focus_mode = 0
+text = "mods"
+icon_align = 1
+expand_icon = true
+
 [node name="Title" type="TextureRect" parent="."]
 anchor_left = 0.5
 anchor_top = 1.0
@@ -463,3 +477,4 @@ expand = true
 [connection signal="toggled" from="ExperimentalTab/InteractWithPhysics" to="." method="_on_InteractWithPhysics_toggled"]
 [connection signal="toggled" from="ExperimentalTab/Music" to="." method="_on_Music_toggled"]
 [connection signal="toggled" from="ExperimentalTab/Glow" to="." method="_on_Glow_toggled"]
+[connection signal="toggled" from="ExperimentalTab/Mods" to="." method="_on_Mods_toggled"]

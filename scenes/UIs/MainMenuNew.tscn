@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=2]
+[gd_scene load_steps=28 format=2]
 
 [ext_resource path="res://RattoBox0.6VersionNewest.png" type="Texture" id=1]
 [ext_resource path="res://sprites/MeatMan.png" type="Texture" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://sprites/PlayButton.png" type="Texture" id=5]
 [ext_resource path="res://sprites/PlayButtonSelected.png" type="Texture" id=6]
 [ext_resource path="res://scenes/UIs/OptionsNew.tscn" type="PackedScene" id=7]
+[ext_resource path="res://sprites/ModsButton.png" type="Texture" id=8]
 [ext_resource path="res://scripts/MainMenuNew.gd" type="Script" id=9]
 [ext_resource path="res://sounds/songs/tomp3.cc - Flood Escape 2 OST Lobby 2020 Version.mp3" type="AudioStream" id=10]
 [ext_resource path="res://sounds/y2mate.com - Rat Sounds Effect.mp3" type="AudioStream" id=11]
@@ -20,6 +21,7 @@
 [ext_resource path="res://scripts/Camera2D.gd" type="Script" id=19]
 [ext_resource path="res://MinecraftFive-Bold.ttf" type="DynamicFontData" id=20]
 [ext_resource path="res://scenes/UIs/MapSelectionNew.tscn" type="PackedScene" id=21]
+[ext_resource path="res://sprites/ModsButtonSelected.png" type="Texture" id=22]
 
 [sub_resource type="Animation" id=5]
 resource_name = "OptionsButton"
@@ -217,7 +219,6 @@ volume_db = -20.8
 [node name="MainMenu" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 10 )
 volume_db = -14.0
-autoplay = true
 
 [node name="rat squeaking" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 11 )
@@ -364,6 +365,18 @@ anims/RESET = SubResource( 2 )
 [node name="Titlebob" type="AnimationPlayer" parent="Main"]
 autoplay = "TitleBob"
 anims/TitleBob = SubResource( 3 )
+
+[node name="Mods" type="TextureButton" parent="Main"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -84.0
+margin_top = 473.0
+margin_right = 67.0
+margin_bottom = 513.0
+rect_scale = Vector2( 1.5, 1.5 )
+rect_pivot_offset = Vector2( 75.5, 20 )
+texture_normal = ExtResource( 8 )
+texture_hover = ExtResource( 22 )
 
 [node name="Options" parent="." instance=ExtResource( 7 )]
 margin_top = 600.0

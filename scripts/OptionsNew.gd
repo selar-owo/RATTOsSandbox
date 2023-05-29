@@ -3,6 +3,8 @@ extends Control
 onready var main_menu := $".."
 onready var slider_changed = $SliderChanged
 
+onready var main_menu_song = $"../MainMenu"
+
 onready var visuals_and_audio_tab := $VisualsAndAudioTab
 onready var physics_and_stuff_tab := $PhysicsAndStuffTab
 onready var experimental_tab := $ExperimentalTab
@@ -20,6 +22,7 @@ onready var glow_physgun = $VisualsAndAudioTab/PhysGun/Sprite/Glow
 
 onready var interact_with_physics = $ExperimentalTab/InteractWithPhysics
 onready var music = $ExperimentalTab/Music
+onready var mods = $ExperimentalTab/Mods
 
 signal hidePause
 
@@ -32,13 +35,15 @@ func _process(delta):
 	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Master"), Globals.volume)
 
 func loadSettings():
-	volume_slider.value = Globals.volume
+	volume_slider.value = SaveSettings.load_cfg("VisualsAudio","Volume")
 	show_fps.pressed = Globals.fpsCounter
 	fullscreen.pressed = OS.window_fullscreen
 	music.pressed = Globals.musicToggle
 	glow.pressed = Globals.glowOn
 	phys_gun_color.color = Globals.physColor
 	show_use_indicator.pressed = Globals.show_indicator
+	mods.pressed = Globals.mods
+	main_menu_song.play()
 
 func _on_Exit_button_up() -> void:
 	if main_menu is Control:
@@ -96,7 +101,11 @@ func _on_Music_toggled(button_pressed):
 
 func _on_VolumeSlider_value_changed(value):
 	Globals.volume = value
+	SaveSettings.save_cfg("VisualsAudio","Volume",Globals.volume)
 	slider_changed.play()
 
 func _on_ControlsButton_button_up():
 	controls.visible = !controls.visible
+
+func _on_Mods_toggled(button_pressed):
+	Globals.mods = button_pressed

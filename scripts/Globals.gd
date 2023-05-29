@@ -38,7 +38,7 @@ var current_tip:String
 #version shit
 var version_number := [
 	"1.1.0" ,#the number
-	"grenades, so cool!", #the name
+	"mods when mods", #the name
 	"_beta", #like beta or like aplha
 ]
 
@@ -53,6 +53,7 @@ var uitrans := 0.6
 var show_indicator := true
 var interact_with_physics := false
 var casing := false
+var mods := false
 
 func _process(delta):
 	if Input.is_action_just_pressed("fullscreen"):

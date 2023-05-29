@@ -78,7 +78,6 @@ export(bool) var wisetree:bool = false
 export(bool) var boombox:bool = false
 export(bool) var football:bool = false
 export(bool) var hatch:bool = false
-onready var save_file = SaveFile.game_data
 onready var goobs:Node = $Goobs
 onready var amogos := $amogos
 onready var piston_head := $PistonHead
@@ -701,8 +700,6 @@ func tag(delta):
 			if wisetree:
 				var creatures := ["res://sprites/gog creatura-20230303T155947Z-001/gog creatura/Copy_of_DALL_E_2023-03-02_18.12.30-removebg-preview.png", "res://sprites/gog creatura-20230303T155947Z-001/gog creatura/Copy_of_DALL_E_2023-03-02_18.12.35-removebg-preview.png", "res://sprites/gog creatura-20230303T155947Z-001/gog creatura/Copy_of_DALL_E_2023-03-02_18.13.43-removebg-preview.png", "res://sprites/gog creatura-20230303T155947Z-001/gog creatura/Copy_of_DALL_E_2023-03-02_18.13.44-removebg-preview.png", "res://sprites/gog creatura-20230303T155947Z-001/gog creatura/Copy_of_DALL_E_2023-03-02_18.14.16-removebg-preview.png", "res://sprites/gog creatura-20230303T155947Z-001/gog creatura/Copy_of_DALL_E_2023-03-02_18.19.39-removebg-preview.png", "res://sprites/gog creatura-20230303T155947Z-001/gog creatura/Copy_of_DALL_E_2023-03-02_18.20.41-removebg-preview.png", "res://sprites/gog creatura-20230303T155947Z-001/gog creatura/Copy_of_DALL_E_2023-03-03_03.27.49-removebg-preview.png", "res://sprites/gog creatura-20230303T155947Z-001/gog creatura/Copy_of_DALL_E_2023-03-03_03.28.06-removebg-preview.png", "res://sprites/gog creatura-20230303T155947Z-001/gog creatura/Copy_of_DALL_E_2023-03-03_03.28.11-removebg-preview.png", "res://sprites/gog creatura-20230303T155947Z-001/gog creatura/Copy_of_DALL_E_2023-03-03_03.28.32-removebg-preview.png", "res://sprites/gog creatura-20230303T155947Z-001/gog creatura/Copy_of_DALL_E_2023-03-03_03.29.13-removebg-preview.png", "res://sprites/gog creatura-20230303T155947Z-001/gog creatura/DALL_E_2023-03-02_18.12.33-removebg-preview.png", "res://sprites/gog creatura-20230303T155947Z-001/gog creatura/DALL_E_2023-03-02_18.12.36-removebg-preview.png", "res://sprites/gog creatura-20230303T155947Z-001/gog creatura/DALL_E_2023-03-02_18.12.54-removebg-preview.png", "res://sprites/gog creatura-20230303T155947Z-001/gog creatura/DALL_E_2023-03-02_18.12.56-removebg-preview.png", "res://sprites/gog creatura-20230303T155947Z-001/gog creatura/DALL_E_2023-03-02_18.12.57-removebg-preview.png", "res://sprites/gog creatura-20230303T155947Z-001/gog creatura/DALL_E_2023-03-02_18.12.59-removebg-preview.png", "res://sprites/gog creatura-20230303T155947Z-001/gog creatura/DALL_E_2023-03-02_18.13.46-removebg-preview.png"]
 				var cum := randi() % creatures.size()
-				if save_file.meat_beaten:
-					queue_free()
 				
 				if cam_shake:
 					$"../../UI/TextureRect".show()

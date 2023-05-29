@@ -16,6 +16,7 @@ onready var fg := $Decor/FG
 
 onready var play_button := $Main/Play
 onready var options_button := $Main/Options
+onready var mods_button := $Main/Mods
 
 func _ready() -> void:
 	load_version_number()
@@ -24,6 +25,7 @@ func _ready() -> void:
 
 func _process(delta):
 	move_bg_with_camera()
+	mods_button.visible = Globals.mods
 
 func load_version_number():
 	var is_debug := ""

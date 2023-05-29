@@ -62,8 +62,8 @@ config/windows_native_icon="res://SpriteItsSprite.ico"
 [autoload]
 
 Globals="*res://scripts/Globals.gd"
-SaveFile="*res://scripts/save_file.gd"
 UniversalWeather="*res://scenes/UniversalWeather.tscn"
+SaveSettings="*res://scenes/SaveSettings.tscn"
 
 [debug]
 
