@@ -242,7 +242,7 @@ func change_qmenu_state(state):
 	tween.start()
 
 func QMenu():
-	if Input.is_action_just_pressed("QMenu") and player.qmenu_allowed:
+	if Input.is_action_just_pressed("QMenu") and player.qmenu_allowed or Input.is_action_just_pressed("QMenu") and player.passive_qmenu_allowed:
 		Globals.QmenuOpen = !Globals.QmenuOpen
 		
 		if Globals.QmenuOpen:

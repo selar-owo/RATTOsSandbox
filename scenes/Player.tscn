@@ -454,7 +454,7 @@ self_modulate = Color( 0.666667, 0.780392, 1, 1 )
 material = SubResource( 38 )
 frames = SubResource( 11 )
 animation = "New Anim but Cooler"
-frame = 6
+frame = 5
 playing = true
 offset = Vector2( 26, 0 )
 

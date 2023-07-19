@@ -5,6 +5,11 @@ export(bool) var qmenu_allowed := true
 export(bool) var noclip_allowed := true
 export(bool) var movement_allowed := true
 
+export(bool) var passive_teleport_allowed := true
+export(bool) var passive_qmenu_allowed := true
+export(bool) var passive_noclip_allowed := true
+export(bool) var passive_movement_allowed := true
+
 var sprintspeed:bool = true
 var walking := false
 export(int) var health = 100
@@ -84,7 +89,7 @@ func set_player_texture(path,hand_path = null):
 		hand_sprite.set_texture(ResourceLoader.load(hand_path))
 
 func new_movement(delta):
-	if movement_allowed:
+	if movement_allowed or passive_movement_allowed:
 		look_at(get_global_mouse_position())
 		var input = Vector2.ZERO
 		var cur_speed = speed
@@ -102,7 +107,7 @@ func new_movement(delta):
 					collision.collider.apply_impulse(position - collision.collider.position,-collision.normal * intertia)
 
 func movement(delta):
-	if movement_allowed:
+	if movement_allowed or passive_movement_allowed:
 		look_at(get_global_mouse_position())
 		velocity = move_and_slide(velocity)
 		velocity.x = 0
@@ -207,7 +212,7 @@ func setup_weapons():
 
 func get_input():
 	
-	if Input.is_action_just_pressed("tp") and teleport_allowed:
+	if Input.is_action_just_pressed("tp") and teleport_allowed or Input.is_action_just_pressed("tp") and passive_teleport_allowed:
 		position = get_global_mouse_position()
 	
 	if Input.is_action_just_pressed("physbutton"):
@@ -225,7 +230,7 @@ func get_input():
 		Globals.slot1held = false
 		Globals.slot3held = false
 	
-	if Input.is_action_just_pressed("noclip") and noclip_allowed:
+	if Input.is_action_just_pressed("noclip") and noclip_allowed or Input.is_action_just_pressed("noclip") and passive_noclip_allowed:
 		Globals.noclip = !Globals.noclip
 		collision.disabled = Globals.noclip
 		if Globals.noclip == true:
