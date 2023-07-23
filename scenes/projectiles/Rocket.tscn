@@ -68,5 +68,7 @@ lifetime = 0.5
 local_coords = false
 process_material = SubResource( 8 )
 
+[node name="Node2D" type="Node2D" parent="."]
+
 [connection signal="area_entered" from="HurtHitbox" to="." method="_on_RocketArea_area_entered"]
 [connection signal="body_entered" from="HurtHitbox" to="." method="_on_HurtHitbox_body_entered"]

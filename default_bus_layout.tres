@@ -1,4 +1,4 @@
-[gd_resource type="AudioBusLayout" load_steps=8 format=2]
+[gd_resource type="AudioBusLayout" load_steps=9 format=2]
 
 [sub_resource type="AudioEffectLowPassFilter" id=1]
 resource_name = "LowPassFilter"
@@ -21,6 +21,9 @@ resource_name = "BandLimitFilter"
 
 [sub_resource type="AudioEffectLowPassFilter" id=7]
 resource_name = "LowPassFilter"
+
+[sub_resource type="AudioEffectSpectrumAnalyzer" id=9]
+resource_name = "SpectrumAnalyzer"
 
 [resource]
 bus/1/name = "thisiswhatineedtobus.."
@@ -49,3 +52,11 @@ bus/2/volume_db = 0.0
 bus/2/send = "Master"
 bus/2/effect/0/effect = SubResource( 7 )
 bus/2/effect/0/enabled = true
+bus/3/name = "Music"
+bus/3/solo = false
+bus/3/mute = false
+bus/3/bypass_fx = false
+bus/3/volume_db = 0.0
+bus/3/send = "Master"
+bus/3/effect/0/effect = SubResource( 9 )
+bus/3/effect/0/enabled = true

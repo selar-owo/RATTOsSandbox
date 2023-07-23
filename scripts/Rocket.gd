@@ -10,6 +10,7 @@ onready var player := $"../Player"
 var rocket_exploded:bool
 
 var velocity = Vector2()
+var poopyfartxd = 0
 
 func _process(delta: float) -> void:
 	moving()
@@ -18,6 +19,10 @@ func moving():
 	velocity = Vector2(0,0)
 	velocity = Vector2(speed,0).rotated(rotation)
 	move_and_collide(velocity)
+
+func kriziknowyourip():
+	$Node2D.look_at(player.global_position)
+	rotation_degrees = $Node2D.rotation_degrees
 
 func _explode(size,damage_amount,ishandgun) -> void:
 	if !rocket_exploded:

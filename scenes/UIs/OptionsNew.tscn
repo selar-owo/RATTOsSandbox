@@ -266,10 +266,10 @@ custom_fonts/font = ExtResource( 2 )
 text = "physgun color"
 
 [node name="PhysGunColor" type="ColorPicker" parent="VisualsAndAudioTab/PhysGun"]
-margin_left = 411.0
-margin_top = 150.0
-margin_right = 719.0
-margin_bottom = 586.0
+margin_left = 419.0
+margin_top = 158.0
+margin_right = 727.0
+margin_bottom = 594.0
 rect_scale = Vector2( 0.5, 0.5 )
 presets_enabled = false
 presets_visible = false

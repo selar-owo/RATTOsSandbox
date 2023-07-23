@@ -358,7 +358,7 @@ one_shot = true
 [node name="GunShoot" type="AudioStreamPlayer2D" parent="."]
 position = Vector2( 27, 0 )
 stream = ExtResource( 1 )
-volume_db = -8.0
+volume_db = -13.571
 
 [node name="GunSprite" type="AnimatedSprite" parent="."]
 visible = false

@@ -550,7 +550,7 @@ func _on_UpdateGuns_button_up():
 	setup_UI_pic()
 
 func _on_Clog_animation_finished(anim_name):
-	get_tree().change_scene("res://scenes/Maps/BossArenas/ClogsDome.tscn")
+	get_tree().change_scene("res://scenes/Maps/BossArenas/WiseTree.tscn")
 
 func _on_FileDialog_file_selected(path: String) -> void:
 	player.set_player_texture(path)

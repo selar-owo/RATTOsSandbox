@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=31 format=2]
 
 [ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/Camera2D.tscn" type="PackedScene" id=2]
@@ -13,6 +13,63 @@
 [ext_resource path="res://sprites/droplet.png" type="Texture" id=11]
 [ext_resource path="res://sounds/ambience/y2mate.com - Rain sounds.mp3" type="AudioStream" id=12]
 [ext_resource path="res://sprites/vignette.png" type="Texture" id=13]
+[ext_resource path="res://scenes/funny/SexButton.tscn" type="PackedScene" id=14]
+[ext_resource path="res://sprites/SoCool.png" type="Texture" id=15]
+[ext_resource path="res://sounds/Ultrakill P2 Cerberus Room Theme.mp3" type="AudioStream" id=16]
+[ext_resource path="res://scenes/blocks/fire2d.shader" type="Shader" id=17]
+[ext_resource path="res://caption.png" type="Texture" id=18]
+
+[sub_resource type="NavigationPolygon" id=14]
+vertices = PoolVector2Array( -1155, -1204, 1310, -1038, 1374, 1073, -1117, 937 )
+polygons = [ PoolIntArray( 0, 1, 2, 3 ) ]
+outlines = [ PoolVector2Array( -1155, -1204, 1310, -1038, 1374, 1073, -1117, 937 ) ]
+
+[sub_resource type="Animation" id=9]
+resource_name = "HeCums"
+length = 5.0
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 3, 4.7, 5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0.215686 ), Color( 1, 1, 1, 0.215686 ), Color( 1, 0, 0, 0.215686 ) ]
+}
+
+[sub_resource type="Animation" id=10]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ) ]
+}
+
+[sub_resource type="OpenSimplexNoise" id=11]
+
+[sub_resource type="NoiseTexture" id=7]
+width = 1024
+height = 1024
+noise = SubResource( 11 )
+
+[sub_resource type="ShaderMaterial" id=12]
+shader = ExtResource( 17 )
+shader_param/root_color = Color( 1, 0.75, 0.3, 1 )
+shader_param/tip_color = Color( 1, 0.03, 0.001, 1 )
+shader_param/fire_alpha = 0.277
+shader_param/fire_speed = Vector2( 0, 1 )
+shader_param/fire_aperture = 0.22
+shader_param/noise_tex = SubResource( 7 )
 
 [sub_resource type="CanvasItemMaterial" id=5]
 
@@ -20,7 +77,7 @@
 offsets = PoolRealArray( 0, 0.333333, 0.708333, 1 )
 colors = PoolColorArray( 1, 1, 1, 0, 1, 1, 1, 0.65098, 1.2, 1.2, 1.2, 0.65098, 1.2, 1.2, 1.2, 0 )
 
-[sub_resource type="GradientTexture" id=7]
+[sub_resource type="GradientTexture" id=13]
 gradient = SubResource( 2 )
 
 [sub_resource type="Curve" id=6]
@@ -41,7 +98,7 @@ initial_velocity = 400.0
 orbit_velocity = 0.0
 orbit_velocity_random = 0.0
 radial_accel = 18.95
-color_ramp = SubResource( 7 )
+color_ramp = SubResource( 13 )
 
 [node name="RainyIsland" type="Node2D"]
 script = ExtResource( 3 )
@@ -80,7 +137,20 @@ tile_data = PoolIntArray( -2949129, 10, 2, -2949128, 10, 65536, -2949127, 10, 13
 
 [node name="Camera2D" parent="Player" instance=ExtResource( 2 )]
 
+[node name="Navigation2D" type="Navigation2D" parent="."]
+
+[node name="NavigationPolygonInstance" type="NavigationPolygonInstance" parent="Navigation2D"]
+navpoly = SubResource( 14 )
+__meta__ = {
+"_edit_lock_": true
+}
+
 [node name="IngameObjects" type="Node2D" parent="."]
+
+[node name="sexbutton" parent="IngameObjects" instance=ExtResource( 14 )]
+position = Vector2( -462, -53 )
+dont_spawn = true
+iceCreamTrue = false
 
 [node name="Objects" type="Node2D" parent="."]
 
@@ -100,6 +170,29 @@ mouse_filter = 2
 texture = ExtResource( 13 )
 expand = true
 
+[node name="SoCool" type="Node2D" parent="UI"]
+position = Vector2( 537, 335 )
+
+[node name="SoCool" type="Sprite" parent="UI/SoCool"]
+modulate = Color( 1, 1, 1, 0 )
+scale = Vector2( 5.86878, 3.62946 )
+texture = ExtResource( 15 )
+
+[node name="SoCool" type="AnimationPlayer" parent="UI/SoCool/SoCool"]
+anims/HeCums = SubResource( 9 )
+anims/RESET = SubResource( 10 )
+
+[node name="P2CerebrusNoise" type="AudioStreamPlayer" parent="UI/SoCool"]
+stream = ExtResource( 16 )
+volume_db = -6.873
+
+[node name="Fire" type="Sprite" parent="UI"]
+visible = false
+material = SubResource( 12 )
+position = Vector2( 507, 256 )
+scale = Vector2( 0.76, 0.367002 )
+texture = ExtResource( 18 )
+
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = ExtResource( 5 )
 
@@ -113,3 +206,5 @@ visibility_rect = Rect2( -1000, -1000.01, 2000, 2000 )
 local_coords = false
 process_material = SubResource( 1 )
 texture = ExtResource( 11 )
+
+[connection signal="animation_finished" from="UI/SoCool/SoCool/SoCool" to="IngameObjects/sexbutton" method="_on_SoCool_animation_finished"]

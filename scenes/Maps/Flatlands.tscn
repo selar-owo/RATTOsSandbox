@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=2]
+[gd_scene load_steps=28 format=2]
 
 [ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/Camera2D.tscn" type="PackedScene" id=2]
@@ -17,7 +17,6 @@
 [ext_resource path="res://sprites/gog creatura-20230303T155947Z-001/gog creatura/Copy_of_DALL_E_2023-03-02_18.13.43-removebg-preview.png" type="Texture" id=15]
 [ext_resource path="res://scenes/blocks/fire2d.shader" type="Shader" id=16]
 [ext_resource path="res://sounds/Ultrakill P2 Cerberus Room Theme.mp3" type="AudioStream" id=17]
-[ext_resource path="res://scenes/funny/SexButton.tscn" type="PackedScene" id=18]
 [ext_resource path="res://sprites/SoCool.png" type="Texture" id=19]
 [ext_resource path="res://caption.png" type="Texture" id=20]
 
@@ -101,7 +100,7 @@ tracks/0/keys = {
 
 [sub_resource type="OpenSimplexNoise" id=6]
 
-[sub_resource type="NoiseTexture" id=7]
+[sub_resource type="NoiseTexture" id=9]
 width = 1024
 height = 1024
 noise = SubResource( 6 )
@@ -113,7 +112,7 @@ shader_param/tip_color = Color( 1, 0.03, 0.001, 1 )
 shader_param/fire_alpha = 0.277
 shader_param/fire_speed = Vector2( 0, 1 )
 shader_param/fire_aperture = 0.22
-shader_param/noise_tex = SubResource( 7 )
+shader_param/noise_tex = SubResource( 9 )
 
 [node name="Flatlands" type="Node2D"]
 script = ExtResource( 3 )
@@ -164,13 +163,8 @@ __meta__ = {
 [node name="IngameObjects" type="Node2D" parent="."]
 
 [node name="wisetree" parent="IngameObjects" instance=ExtResource( 11 )]
-position = Vector2( -6486, -71 )
+position = Vector2( -793, 41 )
 dont_spawn = true
-
-[node name="sexbutton" parent="IngameObjects" instance=ExtResource( 18 )]
-position = Vector2( -755, -49 )
-dont_spawn = true
-iceCreamTrue = false
 
 [node name="Objects" type="Node2D" parent="."]
 
@@ -253,4 +247,3 @@ texture = ExtResource( 20 )
 environment = ExtResource( 5 )
 
 [connection signal="animation_finished" from="UI/Clog" to="UI" method="_on_Clog_animation_finished"]
-[connection signal="animation_finished" from="UI/SoCool/SoCool/SoCool" to="IngameObjects/sexbutton" method="_on_SoCool_animation_finished"]

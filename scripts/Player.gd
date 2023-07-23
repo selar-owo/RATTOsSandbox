@@ -269,7 +269,7 @@ func render_line() -> void:
 		line.width = 1
 		line.z_index = -1
 		line.material = preload("res://BulletCanvas.tres")
-		line.default_color = Globals.physColor
+		line.default_color = SaveSettings.load_cfg("VisualsAudio","PhysColor")
 		line.add_point(held_sprite_unanim.global_position)
 		line.add_point(phys_glow.global_position)
 		var tween = get_tree().create_tween().set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_QUINT)

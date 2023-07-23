@@ -109,6 +109,8 @@ var creature_attacking := false #als taht
 
 var goob := 0
 
+var stable_rotation := rotation_degrees
+
 #ice creme
 export var flavors := []
 export var cone_type := 0
@@ -185,7 +187,7 @@ func _ready():
 	if placing and song != null:
 		song.stop()
 	
-	ui.console_add_line(str("Block ",self.get_name()," Generated."))
+#	ui.console_add_line(str("Block ",self.get_name()," Generated."))
 #	if rat_AI:
 #		print(rigid.get_name()," Rat AI Tag Loaded")
 #
@@ -332,13 +334,10 @@ func new_placing_block() -> void:
 			if Input.is_action_just_released("left_click"):
 				can_place = true
 			if Input.is_action_just_pressed("left_click") and can_place:
-				var node = self.duplicate()
-				node.dont_spawn = true
-				node.placing = false
-				node.position = get_global_mouse_position()
-				ingame_objects.add_child(node)
-				if Globals.phys == true:
-					node.mode = RigidBody2D.MODE_RIGID
+				spawn_duplicate()
+			if Input.is_action_pressed("rapid_spawn"):
+				spawn_duplicate()
+				yield(get_tree().create_timer(0.1),"timeout")
 			
 			if Input.is_action_just_pressed("QMenu") or Input.is_action_just_pressed("physbutton") or Input.is_action_just_pressed("pistolbutton") or Input.is_action_just_pressed("toolgunbutton"):
 				queue_free()
@@ -346,6 +345,14 @@ func new_placing_block() -> void:
 			if Input.is_action_just_pressed("phys_rotate"):
 				rotation_degrees += 45
 
+func spawn_duplicate():
+	var node = self.duplicate()
+	node.dont_spawn = true
+	node.placing = false
+	node.position = get_global_mouse_position()
+	ingame_objects.add_child(node)
+	if Globals.phys == true:
+		node.mode = RigidBody2D.MODE_RIGID
 
 func placingBlock():
 	if !dont_spawn:
@@ -369,6 +376,7 @@ func placingBlock():
 func physInteraction(delta):
 	if Input.is_action_pressed("left_click") and Globals.slot1held == true and mouse == true and Globals.physgunPicking == false:
 		gunning = true
+		stable_rotation = self.rotation_degrees
 		Globals.physgunPicking = true
 		if collisionbox != null:
 			collisionbox.disabled = true
@@ -376,11 +384,14 @@ func physInteraction(delta):
 		var direction2 = get_global_mouse_position() - position
 		sprite.rotation_degrees = lerp(sprite.rotation_degrees,direction2.x * -1,0.4)
 		if Input.is_action_just_pressed("phys_rotate"):
-			rotation_degrees += 45
+			stable_rotation += 45
+			var tween := get_tree().create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_ELASTIC)
+			tween.tween_property(self,"rotation_degrees",stable_rotation,1)
 		
 		if Input.is_action_just_released("left_click") or Input.is_action_just_pressed("physbutton") or Input.is_action_just_pressed("toolgunbutton") or Input.is_action_just_pressed("pistolbutton"):
 			gunning = false
 			sprite.rotation_degrees = 0
+			stable_rotation = rotation_degrees
 			collisionbox.disabled = false
 			if rigid.mode != RigidBody2D.MODE_STATIC:
 				var direction = get_global_mouse_position() - position
@@ -846,7 +857,7 @@ func _on_turnOffMusic_area_entered(area):
 	if area.get_name() == "intArea":
 		cam_shake = true
 		tween_boy.interpolate_property($"../../UI/darkni","self_modulate:a",$"../../UI/darkni".self_modulate.a,0.3,2,Tween.TRANS_QUINT,Tween.EASE_OUT)
-		tween_boy.interpolate_property($"../../asItGrows","color",$"../../asItGrows".color,Color(0.384314, 0, 0),2,Tween.TRANS_QUINT,Tween.EASE_OUT)
+		tween_boy.interpolate_property(UniversalWeather,"color",UniversalWeather.color,Color(0.384314, 0, 0),2,Tween.TRANS_QUINT,Tween.EASE_OUT)
 		tween_boy.interpolate_property($"../../Player/Camera2D","zoom",$"../../Player/Camera2D".zoom,Vector2(0.3,0.3),2,Tween.TRANS_QUINT,Tween.EASE_OUT)
 		tween_boy.interpolate_property($"../../Music","pitch_scale",$"../../Music".pitch_scale,0.2,2,Tween.TRANS_QUINT,Tween.EASE_OUT)
 		tween_boy.interpolate_property($"../../Music","volume_db",$"../../Music".volume_db,-12,2,Tween.TRANS_QUINT,Tween.EASE_OUT)
@@ -856,7 +867,7 @@ func _on_turnOffMusic_area_exited(area):
 	if area.get_name() == "intArea":
 		cam_shake = false
 		tween_boy.interpolate_property($"../../UI/darkni","self_modulate:a",$"../../UI/darkni".self_modulate.a,0,2,Tween.TRANS_QUINT,Tween.EASE_OUT)
-		tween_boy.interpolate_property($"../../asItGrows","color",$"../../asItGrows".color,Color(1,1,1),2,Tween.TRANS_QUINT,Tween.EASE_OUT)
+		tween_boy.interpolate_property(UniversalWeather,"color",UniversalWeather.color,Color(1,1,1),2,Tween.TRANS_QUINT,Tween.EASE_OUT)
 		tween_boy.interpolate_property($"../../Player/Camera2D","zoom",$"../../Player/Camera2D".zoom,Vector2(Globals.camera_zoom,Globals.camera_zoom),2,Tween.TRANS_QUINT,Tween.EASE_OUT)
 		tween_boy.interpolate_property($"../../Music","pitch_scale",$"../../Music".pitch_scale,1,2,Tween.TRANS_QUINT,Tween.EASE_OUT)
 		tween_boy.interpolate_property($"../../Music","volume_db",$"../../Music".volume_db,-24,2,Tween.TRANS_QUINT,Tween.EASE_OUT)
