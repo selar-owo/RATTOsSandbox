@@ -68,6 +68,7 @@ script = ExtResource( 8 )
 script = ExtResource( 9 )
 
 [node name="Bar" type="Node2D" parent="HealthBars"]
+visible = false
 
 [node name="HealthBar" type="ProgressBar" parent="HealthBars/Bar"]
 margin_left = 17.0
@@ -108,7 +109,7 @@ margin_left = 18.0
 margin_top = 525.0
 margin_right = 82.0
 margin_bottom = 589.0
-value = 50.0
+value = 100.0
 texture_under = ExtResource( 3 )
 texture_progress = ExtResource( 2 )
 fill_mode = 3
@@ -176,7 +177,6 @@ text = "100"
 valign = 1
 
 [node name="Number" type="Node2D" parent="HealthBars"]
-visible = false
 
 [node name="HealthBar" type="ProgressBar" parent="HealthBars/Number"]
 self_modulate = Color( 1, 1, 1, 0.188235 )
@@ -201,6 +201,7 @@ rect_rotation = -89.9999
 rect_scale = Vector2( 1, 0.2 )
 custom_styles/fg = SubResource( 8 )
 custom_styles/bg = SubResource( 7 )
+value = 50.0
 percent_visible = false
 
 [node name="HealthCount" type="Label" parent="HealthBars/Number"]

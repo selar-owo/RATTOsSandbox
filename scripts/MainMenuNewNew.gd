@@ -13,7 +13,6 @@ func _ready():
 	get_tree().paused = false
 
 func _process(delta):
-	var a = -1
 	if Input.is_action_just_pressed("pause") and pop_menus.visible:
 		change_menu_state("close")
 

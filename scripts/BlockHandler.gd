@@ -37,6 +37,7 @@ export var ice_cream_machine:bool = false
 export var ice_cream_texture:bool = false
 export var so_cool_button := false
 export var sex_button := false
+export var reflective := false
 
 #AI tags
 export(bool) var angry_AI:bool = false
@@ -236,6 +237,8 @@ func teleport_meatboy():
 
 func damage(attack:Attack):
 	if !placing:
+		print("arse")
+		
 		if hurtable:
 			
 			if bleedable and health > 0:
@@ -375,8 +378,6 @@ func placingBlock():
 
 var doodad
 func physInteraction(delta):
-	
-	
 	if Input.is_action_pressed("left_click") and Globals.slot1held == true and mouse == true and Globals.physgunPicking == false:
 		gunning = true
 		doodad = get_global_mouse_position() - position
@@ -385,7 +386,7 @@ func physInteraction(delta):
 		if collisionbox != null:
 			collisionbox.disabled = true
 	if gunning == true:
-		var direction2 = get_global_mouse_position() - position
+		var direction2 = get_global_mouse_position() - position - doodad
 		sprite.rotation_degrees = lerp(sprite.rotation_degrees,direction2.x * -1,0.4)
 		if Input.is_action_just_pressed("phys_rotate"):
 			stable_rotation += 45
@@ -576,6 +577,7 @@ func tag(delta):
 		if isSpawning:
 			self.position = Vector2(self.position.x + rand_range(-1,1),self.position.y + rand_range(-1,1))
 			player.camera_shake(1,1)
+		
 		
 		#bobm
 		if bobm:

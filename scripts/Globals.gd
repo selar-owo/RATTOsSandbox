@@ -61,13 +61,11 @@ func _ready():
 func load_mods():
 	var caca = Directory.new()
 	if !caca.dir_exists("user://mods/"):
-		var fafafafafafafafafafafafaf = caca.open("user://")
 		var fartsghit6 = Directory.new()
 		fartsghit6.make_dir("user://mods/")
 	print("ok 1")
 	
 	var files = []
-	var fart = Directory.new()
 	var dir = Directory.new()
 	dir.open("user://mods/")
 	dir.list_dir_begin()

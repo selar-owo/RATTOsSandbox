@@ -1,4 +1,4 @@
-[gd_scene load_steps=50 format=2]
+[gd_scene load_steps=83 format=2]
 
 [ext_resource path="res://RATTOS.png" type="Texture" id=1]
 [ext_resource path="res://SANDBOX.png" type="Texture" id=2]
@@ -36,6 +36,19 @@
 [ext_resource path="res://scenes/Maps/TilemapTest.tscn" type="PackedScene" id=34]
 [ext_resource path="res://sprites/mapimages/TilemapTest.png" type="Texture" id=35]
 [ext_resource path="res://sprites/mapimages/Island.png" type="Texture" id=36]
+[ext_resource path="res://sprites/MM-slidergrabbed.png" type="Texture" id=37]
+[ext_resource path="res://sprites/MM-slider.png" type="Texture" id=38]
+[ext_resource path="res://sprites/MM-slidergrabbypart.png" type="Texture" id=39]
+[ext_resource path="res://sprites/MM-slidergrabbypartselected.png" type="Texture" id=40]
+[ext_resource path="res://sprites/MM-togglebutton.png" type="Texture" id=41]
+[ext_resource path="res://sprites/MM-arrows.png" type="Texture" id=42]
+[ext_resource path="res://sprites/MM-togglebuttonON.png" type="Texture" id=43]
+[ext_resource path="res://sprites/newPhysGun3.png" type="Texture" id=44]
+[ext_resource path="res://sprites/newPhysGun3Glow.png" type="Texture" id=45]
+[ext_resource path="res://sprites/PhysGunGlowReal.png" type="Texture" id=46]
+[ext_resource path="res://sprites/MM-togglebuttonhighlight.png" type="Texture" id=47]
+[ext_resource path="res://sprites/MM-selected.png" type="Texture" id=48]
+[ext_resource path="res://sprites/MM-togglebuttonhighlightempty.png" type="Texture" id=49]
 
 [sub_resource type="Animation" id=5]
 length = 0.001
@@ -325,6 +338,145 @@ font_data = ExtResource( 14 )
 size = 20
 outline_size = 2
 font_data = ExtResource( 14 )
+
+[sub_resource type="StyleBoxTexture" id=14]
+texture = ExtResource( 37 )
+region_rect = Rect2( 0, 0, 11, 11 )
+margin_left = 3.0
+margin_right = 3.0
+margin_top = 3.0
+margin_bottom = 3.0
+
+[sub_resource type="StyleBoxTexture" id=15]
+texture = ExtResource( 37 )
+region_rect = Rect2( 0, 0, 11, 11 )
+margin_left = 3.0
+margin_right = 3.0
+margin_top = 3.0
+margin_bottom = 3.0
+
+[sub_resource type="StyleBoxTexture" id=17]
+texture = ExtResource( 38 )
+region_rect = Rect2( 0, 0, 11, 11 )
+margin_left = 3.0
+margin_right = 3.0
+margin_top = 3.0
+margin_bottom = 3.0
+
+[sub_resource type="StyleBoxTexture" id=29]
+texture = ExtResource( 47 )
+region_rect = Rect2( 0, 0, 11, 11 )
+margin_left = 3.0
+margin_right = 3.0
+margin_top = 3.0
+margin_bottom = 3.0
+
+[sub_resource type="StyleBoxTexture" id=16]
+texture = ExtResource( 41 )
+margin_left = 3.0
+margin_right = 3.0
+margin_top = 3.0
+margin_bottom = 3.0
+
+[sub_resource type="StyleBoxTexture" id=30]
+texture = ExtResource( 47 )
+region_rect = Rect2( 0, 0, 11, 11 )
+margin_left = 3.0
+margin_right = 3.0
+margin_top = 3.0
+margin_bottom = 3.0
+
+[sub_resource type="ImageTexture" id=32]
+
+[sub_resource type="StyleBoxTexture" id=33]
+texture = ExtResource( 49 )
+region_rect = Rect2( 0, 0, 11, 11 )
+margin_left = 3.0
+margin_right = 3.0
+margin_top = 3.0
+margin_bottom = 3.0
+
+[sub_resource type="StyleBoxTexture" id=31]
+texture = ExtResource( 47 )
+region_rect = Rect2( 0, 0, 11, 11 )
+margin_left = 3.0
+margin_right = 3.0
+margin_top = 3.0
+margin_bottom = 3.0
+
+[sub_resource type="DynamicFont" id=18]
+size = 20
+outline_size = 2
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 14 )
+
+[sub_resource type="Theme" id=19]
+default_font = SubResource( 18 )
+CheckBox/icons/checked = ExtResource( 43 )
+CheckBox/icons/unchecked = ExtResource( 41 )
+HSlider/icons/grabber = ExtResource( 39 )
+HSlider/icons/grabber_highlight = ExtResource( 40 )
+HSlider/styles/grabber_area = SubResource( 14 )
+HSlider/styles/grabber_area_highlight = SubResource( 15 )
+HSlider/styles/slider = SubResource( 17 )
+Label/colors/font_color = Color( 0.913725, 0.952941, 0.968627, 1 )
+Label/colors/font_outline_modulate = Color( 0.0156863, 0.054902, 0.109804, 1 )
+OptionButton/icons/arrow = ExtResource( 42 )
+OptionButton/styles/hover = SubResource( 29 )
+OptionButton/styles/normal = SubResource( 16 )
+OptionButton/styles/pressed = SubResource( 30 )
+PopupMenu/icons/radio_checked = ExtResource( 48 )
+PopupMenu/icons/radio_unchecked = SubResource( 32 )
+PopupMenu/styles/hover = SubResource( 33 )
+PopupMenu/styles/panel = SubResource( 31 )
+
+[sub_resource type="AtlasTexture" id=20]
+flags = 1
+atlas = ExtResource( 45 )
+region = Rect2( 0, 0, 23, 10 )
+
+[sub_resource type="AtlasTexture" id=21]
+flags = 1
+atlas = ExtResource( 45 )
+region = Rect2( 23, 0, 23, 10 )
+
+[sub_resource type="AtlasTexture" id=22]
+flags = 1
+atlas = ExtResource( 45 )
+region = Rect2( 46, 0, 23, 10 )
+
+[sub_resource type="AtlasTexture" id=23]
+flags = 1
+atlas = ExtResource( 45 )
+region = Rect2( 69, 0, 23, 10 )
+
+[sub_resource type="AtlasTexture" id=24]
+flags = 1
+atlas = ExtResource( 45 )
+region = Rect2( 92, 0, 23, 10 )
+
+[sub_resource type="AtlasTexture" id=25]
+flags = 1
+atlas = ExtResource( 45 )
+region = Rect2( 115, 0, 23, 10 )
+
+[sub_resource type="AtlasTexture" id=26]
+flags = 1
+atlas = ExtResource( 45 )
+region = Rect2( 138, 0, 23, 10 )
+
+[sub_resource type="AtlasTexture" id=27]
+flags = 1
+atlas = ExtResource( 45 )
+region = Rect2( 161, 0, 23, 10 )
+
+[sub_resource type="SpriteFrames" id=28]
+animations = [ {
+"frames": [ SubResource( 20 ), SubResource( 21 ), SubResource( 22 ), SubResource( 23 ), SubResource( 24 ), SubResource( 25 ), SubResource( 26 ), SubResource( 27 ) ],
+"loop": true,
+"name": "default",
+"speed": 15.0
+} ]
 
 [sub_resource type="Animation" id=8]
 resource_name = "GoIn"
@@ -842,6 +994,9 @@ patch_margin_left = 10
 patch_margin_top = 10
 patch_margin_right = 10
 patch_margin_bottom = 10
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="Shadow" type="NinePatchRect" parent="MainMenu/PopMenus/Options/BG"]
 modulate = Color( 0, 0, 0, 1 )
@@ -855,6 +1010,9 @@ patch_margin_left = 10
 patch_margin_top = 10
 patch_margin_right = 10
 patch_margin_bottom = 10
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="Close" type="TextureButton" parent="MainMenu/PopMenus/Options"]
 margin_left = 848.0
@@ -977,6 +1135,7 @@ patch_margin_right = 10
 patch_margin_bottom = 10
 
 [node name="Visuals" type="Node2D" parent="MainMenu/PopMenus/Options"]
+visible = false
 
 [node name="Volume" type="HSlider" parent="MainMenu/PopMenus/Options/Visuals"]
 margin_left = 141.0
@@ -998,9 +1157,268 @@ theme = ExtResource( 18 )
 custom_fonts/font = SubResource( 11 )
 text = "volume"
 
+[node name="Fullscreen" type="CheckBox" parent="MainMenu/PopMenus/Options/Visuals"]
+margin_left = 185.0
+margin_top = 233.0
+margin_right = 209.0
+margin_bottom = 271.0
+rect_rotation = 89.9999
+rect_scale = Vector2( 2, 2 )
+focus_mode = 0
+theme = ExtResource( 18 )
+
+[node name="FullscreenLabel" type="Label" parent="MainMenu/PopMenus/Options/Visuals"]
+margin_left = 172.0
+margin_top = 236.0
+margin_right = 332.0
+margin_bottom = 266.0
+theme = ExtResource( 18 )
+custom_fonts/font = SubResource( 11 )
+text = "Fullscreen"
+
+[node name="ShowUseIndicator" type="CheckBox" parent="MainMenu/PopMenus/Options/Visuals"]
+margin_left = 185.0
+margin_top = 274.0
+margin_right = 209.0
+margin_bottom = 312.0
+rect_rotation = 89.9999
+rect_scale = Vector2( 2, 2 )
+focus_mode = 0
+theme = ExtResource( 18 )
+flat = true
+clip_text = true
+expand_icon = true
+
+[node name="ShowUseIndicator2" type="Label" parent="MainMenu/PopMenus/Options/Visuals"]
+margin_left = 172.0
+margin_top = 277.0
+margin_right = 426.0
+margin_bottom = 307.0
+theme = ExtResource( 18 )
+custom_fonts/font = SubResource( 11 )
+text = "show use indicator"
+
+[node name="ShowFPS" type="CheckBox" parent="MainMenu/PopMenus/Options/Visuals"]
+margin_left = 185.0
+margin_top = 319.0
+margin_right = 209.0
+margin_bottom = 357.0
+rect_rotation = 89.9999
+rect_scale = Vector2( 2, 2 )
+focus_mode = 0
+theme = ExtResource( 18 )
+flat = true
+clip_text = true
+expand_icon = true
+
+[node name="ShowFPSIndicator" type="Label" parent="MainMenu/PopMenus/Options/Visuals"]
+margin_left = 173.0
+margin_top = 322.0
+margin_right = 427.0
+margin_bottom = 352.0
+theme = ExtResource( 18 )
+custom_fonts/font = SubResource( 11 )
+text = "show fps"
+
+[node name="Zoom" type="SpinBox" parent="MainMenu/PopMenus/Options/Visuals"]
+margin_left = 141.0
+margin_top = 375.0
+margin_right = 215.0
+margin_bottom = 411.0
+theme = ExtResource( 18 )
+min_value = 0.1
+max_value = 0.6
+step = 0.01
+value = 0.6
+
+[node name="ZoomLabel" type="Label" parent="MainMenu/PopMenus/Options/Visuals"]
+margin_left = 224.0
+margin_top = 378.0
+margin_right = 525.0
+margin_bottom = 408.0
+theme = ExtResource( 18 )
+custom_fonts/font = SubResource( 11 )
+text = "zoom"
+
+[node name="HealthBarStyle" type="OptionButton" parent="MainMenu/PopMenus/Options/Visuals"]
+margin_left = 141.0
+margin_top = 439.0
+margin_right = 250.0
+margin_bottom = 475.0
+rect_scale = Vector2( 0.8, 0.8 )
+focus_mode = 0
+theme = SubResource( 19 )
+text = "number"
+
+[node name="HealthBarStyleLabel" type="Label" parent="MainMenu/PopMenus/Options/Visuals"]
+margin_left = 233.0
+margin_top = 438.0
+margin_right = 487.0
+margin_bottom = 468.0
+theme = ExtResource( 18 )
+custom_fonts/font = SubResource( 11 )
+text = "health bar style"
+
+[node name="PhysGunColor" type="ColorPicker" parent="MainMenu/PopMenus/Options/Visuals"]
+margin_left = 752.0
+margin_top = 325.0
+margin_right = 1060.0
+margin_bottom = 787.0
+rect_scale = Vector2( 0.4, 0.4 )
+
+[node name="PhysGun" type="Sprite" parent="MainMenu/PopMenus/Options/Visuals/PhysGunColor"]
+position = Vector2( -350, 400 )
+scale = Vector2( 7, 7 )
+texture = ExtResource( 44 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="MainMenu/PopMenus/Options/Visuals/PhysGunColor/PhysGun"]
+frames = SubResource( 28 )
+frame = 5
+playing = true
+
+[node name="PhysGunGlowReal" type="Sprite" parent="MainMenu/PopMenus/Options/Visuals/PhysGunColor/PhysGun"]
+position = Vector2( 31.7857, -7.49999 )
+scale = Vector2( 1, 1 )
+texture = ExtResource( 46 )
+
+[node name="PhysGunColorLabel" type="Label" parent="MainMenu/PopMenus/Options/Visuals"]
+margin_left = 676.0
+margin_top = 295.0
+margin_right = 930.0
+margin_bottom = 325.0
+theme = ExtResource( 18 )
+custom_fonts/font = SubResource( 11 )
+text = "physgun color"
+
 [node name="Physics" type="Node2D" parent="MainMenu/PopMenus/Options"]
 
+[node name="MaxHealth" type="SpinBox" parent="MainMenu/PopMenus/Options/Physics"]
+margin_left = 147.0
+margin_top = 173.0
+margin_right = 270.0
+margin_bottom = 209.0
+theme = ExtResource( 18 )
+min_value = 100.0
+max_value = 99999.0
+value = 100.0
+
+[node name="MaxHealthLabel" type="Label" parent="MainMenu/PopMenus/Options/Physics"]
+margin_left = 280.0
+margin_top = 176.0
+margin_right = 376.0
+margin_bottom = 206.0
+theme = ExtResource( 18 )
+custom_fonts/font = SubResource( 11 )
+text = "max health"
+
+[node name="Controls" type="Label" parent="MainMenu/PopMenus/Options/Physics"]
+margin_left = 676.0
+margin_top = 169.0
+margin_right = 804.0
+margin_bottom = 199.0
+theme = ExtResource( 18 )
+text = "Controls"
+
+[node name="ControlsLabel" type="Label" parent="MainMenu/PopMenus/Options/Physics"]
+margin_left = 609.0
+margin_top = 200.0
+margin_right = 1046.0
+margin_bottom = 494.0
+rect_scale = Vector2( 0.6, 0.6 )
+theme = ExtResource( 18 )
+text = "--standard actions--
+wasd - move around
+1,2,3 - hotbar shiz
+right click - rotate held object
+e - interact
+q - spawn menu
+shift - sprint
+
+--special actions--
+v - noclip
+t - teleport to cursor
+m - toggle map view
+x - rapid spawn items"
+align = 1
+
 [node name="Experimental" type="Node2D" parent="MainMenu/PopMenus/Options"]
+visible = false
+
+[node name="InteractPhysics" type="CheckBox" parent="MainMenu/PopMenus/Options/Experimental"]
+margin_left = 194.0
+margin_top = 173.0
+margin_right = 218.0
+margin_bottom = 211.0
+rect_rotation = 89.9999
+rect_scale = Vector2( 2, 2 )
+focus_mode = 0
+theme = ExtResource( 18 )
+
+[node name="InteractPhysicsLabel" type="Label" parent="MainMenu/PopMenus/Options/Experimental"]
+margin_left = 181.0
+margin_top = 176.0
+margin_right = 341.0
+margin_bottom = 206.0
+theme = ExtResource( 18 )
+custom_fonts/font = SubResource( 11 )
+text = "heavy objects"
+
+[node name="Music" type="CheckBox" parent="MainMenu/PopMenus/Options/Experimental"]
+margin_left = 194.0
+margin_top = 213.0
+margin_right = 218.0
+margin_bottom = 251.0
+rect_rotation = 89.9999
+rect_scale = Vector2( 2, 2 )
+focus_mode = 0
+theme = ExtResource( 18 )
+
+[node name="MusicLabel" type="Label" parent="MainMenu/PopMenus/Options/Experimental"]
+margin_left = 181.0
+margin_top = 216.0
+margin_right = 341.0
+margin_bottom = 246.0
+theme = ExtResource( 18 )
+custom_fonts/font = SubResource( 11 )
+text = "Music"
+
+[node name="Glow" type="CheckBox" parent="MainMenu/PopMenus/Options/Experimental"]
+margin_left = 194.0
+margin_top = 251.0
+margin_right = 218.0
+margin_bottom = 289.0
+rect_rotation = 89.9999
+rect_scale = Vector2( 2, 2 )
+focus_mode = 0
+theme = ExtResource( 18 )
+
+[node name="GlowLabel" type="Label" parent="MainMenu/PopMenus/Options/Experimental"]
+margin_left = 181.0
+margin_top = 254.0
+margin_right = 341.0
+margin_bottom = 284.0
+theme = ExtResource( 18 )
+custom_fonts/font = SubResource( 11 )
+text = "glow"
+
+[node name="Mods" type="CheckBox" parent="MainMenu/PopMenus/Options/Experimental"]
+margin_left = 194.0
+margin_top = 291.0
+margin_right = 218.0
+margin_bottom = 329.0
+rect_rotation = 89.9999
+rect_scale = Vector2( 2, 2 )
+focus_mode = 0
+theme = ExtResource( 18 )
+
+[node name="ModsLabel" type="Label" parent="MainMenu/PopMenus/Options/Experimental"]
+margin_left = 181.0
+margin_top = 294.0
+margin_right = 341.0
+margin_bottom = 324.0
+theme = ExtResource( 18 )
+custom_fonts/font = SubResource( 11 )
+text = "mods"
 
 [node name="Transitions" type="AnimationPlayer" parent="MainMenu/PopMenus"]
 anims/GoIn = SubResource( 8 )
