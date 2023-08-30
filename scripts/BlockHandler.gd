@@ -398,7 +398,7 @@ func physInteraction(delta):
 			stable_rotation = rotation_degrees
 			collisionbox.disabled = false
 			if rigid.mode != RigidBody2D.MODE_STATIC:
-				var direction = get_global_mouse_position() - position
+				var direction = get_global_mouse_position() - position - doodad
 				linear_velocity = direction / delta
 			Globals.physgunPicking = false
 		position = get_global_mouse_position() - doodad

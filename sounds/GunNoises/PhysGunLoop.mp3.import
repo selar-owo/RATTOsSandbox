@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/PhysGunLoop.mp3-4007a02d8b0622bb12ae276a00db1d89.mp3str"
+
+[deps]
+
+source_file="res://sounds/GunNoises/PhysGunLoop.mp3"
+dest_files=[ "res://.import/PhysGunLoop.mp3-4007a02d8b0622bb12ae276a00db1d89.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

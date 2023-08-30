@@ -38,6 +38,8 @@ onready var interact: AnimationPlayer = $Hand/Interact
 onready var root_node: Node2D = $".."
 onready var vehicle_timer: Timer = $VehicleTimer
 onready var hand_sprite = $Hand/Sprite
+onready var physgun_animations = $heldgun/physgunAnimations
+onready var physgun_animation_player = $heldgun/physgunAnimations/AnimationPlayer
 var velocity = Vector2()
 var vehicle_cooldown := false
 
@@ -47,13 +49,25 @@ signal damaged
 
 onready var weapons_folder := $Weapons
 
+onready var open = $heldgun/physgunAnimations/Open
+onready var close = $heldgun/physgunAnimations/Close
+onready var loop = $heldgun/physgunAnimations/Loop
+var defopen
+var defclose
+var defloop
+
 func setPlayerTexture():
 	if Globals.playerSprite != null:
 		sprite.set_texture(Globals.playerSprite)
 
+onready var particles_2d = $heldgun/physgunAnimations/Particles2D
+onready var glowing_energy = $heldgun/physgunAnimations/GlowingEnergy
+
 func physColor():
 	held_sprite.self_modulate = SaveSettings.load_cfg("VisualsAudio","PhysColor")
 	phys_glow.self_modulate = SaveSettings.load_cfg("VisualsAudio","PhysColor")
+	particles_2d.self_modulate = SaveSettings.load_cfg("VisualsAudio","PhysColor")
+	glowing_energy.self_modulate = SaveSettings.load_cfg("VisualsAudio","PhysColor")
 
 func _physics_process(delta: float) -> void:
 	if old_style == false:
@@ -62,9 +76,9 @@ func _physics_process(delta: float) -> void:
 		movement(delta)
 
 func _process(delta):
+	weapon_handler()
 	health_changed_checker()
 	get_input()
-	weapon_handler()
 	vehint()
 	physColor()
 	camera_shiz(delta)
@@ -80,6 +94,9 @@ func camera_shiz(delta) -> void:
 	cam.offset = lerp(cam.position,cam.position - (get_global_mouse_position() - position) * -1,0.05)
 
 func _ready():
+	defopen = open.volume_db
+	defclose = close.volume_db
+	defloop = loop.volume_db
 	Globals.insideVehicle = false
 	cam.zoom = Vector2(Globals.camera_zoom,Globals.camera_zoom)
 	setup_weapons()
@@ -287,10 +304,25 @@ func hide_weapons():
 
 func weapon_handler():
 	
+	if Input.is_action_just_pressed("left_click") and Globals.slot1held:
+		physgun_animation_player.play("Open")
+	
+	if Input.is_action_just_released("left_click") and Globals.slot1held or Globals.slot1held and Input.is_action_just_pressed("physbutton") or Input.is_action_just_pressed("pistolbutton") or Input.is_action_just_pressed("toolgunbutton"):
+		physgun_animation_player.play("Close")
+	
 	if Globals.slot1held:
-		held_sprite.show()
+		open.volume_db = defopen
+		close.volume_db = defclose
+		loop.volume_db = defloop
+	elif !Globals.slot1held:
+		open.volume_db = -999
+		close.volume_db = -999
+		loop.volume_db = -999
+	
+	if Globals.slot1held:
+		physgun_animations.show()
 	else:
-		held_sprite.hide()
+		physgun_animations.hide()
 	
 	if Globals.physgunPicking == true and Globals.insideVehicle == false and Globals.slot1held == true:
 		render_line()
