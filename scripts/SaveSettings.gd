@@ -1,5 +1,15 @@
 extends Node
 
+"""
+health bar styles:
+
+bar
+heart
+plus
+number
+
+"""
+
 var save_path := "user://save-file.cfg"
 var config := ConfigFile.new()
 var load_response := config.load(save_path)
@@ -12,6 +22,9 @@ func _ready():
 		config.set_value("VisualsAudio","ShowFPS",true)
 		config.set_value("VisualsAudio","ShowUseIndicator",true)
 		config.set_value("VisualsAudio","PhysColor",Color(0.666667, 0.780392, 1))
+		config.set_value("VisualsAudio","HealthBarStyle","bar")
+		
+		config.set_value("PhysicsStuff","MaxHealth",200)
 		
 		config.set_value("Experimental","InteractPhysics",false)
 		config.set_value("Experimental","Music",false)

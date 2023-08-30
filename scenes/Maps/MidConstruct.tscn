@@ -537,96 +537,127 @@ dont_spawn = true
 
 [node name="Tree" parent="Trees" instance=ExtResource( 9 )]
 position = Vector2( 177, -244 )
+mode = 1
 
 [node name="Tree2" parent="Trees" instance=ExtResource( 9 )]
 position = Vector2( 243, -345 )
+mode = 1
 
 [node name="Tree3" parent="Trees" instance=ExtResource( 9 )]
 position = Vector2( 489, -852 )
+mode = 1
 
 [node name="Tree4" parent="Trees" instance=ExtResource( 9 )]
 position = Vector2( -327, -867 )
+mode = 1
 
 [node name="Tree5" parent="Trees" instance=ExtResource( 9 )]
 position = Vector2( -370, -673 )
+mode = 1
 
 [node name="Tree6" parent="Trees" instance=ExtResource( 9 )]
 position = Vector2( -143, -1038 )
+mode = 1
 
 [node name="Tree7" parent="Trees" instance=ExtResource( 9 )]
 position = Vector2( -350, -1043 )
+mode = 1
 
 [node name="Tree8" parent="Trees" instance=ExtResource( 9 )]
 position = Vector2( -223, -687 )
+mode = 1
 
 [node name="Tree9" parent="Trees" instance=ExtResource( 9 )]
 position = Vector2( 434, -1059 )
+mode = 1
 
 [node name="Tree10" parent="Trees" instance=ExtResource( 9 )]
 position = Vector2( 59, -690 )
+mode = 1
 
 [node name="Tree11" parent="Trees" instance=ExtResource( 9 )]
 position = Vector2( 363, -871 )
+mode = 1
 
 [node name="Tree12" parent="Trees" instance=ExtResource( 9 )]
 position = Vector2( 265, -977 )
+mode = 1
 
 [node name="Tree13" parent="Trees" instance=ExtResource( 9 )]
 position = Vector2( 386, -498 )
+mode = 1
 
 [node name="Tree14" parent="Trees" instance=ExtResource( 9 )]
 position = Vector2( 177, -490 )
+mode = 1
 
 [node name="Tree15" parent="Trees" instance=ExtResource( 9 )]
 position = Vector2( 381, -304 )
+mode = 1
 
 [node name="Tree16" parent="Trees" instance=ExtResource( 9 )]
 position = Vector2( 305, -140 )
+mode = 1
 
 [node name="Tree17" parent="Trees" instance=ExtResource( 9 )]
 position = Vector2( 653, -125 )
+mode = 1
 
 [node name="Tree18" parent="Trees" instance=ExtResource( 9 )]
 position = Vector2( 945, -256 )
+mode = 1
 
 [node name="Tree19" parent="Trees" instance=ExtResource( 9 )]
 position = Vector2( 537, -163 )
+mode = 1
 
 [node name="Tree20" parent="Trees" instance=ExtResource( 9 )]
 position = Vector2( 902, -375 )
+mode = 1
 
 [node name="Tree21" parent="Trees" instance=ExtResource( 9 )]
 position = Vector2( 660, -458 )
+mode = 1
 
 [node name="Tree22" parent="Trees" instance=ExtResource( 9 )]
 position = Vector2( 708, -266 )
+mode = 1
 
 [node name="Tree23" parent="Trees" instance=ExtResource( 9 )]
 position = Vector2( 552, -337 )
+mode = 1
 
 [node name="Tree24" parent="Trees" instance=ExtResource( 9 )]
 position = Vector2( 466, -725 )
+mode = 1
 
 [node name="Tree25" parent="Trees" instance=ExtResource( 9 )]
 position = Vector2( 201, -649 )
+mode = 1
 
 [node name="Tree26" parent="Trees" instance=ExtResource( 9 )]
 position = Vector2( -93, -693 )
+mode = 1
 
 [node name="Tree27" parent="Trees" instance=ExtResource( 9 )]
 position = Vector2( 595, -980 )
+mode = 1
 
 [node name="Tree28" parent="Trees" instance=ExtResource( 9 )]
 position = Vector2( 587, -655 )
+mode = 1
 
 [node name="Tree29" parent="Trees" instance=ExtResource( 9 )]
 position = Vector2( 1093, -479 )
+mode = 1
 
 [node name="Tree30" parent="Trees" instance=ExtResource( 9 )]
 position = Vector2( 1106, -197 )
+mode = 1
 
 [node name="Tree31" parent="Trees" instance=ExtResource( 9 )]
 position = Vector2( 821, -106 )
+mode = 1
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2( 401, -345 )

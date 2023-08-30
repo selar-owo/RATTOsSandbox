@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=2]
+[gd_scene load_steps=50 format=2]
 
 [ext_resource path="res://RATTOS.png" type="Texture" id=1]
 [ext_resource path="res://SANDBOX.png" type="Texture" id=2]
@@ -6,7 +6,7 @@
 [ext_resource path="res://sprites/1 rat.jpg" type="Texture" id=4]
 [ext_resource path="res://sprites/PlayButton.png" type="Texture" id=5]
 [ext_resource path="res://sprites/OptionsButton.png" type="Texture" id=6]
-[ext_resource path="res://sounds/y2mate.com - Main Menu  Mario Kart Wii.mp3" type="AudioStream" id=7]
+[ext_resource path="res://sounds/songs/y2mate.com - Main Menu  Medley  Mario Kart Wii Music Extended.mp3" type="AudioStream" id=7]
 [ext_resource path="res://scripts/logogowithson.gd" type="Script" id=8]
 [ext_resource path="res://sprites/OptionsButtonSelected.png" type="Texture" id=9]
 [ext_resource path="res://sprites/GoalsButtonSelected.png" type="Texture" id=10]
@@ -16,7 +16,26 @@
 [ext_resource path="res://MinecraftFive-Bold.ttf" type="DynamicFontData" id=14]
 [ext_resource path="res://scripts/MainMenuNewNew.gd" type="Script" id=15]
 [ext_resource path="res://sprites/MM-close.png" type="Texture" id=16]
+[ext_resource path="res://sounds/menuSelect.wav" type="AudioStream" id=17]
 [ext_resource path="res://scenes/UIs/MainMenuNewNewTheme.tres" type="Theme" id=18]
+[ext_resource path="res://scripts/OptionsNewNew.gd" type="Script" id=19]
+[ext_resource path="res://sprites/MM-closeselected.png" type="Texture" id=20]
+[ext_resource path="res://sounds/select.wav" type="AudioStream" id=21]
+[ext_resource path="res://sounds/hover.wav" type="AudioStream" id=22]
+[ext_resource path="res://sprites/MM-MapSelection.png" type="Texture" id=23]
+[ext_resource path="res://sprites/mapimages/Flatlands.png" type="Texture" id=24]
+[ext_resource path="res://scripts/MapTileNew.gd" type="Script" id=25]
+[ext_resource path="res://scripts/MapSelectionNewNew.gd" type="Script" id=26]
+[ext_resource path="res://sprites/MM-MapSelectionSelected.png" type="Texture" id=27]
+[ext_resource path="res://LoadingScreen.tscn" type="PackedScene" id=28]
+[ext_resource path="res://scenes/Maps/Flatlands.tscn" type="PackedScene" id=29]
+[ext_resource path="res://scenes/Maps/MidConstruct.tscn" type="PackedScene" id=30]
+[ext_resource path="res://sprites/mapimages/MidConstruct.png" type="Texture" id=31]
+[ext_resource path="res://scenes/Maps/Blank.tscn" type="PackedScene" id=32]
+[ext_resource path="res://sprites/mapimages/Blank.png" type="Texture" id=33]
+[ext_resource path="res://scenes/Maps/TilemapTest.tscn" type="PackedScene" id=34]
+[ext_resource path="res://sprites/mapimages/TilemapTest.png" type="Texture" id=35]
+[ext_resource path="res://sprites/mapimages/Island.png" type="Texture" id=36]
 
 [sub_resource type="Animation" id=5]
 length = 0.001
@@ -282,6 +301,20 @@ tracks/4/keys = {
 "values": [ Vector2( 66, 501 ) ]
 }
 
+[sub_resource type="Shader" id=12]
+code = "shader_type canvas_item;
+
+uniform float lod: hint_range(0.0, 5) = 0.0;
+
+void fragment(){
+	vec4 color = texture(SCREEN_TEXTURE, SCREEN_UV, lod);
+	COLOR = color;
+}"
+
+[sub_resource type="ShaderMaterial" id=13]
+shader = SubResource( 12 )
+shader_param/lod = 2.55
+
 [sub_resource type="DynamicFont" id=7]
 size = 20
 outline_size = 2
@@ -421,9 +454,17 @@ __meta__ = {
 
 [node name="BGMusic" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 7 )
-volume_db = -3.496
+volume_db = -7.022
 autoplay = true
 bus = "Music"
+
+[node name="Hover" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 22 )
+volume_db = -14.983
+
+[node name="Select" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 21 )
+volume_db = -14.983
 
 [node name="MainMenu" type="Node2D" parent="."]
 script = ExtResource( 15 )
@@ -569,14 +610,227 @@ texture = ExtResource( 11 )
 [node name="PopMenus" type="ColorRect" parent="MainMenu"]
 visible = false
 modulate = Color( 1, 1, 1, 0 )
+self_modulate = Color( 0.313726, 0.313726, 0.313726, 1 )
+material = SubResource( 13 )
 margin_left = -2315.0
 margin_top = -1358.0
 margin_right = 3372.0
 margin_bottom = 2278.0
 color = Color( 0, 0, 0, 0.454902 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="MapSelection" type="Node2D" parent="MainMenu/PopMenus"]
+visible = false
+position = Vector2( 2315, 1358 )
+script = ExtResource( 26 )
+
+[node name="BG" type="NinePatchRect" parent="MainMenu/PopMenus/MapSelection"]
+margin_left = 121.0
+margin_top = 96.0
+margin_right = 886.0
+margin_bottom = 520.0
+texture = ExtResource( 13 )
+patch_margin_left = 10
+patch_margin_top = 10
+patch_margin_right = 10
+patch_margin_bottom = 10
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Shadow" type="NinePatchRect" parent="MainMenu/PopMenus/MapSelection/BG"]
+modulate = Color( 0, 0, 0, 1 )
+show_behind_parent = true
+margin_left = 5.0
+margin_top = 4.0
+margin_right = 770.0
+margin_bottom = 430.0
+texture = ExtResource( 13 )
+patch_margin_left = 10
+patch_margin_top = 10
+patch_margin_right = 10
+patch_margin_bottom = 10
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Close" type="TextureButton" parent="MainMenu/PopMenus/MapSelection"]
+margin_left = 846.0
+margin_top = 112.0
+margin_right = 870.0
+margin_bottom = 136.0
+texture_normal = ExtResource( 16 )
+texture_hover = ExtResource( 20 )
+expand = true
+
+[node name="Title" type="Label" parent="MainMenu/PopMenus/MapSelection"]
+margin_left = 136.0
+margin_top = 107.0
+margin_right = 200.0
+margin_bottom = 137.0
+theme = ExtResource( 18 )
+text = "map selection"
+
+[node name="MapTitle" type="Label" parent="MainMenu/PopMenus/MapSelection"]
+margin_left = 532.0
+margin_top = 112.0
+margin_right = 871.0
+margin_bottom = 142.0
+theme = ExtResource( 18 )
+text = "select map"
+align = 1
+
+[node name="Maps" type="Node2D" parent="MainMenu/PopMenus/MapSelection"]
+
+[node name="Flatlands" type="TextureButton" parent="MainMenu/PopMenus/MapSelection/Maps"]
+margin_left = 136.0
+margin_top = 138.0
+margin_right = 330.0
+margin_bottom = 157.0
+rect_scale = Vector2( 2, 2 )
+focus_mode = 0
+texture_normal = ExtResource( 23 )
+texture_hover = ExtResource( 27 )
+script = ExtResource( 25 )
+map_resource = ExtResource( 29 )
+map_name = "Flatlands"
+map_desc = "now with 4 corners!!!"
+
+[node name="Icon" type="Sprite" parent="MainMenu/PopMenus/MapSelection/Maps/Flatlands"]
+show_behind_parent = true
+position = Vector2( 30, 9.5 )
+scale = Vector2( 0.11531, 0.108631 )
+texture = ExtResource( 24 )
+
+[node name="Label" type="Label" parent="MainMenu/PopMenus/MapSelection/Maps/Flatlands"]
+margin_left = 55.4583
+margin_top = 2.99999
+margin_right = 199.458
+margin_bottom = 33.0
+rect_scale = Vector2( 0.4, 0.4 )
+theme = ExtResource( 18 )
+text = "flatlands"
+
+[node name="BadConstruct" type="TextureButton" parent="MainMenu/PopMenus/MapSelection/Maps"]
+margin_left = 136.0
+margin_top = 179.0
+margin_right = 330.0
+margin_bottom = 198.0
+rect_scale = Vector2( 2, 2 )
+texture_normal = ExtResource( 23 )
+texture_hover = ExtResource( 27 )
+script = ExtResource( 25 )
+map_resource = ExtResource( 30 )
+map_name = "Bad Construct"
+map_desc = "flatlands but like mroe"
+
+[node name="Icon" type="Sprite" parent="MainMenu/PopMenus/MapSelection/Maps/BadConstruct"]
+show_behind_parent = true
+position = Vector2( 28.5, 10 )
+scale = Vector2( 0.121052, 0.108631 )
+texture = ExtResource( 31 )
+
+[node name="Label" type="Label" parent="MainMenu/PopMenus/MapSelection/Maps/BadConstruct"]
+margin_left = 55.4583
+margin_top = 2.99999
+margin_right = 199.458
+margin_bottom = 33.0
+rect_scale = Vector2( 0.4, 0.4 )
+theme = ExtResource( 18 )
+text = "bad construct"
+
+[node name="Blank" type="TextureButton" parent="MainMenu/PopMenus/MapSelection/Maps"]
+margin_left = 136.0
+margin_top = 220.0
+margin_right = 330.0
+margin_bottom = 239.0
+rect_scale = Vector2( 2, 2 )
+texture_normal = ExtResource( 23 )
+texture_hover = ExtResource( 27 )
+script = ExtResource( 25 )
+map_resource = ExtResource( 32 )
+map_name = "Blank"
+map_desc = "you guessed it
+its absolutely nothing"
+
+[node name="Icon" type="Sprite" parent="MainMenu/PopMenus/MapSelection/Maps/Blank"]
+show_behind_parent = true
+position = Vector2( 28.9345, 11.2286 )
+scale = Vector2( 0.0950536, 0.0926748 )
+texture = ExtResource( 33 )
+
+[node name="Label" type="Label" parent="MainMenu/PopMenus/MapSelection/Maps/Blank"]
+margin_left = 55.4583
+margin_top = 2.99999
+margin_right = 199.458
+margin_bottom = 33.0
+rect_scale = Vector2( 0.4, 0.4 )
+theme = ExtResource( 18 )
+text = "blank, nothing"
+
+[node name="Tilemap" type="TextureButton" parent="MainMenu/PopMenus/MapSelection/Maps"]
+margin_left = 136.0
+margin_top = 261.0
+margin_right = 330.0
+margin_bottom = 280.0
+rect_scale = Vector2( 2, 2 )
+texture_normal = ExtResource( 23 )
+texture_hover = ExtResource( 27 )
+script = ExtResource( 25 )
+map_resource = ExtResource( 34 )
+map_name = "Tilemap"
+map_desc = "i forgot"
+
+[node name="Icon" type="Sprite" parent="MainMenu/PopMenus/MapSelection/Maps/Tilemap"]
+show_behind_parent = true
+position = Vector2( 32, 10.5 )
+scale = Vector2( 0.0796981, 0.0777036 )
+texture = ExtResource( 35 )
+
+[node name="Label" type="Label" parent="MainMenu/PopMenus/MapSelection/Maps/Tilemap"]
+margin_left = 55.4583
+margin_top = 2.99999
+margin_right = 199.458
+margin_bottom = 33.0
+rect_scale = Vector2( 0.4, 0.4 )
+theme = ExtResource( 18 )
+text = "original tilemap test"
+
+[node name="Island" type="TextureButton" parent="MainMenu/PopMenus/MapSelection/Maps"]
+margin_left = 136.0
+margin_top = 302.0
+margin_right = 330.0
+margin_bottom = 321.0
+rect_scale = Vector2( 2, 2 )
+texture_normal = ExtResource( 23 )
+texture_hover = ExtResource( 27 )
+script = ExtResource( 25 )
+map_name = "Island"
+map_desc = "pacman"
+
+[node name="Icon" type="Sprite" parent="MainMenu/PopMenus/MapSelection/Maps/Island"]
+show_behind_parent = true
+position = Vector2( 29.1298, 9.68381 )
+scale = Vector2( 0.0722236, 0.0704162 )
+texture = ExtResource( 36 )
+
+[node name="Label" type="Label" parent="MainMenu/PopMenus/MapSelection/Maps/Island"]
+margin_left = 55.0
+margin_top = 3.0
+margin_right = 145.0
+margin_bottom = 33.0
+rect_scale = Vector2( 0.4, 0.4 )
+theme = ExtResource( 18 )
+text = "island"
 
 [node name="Options" type="Node2D" parent="MainMenu/PopMenus"]
 position = Vector2( 2315, 1358 )
+script = ExtResource( 19 )
+
+[node name="Slider" type="AudioStreamPlayer" parent="MainMenu/PopMenus/Options"]
+stream = ExtResource( 17 )
 
 [node name="BG" type="NinePatchRect" parent="MainMenu/PopMenus/Options"]
 margin_left = 121.0
@@ -608,6 +862,7 @@ margin_top = 164.0
 margin_right = 872.0
 margin_bottom = 188.0
 texture_normal = ExtResource( 16 )
+texture_hover = ExtResource( 20 )
 expand = true
 
 [node name="Buttons" type="Node2D" parent="MainMenu/PopMenus/Options"]
@@ -736,9 +991,9 @@ max_value = 10.0
 
 [node name="VolumeLabel" type="Label" parent="MainMenu/PopMenus/Options/Visuals"]
 margin_left = 143.0
-margin_top = 168.0
+margin_top = 170.0
 margin_right = 239.0
-margin_bottom = 198.0
+margin_bottom = 200.0
 theme = ExtResource( 18 )
 custom_fonts/font = SubResource( 11 )
 text = "volume"
@@ -752,4 +1007,19 @@ anims/GoIn = SubResource( 8 )
 anims/GoOut = SubResource( 10 )
 anims/RESET = SubResource( 9 )
 
+[node name="VersionNumber" type="Label" parent="MainMenu"]
+self_modulate = Color( 1, 1, 1, 0.286275 )
+margin_left = 4.0
+margin_top = 583.0
+margin_right = 44.0
+margin_bottom = 597.0
+text = "version number"
+
+[node name="LoadingScreen" parent="." instance=ExtResource( 28 )]
+visible = false
+
+[connection signal="pressed" from="MainMenu/PlayButton" to="MainMenu" method="_on_PlayButton_pressed"]
 [connection signal="pressed" from="MainMenu/OptionsButton" to="MainMenu" method="_on_OptionsButton_pressed"]
+[connection signal="button_up" from="MainMenu/PopMenus/MapSelection/Close" to="MainMenu/PopMenus/Options" method="_on_Close_button_up"]
+[connection signal="button_up" from="MainMenu/PopMenus/Options/Close" to="MainMenu/PopMenus/Options" method="_on_Close_button_up"]
+[connection signal="value_changed" from="MainMenu/PopMenus/Options/Visuals/Volume" to="MainMenu/PopMenus/Options" method="_on_Volume_value_changed"]

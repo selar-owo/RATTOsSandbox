@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/y2mate.com - Main Menu  Medley  Mario Kart Wii Music Extended.mp3-f3f568f618c9c02e61cf9e640a4cfc1c.mp3str"
+
+[deps]
+
+source_file="res://sounds/songs/y2mate.com - Main Menu  Medley  Mario Kart Wii Music Extended.mp3"
+dest_files=[ "res://.import/y2mate.com - Main Menu  Medley  Mario Kart Wii Music Extended.mp3-f3f568f618c9c02e61cf9e640a4cfc1c.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

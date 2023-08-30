@@ -38,7 +38,7 @@ var current_tip:String
 #version shit
 var version_number := [
 	"1.1.0" ,#the number
-	"Qualities", #the name
+	"The Voted Ones", #the name
 	"_beta", #like beta or like aplha
 ]
 
@@ -55,9 +55,43 @@ var uitrans := 0.6
 #var interact_with_physics := false
 #var mods := false
 
+func _ready():
+	load_mods()
+
+func load_mods():
+	var caca = Directory.new()
+	if !caca.dir_exists("user://mods/"):
+		var fafafafafafafafafafafafaf = caca.open("user://")
+		var fartsghit6 = Directory.new()
+		fartsghit6.make_dir("user://mods/")
+	print("ok 1")
+	
+	var files = []
+	var fart = Directory.new()
+	var dir = Directory.new()
+	dir.open("user://mods/")
+	dir.list_dir_begin()
+	print("ok 2")
+	
+	while true:
+		var file = dir.get_next()
+		print(file)
+		if file.begins_with("."):
+			break
+		elif file.ends_with(".pck"):
+			print("Pack")
+			var success = ProjectSettings.load_resource_pack(str("user://mods/",file),true)
+			
+			if success:
+				print("cacafart8")
+			files.append(file)
+	print("ok 3")
+	
+	dir.list_dir_end()
+
 func _process(delta):
 	if Input.is_action_just_pressed("fullscreen"):
 		OS.window_fullscreen = !OS.window_fullscreen
 
 func go_back_to_main_menu() -> void:
-	get_tree().change_scene("res://scenes/UIs/MainMenuNew.tscn")
+	get_tree().change_scene("res://scenes/UIs/MainMenuNewNew.tscn")

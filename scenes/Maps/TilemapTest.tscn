@@ -1,12 +1,15 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/Camera2D.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scripts/MainWorld.gd" type="Script" id=3]
-[ext_resource path="res://scenes/UI.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scenes/UIs/HUD.tscn" type="PackedScene" id=4]
 [ext_resource path="res://goober.png" type="Texture" id=5]
 [ext_resource path="res://scenes/DefaultWorldEnv.tres" type="Environment" id=6]
+[ext_resource path="res://scenes/mobs/ratSentry.tscn" type="PackedScene" id=7]
 [ext_resource path="res://scenes/otherstuffidk/Music.tscn" type="PackedScene" id=8]
+[ext_resource path="res://scenes/useables/IceCreamMachine.tscn" type="PackedScene" id=9]
+[ext_resource path="res://scenes/blocks/reinforcedSteelBlock.tscn" type="PackedScene" id=10]
 
 [sub_resource type="NavigationPolygon" id=7]
 vertices = PoolVector2Array( 16, 16, 0, 16, 0, 0, 16, 0 )
@@ -119,6 +122,141 @@ position = Vector2( -195, 30 )
 [node name="Camera2D" parent="Player" instance=ExtResource( 2 )]
 
 [node name="IngameObjects" type="Node2D" parent="."]
+
+[node name="ratSentry" parent="IngameObjects" instance=ExtResource( 7 )]
+position = Vector2( 355, 21 )
+mode = 0
+dont_spawn = true
+
+[node name="ratSentry2" parent="IngameObjects" instance=ExtResource( 7 )]
+position = Vector2( 355, 21 )
+mode = 0
+dont_spawn = true
+
+[node name="ratSentry3" parent="IngameObjects" instance=ExtResource( 7 )]
+position = Vector2( 355, 21 )
+mode = 0
+dont_spawn = true
+
+[node name="ratSentry4" parent="IngameObjects" instance=ExtResource( 7 )]
+position = Vector2( 355, 21 )
+mode = 0
+dont_spawn = true
+
+[node name="ratSentry5" parent="IngameObjects" instance=ExtResource( 7 )]
+position = Vector2( 355, 21 )
+mode = 0
+dont_spawn = true
+
+[node name="ratSentry6" parent="IngameObjects" instance=ExtResource( 7 )]
+position = Vector2( 355, 21 )
+mode = 0
+dont_spawn = true
+
+[node name="ratSentry7" parent="IngameObjects" instance=ExtResource( 7 )]
+position = Vector2( 355, 21 )
+mode = 0
+dont_spawn = true
+
+[node name="ratSentry8" parent="IngameObjects" instance=ExtResource( 7 )]
+position = Vector2( 355, 21 )
+mode = 0
+dont_spawn = true
+
+[node name="ratSentry9" parent="IngameObjects" instance=ExtResource( 7 )]
+position = Vector2( 355, 21 )
+mode = 0
+dont_spawn = true
+
+[node name="ratSentry10" parent="IngameObjects" instance=ExtResource( 7 )]
+position = Vector2( 355, 21 )
+mode = 0
+dont_spawn = true
+
+[node name="ratSentry11" parent="IngameObjects" instance=ExtResource( 7 )]
+position = Vector2( 355, 21 )
+mode = 0
+dont_spawn = true
+
+[node name="ratSentry12" parent="IngameObjects" instance=ExtResource( 7 )]
+position = Vector2( 355, 21 )
+mode = 0
+dont_spawn = true
+
+[node name="ratSentry13" parent="IngameObjects" instance=ExtResource( 7 )]
+position = Vector2( 355, 21 )
+mode = 0
+dont_spawn = true
+
+[node name="ratSentry14" parent="IngameObjects" instance=ExtResource( 7 )]
+position = Vector2( 355, 21 )
+mode = 0
+dont_spawn = true
+
+[node name="ratSentry15" parent="IngameObjects" instance=ExtResource( 7 )]
+position = Vector2( 355, 21 )
+mode = 0
+dont_spawn = true
+
+[node name="ratSentry16" parent="IngameObjects" instance=ExtResource( 7 )]
+position = Vector2( 355, 21 )
+mode = 0
+dont_spawn = true
+
+[node name="ratSentry17" parent="IngameObjects" instance=ExtResource( 7 )]
+position = Vector2( 355, 21 )
+mode = 0
+dont_spawn = true
+
+[node name="ratSentry18" parent="IngameObjects" instance=ExtResource( 7 )]
+position = Vector2( 355, 21 )
+mode = 0
+dont_spawn = true
+
+[node name="ratSentry19" parent="IngameObjects" instance=ExtResource( 7 )]
+position = Vector2( 355, 21 )
+mode = 0
+dont_spawn = true
+
+[node name="ratSentry20" parent="IngameObjects" instance=ExtResource( 7 )]
+position = Vector2( 355, 21 )
+mode = 0
+dont_spawn = true
+
+[node name="ratSentry21" parent="IngameObjects" instance=ExtResource( 7 )]
+position = Vector2( 355, 21 )
+mode = 0
+dont_spawn = true
+
+[node name="ratSentry22" parent="IngameObjects" instance=ExtResource( 7 )]
+position = Vector2( 355, 21 )
+mode = 0
+dont_spawn = true
+
+[node name="ratSentry23" parent="IngameObjects" instance=ExtResource( 7 )]
+position = Vector2( 355, 21 )
+mode = 0
+dont_spawn = true
+
+[node name="IceCreamMachine" parent="IngameObjects" instance=ExtResource( 9 )]
+position = Vector2( 231, -71 )
+dont_spawn = true
+
+[node name="steelBlock" parent="IngameObjects" instance=ExtResource( 10 )]
+position = Vector2( 250, -27 )
+dont_spawn = true
+
+[node name="steelBlock2" parent="IngameObjects" instance=ExtResource( 10 )]
+position = Vector2( 249, -17 )
+dont_spawn = true
+
+[node name="steelBlock3" parent="IngameObjects" instance=ExtResource( 10 )]
+position = Vector2( 250, -7 )
+dont_spawn = true
+
+[node name="steelBlock4" parent="IngameObjects" instance=ExtResource( 10 )]
+position = Vector2( 249, 8 )
+dont_spawn = true
 
 [node name="Objects" type="Node2D" parent="."]
 

@@ -33,7 +33,7 @@ onready var held_sprite_unanim:Node = $heldgun/heldgun/physgun
 onready var pistol_sprite:Node = $heldgun/heldgun3
 onready var stepSound:Node = $Walk
 onready var gun_ray:Node = $heldgun/heldgun3/RayCast2D
-onready var UI:Node = $"../UI"
+onready var UI:Node = $"../UI" #This UI is the outdated version, use HUD instead!
 onready var interact: AnimationPlayer = $Hand/Interact
 onready var root_node: Node2D = $".."
 onready var vehicle_timer: Timer = $VehicleTimer
@@ -62,12 +62,13 @@ func _physics_process(delta: float) -> void:
 		movement(delta)
 
 func _process(delta):
+	health_changed_checker()
 	get_input()
 	weapon_handler()
 	vehint()
 	physColor()
 	camera_shiz(delta)
-	health = clamp(health,-50,200)
+	health = clamp(health,-50,SaveSettings.load_cfg("PhysicsStuff","MaxHealth"))
 #	pew_handler()
 
 func change_camera_zoom(zoom:Vector2,ease_type,duration:float) -> void:
@@ -303,6 +304,12 @@ func weapon_handler():
 	
 	if Globals.insideVehicle == true:
 		phys_glow.hide()
+
+var temp_health := 0
+func health_changed_checker():
+	if temp_health != health:
+		UI.health_bars.player_damaged()
+		temp_health = health
 
 func damage(attack:Attack):
 	health -= attack.amount

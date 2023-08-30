@@ -18,7 +18,7 @@ func _process(delta):
 
 func ithinkipoopedalittle():
 	if default_db != null:
-		if !SaveSettings.load_cfg("VisualsAudio","Music"):
+		if !SaveSettings.load_cfg("Experimental","Music"):
 			self.volume_db = -3412348213210391
 		elif Globals.musicToggle:
 			self.volume_db = default_db

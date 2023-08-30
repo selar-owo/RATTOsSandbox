@@ -373,9 +373,13 @@ func placingBlock():
 		placing = false
 		collisionbox.disabled = false
 
+var doodad
 func physInteraction(delta):
+	
+	
 	if Input.is_action_pressed("left_click") and Globals.slot1held == true and mouse == true and Globals.physgunPicking == false:
 		gunning = true
+		doodad = get_global_mouse_position() - position
 		stable_rotation = self.rotation_degrees
 		Globals.physgunPicking = true
 		if collisionbox != null:
@@ -397,7 +401,7 @@ func physInteraction(delta):
 				var direction = get_global_mouse_position() - position
 				linear_velocity = direction / delta
 			Globals.physgunPicking = false
-		position = get_global_mouse_position()
+		position = get_global_mouse_position() - doodad
 
 func playerTag():
 	#player Tags

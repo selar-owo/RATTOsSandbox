@@ -1,9 +1,10 @@
-[gd_resource type="Theme" load_steps=8 format=2]
+[gd_resource type="Theme" load_steps=9 format=2]
 
 [ext_resource path="res://sprites/MM-slider.png" type="Texture" id=1]
 [ext_resource path="res://sprites/MM-slidergrabbed.png" type="Texture" id=2]
 [ext_resource path="res://sprites/MM-slidergrabbypartselected.png" type="Texture" id=3]
 [ext_resource path="res://sprites/MM-slidergrabbypart.png" type="Texture" id=4]
+[ext_resource path="res://LinkText.tres" type="DynamicFont" id=5]
 
 [sub_resource type="StyleBoxTexture" id=14]
 texture = ExtResource( 2 )
@@ -30,10 +31,11 @@ margin_top = 3.0
 margin_bottom = 3.0
 
 [resource]
+default_font = ExtResource( 5 )
 HSlider/icons/grabber = ExtResource( 4 )
 HSlider/icons/grabber_highlight = ExtResource( 3 )
 HSlider/styles/grabber_area = SubResource( 14 )
 HSlider/styles/grabber_area_highlight = SubResource( 15 )
 HSlider/styles/slider = SubResource( 12 )
 Label/colors/font_color = Color( 0.913725, 0.952941, 0.968627, 1 )
-Label/colors/font_outline_modulate = Color( 0.411765, 0.513726, 0.662745, 1 )
+Label/colors/font_outline_modulate = Color( 0.0156863, 0.054902, 0.109804, 1 )
