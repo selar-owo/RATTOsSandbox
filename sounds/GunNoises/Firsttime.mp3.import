@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Firsttime.mp3-63084a86b18d1b01a0a88795a51813d1.mp3str"
+
+[deps]
+
+source_file="res://sounds/GunNoises/Firsttime.mp3"
+dest_files=[ "res://.import/Firsttime.mp3-63084a86b18d1b01a0a88795a51813d1.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

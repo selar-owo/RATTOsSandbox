@@ -1,4 +1,4 @@
-[gd_scene load_steps=83 format=2]
+[gd_scene load_steps=85 format=2]
 
 [ext_resource path="res://RATTOS.png" type="Texture" id=1]
 [ext_resource path="res://SANDBOX.png" type="Texture" id=2]
@@ -49,6 +49,8 @@
 [ext_resource path="res://sprites/MM-togglebuttonhighlight.png" type="Texture" id=47]
 [ext_resource path="res://sprites/MM-selected.png" type="Texture" id=48]
 [ext_resource path="res://sprites/MM-togglebuttonhighlightempty.png" type="Texture" id=49]
+[ext_resource path="res://scripts/ToggleUIButton.gd" type="Script" id=50]
+[ext_resource path="res://scripts/IntSelectorUIButton.gd" type="Script" id=51]
 
 [sub_resource type="Animation" id=5]
 length = 0.001
@@ -373,6 +375,7 @@ margin_bottom = 3.0
 
 [sub_resource type="StyleBoxTexture" id=16]
 texture = ExtResource( 41 )
+region_rect = Rect2( 0, 0, 11, 11 )
 margin_left = 3.0
 margin_right = 3.0
 margin_top = 3.0
@@ -1166,6 +1169,10 @@ rect_rotation = 89.9999
 rect_scale = Vector2( 2, 2 )
 focus_mode = 0
 theme = ExtResource( 18 )
+script = ExtResource( 50 )
+section = "VisualsAudio"
+key = "Fullscreen"
+isfartingeverywhereholyshit = true
 
 [node name="FullscreenLabel" type="Label" parent="MainMenu/PopMenus/Options/Visuals"]
 margin_left = 172.0
@@ -1188,6 +1195,9 @@ theme = ExtResource( 18 )
 flat = true
 clip_text = true
 expand_icon = true
+script = ExtResource( 50 )
+section = "VisualsAudio"
+key = "ShowUseIndicator"
 
 [node name="ShowUseIndicator2" type="Label" parent="MainMenu/PopMenus/Options/Visuals"]
 margin_left = 172.0
@@ -1210,6 +1220,9 @@ theme = ExtResource( 18 )
 flat = true
 clip_text = true
 expand_icon = true
+script = ExtResource( 50 )
+section = "VisualsAudio"
+key = "ShowFPS"
 
 [node name="ShowFPSIndicator" type="Label" parent="MainMenu/PopMenus/Options/Visuals"]
 margin_left = 173.0
@@ -1230,6 +1243,9 @@ min_value = 0.1
 max_value = 0.6
 step = 0.01
 value = 0.6
+script = ExtResource( 51 )
+section = "VisualsAudio"
+key = "Zoom"
 
 [node name="ZoomLabel" type="Label" parent="MainMenu/PopMenus/Options/Visuals"]
 margin_left = 224.0
@@ -1260,10 +1276,10 @@ custom_fonts/font = SubResource( 11 )
 text = "health bar style"
 
 [node name="PhysGunColor" type="ColorPicker" parent="MainMenu/PopMenus/Options/Visuals"]
-margin_left = 752.0
-margin_top = 325.0
-margin_right = 1060.0
-margin_bottom = 787.0
+margin_left = 756.0
+margin_top = 329.0
+margin_right = 1064.0
+margin_bottom = 791.0
 rect_scale = Vector2( 0.4, 0.4 )
 
 [node name="PhysGun" type="Sprite" parent="MainMenu/PopMenus/Options/Visuals/PhysGunColor"]
@@ -1273,12 +1289,10 @@ texture = ExtResource( 44 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="MainMenu/PopMenus/Options/Visuals/PhysGunColor/PhysGun"]
 frames = SubResource( 28 )
-frame = 5
 playing = true
 
 [node name="PhysGunGlowReal" type="Sprite" parent="MainMenu/PopMenus/Options/Visuals/PhysGunColor/PhysGun"]
 position = Vector2( 31.7857, -7.49999 )
-scale = Vector2( 1, 1 )
 texture = ExtResource( 46 )
 
 [node name="PhysGunColorLabel" type="Label" parent="MainMenu/PopMenus/Options/Visuals"]
@@ -1353,6 +1367,9 @@ rect_rotation = 89.9999
 rect_scale = Vector2( 2, 2 )
 focus_mode = 0
 theme = ExtResource( 18 )
+script = ExtResource( 50 )
+section = "Experimental"
+key = "InteractPhysics"
 
 [node name="InteractPhysicsLabel" type="Label" parent="MainMenu/PopMenus/Options/Experimental"]
 margin_left = 181.0
@@ -1372,6 +1389,9 @@ rect_rotation = 89.9999
 rect_scale = Vector2( 2, 2 )
 focus_mode = 0
 theme = ExtResource( 18 )
+script = ExtResource( 50 )
+section = "Experimental"
+key = "Music"
 
 [node name="MusicLabel" type="Label" parent="MainMenu/PopMenus/Options/Experimental"]
 margin_left = 181.0
@@ -1391,6 +1411,9 @@ rect_rotation = 89.9999
 rect_scale = Vector2( 2, 2 )
 focus_mode = 0
 theme = ExtResource( 18 )
+script = ExtResource( 50 )
+section = "Experimental"
+key = "Glow"
 
 [node name="GlowLabel" type="Label" parent="MainMenu/PopMenus/Options/Experimental"]
 margin_left = 181.0
@@ -1410,6 +1433,9 @@ rect_rotation = 89.9999
 rect_scale = Vector2( 2, 2 )
 focus_mode = 0
 theme = ExtResource( 18 )
+script = ExtResource( 50 )
+section = "Experimental"
+key = "Mods"
 
 [node name="ModsLabel" type="Label" parent="MainMenu/PopMenus/Options/Experimental"]
 margin_left = 181.0

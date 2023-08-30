@@ -60,13 +60,17 @@ func setPlayerTexture():
 	if Globals.playerSprite != null:
 		sprite.set_texture(Globals.playerSprite)
 
-onready var particles_2d = $heldgun/physgunAnimations/Particles2D
+onready var particles_2d = $heldgun/physgunAnimations/LightParticles
+onready var heavy_particles = $heldgun/physgunAnimations/HeavyParticles
+onready var heavy_particles_2 = $heldgun/physgunAnimations/HeavyParticles2
 onready var glowing_energy = $heldgun/physgunAnimations/GlowingEnergy
 
 func physColor():
 	held_sprite.self_modulate = SaveSettings.load_cfg("VisualsAudio","PhysColor")
 	phys_glow.self_modulate = SaveSettings.load_cfg("VisualsAudio","PhysColor")
 	particles_2d.self_modulate = SaveSettings.load_cfg("VisualsAudio","PhysColor")
+	heavy_particles.self_modulate = SaveSettings.load_cfg("VisualsAudio","PhysColor")
+	heavy_particles_2.self_modulate = SaveSettings.load_cfg("VisualsAudio","PhysColor")
 	glowing_energy.self_modulate = SaveSettings.load_cfg("VisualsAudio","PhysColor")
 
 func _physics_process(delta: float) -> void:

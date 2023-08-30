@@ -18,11 +18,12 @@ func _ready():
 	var file = File.new()
 	if !file.file_exists(save_path):
 		config.set_value("VisualsAudio","Volume",0)
-		config.set_value("VisualsAudio","Fullscreen",false)
+		config.set_value("VisualsAudio","Fullscreen",true)
 		config.set_value("VisualsAudio","ShowFPS",true)
 		config.set_value("VisualsAudio","ShowUseIndicator",true)
 		config.set_value("VisualsAudio","PhysColor",Color(0.666667, 0.780392, 1))
 		config.set_value("VisualsAudio","HealthBarStyle","bar")
+		config.set_value("VisualsAudio","Zoom",0.6)
 		
 		config.set_value("PhysicsStuff","MaxHealth",200)
 		
@@ -30,6 +31,8 @@ func _ready():
 		config.set_value("Experimental","Music",false)
 		config.set_value("Experimental","Glow",false)
 		config.set_value("Experimental","Mods",false)
+		
+		config.set_value("UpdatedChecker","Version",Globals.version_number[0])
 		config.save(save_path)
 
 func save_cfg(section,key,value):

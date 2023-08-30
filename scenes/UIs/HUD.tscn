@@ -77,7 +77,7 @@ margin_right = 271.0
 margin_bottom = 588.0
 custom_styles/fg = SubResource( 1 )
 custom_styles/bg = SubResource( 2 )
-value = 100.0
+value = 75.0
 percent_visible = false
 
 [node name="ShieldBar" type="ProgressBar" parent="HealthBars/Bar"]

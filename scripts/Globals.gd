@@ -89,7 +89,8 @@ func load_mods():
 
 func _process(delta):
 	if Input.is_action_just_pressed("fullscreen"):
-		OS.window_fullscreen = !OS.window_fullscreen
+		SaveSettings.save_cfg("VisualsAudio","Fullscreen",!SaveSettings.load_cfg("VisualsAudio","Fullscreen"))
+	OS.window_fullscreen = SaveSettings.load_cfg("VisualsAudio","Fullscreen")
 
 func go_back_to_main_menu() -> void:
 	get_tree().change_scene("res://scenes/UIs/MainMenuNewNew.tscn")
