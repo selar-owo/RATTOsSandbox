@@ -64,6 +64,7 @@ onready var particles_2d = $heldgun/physgunAnimations/LightParticles
 onready var heavy_particles = $heldgun/physgunAnimations/HeavyParticles
 onready var heavy_particles_2 = $heldgun/physgunAnimations/HeavyParticles2
 onready var glowing_energy = $heldgun/physgunAnimations/GlowingEnergy
+onready var light_2d = $heldgun/physgunAnimations/GlowingEnergy/Light2D
 
 func physColor():
 	held_sprite.self_modulate = SaveSettings.load_cfg("VisualsAudio","PhysColor")
@@ -72,6 +73,7 @@ func physColor():
 	heavy_particles.self_modulate = SaveSettings.load_cfg("VisualsAudio","PhysColor")
 	heavy_particles_2.self_modulate = SaveSettings.load_cfg("VisualsAudio","PhysColor")
 	glowing_energy.self_modulate = SaveSettings.load_cfg("VisualsAudio","PhysColor")
+	light_2d.color = SaveSettings.load_cfg("VisualsAudio","PhysColor")
 
 func _physics_process(delta: float) -> void:
 	if old_style == false:
@@ -86,7 +88,8 @@ func _process(delta):
 	vehint()
 	physColor()
 	camera_shiz(delta)
-	health = clamp(health,-50,SaveSettings.load_cfg("PhysicsStuff","MaxHealth"))
+	if SaveSettings.load_cfg("PhysicsStuff","MaxHealth") != 99999:
+		health = clamp(health,-50,SaveSettings.load_cfg("PhysicsStuff","MaxHealth"))
 #	pew_handler()
 
 func change_camera_zoom(zoom:Vector2,ease_type,duration:float) -> void:
@@ -102,7 +105,7 @@ func _ready():
 	defclose = close.volume_db
 	defloop = loop.volume_db
 	Globals.insideVehicle = false
-	cam.zoom = Vector2(Globals.camera_zoom,Globals.camera_zoom)
+	cam.zoom = Vector2(SaveSettings.load_cfg("VisualsAudio","Zoom"),SaveSettings.load_cfg("VisualsAudio","Zoom"))
 	setup_weapons()
 
 func set_player_texture(path,hand_path = null):

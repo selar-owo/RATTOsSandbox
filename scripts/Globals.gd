@@ -56,7 +56,8 @@ var uitrans := 0.6
 #var mods := false
 
 func _ready():
-	load_mods()
+	if SaveSettings.load_cfg("Experimental","Mods"):
+		load_mods()
 
 func load_mods():
 	var caca = Directory.new()

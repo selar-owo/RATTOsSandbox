@@ -14,9 +14,9 @@ func _ready() -> void:
 
 func explode() -> void:
 	explosion_effect.set_emitting(true)
+	$AnimationPlayer.play("Flash")
 	yield(get_tree().create_timer(0.1),"timeout")
 	$ExplosionEffect/ExplosionArea/CollisionShape2D.disabled = true
-	$AnimationPlayer.play("Flash")
 
 func _on_ExplosionArea_area_entered(area: Area2D) -> void:
 	if area.get_name() == "HurtHitbox":

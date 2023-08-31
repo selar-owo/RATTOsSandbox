@@ -30,7 +30,8 @@ func _ready():
 		config.set_value("Experimental","InteractPhysics",false)
 		config.set_value("Experimental","Music",false)
 		config.set_value("Experimental","Glow",false)
-		config.set_value("Experimental","Mods",false)
+		config.set_value("Experimental","Mods",true)
+		config.set_value("Experimental","GenerateTrailWhenShootingAir",true)
 		
 		config.set_value("UpdatedChecker","Version",Globals.version_number[0])
 		config.save(save_path)

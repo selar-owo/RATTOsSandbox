@@ -16,11 +16,11 @@ onready var health_bar_style = $Visuals/HealthBarStyle
 onready var slider_sound = $Slider
 
 func _ready():
-	load_settings()
 	close.connect("mouse_entered",main_menu,"play_sound",[0])
 	visuals_button.connect("button_up",self,"open_tab",[$Visuals,visuals_button])
 	physics_button.connect("button_up",self,"open_tab",[$Physics,physics_button])
 	experiments_button.connect("button_up",self,"open_tab",[$Experimental,experiments_button])
+	load_settings()
 
 func _process(delta):
 	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Master"), SaveSettings.load_cfg("VisualsAudio","Volume"))

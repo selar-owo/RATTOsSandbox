@@ -97,7 +97,8 @@ func cast_ray(rayobj):
 		case.z_index = -1
 	
 	if !rayobj.is_colliding():
-		create_line(projectile_position.global_position,projectile_position.global_position + Vector2(2000,0).rotated(global_rotation))
+		if SaveSettings.load_cfg("Experimental","GenerateTrailWhenShootingAir"):
+			create_line(projectile_position.global_position,projectile_position.global_position + Vector2(2000,0).rotated(global_rotation))
 		return
 	var collider = rayobj.get_collider()
 	var attack := Attack.new()
