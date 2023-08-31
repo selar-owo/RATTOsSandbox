@@ -678,6 +678,7 @@ text = "the fuckin menu"
 [node name="Items" type="Node2D" parent="QMenu"]
 
 [node name="Blocks" type="Node2D" parent="QMenu/Items"]
+visible = false
 
 [node name="woodBlock" type="TextureButton" parent="QMenu/Items/Blocks"]
 margin_left = 44.0
@@ -909,7 +910,6 @@ align = 1
 valign = 1
 
 [node name="Mobs" type="Node2D" parent="QMenu/Items"]
-visible = false
 
 [node name="rat" type="TextureButton" parent="QMenu/Items/Mobs"]
 margin_left = 44.0

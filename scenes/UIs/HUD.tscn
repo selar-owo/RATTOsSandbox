@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=2]
+[gd_scene load_steps=48 format=2]
 
 [ext_resource path="res://MinecraftFive-Bold.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://sprites/heart.png" type="Texture" id=2]
@@ -21,6 +21,22 @@
 [ext_resource path="res://sprites/1 rat.jpg" type="Texture" id=19]
 [ext_resource path="res://scripts/Tab.gd" type="Script" id=20]
 [ext_resource path="res://scripts/ObjectSpawner.gd" type="Script" id=21]
+[ext_resource path="res://sprites/woodblockIconActual.png" type="Texture" id=22]
+[ext_resource path="res://sprites/brickblockiconNew.png" type="Texture" id=23]
+[ext_resource path="res://scenes/blocks/woodBlock.tscn" type="PackedScene" id=24]
+[ext_resource path="res://sprites/IceBlockIconNewButCooler.png" type="Texture" id=25]
+[ext_resource path="res://scenes/blocks/brick.tscn" type="PackedScene" id=26]
+[ext_resource path="res://scenes/blocks/iceBlock.tscn" type="PackedScene" id=27]
+[ext_resource path="res://sprites/steelblockiconNew.png" type="Texture" id=28]
+[ext_resource path="res://scenes/blocks/steelBlock.tscn" type="PackedScene" id=29]
+[ext_resource path="res://sprites/reinforcedsteelblockiconNew.png" type="Texture" id=30]
+[ext_resource path="res://scenes/blocks/reinforcedSteelBlock.tscn" type="PackedScene" id=31]
+[ext_resource path="res://sprites/cheeseiconNew.png" type="Texture" id=32]
+[ext_resource path="res://scenes/blocks/cheese.tscn" type="PackedScene" id=33]
+[ext_resource path="res://sprites/boomboxiconNew.png" type="Texture" id=34]
+[ext_resource path="res://scenes/blocks/Radio.tscn" type="PackedScene" id=35]
+[ext_resource path="res://scenes/blocks/reflectionBlock.tscn" type="PackedScene" id=36]
+[ext_resource path="res://sprites/`placeholdertexture.png" type="Texture" id=37]
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0.45098, 0.815686, 0.407843, 1 )
@@ -268,6 +284,9 @@ patch_margin_left = 3
 patch_margin_top = 3
 patch_margin_right = 3
 patch_margin_bottom = 3
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="BG2" type="NinePatchRect" parent="ObjectSpawners/Centered/Backgrounds"]
 self_modulate = Color( 1, 1, 1, 0.607843 )
@@ -468,39 +487,81 @@ margin_bottom = 41.0
 [node name="Blocks" type="Node2D" parent="ObjectSpawners/Centered/Tabs"]
 position = Vector2( 424, 303 )
 script = ExtResource( 20 )
+items_in_tab = [ {
+"block_icon": ExtResource( 22 ),
+"block_name": "Wood Block",
+"block_scene": ExtResource( 24 )
+}, {
+"block_icon": ExtResource( 25 ),
+"block_name": "Ice Block",
+"block_scene": ExtResource( 27 )
+}, {
+"block_icon": ExtResource( 23 ),
+"block_name": "bricks",
+"block_scene": ExtResource( 26 )
+}, {
+"block_icon": ExtResource( 28 ),
+"block_name": "steel block",
+"block_scene": ExtResource( 29 )
+}, {
+"block_icon": ExtResource( 30 ),
+"block_name": "reinforced steel block",
+"block_scene": ExtResource( 31 )
+}, {
+"block_icon": ExtResource( 32 ),
+"block_name": "cheese",
+"block_scene": ExtResource( 33 )
+}, {
+"block_icon": ExtResource( 34 ),
+"block_name": "radio",
+"block_scene": ExtResource( 35 )
+}, {
+"block_icon": ExtResource( 37 ),
+"block_name": "reflection block",
+"block_scene": ExtResource( 36 )
+} ]
 
 [node name="Items" type="Node2D" parent="ObjectSpawners/Centered/Tabs/Blocks"]
-
-[node name="Item" type="NinePatchRect" parent="ObjectSpawners/Centered/Tabs/Blocks/Items"]
-margin_left = -340.0
-margin_top = -175.0
-margin_right = -259.0
-margin_bottom = -94.0
-texture = ExtResource( 10 )
-patch_margin_left = 3
-patch_margin_top = 3
-patch_margin_right = 3
-patch_margin_bottom = 3
 
 [node name="Mobs" type="Node2D" parent="ObjectSpawners/Centered/Tabs"]
 visible = false
 position = Vector2( 424, 303 )
 script = ExtResource( 20 )
 
+[node name="Items" type="Node2D" parent="ObjectSpawners/Centered/Tabs/Mobs"]
+
 [node name="Useable" type="Node2D" parent="ObjectSpawners/Centered/Tabs"]
 visible = false
 position = Vector2( 424, 303 )
 script = ExtResource( 20 )
+
+[node name="Items" type="Node2D" parent="ObjectSpawners/Centered/Tabs/Useable"]
 
 [node name="Weapons" type="Node2D" parent="ObjectSpawners/Centered/Tabs"]
 visible = false
 position = Vector2( 424, 303 )
 script = ExtResource( 20 )
 
+[node name="Items" type="Node2D" parent="ObjectSpawners/Centered/Tabs/Weapons"]
+
 [node name="Mods" type="Node2D" parent="ObjectSpawners/Centered/Tabs"]
 visible = false
 position = Vector2( 424, 303 )
 script = ExtResource( 20 )
+
+[node name="Items" type="Node2D" parent="ObjectSpawners/Centered/Tabs/Mods"]
+
+[node name="NameShower" type="Node2D" parent="ObjectSpawners/Centered"]
+modulate = Color( 1, 1, 1, 0 )
+rotation = 0.174533
+
+[node name="Name" type="Label" parent="ObjectSpawners/Centered/NameShower"]
+margin_left = 12.0
+margin_top = 15.0
+margin_right = 161.0
+margin_bottom = 45.0
+theme = ExtResource( 12 )
+text = "butt fart 678"
 
 [node name="Sided" type="Node2D" parent="ObjectSpawners"]
 position = Vector2( -497, -276 )
