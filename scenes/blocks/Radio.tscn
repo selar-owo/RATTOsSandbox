@@ -16,14 +16,14 @@ extents = Vector2( 16, 8.5 )
 offsets = PoolRealArray( 0.017094, 0.17094, 0.333333, 0.547009, 0.777778, 1 )
 colors = PoolColorArray( 1, 1, 1, 1, 1, 0.828369, 0.421875, 0.93874, 1, 0.539063, 0, 0.978219, 0.648438, 0, 0, 0.960794, 0.300781, 0, 0, 0.87503, 0.113725, 0, 0, 0.54902 )
 
-[sub_resource type="GradientTexture" id=16]
+[sub_resource type="GradientTexture" id=18]
 gradient = SubResource( 15 )
 
 [sub_resource type="Curve" id=17]
 max_value = 2.0
 _data = [ Vector2( 0, 2 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), 0.0, 0.0, 0, 0 ]
 
-[sub_resource type="CurveTexture" id=18]
+[sub_resource type="CurveTexture" id=19]
 curve = SubResource( 17 )
 
 [sub_resource type="ParticlesMaterial" id=14]
@@ -35,8 +35,8 @@ angular_velocity = 140.49
 orbit_velocity = 0.0
 orbit_velocity_random = 0.0
 scale = 3.0
-scale_curve = SubResource( 18 )
-color_ramp = SubResource( 16 )
+scale_curve = SubResource( 19 )
+color_ramp = SubResource( 18 )
 
 [sub_resource type="Animation" id=12]
 resource_name = "Hurt"

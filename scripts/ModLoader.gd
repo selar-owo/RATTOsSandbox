@@ -45,7 +45,7 @@ func load_mods():
 	
 	dir.list_dir_end()
 
-func add_block(block:ModBlock):
+func add_block(block):
 	print(block)
 	modded_items.append(
 		{

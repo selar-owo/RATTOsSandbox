@@ -29,7 +29,7 @@ func on_click() -> void:
 	if is_path:
 		block = block_scene.instance()
 	else:
-		block = block_scene.new()
+		block = block_scene
 	object_folder.add_child(block)
 	os.toggle_os_state("close")
 
