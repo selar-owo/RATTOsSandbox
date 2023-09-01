@@ -77,6 +77,7 @@ Globals="*res://scripts/Globals.gd"
 UniversalWeather="*res://scenes/UniversalWeather.tscn"
 SaveSettings="*res://scenes/SaveSettings.tscn"
 ModLoader="*res://scripts/ModLoader.gd"
+Main="*res://mods/testmod/main.gd"
 
 [debug]
 

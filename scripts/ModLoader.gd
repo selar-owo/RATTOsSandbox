@@ -32,7 +32,7 @@ func load_mods():
 			print("mod doesnt need meet .begins_with requirements ", file)
 			return
 		elif file.get_extension() == "pck":
-			print("Pack")
+			print("attempting to load ",file)
 			var success = ProjectSettings.load_resource_pack(str("user://mods/",file),true)
 			
 			if success:
@@ -46,11 +46,12 @@ func load_mods():
 	dir.list_dir_end()
 
 func add_block(block:ModBlock):
-	var modblock = block.instance()
+	print(block)
 	modded_items.append(
 		{
-			"block_scene": modblock,
-			"block_icon": modblock.block_icon,
-			"block_name": modblock.block_name
+			"block_scene": block,
+			"block_icon": block.block_icon,
+			"block_name": block.block_name,
+			"is_path": false,
 		}
 	)

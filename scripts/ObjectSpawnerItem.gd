@@ -6,6 +6,7 @@ var os
 export var block_scene:Resource
 export var block_icon:Resource
 export var block_name:String
+export var is_path := true
 onready var click_detector = $ClickDetector
 onready var icon = $IconHolder/Icon
 onready var icon_holder = $IconHolder
@@ -24,7 +25,11 @@ func _ready() -> void:
 	click_detector.connect("mouse_exited",self,"on_de_hover")
 
 func on_click() -> void:
-	var block = block_scene.instance()
+	var block 
+	if is_path:
+		block = block_scene.instance()
+	else:
+		block = block_scene.new()
 	object_folder.add_child(block)
 	os.toggle_os_state("close")
 

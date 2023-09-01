@@ -27,6 +27,10 @@ func load_tabs():
 		item.block_scene = i["block_scene"]
 		item.block_icon = i["block_icon"]
 		item.block_name = i["block_name"]
+		if i.has("is_path"):
+			item.is_path = i["is_path"]
+		else:
+			item.is_path = true
 		items.add_child(item)
 		item.rect_position = pos + move_vec
 		current_position += 1

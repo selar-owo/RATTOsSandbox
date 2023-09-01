@@ -1296,7 +1296,7 @@ texture = ExtResource( 44 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="MainMenu/PopMenus/Options/Visuals/PhysGunColor/PhysGun"]
 frames = SubResource( 28 )
-frame = 4
+frame = 5
 playing = true
 
 [node name="PhysGunGlowReal" type="Sprite" parent="MainMenu/PopMenus/Options/Visuals/PhysGunColor/PhysGun"]
