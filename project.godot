@@ -38,6 +38,16 @@ _global_script_classes=[ {
 "class": "Ezd",
 "language": "GDScript",
 "path": "res://addons/ezd/src/ezd.gd"
+}, {
+"base": "RigidBody2D",
+"class": "ModBlock",
+"language": "GDScript",
+"path": "res://mods/purefreedomapi/classes/ModBlock.gd"
+}, {
+"base": "Node",
+"class": "PureFStatus",
+"language": "GDScript",
+"path": "res://mods/purefreedomapi/variables.gd"
 } ]
 _global_script_class_icons={
 "Attack": "",
@@ -45,7 +55,9 @@ _global_script_class_icons={
 "Example1": "",
 "Example2": "",
 "Example3": "",
-"Ezd": ""
+"Ezd": "",
+"ModBlock": "",
+"PureFStatus": ""
 }
 
 [application]
@@ -64,6 +76,7 @@ config/windows_native_icon="res://SpriteItsSprite.ico"
 Globals="*res://scripts/Globals.gd"
 UniversalWeather="*res://scenes/UniversalWeather.tscn"
 SaveSettings="*res://scenes/SaveSettings.tscn"
+ModLoader="*res://scripts/ModLoader.gd"
 
 [debug]
 

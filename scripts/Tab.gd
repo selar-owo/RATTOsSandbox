@@ -4,8 +4,11 @@ export(Array) var items_in_tab := [
 	]
 onready var items = $Items
 
+export var auto_load_tab := false
+
 func _ready() -> void:
-	load_tabs()
+	if auto_load_tab:
+		load_tabs()
 
 func load_tabs():
 	print("loading tab")

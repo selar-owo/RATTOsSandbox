@@ -55,39 +55,6 @@ var uitrans := 0.6
 #var interact_with_physics := false
 #var mods := false
 
-func _ready():
-	if SaveSettings.load_cfg("Experimental","Mods"):
-		load_mods()
-
-func load_mods():
-	var caca = Directory.new()
-	if !caca.dir_exists("user://mods/"):
-		var fartsghit6 = Directory.new()
-		fartsghit6.make_dir("user://mods/")
-	print("ok 1")
-	
-	var files = []
-	var dir = Directory.new()
-	dir.open("user://mods/")
-	dir.list_dir_begin()
-	print("ok 2")
-	
-	while true:
-		var file = dir.get_next()
-		print(file)
-		if file.begins_with("."):
-			break
-		elif file.ends_with(".pck"):
-			print("Pack")
-			var success = ProjectSettings.load_resource_pack(str("user://mods/",file),true)
-			
-			if success:
-				print("cacafart8")
-			files.append(file)
-	print("ok 3")
-	
-	dir.list_dir_end()
-
 func _process(delta):
 	if Input.is_action_just_pressed("fullscreen"):
 		SaveSettings.save_cfg("VisualsAudio","Fullscreen",!SaveSettings.load_cfg("VisualsAudio","Fullscreen"))

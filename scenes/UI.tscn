@@ -910,6 +910,7 @@ align = 1
 valign = 1
 
 [node name="Mobs" type="Node2D" parent="QMenu/Items"]
+visible = false
 
 [node name="rat" type="TextureButton" parent="QMenu/Items/Mobs"]
 margin_left = 44.0
@@ -973,7 +974,6 @@ align = 1
 valign = 1
 
 [node name="Interactable" type="Node2D" parent="QMenu/Items"]
-visible = false
 
 [node name="vehicle" type="TextureButton" parent="QMenu/Items/Interactable"]
 margin_left = 44.0
