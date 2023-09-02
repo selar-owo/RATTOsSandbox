@@ -346,7 +346,7 @@ func weapon_handler():
 
 var temp_health := 0
 func health_changed_checker():
-	if temp_health != health:
+	if temp_health != health and !UI.has_method("summonBlock"):
 		UI.health_bars.player_damaged()
 		temp_health = health
 

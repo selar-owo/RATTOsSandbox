@@ -442,7 +442,7 @@ func shoot() -> void:
 	if !gun_ray_cast.is_colliding():
 		return
 	var collider = gun_ray_cast.get_collider()
-	if collider.get_name() == "HurtHitbox":
+	if collider.get_name() == "HurtHitbox" and hurtable or collider.get_name() == "HurtHitbox" and destroyable:
 		show_damage_number(collider,gun_ray_cast,collider.get_parent().defence)
 		collider.get_parent().damage(attack)
 	print(collider)

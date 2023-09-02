@@ -469,6 +469,7 @@ func console_line_entered(text:String) -> void:
 		elif command == "tp":
 			if prompt_1 == null or prompt_2 == null:
 				console_add_line("Invalid teleport location!",true)
+				return
 			player.position = Vector2(prompt_1,prompt_2)
 			console_add_line(str("Teleported player to X:",prompt_1,", Y:",prompt_2))
 		elif command == "old_style":
