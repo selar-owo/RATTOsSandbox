@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=2]
+[gd_scene load_steps=31 format=2]
 
 [ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/Camera2D.tscn" type="PackedScene" id=2]
@@ -17,6 +17,7 @@
 [ext_resource path="res://sprites/gog creatura-20230303T155947Z-001/gog creatura/Copy_of_DALL_E_2023-03-02_18.13.43-removebg-preview.png" type="Texture" id=15]
 [ext_resource path="res://scenes/blocks/fire2d.shader" type="Shader" id=16]
 [ext_resource path="res://sounds/Ultrakill P2 Cerberus Room Theme.mp3" type="AudioStream" id=17]
+[ext_resource path="res://sprites/teeth.png" type="Texture" id=18]
 [ext_resource path="res://sprites/SoCool.png" type="Texture" id=19]
 [ext_resource path="res://caption.png" type="Texture" id=20]
 
@@ -114,6 +115,62 @@ shader_param/fire_speed = Vector2( 0, 1 )
 shader_param/fire_aperture = 0.22
 shader_param/noise_tex = SubResource( 9 )
 
+[sub_resource type="Animation" id=10]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("TopHolder/TopRow:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 485, -100 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("BottomRow/BottomRow:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 516, 721 ) ]
+}
+
+[sub_resource type="Animation" id=11]
+resource_name = "idle"
+length = 5.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("TopHolder/TopRow:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 2.5 ),
+"transitions": PoolRealArray( -2, -2 ),
+"update": 0,
+"values": [ Vector2( 485, -100 ), Vector2( 485, -140 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("BottomRow/BottomRow:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 2.5 ),
+"transitions": PoolRealArray( -2, -2 ),
+"update": 0,
+"values": [ Vector2( 516, 721 ), Vector2( 516, 761 ) ]
+}
+
 [node name="Flatlands" type="Node2D"]
 script = ExtResource( 3 )
 
@@ -147,7 +204,7 @@ position = Vector2( 151, -205 )
 
 [node name="Arrow" type="Sprite" parent="."]
 self_modulate = Color( 1, 1, 1, 0.0705882 )
-position = Vector2( -607, -35 )
+position = Vector2( -608, 39 )
 rotation = -2.31944
 texture = ExtResource( 12 )
 
@@ -242,6 +299,33 @@ material = SubResource( 8 )
 position = Vector2( 507, 256 )
 scale = Vector2( 0.76, 0.367002 )
 texture = ExtResource( 20 )
+
+[node name="Teeth" type="Node2D" parent="UI"]
+
+[node name="TopHolder" type="Node2D" parent="UI/Teeth"]
+modulate = Color( 0.517647, 0.517647, 0.517647, 1 )
+position = Vector2( 0, -200 )
+
+[node name="TopRow" type="Sprite" parent="UI/Teeth/TopHolder"]
+position = Vector2( 485, -100 )
+scale = Vector2( 1.42525, 1.42525 )
+texture = ExtResource( 18 )
+
+[node name="BottomRow" type="Node2D" parent="UI/Teeth"]
+modulate = Color( 0.517647, 0.517647, 0.517647, 1 )
+position = Vector2( 0, 200 )
+
+[node name="BottomRow" type="Sprite" parent="UI/Teeth/BottomRow"]
+position = Vector2( 516, 721 )
+scale = Vector2( 1.42525, 1.42525 )
+texture = ExtResource( 18 )
+flip_h = true
+flip_v = true
+
+[node name="Teethidle" type="AnimationPlayer" parent="UI/Teeth"]
+autoplay = "idle"
+anims/RESET = SubResource( 10 )
+anims/idle = SubResource( 11 )
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = ExtResource( 5 )

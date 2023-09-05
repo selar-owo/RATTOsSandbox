@@ -1,4 +1,4 @@
-[gd_scene load_steps=63 format=2]
+[gd_scene load_steps=65 format=2]
 
 [ext_resource path="res://MinecraftFive-Bold.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://sprites/heart.png" type="Texture" id=2]
@@ -52,6 +52,8 @@
 [ext_resource path="res://sprites/football - Copy.png" type="Texture" id=50]
 [ext_resource path="res://scenes/blocks/football.tscn" type="PackedScene" id=51]
 [ext_resource path="res://scripts/ModTab.gd" type="Script" id=52]
+[ext_resource path="res://sprites/arrowicon.png" type="Texture" id=53]
+[ext_resource path="res://sprites/trashicon.png" type="Texture" id=54]
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0.45098, 0.815686, 0.407843, 1 )
@@ -120,6 +122,7 @@ shader_param/lod = 0.8
 
 [node name="UI" type="CanvasLayer"]
 script = ExtResource( 8 )
+openable = true
 
 [node name="HealthBars" type="Node2D" parent="."]
 script = ExtResource( 9 )
@@ -271,6 +274,7 @@ text = "+ 100"
 valign = 1
 
 [node name="ObjectSpawners" type="Node2D" parent="."]
+modulate = Color( 1, 1, 1, 0 )
 position = Vector2( 497, 276 )
 
 [node name="Blur" type="Sprite" parent="ObjectSpawners"]
@@ -283,6 +287,7 @@ __meta__ = {
 }
 
 [node name="Centered" type="Node2D" parent="ObjectSpawners"]
+visible = false
 position = Vector2( -497, -276 )
 script = ExtResource( 21 )
 
@@ -314,6 +319,9 @@ patch_margin_left = 3
 patch_margin_top = 3
 patch_margin_right = 3
 patch_margin_bottom = 3
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="TabButtons" type="Node2D" parent="ObjectSpawners/Centered"]
 
@@ -611,6 +619,47 @@ margin_right = 161.0
 margin_bottom = 45.0
 theme = ExtResource( 12 )
 text = "butt fart 678"
+
+[node name="ActionButtons" type="Node2D" parent="ObjectSpawners/Centered"]
+
+[node name="Trash" type="Node2D" parent="ObjectSpawners/Centered/ActionButtons"]
+
+[node name="Sprite" type="Sprite" parent="ObjectSpawners/Centered/ActionButtons/Trash"]
+position = Vector2( 804, 141 )
+scale = Vector2( 2.5, 2.5 )
+texture = ExtResource( 54 )
+
+[node name="ClickDetector" type="ToolButton" parent="ObjectSpawners/Centered/ActionButtons/Trash"]
+margin_left = 784.0
+margin_top = 121.0
+margin_right = 824.0
+margin_bottom = 161.0
+
+[node name="Undo" type="Node2D" parent="ObjectSpawners/Centered/ActionButtons"]
+
+[node name="Sprite" type="Sprite" parent="ObjectSpawners/Centered/ActionButtons/Undo"]
+position = Vector2( 921, 140 )
+scale = Vector2( 2.5, 2.5 )
+texture = ExtResource( 54 )
+
+[node name="ClickDetector" type="ToolButton" parent="ObjectSpawners/Centered/ActionButtons/Undo"]
+margin_left = 901.0
+margin_top = 120.0
+margin_right = 941.0
+margin_bottom = 160.0
+
+[node name="ToOrigin" type="Node2D" parent="ObjectSpawners/Centered/ActionButtons"]
+
+[node name="Sprite" type="Sprite" parent="ObjectSpawners/Centered/ActionButtons/ToOrigin"]
+position = Vector2( 862, 141 )
+scale = Vector2( 2.5, 2.5 )
+texture = ExtResource( 53 )
+
+[node name="ClickDetector" type="ToolButton" parent="ObjectSpawners/Centered/ActionButtons/ToOrigin"]
+margin_left = 842.0
+margin_top = 121.0
+margin_right = 882.0
+margin_bottom = 161.0
 
 [node name="Sided" type="Node2D" parent="ObjectSpawners"]
 position = Vector2( -497, -276 )

@@ -2,7 +2,7 @@ extends Node2D
 
 onready var spawn_area: Area2D = $SpawnArea
 onready var enemies: Node2D = $Enemies
-onready var navigation_2d := $"../../Enemies"
+onready var navigation_2d := $".."
 var area_entered:bool = false
 
 """

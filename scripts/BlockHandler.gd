@@ -323,6 +323,7 @@ func missing_texture():
 		if sprite.texture == null:
 			sprite.set_texture(missing)
 			ui.console_add_line(str(self.get_name()," is missing a texture!"),true)
+			print(str(self.get_name()," is missing a texture!"),true)
 
 func new_placing_block() -> void:
 	if !dont_spawn:
@@ -604,7 +605,8 @@ func tag(delta):
 			if placing == false: # WHY IS IT CHECKING IF ITS PLACING IT ALREADY FUCKING DOES IT FOR EVERYTHING
 				if Input.is_action_just_pressed("interact"):
 					if Globals.insideVehicle and vehicleIsActive:
-						player.change_camera_zoom(Vector2(Globals.camera_zoom,Globals.camera_zoom),Tween.EASE_OUT,0) #0.5
+						player.change_camera_zoom(Vector2(SaveSettings.load_cfg("VisualsAudio","Zoom"),SaveSettings.load_cfg("VisualsAudio","Zoom")),Tween.EASE_OUT,0) #0.5
+						player.show()
 						Globals.insideVehicle = false
 						vehicleIsActive = false
 						print("Exiting Vehicle ", rigid.get_name())
@@ -613,6 +615,7 @@ func tag(delta):
 					
 					if Globals.insideVehicle == false and vehicleIsActive == false and placing == false and intArea == true and mouse == true:
 						player.change_camera_zoom(Vector2(0.8,0.8),Tween.EASE_IN_OUT,0) #1
+						player.hide()
 						Globals.insideVehicle = true
 						yield(get_tree().create_timer(0.1),"timeout")
 						Globals.slot1held = false
@@ -859,6 +862,9 @@ func camera_sharting():
 	if cam_shake:
 		player.camera_shake(10,1)
 
+onready var top_holder = $"../../UI/Teeth/TopHolder"
+onready var bottom_row = $"../../UI/Teeth/BottomRow"
+
 func _on_turnOffMusic_area_entered(area):
 	if area.get_name() == "intArea":
 		cam_shake = true
@@ -867,6 +873,10 @@ func _on_turnOffMusic_area_entered(area):
 		tween_boy.interpolate_property($"../../Player/Camera2D","zoom",$"../../Player/Camera2D".zoom,Vector2(0.3,0.3),2,Tween.TRANS_QUINT,Tween.EASE_OUT)
 		tween_boy.interpolate_property($"../../Music","pitch_scale",$"../../Music".pitch_scale,0.2,2,Tween.TRANS_QUINT,Tween.EASE_OUT)
 		tween_boy.interpolate_property($"../../Music","volume_db",$"../../Music".volume_db,-12,2,Tween.TRANS_QUINT,Tween.EASE_OUT)
+		var tween_top := get_tree().create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUINT)
+		var tween_bottom := get_tree().create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUINT)
+		tween_top.tween_property(top_holder,"position:y",0,2)
+		tween_bottom.tween_property(bottom_row,"position:y",0,2)
 		tween_boy.start()
 
 func _on_turnOffMusic_area_exited(area):
@@ -874,9 +884,13 @@ func _on_turnOffMusic_area_exited(area):
 		cam_shake = false
 		tween_boy.interpolate_property($"../../UI/darkni","self_modulate:a",$"../../UI/darkni".self_modulate.a,0,2,Tween.TRANS_QUINT,Tween.EASE_OUT)
 		tween_boy.interpolate_property(UniversalWeather,"color",UniversalWeather.color,Color(1,1,1),2,Tween.TRANS_QUINT,Tween.EASE_OUT)
-		tween_boy.interpolate_property($"../../Player/Camera2D","zoom",$"../../Player/Camera2D".zoom,Vector2(Globals.camera_zoom,Globals.camera_zoom),2,Tween.TRANS_QUINT,Tween.EASE_OUT)
+		tween_boy.interpolate_property($"../../Player/Camera2D","zoom",$"../../Player/Camera2D".zoom,Vector2(SaveSettings.load_cfg("VisualsAudio","Zoom"),SaveSettings.load_cfg("VisualsAudio","Zoom")),2,Tween.TRANS_QUINT,Tween.EASE_OUT)
 		tween_boy.interpolate_property($"../../Music","pitch_scale",$"../../Music".pitch_scale,1,2,Tween.TRANS_QUINT,Tween.EASE_OUT)
 		tween_boy.interpolate_property($"../../Music","volume_db",$"../../Music".volume_db,-24,2,Tween.TRANS_QUINT,Tween.EASE_OUT)
+		var tween_top := get_tree().create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUINT)
+		var tween_bottom := get_tree().create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUINT)
+		tween_top.tween_property(top_holder,"position:y",-200,2)
+		tween_bottom.tween_property(bottom_row,"position:y",200,2)
 		tween_boy.start()
 
 func _on_Broken_animation_finished(anim_name: String) -> void:

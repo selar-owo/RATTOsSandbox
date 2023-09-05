@@ -4,6 +4,7 @@ onready var root := self.get_parent().get_parent().get_parent()
 onready var object_spawners = $".."
 onready var tab_buttons = $TabButtons
 onready var name_shower = $NameShower
+onready var hud = $"../.."
 var tween_progressing := false
 
 func _ready():
@@ -13,7 +14,7 @@ func _ready():
 
 func _process(delta) -> void:
 	name_shower.position = get_global_mouse_position()
-	if Input.is_action_just_pressed("QMenu") and !tween_progressing:
+	if Input.is_action_just_pressed("QMenu") and !tween_progressing and hud.openable:
 		toggle_os_state()
 
 func toggle_nameshower_state(state):

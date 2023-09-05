@@ -3,7 +3,7 @@ extends NinePatchRect
 var root
 var object_folder
 var os
-export var block_scene:Resource
+export var block_scene = "a"
 export var block_icon:Resource
 export var block_name:String
 export var is_path := true
@@ -29,7 +29,7 @@ func on_click() -> void:
 	if is_path:
 		block = block_scene.instance()
 	else:
-		block = block_scene
+		block = block_scene.duplicate()
 	object_folder.add_child(block)
 	os.toggle_os_state("close")
 

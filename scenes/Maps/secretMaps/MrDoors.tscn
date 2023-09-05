@@ -1,0 +1,647 @@
+[gd_scene load_steps=40 format=2]
+
+[ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scenes/Camera2D.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scripts/MainWorld.gd" type="Script" id=3]
+[ext_resource path="res://scenes/UIs/HUD.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scenes/DefaultWorldEnv.tres" type="Environment" id=5]
+[ext_resource path="res://scenes/nonuserblocks/Foliage.tscn" type="PackedScene" id=6]
+[ext_resource path="res://scenes/nonuserblocks/Decorations.tscn" type="PackedScene" id=7]
+[ext_resource path="res://scenes/nonuserblocks/Water.tscn" type="PackedScene" id=8]
+[ext_resource path="res://scenes/specific/doors_rooms/special_rooms/StartingRoom.tscn" type="PackedScene" id=9]
+[ext_resource path="res://sprites/playerBUTAWESOME.png" type="Texture" id=10]
+[ext_resource path="res://sprites/animatablesprites/physicsGunLeft.png" type="Texture" id=11]
+[ext_resource path="res://sprites/animatablesprites/physicsGunPulsingEnergy.png" type="Texture" id=12]
+[ext_resource path="res://sprites/animatablesprites/physicsGunHandle.png" type="Texture" id=13]
+[ext_resource path="res://sprites/animatablesprites/physicsGunRight.png" type="Texture" id=14]
+[ext_resource path="res://sprites/playerHand.png" type="Texture" id=15]
+[ext_resource path="res://scripts/DoorsPlayer.gd" type="Script" id=16]
+
+[sub_resource type="CanvasItemMaterial" id=58]
+
+[sub_resource type="AtlasTexture" id=39]
+flags = 1
+atlas = ExtResource( 12 )
+region = Rect2( 0, 0, 13, 6 )
+
+[sub_resource type="AtlasTexture" id=40]
+flags = 1
+atlas = ExtResource( 12 )
+region = Rect2( 13, 0, 13, 6 )
+
+[sub_resource type="AtlasTexture" id=41]
+flags = 1
+atlas = ExtResource( 12 )
+region = Rect2( 26, 0, 13, 6 )
+
+[sub_resource type="AtlasTexture" id=42]
+flags = 1
+atlas = ExtResource( 12 )
+region = Rect2( 39, 0, 13, 6 )
+
+[sub_resource type="AtlasTexture" id=43]
+flags = 1
+atlas = ExtResource( 12 )
+region = Rect2( 52, 0, 13, 6 )
+
+[sub_resource type="AtlasTexture" id=44]
+flags = 1
+atlas = ExtResource( 12 )
+region = Rect2( 65, 0, 13, 6 )
+
+[sub_resource type="AtlasTexture" id=45]
+flags = 1
+atlas = ExtResource( 12 )
+region = Rect2( 78, 0, 13, 6 )
+
+[sub_resource type="AtlasTexture" id=46]
+flags = 1
+atlas = ExtResource( 12 )
+region = Rect2( 91, 0, 13, 6 )
+
+[sub_resource type="AtlasTexture" id=47]
+flags = 1
+atlas = ExtResource( 12 )
+region = Rect2( 104, 0, 13, 6 )
+
+[sub_resource type="AtlasTexture" id=48]
+flags = 1
+atlas = ExtResource( 12 )
+region = Rect2( 117, 0, 13, 6 )
+
+[sub_resource type="AtlasTexture" id=49]
+flags = 1
+atlas = ExtResource( 12 )
+region = Rect2( 130, 0, 13, 6 )
+
+[sub_resource type="AtlasTexture" id=50]
+flags = 1
+atlas = ExtResource( 12 )
+region = Rect2( 143, 0, 13, 6 )
+
+[sub_resource type="AtlasTexture" id=51]
+flags = 1
+atlas = ExtResource( 12 )
+region = Rect2( 156, 0, 13, 6 )
+
+[sub_resource type="AtlasTexture" id=52]
+flags = 1
+atlas = ExtResource( 12 )
+region = Rect2( 169, 0, 13, 6 )
+
+[sub_resource type="AtlasTexture" id=53]
+flags = 1
+atlas = ExtResource( 12 )
+region = Rect2( 182, 0, 13, 6 )
+
+[sub_resource type="AtlasTexture" id=54]
+flags = 1
+atlas = ExtResource( 12 )
+region = Rect2( 195, 0, 13, 6 )
+
+[sub_resource type="AtlasTexture" id=55]
+flags = 1
+atlas = ExtResource( 12 )
+region = Rect2( 208, 0, 13, 6 )
+
+[sub_resource type="AtlasTexture" id=56]
+flags = 1
+atlas = ExtResource( 12 )
+region = Rect2( 221, 0, 13, 6 )
+
+[sub_resource type="AtlasTexture" id=57]
+flags = 1
+atlas = ExtResource( 12 )
+region = Rect2( 234, 0, 13, 6 )
+
+[sub_resource type="SpriteFrames" id=59]
+animations = [ {
+"frames": [ SubResource( 39 ), SubResource( 40 ), SubResource( 41 ), SubResource( 42 ), SubResource( 43 ), SubResource( 44 ), SubResource( 45 ), SubResource( 46 ), SubResource( 47 ), SubResource( 48 ), SubResource( 49 ), SubResource( 50 ), SubResource( 51 ), SubResource( 52 ), SubResource( 53 ), SubResource( 54 ), SubResource( 55 ), SubResource( 56 ), SubResource( 57 ) ],
+"loop": true,
+"name": "default",
+"speed": 15.0
+} ]
+
+[sub_resource type="Animation" id=60]
+resource_name = "Beginning"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("Black/ColorRect:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 2.5, 2.8, 3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Physgun:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5, 1, 2.1, 2.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Physgun:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.5, 0.9, 1.1, 1.425, 1.5, 1.8, 2.1, 2.8 ),
+"transitions": PoolRealArray( 1, -2, -2, 1, 1, 1, 1, -2, 1 ),
+"update": 0,
+"values": [ Vector2( -123, 17 ), Vector2( -123, 17 ), Vector2( -127, 9 ), Vector2( -126, 10 ), Vector2( -126, 10 ), Vector2( -126, 10 ), Vector2( -126, 10 ), Vector2( -126, 10 ), Vector2( -123, 17 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Physgun:rotation_degrees")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.5, 0.9, 1.1, 1.425, 1.5, 1.8, 2.1, 2.8 ),
+"transitions": PoolRealArray( 1, -2, -2, 1, 1, 1, 1, -2, 1 ),
+"update": 0,
+"values": [ 30.0, 30.0, -92.7651, -81.5643, -81.5643, -80.7247, -82.7469, -82.7469, 30.0 ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Player:rotation_degrees")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.3, 0.9, 1.6, 2, 2.1, 2.8 ),
+"transitions": PoolRealArray( 1, -2, 1, -2, 1, -2, 1 ),
+"update": 0,
+"values": [ -89.9999, -89.9999, -82.4116, -82.4116, -84.0897, -84.0897, -89.9999 ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("Physgun/PhysgunLeft:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 0.8, 1, 1.1, 1.425, 1.5, 1.8, 2.1 ),
+"transitions": PoolRealArray( 0.5, 0.5, -2, -2, -2, -2, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 12, -2 ), Vector2( 12, -2 ), Vector2( 11.2284, -4.46352 ), Vector2( 11.5768, -3.73875 ), Vector2( 11.5768, -3.73875 ), Vector2( 11.7235, -2.74958 ), Vector2( 11.4301, -4.72794 ), Vector2( 11.4301, -4.72794 ) ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("Physgun/PhysgunLeft:rotation_degrees")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0, 0.8, 1, 1.1, 1.425, 1.5, 1.8, 2.1 ),
+"transitions": PoolRealArray( 0.5, 0.5, -2, -2, 0.5, -2, 1, 1 ),
+"update": 0,
+"values": [ 0.0, 0.0, -11.597, -6.16537, -6.16537, -2.07566, -13.2476, -13.2476 ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("Hand:self_modulate")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0, 1.1, 1.3, 2.1, 2.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("Hand:rotation_degrees")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0, 1.1, 1.5, 1.8, 2.1, 2.8 ),
+"transitions": PoolRealArray( -2, -2, -2, 1, -2, -2 ),
+"update": 0,
+"values": [ -40.6174, -40.6174, 6.76909, -6.25492, -6.25492, -40.6174 ]
+}
+tracks/9/type = "value"
+tracks/9/path = NodePath("Hand:position")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0, 1.1, 1.5, 1.8, 2.1, 2.8 ),
+"transitions": PoolRealArray( -2, -2, -2, 1, -2, -2 ),
+"update": 0,
+"values": [ Vector2( -149, 15 ), Vector2( -149, 15 ), Vector2( -130, 3 ), Vector2( -131, 3 ), Vector2( -131, 3 ), Vector2( -149, 15 ) ]
+}
+tracks/10/type = "value"
+tracks/10/path = NodePath(".:visible")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/keys = {
+"times": PoolRealArray( 0, 2.8 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/11/type = "value"
+tracks/11/path = NodePath("../../Player:visible")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/keys = {
+"times": PoolRealArray( 0, 2.8 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/12/type = "value"
+tracks/12/path = NodePath("Black/ColorRect:visible")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/keys = {
+"times": PoolRealArray( 0, 3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/13/type = "value"
+tracks/13/path = NodePath("../../UI:visible")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/keys = {
+"times": PoolRealArray( 0, 2.8 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/14/type = "value"
+tracks/14/path = NodePath("Camera2D:current")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/15/type = "value"
+tracks/15/path = NodePath("../../Player/Camera2D:current")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/keys = {
+"times": PoolRealArray( 2.8 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/16/type = "value"
+tracks/16/path = NodePath("../../Player:movement_allowed")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/keys = {
+"times": PoolRealArray( 0, 2.8 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+
+[sub_resource type="Animation" id=61]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Black/ColorRect:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Physgun:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Physgun:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( -123, 17 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Physgun:rotation_degrees")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 30.0 ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Player:rotation_degrees")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ -89.9999 ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("Physgun/PhysgunLeft:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 12, -2 ) ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("Physgun/PhysgunLeft:rotation_degrees")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("Hand:self_modulate")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("Hand:rotation_degrees")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ -15.0 ]
+}
+tracks/9/type = "value"
+tracks/9/path = NodePath("Hand:position")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( -149, 15 ) ]
+}
+tracks/10/type = "value"
+tracks/10/path = NodePath(".:visible")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ true ]
+}
+tracks/11/type = "value"
+tracks/11/path = NodePath("../../Player:visible")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
+tracks/12/type = "value"
+tracks/12/path = NodePath("Black/ColorRect:visible")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ true ]
+}
+tracks/13/type = "value"
+tracks/13/path = NodePath("../../UI:visible")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
+tracks/14/type = "value"
+tracks/14/path = NodePath("Camera2D:current")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
+tracks/15/type = "value"
+tracks/15/path = NodePath("../../Player/Camera2D:current")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ true ]
+}
+tracks/16/type = "value"
+tracks/16/path = NodePath("../../Player:movement_allowed")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ true ]
+}
+
+[node name="MrDoors" type="Node2D"]
+script = ExtResource( 3 )
+
+[node name="Background" type="CanvasLayer" parent="."]
+layer = -128
+
+[node name="ColorRect" type="ColorRect" parent="Background"]
+margin_right = 1024.0
+margin_bottom = 600.0
+mouse_filter = 2
+color = Color( 0.129412, 0.129412, 0.129412, 1 )
+
+[node name="Decorations" type="Node2D" parent="."]
+
+[node name="Water" parent="Decorations" instance=ExtResource( 8 )]
+
+[node name="Foliage" parent="Decorations" instance=ExtResource( 6 )]
+
+[node name="Floor" parent="Decorations" instance=ExtResource( 7 )]
+modulate = Color( 0.490196, 0.490196, 0.490196, 1 )
+
+[node name="Decorations" parent="Decorations" instance=ExtResource( 7 )]
+
+[node name="Rooms" type="Node2D" parent="."]
+
+[node name="StartingRoom" parent="Rooms" instance=ExtResource( 9 )]
+position = Vector2( -135, -56 )
+do_starting_animation = false
+
+[node name="Player" parent="." instance=ExtResource( 1 )]
+visible = false
+position = Vector2( -135, 21 )
+script = ExtResource( 16 )
+weapons_allowed = false
+
+[node name="Camera2D" parent="Player" instance=ExtResource( 2 )]
+
+[node name="Cutscenes" type="Node2D" parent="."]
+
+[node name="Start" type="Node2D" parent="Cutscenes"]
+
+[node name="Camera2D" type="Camera2D" parent="Cutscenes/Start"]
+position = Vector2( -102, -25 )
+zoom = Vector2( 0.3, 0.3 )
+
+[node name="Player" type="Sprite" parent="Cutscenes/Start"]
+position = Vector2( -135, 23 )
+rotation = -1.57079
+texture = ExtResource( 10 )
+
+[node name="Hand" type="Sprite" parent="Cutscenes/Start"]
+position = Vector2( -149, 15 )
+rotation = -0.261799
+texture = ExtResource( 15 )
+
+[node name="Physgun" type="Node2D" parent="Cutscenes/Start"]
+modulate = Color( 1, 1, 1, 0 )
+position = Vector2( -123, 17 )
+rotation = 0.523598
+
+[node name="GlowingEnergy" type="AnimatedSprite" parent="Cutscenes/Start/Physgun"]
+self_modulate = Color( 0.207843, 0.207843, 0.207843, 1 )
+material = SubResource( 58 )
+position = Vector2( 8, -1.52588e-05 )
+frames = SubResource( 59 )
+
+[node name="Handle" type="Sprite" parent="Cutscenes/Start/Physgun"]
+texture = ExtResource( 13 )
+
+[node name="PhysgunRight" type="Sprite" parent="Cutscenes/Start/Physgun"]
+position = Vector2( 12, 3 )
+texture = ExtResource( 14 )
+
+[node name="PhysgunLeft" type="Sprite" parent="Cutscenes/Start/Physgun"]
+position = Vector2( 12, -2 )
+texture = ExtResource( 11 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Cutscenes/Start"]
+autoplay = "Beginning"
+anims/Beginning = SubResource( 60 )
+anims/RESET = SubResource( 61 )
+
+[node name="Black" type="CanvasLayer" parent="Cutscenes/Start"]
+layer = 128
+
+[node name="ColorRect" type="ColorRect" parent="Cutscenes/Start/Black"]
+margin_right = 1024.0
+margin_bottom = 600.0
+mouse_filter = 2
+color = Color( 0.0509804, 0.0509804, 0.0509804, 1 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+
+[node name="IngameObjects" type="Node2D" parent="."]
+
+[node name="Objects" type="Node2D" parent="."]
+
+[node name="Trees" type="Node2D" parent="."]
+
+[node name="UI" parent="." instance=ExtResource( 4 )]
+visible = false
+openable = false
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2( 4, 4 )
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = ExtResource( 5 )

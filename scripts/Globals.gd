@@ -32,7 +32,7 @@ var pistolEquip:bool = false
 var is_paused:bool = false
 var does_have_goober := false
 var QmenuOpen := false
-var camera_zoom := 0.65
+#var camera_zoom := 0.65
 var current_tip:String
 
 #version shit

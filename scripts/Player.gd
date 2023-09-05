@@ -4,6 +4,7 @@ export(bool) var teleport_allowed := true
 export(bool) var qmenu_allowed := true
 export(bool) var noclip_allowed := true
 export(bool) var movement_allowed := true
+export(bool) var weapons_allowed := true
 
 export(bool) var passive_teleport_allowed := true
 export(bool) var passive_qmenu_allowed := true
@@ -114,7 +115,7 @@ func set_player_texture(path,hand_path = null):
 		hand_sprite.set_texture(ResourceLoader.load(hand_path))
 
 func new_movement(delta):
-	if movement_allowed or passive_movement_allowed:
+	if movement_allowed and passive_movement_allowed:
 		look_at(get_global_mouse_position())
 		var input = Vector2.ZERO
 		var cur_speed = speed
@@ -236,24 +237,24 @@ func setup_weapons():
 		instance_weapon("res://scenes/weapons/TheTerraria.tscn")
 
 func get_input():
-	
 	if Input.is_action_just_pressed("tp") and teleport_allowed or Input.is_action_just_pressed("tp") and passive_teleport_allowed:
 		position = get_global_mouse_position()
 	
-	if Input.is_action_just_pressed("physbutton"):
-		Globals.slot1held = !Globals.slot1held
-		Globals.slot3held = false
-		Globals.slot2held = false
-	
-	if Input.is_action_just_pressed("toolgunbutton"):
-		Globals.slot3held = !Globals.slot3held
-		Globals.slot1held = false
-		Globals.slot2held = false
-	
-	if Input.is_action_just_pressed("pistolbutton"):
-		Globals.slot2held = !Globals.slot2held
-		Globals.slot1held = false
-		Globals.slot3held = false
+	if weapons_allowed:
+		if Input.is_action_just_pressed("physbutton"):
+			Globals.slot1held = !Globals.slot1held
+			Globals.slot3held = false
+			Globals.slot2held = false
+		
+		if Input.is_action_just_pressed("toolgunbutton"):
+			Globals.slot3held = !Globals.slot3held
+			Globals.slot1held = false
+			Globals.slot2held = false
+		
+		if Input.is_action_just_pressed("pistolbutton"):
+			Globals.slot2held = !Globals.slot2held
+			Globals.slot1held = false
+			Globals.slot3held = false
 	
 	if Input.is_action_just_pressed("noclip") and noclip_allowed or Input.is_action_just_pressed("noclip") and passive_noclip_allowed:
 		Globals.noclip = !Globals.noclip
@@ -271,11 +272,6 @@ func get_input():
 			vehicle_cooldown = true
 		else:
 			vehicle_cooldown = true
-	
-	if Globals.insideVehicle == true:
-		hide()
-	else:
-		show()
 	
 	if Input.is_action_just_pressed("map"):
 		Globals.mapOn = !Globals.mapOn
@@ -311,11 +307,12 @@ func hide_weapons():
 
 func weapon_handler():
 	
-	if Input.is_action_just_pressed("left_click") and Globals.slot1held:
+	if Input.is_action_just_pressed("left_click") and Globals.slot1held and weapons_allowed:
 		physgun_animation_player.play("Open")
 	
 	if Input.is_action_just_released("left_click") and Globals.slot1held or Globals.slot1held and Input.is_action_just_pressed("physbutton") or Input.is_action_just_pressed("pistolbutton") or Input.is_action_just_pressed("toolgunbutton"):
-		physgun_animation_player.play("Close")
+		if weapons_allowed:
+			physgun_animation_player.play("Close")
 	
 	if Globals.slot1held:
 		open.volume_db = defopen
