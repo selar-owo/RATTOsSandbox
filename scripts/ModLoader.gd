@@ -17,7 +17,7 @@ func load_mods():
 	var fartsghit6 = Directory.new()
 	if !caca.dir_exists("user://mods/"):
 		fartsghit6.make_dir("user://mods/")
-	print("made mods directory")
+		print("made mods directory")
 	
 	var files = []
 	var dir = Directory.new()
