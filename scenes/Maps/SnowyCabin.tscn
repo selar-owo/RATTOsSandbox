@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/Camera2D.tscn" type="PackedScene" id=2]
@@ -12,6 +12,12 @@
 [ext_resource path="res://sprites/wintercabininside.png" type="Texture" id=10]
 [ext_resource path="res://sprites/PhysGunGlowReal.png" type="Texture" id=11]
 [ext_resource path="res://scripts/LightFlicker.gd" type="Script" id=12]
+[ext_resource path="res://sprites/wintercabinupper.png" type="Texture" id=13]
+[ext_resource path="res://sprites/wintercabinrocks.png" type="Texture" id=14]
+[ext_resource path="res://scripts/WinterCabin.gd" type="Script" id=15]
+
+[sub_resource type="RectangleShape2D" id=7]
+extents = Vector2( 116, 133 )
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 7.99999, 84.375 )
@@ -26,7 +32,11 @@ extents = Vector2( 96, 8 )
 extents = Vector2( 8.00001, 28.4999 )
 
 [sub_resource type="OccluderPolygon2D" id=5]
+cull_mode = 1
 polygon = PoolVector2Array( -112, 128, -112, -47.0002, -95.9999, -47.0002, -96.0002, 112, 95.9998, 112, 96.0003, -112, -95.9997, -112, -95.9998, -65.0002, -112, -65.0002, -112, -128, 112, -128, 112, 128 )
+
+[sub_resource type="OccluderPolygon2D" id=6]
+polygon = PoolVector2Array( -116, 133, -116, -133, 116, -133, 116, 133 )
 
 [node name="SnowyCabin" type="Node2D"]
 script = ExtResource( 3 )
@@ -44,9 +54,13 @@ tile_data = PoolIntArray( -2162731, 15, 65536, -2162730, 15, 65536, -2162729, 15
 [node name="WinterCabin" type="StaticBody2D" parent="."]
 position = Vector2( -4, 206 )
 rotation = 1.57079
+script = ExtResource( 15 )
 
-[node name="Sprite" type="Sprite" parent="WinterCabin"]
-texture = ExtResource( 10 )
+[node name="InsideDetector" type="Area2D" parent="WinterCabin"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WinterCabin/InsideDetector"]
+position = Vector2( 0, 3.8147e-06 )
+shape = SubResource( 7 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="WinterCabin"]
 position = Vector2( -104, 43.3748 )
@@ -68,9 +82,14 @@ shape = SubResource( 3 )
 position = Vector2( -104, -99.5001 )
 shape = SubResource( 4 )
 
-[node name="Lights" type="Node2D" parent="WinterCabin"]
+[node name="Inside" type="Node2D" parent="WinterCabin"]
 
-[node name="Light1" type="Light2D" parent="WinterCabin/Lights"]
+[node name="Inner" type="Sprite" parent="WinterCabin/Inside"]
+texture = ExtResource( 10 )
+
+[node name="Lights" type="Node2D" parent="WinterCabin/Inside"]
+
+[node name="Light1" type="Light2D" parent="WinterCabin/Inside/Lights"]
 scale = Vector2( 8.63519, 8.63519 )
 texture = ExtResource( 11 )
 color = Color( 0.643137, 0.611765, 0.439216, 1 )
@@ -78,8 +97,22 @@ shadow_enabled = true
 script = ExtResource( 12 )
 flicker_amount = [ 0.8, 1 ]
 
-[node name="LightOccluder2D" type="LightOccluder2D" parent="WinterCabin"]
+[node name="LightOccluder2D" type="LightOccluder2D" parent="WinterCabin/Inside"]
 occluder = SubResource( 5 )
+
+[node name="Outside" type="Node2D" parent="WinterCabin"]
+z_index = 1
+
+[node name="Outer" type="Sprite" parent="WinterCabin/Outside"]
+texture = ExtResource( 13 )
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="WinterCabin/Outside"]
+occluder = SubResource( 6 )
+
+[node name="Rocks" type="Sprite" parent="WinterCabin"]
+self_modulate = Color( 1.2, 1.2, 1.2, 1 )
+position = Vector2( -172, -56.0004 )
+texture = ExtResource( 14 )
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
 
@@ -89,191 +122,229 @@ occluder = SubResource( 5 )
 
 [node name="Tree" parent="IngameObjects" instance=ExtResource( 9 )]
 position = Vector2( -571, -384 )
+z_index = 1
 mode = 1
 random_rotation = true
 
 [node name="Tree2" parent="IngameObjects" instance=ExtResource( 9 )]
 position = Vector2( -575, -39 )
+z_index = 1
 mode = 1
 random_rotation = true
 
 [node name="Tree3" parent="IngameObjects" instance=ExtResource( 9 )]
 position = Vector2( -415, 231 )
+z_index = 1
 mode = 1
 random_rotation = true
 
 [node name="Tree4" parent="IngameObjects" instance=ExtResource( 9 )]
 position = Vector2( -272, 66 )
+z_index = 1
 mode = 1
 random_rotation = true
 
 [node name="Tree5" parent="IngameObjects" instance=ExtResource( 9 )]
 position = Vector2( -413, -228 )
+z_index = 1
 mode = 1
 random_rotation = true
 
 [node name="Tree6" parent="IngameObjects" instance=ExtResource( 9 )]
 position = Vector2( -587, -173 )
+z_index = 1
 mode = 1
 random_rotation = true
 
 [node name="Tree7" parent="IngameObjects" instance=ExtResource( 9 )]
 position = Vector2( -700, 110 )
+z_index = 1
 mode = 1
 random_rotation = true
 
 [node name="Tree8" parent="IngameObjects" instance=ExtResource( 9 )]
 position = Vector2( -597, 275 )
+z_index = 1
 mode = 1
 random_rotation = true
 
 [node name="Tree9" parent="IngameObjects" instance=ExtResource( 9 )]
 position = Vector2( -450, 111 )
+z_index = 1
 mode = 1
 random_rotation = true
 
 [node name="Tree10" parent="IngameObjects" instance=ExtResource( 9 )]
 position = Vector2( -193, 361 )
+z_index = 1
 mode = 1
 random_rotation = true
 
 [node name="Tree11" parent="IngameObjects" instance=ExtResource( 9 )]
 position = Vector2( -353, 418 )
+z_index = 1
 mode = 1
 random_rotation = true
 
 [node name="Tree12" parent="IngameObjects" instance=ExtResource( 9 )]
 position = Vector2( -253, 230 )
+z_index = 1
 mode = 1
 random_rotation = true
 
 [node name="Tree13" parent="IngameObjects" instance=ExtResource( 9 )]
 position = Vector2( 127, 401 )
+z_index = 1
 mode = 1
 random_rotation = true
 
 [node name="Tree14" parent="IngameObjects" instance=ExtResource( 9 )]
 position = Vector2( -27, 480 )
+z_index = 1
 mode = 1
 random_rotation = true
 
 [node name="Tree15" parent="IngameObjects" instance=ExtResource( 9 )]
 position = Vector2( -217, 488 )
+z_index = 1
 mode = 1
 random_rotation = true
 
 [node name="Tree16" parent="IngameObjects" instance=ExtResource( 9 )]
 position = Vector2( 280, 161 )
+z_index = 1
 mode = 1
 random_rotation = true
 
 [node name="Tree17" parent="IngameObjects" instance=ExtResource( 9 )]
 position = Vector2( 396, 466 )
+z_index = 1
 mode = 1
 random_rotation = true
 
 [node name="Tree18" parent="IngameObjects" instance=ExtResource( 9 )]
 position = Vector2( 653, 293 )
+z_index = 1
 mode = 1
 random_rotation = true
 
 [node name="Tree19" parent="IngameObjects" instance=ExtResource( 9 )]
 position = Vector2( 678, 507 )
+z_index = 1
 mode = 1
 random_rotation = true
 
 [node name="Tree20" parent="IngameObjects" instance=ExtResource( 9 )]
 position = Vector2( 477, 299 )
+z_index = 1
 mode = 1
 random_rotation = true
 
 [node name="Tree21" parent="IngameObjects" instance=ExtResource( 9 )]
 position = Vector2( 460, 592 )
+z_index = 1
 mode = 1
 random_rotation = true
 
 [node name="Tree22" parent="IngameObjects" instance=ExtResource( 9 )]
 position = Vector2( 249, 339 )
+z_index = 1
 mode = 1
 random_rotation = true
 
 [node name="Tree23" parent="IngameObjects" instance=ExtResource( 9 )]
 position = Vector2( 239, 567 )
+z_index = 1
 mode = 1
 random_rotation = true
 
 [node name="Tree24" parent="IngameObjects" instance=ExtResource( 9 )]
 position = Vector2( 526, 127 )
+z_index = 1
 mode = 1
 random_rotation = true
 
 [node name="Tree25" parent="IngameObjects" instance=ExtResource( 9 )]
 position = Vector2( 372, -105 )
+z_index = 1
 mode = 1
 random_rotation = true
 
 [node name="Tree26" parent="IngameObjects" instance=ExtResource( 9 )]
 position = Vector2( 577, -303 )
+z_index = 1
 mode = 1
 random_rotation = true
 
 [node name="Tree27" parent="IngameObjects" instance=ExtResource( 9 )]
 position = Vector2( 351, -420 )
+z_index = 1
 mode = 1
 random_rotation = true
 
 [node name="Tree28" parent="IngameObjects" instance=ExtResource( 9 )]
 position = Vector2( 88, -271 )
+z_index = 1
 mode = 1
 random_rotation = true
 
 [node name="Tree29" parent="IngameObjects" instance=ExtResource( 9 )]
 position = Vector2( -223, -445 )
+z_index = 1
 mode = 1
 random_rotation = true
 
 [node name="Tree30" parent="IngameObjects" instance=ExtResource( 9 )]
 position = Vector2( -278, -265 )
+z_index = 1
 mode = 1
 random_rotation = true
 
 [node name="Tree31" parent="IngameObjects" instance=ExtResource( 9 )]
 position = Vector2( 3, -439 )
+z_index = 1
 mode = 1
 random_rotation = true
 
 [node name="Tree32" parent="IngameObjects" instance=ExtResource( 9 )]
 position = Vector2( 297, -261 )
+z_index = 1
 mode = 1
 random_rotation = true
 
 [node name="Tree33" parent="IngameObjects" instance=ExtResource( 9 )]
 position = Vector2( -63, -314 )
+z_index = 1
 mode = 1
 random_rotation = true
 
 [node name="Tree34" parent="IngameObjects" instance=ExtResource( 9 )]
 position = Vector2( -463, -440 )
+z_index = 1
 mode = 1
 random_rotation = true
 
 [node name="Tree35" parent="IngameObjects" instance=ExtResource( 9 )]
 position = Vector2( -653, -489 )
+z_index = 1
 mode = 1
 random_rotation = true
 
 [node name="Tree36" parent="IngameObjects" instance=ExtResource( 9 )]
 position = Vector2( -656, -247 )
+z_index = 1
 mode = 1
 random_rotation = true
 
 [node name="Tree37" parent="IngameObjects" instance=ExtResource( 9 )]
 position = Vector2( -690, -60 )
+z_index = 1
 mode = 1
 random_rotation = true
 
 [node name="Tree38" parent="IngameObjects" instance=ExtResource( 9 )]
 position = Vector2( 406, 67 )
+z_index = 1
 mode = 1
 random_rotation = true
 
@@ -288,3 +359,14 @@ zoom = Vector2( 4, 4 )
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = ExtResource( 5 )
+
+[node name="Sun" type="Light2D" parent="."]
+visible = false
+position = Vector2( 714, -1529 )
+scale = Vector2( 190.536, 190.536 )
+texture = ExtResource( 11 )
+color = Color( 0.643137, 0.611765, 0.439216, 1 )
+shadow_enabled = true
+
+[connection signal="area_entered" from="WinterCabin/InsideDetector" to="WinterCabin" method="_on_InsideDetector_area_entered"]
+[connection signal="area_exited" from="WinterCabin/InsideDetector" to="WinterCabin" method="_on_InsideDetector_area_exited"]
