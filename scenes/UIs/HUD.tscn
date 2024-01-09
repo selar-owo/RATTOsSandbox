@@ -1,4 +1,4 @@
-[gd_scene load_steps=65 format=2]
+[gd_scene load_steps=66 format=2]
 
 [ext_resource path="res://MinecraftFive-Bold.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://sprites/heart.png" type="Texture" id=2]
@@ -54,6 +54,7 @@
 [ext_resource path="res://scripts/ModTab.gd" type="Script" id=52]
 [ext_resource path="res://sprites/arrowicon.png" type="Texture" id=53]
 [ext_resource path="res://sprites/trashicon.png" type="Texture" id=54]
+[ext_resource path="res://scripts/ActionButtons.gd" type="Script" id=55]
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0.45098, 0.815686, 0.407843, 1 )
@@ -287,7 +288,6 @@ __meta__ = {
 }
 
 [node name="Centered" type="Node2D" parent="ObjectSpawners"]
-visible = false
 position = Vector2( -497, -276 )
 script = ExtResource( 21 )
 
@@ -621,6 +621,7 @@ theme = ExtResource( 12 )
 text = "butt fart 678"
 
 [node name="ActionButtons" type="Node2D" parent="ObjectSpawners/Centered"]
+script = ExtResource( 55 )
 
 [node name="Trash" type="Node2D" parent="ObjectSpawners/Centered/ActionButtons"]
 
@@ -662,4 +663,9 @@ margin_right = 882.0
 margin_bottom = 161.0
 
 [node name="Sided" type="Node2D" parent="ObjectSpawners"]
+visible = false
 position = Vector2( -497, -276 )
+
+[connection signal="button_up" from="ObjectSpawners/Centered/ActionButtons/Trash/ClickDetector" to="ObjectSpawners/Centered/ActionButtons" method="_TrashButton_Pressed"]
+[connection signal="button_up" from="ObjectSpawners/Centered/ActionButtons/Undo/ClickDetector" to="ObjectSpawners/Centered/ActionButtons" method="_UndoButton_Pressed"]
+[connection signal="button_up" from="ObjectSpawners/Centered/ActionButtons/ToOrigin/ClickDetector" to="ObjectSpawners/Centered/ActionButtons" method="_ClearCorpseButton_Pressed"]

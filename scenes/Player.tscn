@@ -1074,7 +1074,7 @@ self_modulate = Color( 0.666667, 0.780392, 1, 1 )
 material = SubResource( 38 )
 frames = SubResource( 11 )
 animation = "New Anim but Cooler"
-frame = 3
+frame = 2
 playing = true
 offset = Vector2( 26, 0 )
 
@@ -1130,7 +1130,7 @@ texture = ExtResource( 15 )
 material = SubResource( 77 )
 position = Vector2( 23, 0 )
 frames = SubResource( 58 )
-frame = 6
+frame = 15
 playing = true
 
 [node name="Light2D" type="Light2D" parent="heldgun/physgunAnimations/GlowingEnergy"]
