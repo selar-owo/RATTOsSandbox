@@ -236,7 +236,7 @@ func ready_naviagtion():
 	timer.connect("timeout",self,"update_pathfinding")
 
 func navigation(delta):
-	if health > 0:	
+	if health > 0:
 		if agent.is_navigation_finished():
 			return
 		

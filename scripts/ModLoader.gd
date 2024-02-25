@@ -8,9 +8,9 @@ var modded_items := [
 	}
 ]
 
-func _ready():
-	if SaveSettings.load_cfg("Experimental","Mods"):
-		load_mods()
+#func _ready():
+#	if SaveSettings.load_cfg("Experimental","Mods"):
+#		load_mods()
 
 func load_mods():
 	var caca = Directory.new()

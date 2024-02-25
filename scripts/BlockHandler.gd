@@ -79,6 +79,7 @@ export(bool) var wisetree:bool = false
 export(bool) var boombox:bool = false
 export(bool) var football:bool = false
 export(bool) var hatch:bool = false
+export(bool) var isfaggot:bool = false
 onready var goobs:Node = $Goobs
 onready var amogos := $amogos
 onready var piston_head := $PistonHead
@@ -252,7 +253,15 @@ func damage(attack:Attack):
 				blood.heal_amount = attack.amount
 				ingame_objects.add_child(blood)
 			health -= (attack.amount - defence)
-			
+		
+		if isfaggot and health <= 0:
+			var explosion = ResourceLoader.load("res://scenes/otherstuffidk/Explosion.tscn").instance()
+			explosion.explosion_size = Vector2(1,1)
+			explosion.explosion_damage = 40
+			explosion.position = self.position
+			get_parent().add_child(explosion)
+			queue_free()
+		
 		if destroyable:
 			health -= (attack.amount - defence)
 			fragments.restart()
@@ -481,6 +490,11 @@ func tag(delta):
 				linear_velocity += Vector2(rand_range(rat_speed[0],rat_speed[1]), 0).rotated(rotation) #50,200
 			else:
 				$rat.stop()
+		
+		if isfaggot:
+			if health > 0:
+				look_at(player.position)
+				rotation_degrees += rand_range(-rat_rotation_speed,rat_rotation_speed) #-50.50
 		
 		#sentry AI
 		if sentry_AI:

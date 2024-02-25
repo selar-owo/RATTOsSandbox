@@ -38,7 +38,7 @@ var current_tip:String
 #version shit
 var version_number := [
 	"1.1.0" ,#the number
-	"Brought Back Alive Update", #the name
+	"Super Cool Update", #the name
 	"_beta", #like beta or like aplha
 ]
 

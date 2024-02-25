@@ -745,9 +745,9 @@ color = Color( 0, 0, 0, 0.317647 )
 [node name="Ratto" type="TextureRect" parent="Main"]
 anchor_left = 0.5
 anchor_right = 0.5
-margin_left = -295.0
+margin_left = 217.0
 margin_top = -138.0
-margin_right = -14.0
+margin_right = 498.0
 margin_bottom = 70.0
 rect_scale = Vector2( 2, 2 )
 texture = ExtResource( 1 )
@@ -759,9 +759,9 @@ __meta__ = {
 [node name="Sandbox" type="TextureRect" parent="Main"]
 anchor_left = 0.5
 anchor_right = 0.5
-margin_left = -293.0
+margin_left = 219.0
 margin_top = 139.0
-margin_right = -12.0
+margin_right = 500.0
 margin_bottom = 241.99
 rect_rotation = -2.05571
 rect_scale = Vector2( 2, 2 )
@@ -774,9 +774,9 @@ __meta__ = {
 [node name="Play" type="TextureButton" parent="Main"]
 anchor_left = 0.5
 anchor_right = 0.5
-margin_left = -128.0
+margin_left = 384.0
 margin_top = 347.0
-margin_right = 72.0
+margin_right = 584.0
 margin_bottom = 433.0
 rect_rotation = -15.0
 rect_scale = Vector2( 1.5, 1.5 )

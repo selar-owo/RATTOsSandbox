@@ -595,7 +595,7 @@ texture = ExtResource( 15 )
 [node name="Physgun" type="Node2D" parent="Cutscenes/Start"]
 modulate = Color( 1, 1, 1, 0 )
 position = Vector2( -123, 17 )
-rotation = 0.523598
+rotation = 0.523599
 
 [node name="GlowingEnergy" type="AnimatedSprite" parent="Cutscenes/Start/Physgun"]
 self_modulate = Color( 0.207843, 0.207843, 0.207843, 1 )
