@@ -339,9 +339,7 @@ func new_placing_block() -> void:
 		if placing == true:
 			health = maximum_health
 			sprite.modulate.a = 0.5
-			Globals.slot1held = false
-			Globals.slot2held = false
-			Globals.slot3held = false
+			player.unequip_items()
 			Globals.physgunPicking = false
 			rigid.position = get_global_mouse_position()
 			if Input.is_action_just_released("left_click"):
@@ -388,7 +386,7 @@ func placingBlock():
 
 var doodad
 func physInteraction(delta):
-	if Input.is_action_pressed("left_click") and Globals.slot1held == true and mouse == true and Globals.physgunPicking == false:
+	if Input.is_action_pressed("left_click") and player.held_id == 0 and mouse == true and Globals.physgunPicking == false:
 		gunning = true
 		doodad = get_global_mouse_position() - position
 		stable_rotation = self.rotation_degrees

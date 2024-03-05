@@ -1310,10 +1310,10 @@ custom_fonts/font = SubResource( 11 )
 text = "health bar style"
 
 [node name="PhysGunColor" type="ColorPicker" parent="MainMenu/PopMenus/Options/Visuals"]
-margin_left = 804.0
-margin_top = 378.0
-margin_right = 1112.0
-margin_bottom = 840.0
+margin_left = 808.0
+margin_top = 382.0
+margin_right = 1116.0
+margin_bottom = 844.0
 rect_scale = Vector2( 0.4, 0.4 )
 script = ExtResource( 52 )
 section = "VisualsAudio"
@@ -1326,7 +1326,7 @@ texture = ExtResource( 44 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="MainMenu/PopMenus/Options/Visuals/PhysGunColor/PhysGun"]
 frames = SubResource( 28 )
-frame = 6
+frame = 7
 playing = true
 
 [node name="PhysGunGlowReal" type="Sprite" parent="MainMenu/PopMenus/Options/Visuals/PhysGunColor/PhysGun"]

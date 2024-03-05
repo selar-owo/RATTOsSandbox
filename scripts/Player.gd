@@ -16,7 +16,6 @@ var walking := false
 export(int) var health = 100
 export(int) var defence = 0
 export(int,0,200) var intertia = 100
-export(Array) var inventory := []
 const speed:int = 140 #120
 const acceleration := 5
 const sprint_speed:int = 80
@@ -34,13 +33,14 @@ onready var held_sprite_unanim:Node = $heldgun/heldgun/physgun
 onready var pistol_sprite:Node = $heldgun/heldgun3
 onready var stepSound:Node = $Walk
 onready var gun_ray:Node = $heldgun/heldgun3/RayCast2D
-onready var UI:Node = $"../UI" #This UI is the outdated version, use HUD instead!
+onready var UI:Node = $"../UI" #This UI is the outdated version, use HUD instead! ok faggot guess i FUCKING WILL :3
 onready var interact: AnimationPlayer = $Hand/Interact
 onready var root_node: Node2D = $".."
 onready var vehicle_timer: Timer = $VehicleTimer
 onready var hand_sprite = $Hand/Sprite
 onready var physgun_animations = $heldgun/physgunAnimations
 onready var physgun_animation_player = $heldgun/physgunAnimations/AnimationPlayer
+onready var slots_node = $Slots
 var velocity = Vector2()
 var vehicle_cooldown := false
 
@@ -57,24 +57,17 @@ var defopen
 var defclose
 var defloop
 
+export(Array) var inventory := []
+export(Dictionary) var slots := {
+	0: {"id": 0,"isheld":true},
+	1: {"id": -1,"isheld":false},
+	2: {"id": -1,"isheld":false},
+}
+var held_id := -1
+
 func setPlayerTexture():
 	if Globals.playerSprite != null:
 		sprite.set_texture(Globals.playerSprite)
-
-onready var particles_2d = $heldgun/physgunAnimations/LightParticles
-onready var heavy_particles = $heldgun/physgunAnimations/HeavyParticles
-onready var heavy_particles_2 = $heldgun/physgunAnimations/HeavyParticles2
-onready var glowing_energy = $heldgun/physgunAnimations/GlowingEnergy
-onready var light_2d = $heldgun/physgunAnimations/GlowingEnergy/Light2D
-
-func physColor():
-	held_sprite.self_modulate = SaveSettings.load_cfg("VisualsAudio","PhysColor")
-	phys_glow.self_modulate = SaveSettings.load_cfg("VisualsAudio","PhysColor")
-	particles_2d.self_modulate = SaveSettings.load_cfg("VisualsAudio","PhysColor")
-	heavy_particles.self_modulate = SaveSettings.load_cfg("VisualsAudio","PhysColor")
-	heavy_particles_2.self_modulate = SaveSettings.load_cfg("VisualsAudio","PhysColor")
-	glowing_energy.self_modulate = SaveSettings.load_cfg("VisualsAudio","PhysColor")
-	light_2d.color = SaveSettings.load_cfg("VisualsAudio","PhysColor")
 
 func _physics_process(delta: float) -> void:
 	if old_style == false:
@@ -82,12 +75,14 @@ func _physics_process(delta: float) -> void:
 	elif old_style == true:
 		movement(delta)
 
+func unequip_items() -> void:
+	for i in slots.values():
+		i["isheld"] = false
+
 func _process(delta):
-	weapon_handler()
 	health_changed_checker()
 	get_input()
 	vehint()
-	physColor()
 	camera_shiz(delta)
 	if SaveSettings.load_cfg("PhysicsStuff","MaxHealth") != 99999:
 		health = clamp(health,-50,SaveSettings.load_cfg("PhysicsStuff","MaxHealth"))
@@ -102,12 +97,16 @@ func camera_shiz(delta) -> void:
 	cam.offset = lerp(cam.position,cam.position - (get_global_mouse_position() - position) * -1,0.05)
 
 func _ready():
-	defopen = open.volume_db
-	defclose = close.volume_db
-	defloop = loop.volume_db
 	Globals.insideVehicle = false
 	cam.zoom = Vector2(SaveSettings.load_cfg("VisualsAudio","Zoom"),SaveSettings.load_cfg("VisualsAudio","Zoom"))
-	setup_weapons()
+	var idx := 0
+	for i in slots_node.get_children():
+		if i.get_child_count() == 0:
+			slots[idx]["id"] = -1
+			idx += 1
+			continue
+		slots[idx]["id"] = i.get_child(0).handler.id
+		idx += 1
 
 func set_player_texture(path,hand_path = null):
 	sprite.set_texture(ResourceLoader.load(path))
@@ -236,25 +235,28 @@ func setup_weapons():
 	if Globals.primary_slot_id == 5:
 		instance_weapon("res://scenes/weapons/TheTerraria.tscn")
 
+func change_slot(slot) -> void:
+	var old_state = slots[slot]["isheld"]
+	unequip_items()
+	slots[slot]["isheld"] = !old_state
+	slots_node.get_child(slot).visible = slots[slot]["isheld"]
+	if slots[slot]["isheld"]: held_id = slots[slot]["id"]
+	else: held_id = -1
+	print(slots[slot]["isheld"])
+
 func get_input():
 	if Input.is_action_just_pressed("tp") and teleport_allowed or Input.is_action_just_pressed("tp") and passive_teleport_allowed:
 		position = get_global_mouse_position()
 	
 	if weapons_allowed:
 		if Input.is_action_just_pressed("physbutton"):
-			Globals.slot1held = !Globals.slot1held
-			Globals.slot3held = false
-			Globals.slot2held = false
+			change_slot(0)
 		
 		if Input.is_action_just_pressed("toolgunbutton"):
-			Globals.slot3held = !Globals.slot3held
-			Globals.slot1held = false
-			Globals.slot2held = false
+			change_slot(1)
 		
 		if Input.is_action_just_pressed("pistolbutton"):
-			Globals.slot2held = !Globals.slot2held
-			Globals.slot1held = false
-			Globals.slot3held = false
+			change_slot(2)
 	
 	if Input.is_action_just_pressed("noclip") and noclip_allowed or Input.is_action_just_pressed("noclip") and passive_noclip_allowed:
 		Globals.noclip = !Globals.noclip
@@ -283,20 +285,6 @@ func get_input():
 		sprintspeed = false
 	Vector2().normalized()
 
-func render_line() -> void:
-	if !old_style:
-		var line = Line2D.new()
-		root_node.add_child(line)
-		line.width = 1
-		line.z_index = -1
-		line.material = preload("res://BulletCanvas.tres")
-		line.default_color = SaveSettings.load_cfg("VisualsAudio","PhysColor")
-		line.add_point(held_sprite_unanim.global_position)
-		line.add_point(phys_glow.global_position)
-		var tween = get_tree().create_tween().set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_QUINT)
-		tween.tween_property(line,"modulate",Color(0,0,0),0.02)
-		tween.connect("finished",self,"_delete_line",[line])
-
 func _delete_line(line) -> void:
 	line.queue_free()
 
@@ -304,42 +292,6 @@ func hide_weapons():
 	held_sprite.hide()
 	held_sprite_unanim.hide()
 	pistol_sprite.hide()
-
-func weapon_handler():
-	
-	if Input.is_action_just_pressed("left_click") and Globals.slot1held and weapons_allowed:
-		physgun_animation_player.play("Open")
-	
-	if Input.is_action_just_released("left_click") and Globals.slot1held or Globals.slot1held and Input.is_action_just_pressed("physbutton") or Input.is_action_just_pressed("pistolbutton") or Input.is_action_just_pressed("toolgunbutton"):
-		if weapons_allowed:
-			physgun_animation_player.play("Close")
-	
-	if Globals.slot1held:
-		open.volume_db = defopen
-		close.volume_db = defclose
-		loop.volume_db = defloop
-	elif !Globals.slot1held:
-		open.volume_db = -999
-		close.volume_db = -999
-		loop.volume_db = -999
-	
-	if Globals.slot1held:
-		physgun_animations.show()
-	else:
-		physgun_animations.hide()
-	
-	if Globals.physgunPicking == true and Globals.insideVehicle == false and Globals.slot1held == true:
-		render_line()
-		phys_glow.show()
-		phys_glow.position.x = (get_global_mouse_position() - position).length()
-	else:
-		phys_glow.hide()
-	
-	if Globals.slot1held == false:
-		Globals.physgunPicking = false
-	
-	if Globals.insideVehicle == true:
-		phys_glow.hide()
 
 var temp_health := 0
 func health_changed_checker():

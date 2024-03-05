@@ -1,0 +1,850 @@
+[gd_scene load_steps=78 format=2]
+
+[ext_resource path="res://sprites/physGunEquip-Sheet.png" type="Texture" id=1]
+[ext_resource path="res://sprites/newPhysGun3.png" type="Texture" id=2]
+[ext_resource path="res://sprites/newPhysGun3Glow.png" type="Texture" id=3]
+[ext_resource path="res://sprites/physicsGunGlow.png" type="Texture" id=4]
+[ext_resource path="res://sprites/animatablesprites/physicsGunLeft.png" type="Texture" id=5]
+[ext_resource path="res://sprites/animatablesprites/physicsGunHandle.png" type="Texture" id=6]
+[ext_resource path="res://sprites/animatablesprites/physicsGunRight.png" type="Texture" id=7]
+[ext_resource path="res://sprites/animatablesprites/physicsGunPulsingEnergy.png" type="Texture" id=8]
+[ext_resource path="res://sounds/GunNoises/PhysGunClose.mp3" type="AudioStream" id=9]
+[ext_resource path="res://sounds/GunNoises/PhysGunOpen.mp3" type="AudioStream" id=10]
+[ext_resource path="res://sprites/animatablesprites/physicsGunParticle.png" type="Texture" id=11]
+[ext_resource path="res://sprites/Physgunlight.png" type="Texture" id=12]
+[ext_resource path="res://sounds/GunNoises/PhysGunLoop.mp3" type="AudioStream" id=13]
+[ext_resource path="res://scenes/components/HeldItemHandler.tscn" type="PackedScene" id=14]
+[ext_resource path="res://scripts/physgun.gd" type="Script" id=15]
+[ext_resource path="res://sprites/PhysGunGlowReal.png" type="Texture" id=16]
+
+[sub_resource type="CanvasItemMaterial" id=76]
+blend_mode = 1
+
+[sub_resource type="AtlasTexture" id=12]
+flags = 1
+atlas = ExtResource( 4 )
+region = Rect2( 0, 0, 34, 22 )
+
+[sub_resource type="AtlasTexture" id=13]
+flags = 1
+atlas = ExtResource( 4 )
+region = Rect2( 34, 0, 34, 22 )
+
+[sub_resource type="AtlasTexture" id=14]
+flags = 1
+atlas = ExtResource( 4 )
+region = Rect2( 68, 0, 34, 22 )
+
+[sub_resource type="AtlasTexture" id=15]
+flags = 1
+atlas = ExtResource( 4 )
+region = Rect2( 102, 0, 34, 22 )
+
+[sub_resource type="AtlasTexture" id=16]
+flags = 1
+atlas = ExtResource( 4 )
+region = Rect2( 136, 0, 34, 22 )
+
+[sub_resource type="AtlasTexture" id=17]
+flags = 1
+atlas = ExtResource( 4 )
+region = Rect2( 170, 0, 34, 22 )
+
+[sub_resource type="AtlasTexture" id=25]
+flags = 1
+atlas = ExtResource( 3 )
+region = Rect2( 0, 0, 23, 10 )
+
+[sub_resource type="AtlasTexture" id=26]
+flags = 1
+atlas = ExtResource( 3 )
+region = Rect2( 23, 0, 23, 10 )
+
+[sub_resource type="AtlasTexture" id=27]
+flags = 1
+atlas = ExtResource( 3 )
+region = Rect2( 46, 0, 23, 10 )
+
+[sub_resource type="AtlasTexture" id=28]
+flags = 1
+atlas = ExtResource( 3 )
+region = Rect2( 69, 0, 23, 10 )
+
+[sub_resource type="AtlasTexture" id=29]
+flags = 1
+atlas = ExtResource( 3 )
+region = Rect2( 92, 0, 23, 10 )
+
+[sub_resource type="AtlasTexture" id=30]
+flags = 1
+atlas = ExtResource( 3 )
+region = Rect2( 115, 0, 23, 10 )
+
+[sub_resource type="AtlasTexture" id=31]
+flags = 1
+atlas = ExtResource( 3 )
+region = Rect2( 138, 0, 23, 10 )
+
+[sub_resource type="AtlasTexture" id=32]
+flags = 1
+atlas = ExtResource( 3 )
+region = Rect2( 161, 0, 23, 10 )
+
+[sub_resource type="AtlasTexture" id=5]
+flags = 1
+atlas = ExtResource( 1 )
+region = Rect2( 0, 0, 34, 22 )
+
+[sub_resource type="AtlasTexture" id=6]
+flags = 1
+atlas = ExtResource( 1 )
+region = Rect2( 34, 0, 34, 22 )
+
+[sub_resource type="AtlasTexture" id=7]
+flags = 1
+atlas = ExtResource( 1 )
+region = Rect2( 68, 0, 34, 22 )
+
+[sub_resource type="AtlasTexture" id=8]
+flags = 1
+atlas = ExtResource( 1 )
+region = Rect2( 102, 0, 34, 22 )
+
+[sub_resource type="AtlasTexture" id=9]
+flags = 1
+atlas = ExtResource( 1 )
+region = Rect2( 136, 0, 34, 22 )
+
+[sub_resource type="AtlasTexture" id=10]
+flags = 1
+atlas = ExtResource( 1 )
+region = Rect2( 170, 0, 34, 22 )
+
+[sub_resource type="SpriteFrames" id=77]
+animations = [ {
+"frames": [ SubResource( 12 ), SubResource( 13 ), SubResource( 14 ), SubResource( 15 ), SubResource( 16 ), SubResource( 17 ) ],
+"loop": true,
+"name": "New Anim",
+"speed": 15.0
+}, {
+"frames": [ SubResource( 25 ), SubResource( 26 ), SubResource( 27 ), SubResource( 28 ), SubResource( 29 ), SubResource( 30 ), SubResource( 31 ), SubResource( 32 ) ],
+"loop": true,
+"name": "New Anim but Cooler",
+"speed": 15.0
+}, {
+"frames": [ SubResource( 5 ), SubResource( 6 ), SubResource( 7 ), SubResource( 8 ), SubResource( 9 ), SubResource( 10 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="Animation" id=78]
+resource_name = "Close"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath("LeftSide:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2 ),
+"transitions": PoolRealArray( 2, 0.5, 1 ),
+"update": 0,
+"values": [ Vector2( 19, -0.5 ), Vector2( 18, 0 ), Vector2( 19, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("LeftSide:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2 ),
+"transitions": PoolRealArray( 2, 0.5, 1 ),
+"update": 0,
+"values": [ -15.0, 3.0, 0.0 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("RightSide:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2 ),
+"transitions": PoolRealArray( 2, 0.5, 1 ),
+"update": 0,
+"values": [ Vector2( 19, 0.5 ), Vector2( 18, 0 ), Vector2( 19, 0 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("RightSide:rotation_degrees")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2 ),
+"transitions": PoolRealArray( 2, 0.5, 1 ),
+"update": 0,
+"values": [ 15.0, -3.0, 0.0 ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("GlowingEnergy:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 2, 1 ),
+"update": 0,
+"values": [ Vector2( 24, 0 ), Vector2( 23, 0 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("LightParticles:emitting")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("Close:playing")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0.025 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("Loop:playing")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0.075 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("HeavyParticles:emitting")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/9/type = "value"
+tracks/9/path = NodePath("HeavyParticles2:emitting")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/10/type = "value"
+tracks/10/path = NodePath("GlowingEnergy/Light2D:energy")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.22, 0.0 ]
+}
+
+[sub_resource type="Animation" id=79]
+resource_name = "Open"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath("RightSide:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2 ),
+"transitions": PoolRealArray( 2, 0.5, 1 ),
+"update": 0,
+"values": [ 0.0, 25.0, 15.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("LeftSide:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2 ),
+"transitions": PoolRealArray( 2, 0.5, 1 ),
+"update": 0,
+"values": [ 0.0, -25.0, -15.0 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("RightSide:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 0.5, 1 ),
+"update": 0,
+"values": [ Vector2( 19, 0 ), Vector2( 19, 0.5 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("LeftSide:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 0.5, 1 ),
+"update": 0,
+"values": [ Vector2( 19, 0 ), Vector2( 19, -0.5 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("GlowingEnergy:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 0.5, 1 ),
+"update": 0,
+"values": [ Vector2( 23, 0 ), Vector2( 24, 0 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("LightParticles:emitting")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("Open:playing")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("Loop:playing")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("HeavyParticles:emitting")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/9/type = "value"
+tracks/9/path = NodePath("HeavyParticles2:emitting")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/10/type = "value"
+tracks/10/path = NodePath("GlowingEnergy/Light2D:energy")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 0.5, 1 ),
+"update": 0,
+"values": [ 0.0, 0.22 ]
+}
+
+[sub_resource type="Animation" id=80]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("RightSide:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("LeftSide:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("RightSide:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 19, 0 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("LeftSide:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 19, 0 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("GlowingEnergy:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 23, 0 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("LightParticles:emitting")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("Open:playing")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("Close:playing")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("Loop:playing")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
+tracks/9/type = "value"
+tracks/9/path = NodePath("HeavyParticles:emitting")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
+tracks/10/type = "value"
+tracks/10/path = NodePath("HeavyParticles2:emitting")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
+tracks/11/type = "value"
+tracks/11/path = NodePath("GlowingEnergy/Light2D:energy")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+
+[sub_resource type="CanvasItemMaterial" id=81]
+
+[sub_resource type="Gradient" id=82]
+offsets = PoolRealArray( 0.00649351, 0.0909091, 1 )
+colors = PoolColorArray( 1, 1, 1, 0.0470588, 1, 1, 1, 0.136364, 1, 1, 1, 0 )
+
+[sub_resource type="GradientTexture" id=63]
+gradient = SubResource( 82 )
+
+[sub_resource type="Curve" id=83]
+_data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 0.898305, 0 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=65]
+curve = SubResource( 83 )
+
+[sub_resource type="ParticlesMaterial" id=84]
+flag_disable_z = true
+spread = 15.0
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 71.42
+angular_velocity = 720.0
+angular_velocity_random = 1.0
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+radial_accel = -76.0
+radial_accel_random = 0.2
+scale_random = 1.0
+scale_curve = SubResource( 65 )
+color_ramp = SubResource( 63 )
+
+[sub_resource type="Curve" id=85]
+min_value = -1.0
+_data = [ Vector2( 0, 0.0136365 ), 0.0, -2.41364, 0, 1, Vector2( 0.225989, -0.531818 ), 0.0, 0.0, 0, 0, Vector2( 0.734463, 0.468182 ), 0.0, 0.0, 0, 0, Vector2( 1, 0.0136365 ), -1.7118, 0.0, 1, 0 ]
+
+[sub_resource type="CurveTexture" id=70]
+curve = SubResource( 85 )
+
+[sub_resource type="Curve" id=86]
+_data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 0.954802, 0 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=72]
+curve = SubResource( 86 )
+
+[sub_resource type="ParticlesMaterial" id=87]
+trail_divisor = 20
+trail_size_modifier = SubResource( 72 )
+flag_disable_z = true
+spread = 15.0
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 71.42
+angular_velocity = 720.0
+angular_velocity_random = 1.0
+orbit_velocity = 0.0
+orbit_velocity_random = 1.0
+orbit_velocity_curve = SubResource( 70 )
+radial_accel = -76.0
+radial_accel_random = 0.2
+scale_random = 1.0
+scale_curve = SubResource( 65 )
+color_ramp = SubResource( 63 )
+
+[sub_resource type="Curve" id=88]
+min_value = -1.0
+_data = [ Vector2( 0, 0.0136365 ), 0.0, 1.77366, 0, 1, Vector2( 0.248588, 0.454545 ), 0.0, 0.0, 0, 0, Vector2( 0.751412, -0.527273 ), 0.0, 0.0, 0, 0, Vector2( 1, 0.0136365 ), 2.17593, 0.0, 1, 0 ]
+
+[sub_resource type="CurveTexture" id=75]
+curve = SubResource( 88 )
+
+[sub_resource type="ParticlesMaterial" id=89]
+trail_divisor = 20
+trail_size_modifier = SubResource( 72 )
+flag_disable_z = true
+spread = 15.0
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 71.42
+angular_velocity = 720.0
+angular_velocity_random = 1.0
+orbit_velocity = 0.0
+orbit_velocity_random = 1.0
+orbit_velocity_curve = SubResource( 75 )
+radial_accel = -76.0
+radial_accel_random = 0.2
+scale_random = 1.0
+scale_curve = SubResource( 65 )
+color_ramp = SubResource( 63 )
+
+[sub_resource type="CanvasItemMaterial" id=90]
+
+[sub_resource type="AtlasTexture" id=39]
+flags = 1
+atlas = ExtResource( 8 )
+region = Rect2( 0, 0, 13, 6 )
+
+[sub_resource type="AtlasTexture" id=40]
+flags = 1
+atlas = ExtResource( 8 )
+region = Rect2( 13, 0, 13, 6 )
+
+[sub_resource type="AtlasTexture" id=41]
+flags = 1
+atlas = ExtResource( 8 )
+region = Rect2( 26, 0, 13, 6 )
+
+[sub_resource type="AtlasTexture" id=42]
+flags = 1
+atlas = ExtResource( 8 )
+region = Rect2( 39, 0, 13, 6 )
+
+[sub_resource type="AtlasTexture" id=43]
+flags = 1
+atlas = ExtResource( 8 )
+region = Rect2( 52, 0, 13, 6 )
+
+[sub_resource type="AtlasTexture" id=44]
+flags = 1
+atlas = ExtResource( 8 )
+region = Rect2( 65, 0, 13, 6 )
+
+[sub_resource type="AtlasTexture" id=45]
+flags = 1
+atlas = ExtResource( 8 )
+region = Rect2( 78, 0, 13, 6 )
+
+[sub_resource type="AtlasTexture" id=46]
+flags = 1
+atlas = ExtResource( 8 )
+region = Rect2( 91, 0, 13, 6 )
+
+[sub_resource type="AtlasTexture" id=47]
+flags = 1
+atlas = ExtResource( 8 )
+region = Rect2( 104, 0, 13, 6 )
+
+[sub_resource type="AtlasTexture" id=48]
+flags = 1
+atlas = ExtResource( 8 )
+region = Rect2( 117, 0, 13, 6 )
+
+[sub_resource type="AtlasTexture" id=49]
+flags = 1
+atlas = ExtResource( 8 )
+region = Rect2( 130, 0, 13, 6 )
+
+[sub_resource type="AtlasTexture" id=50]
+flags = 1
+atlas = ExtResource( 8 )
+region = Rect2( 143, 0, 13, 6 )
+
+[sub_resource type="AtlasTexture" id=51]
+flags = 1
+atlas = ExtResource( 8 )
+region = Rect2( 156, 0, 13, 6 )
+
+[sub_resource type="AtlasTexture" id=52]
+flags = 1
+atlas = ExtResource( 8 )
+region = Rect2( 169, 0, 13, 6 )
+
+[sub_resource type="AtlasTexture" id=53]
+flags = 1
+atlas = ExtResource( 8 )
+region = Rect2( 182, 0, 13, 6 )
+
+[sub_resource type="AtlasTexture" id=54]
+flags = 1
+atlas = ExtResource( 8 )
+region = Rect2( 195, 0, 13, 6 )
+
+[sub_resource type="AtlasTexture" id=55]
+flags = 1
+atlas = ExtResource( 8 )
+region = Rect2( 208, 0, 13, 6 )
+
+[sub_resource type="AtlasTexture" id=56]
+flags = 1
+atlas = ExtResource( 8 )
+region = Rect2( 221, 0, 13, 6 )
+
+[sub_resource type="AtlasTexture" id=57]
+flags = 1
+atlas = ExtResource( 8 )
+region = Rect2( 234, 0, 13, 6 )
+
+[sub_resource type="SpriteFrames" id=91]
+animations = [ {
+"frames": [ SubResource( 39 ), SubResource( 40 ), SubResource( 41 ), SubResource( 42 ), SubResource( 43 ), SubResource( 44 ), SubResource( 45 ), SubResource( 46 ), SubResource( 47 ), SubResource( 48 ), SubResource( 49 ), SubResource( 50 ), SubResource( 51 ), SubResource( 52 ), SubResource( 53 ), SubResource( 54 ), SubResource( 55 ), SubResource( 56 ), SubResource( 57 ) ],
+"loop": true,
+"name": "default",
+"speed": 15.0
+} ]
+
+[sub_resource type="CanvasItemMaterial" id=92]
+blend_mode = 1
+
+[node name="physgun" type="StaticBody2D"]
+script = ExtResource( 15 )
+
+[node name="HeldItemHandler" parent="." instance=ExtResource( 14 )]
+path_item = NodePath("..")
+
+[node name="heldgun" type="AnimatedSprite" parent="."]
+visible = false
+self_modulate = Color( 0.666667, 0.780392, 1, 1 )
+material = SubResource( 76 )
+frames = SubResource( 77 )
+animation = "New Anim but Cooler"
+frame = 6
+playing = true
+offset = Vector2( 26, 0 )
+
+[node name="physgun" type="Sprite" parent="heldgun"]
+show_behind_parent = true
+position = Vector2( 26, 0 )
+texture = ExtResource( 2 )
+
+[node name="physgunAnimations" type="Node2D" parent="."]
+
+[node name="Open" type="AudioStreamPlayer" parent="physgunAnimations"]
+stream = ExtResource( 10 )
+volume_db = -13.22
+
+[node name="Close" type="AudioStreamPlayer" parent="physgunAnimations"]
+stream = ExtResource( 9 )
+volume_db = -13.22
+
+[node name="Loop" type="AudioStreamPlayer" parent="physgunAnimations"]
+stream = ExtResource( 13 )
+volume_db = -31.728
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="physgunAnimations"]
+anims/Close = SubResource( 78 )
+anims/Open = SubResource( 79 )
+anims/RESET = SubResource( 80 )
+
+[node name="LightParticles" type="Particles2D" parent="physgunAnimations"]
+material = SubResource( 81 )
+position = Vector2( 18, 0 )
+emitting = false
+amount = 40
+process_material = SubResource( 84 )
+texture = ExtResource( 11 )
+
+[node name="HeavyParticles" type="Particles2D" parent="physgunAnimations"]
+material = SubResource( 81 )
+position = Vector2( 18, 0 )
+emitting = false
+amount = 40
+process_material = SubResource( 87 )
+texture = ExtResource( 11 )
+
+[node name="HeavyParticles2" type="Particles2D" parent="physgunAnimations"]
+material = SubResource( 81 )
+position = Vector2( 18, 0 )
+emitting = false
+amount = 40
+process_material = SubResource( 89 )
+texture = ExtResource( 11 )
+
+[node name="GlowingEnergy" type="AnimatedSprite" parent="physgunAnimations"]
+material = SubResource( 90 )
+position = Vector2( 23, 0 )
+frames = SubResource( 91 )
+frame = 14
+playing = true
+
+[node name="Light2D" type="Light2D" parent="physgunAnimations/GlowingEnergy"]
+position = Vector2( -4, 0 )
+scale = Vector2( 1, 0.882353 )
+texture = ExtResource( 12 )
+offset = Vector2( 50, 0 )
+energy = 0.0
+shadow_enabled = true
+
+[node name="LeftSide" type="Sprite" parent="physgunAnimations"]
+position = Vector2( 19, 0 )
+texture = ExtResource( 5 )
+offset = Vector2( 9, -2 )
+
+[node name="RightSide" type="Sprite" parent="physgunAnimations"]
+position = Vector2( 19, 0 )
+texture = ExtResource( 7 )
+offset = Vector2( 9, 3 )
+
+[node name="Handle" type="Sprite" parent="physgunAnimations"]
+position = Vector2( 16, 0 )
+texture = ExtResource( 6 )
+
+[node name="physglow" type="Sprite" parent="."]
+visible = false
+material = SubResource( 92 )
+texture = ExtResource( 16 )

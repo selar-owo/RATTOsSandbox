@@ -15,11 +15,11 @@ var secondary_slot_id := 0
 
 #tools
 var physgunPicking: bool = false
-var slot1held := false
-var slot2held := false
-var slot3held := false
-var slot2pic := ""
-var slot3pic := ""
+#var slot1held := false
+#var slot2held := false
+#var slot3held := false
+#var slot2pic := ""
+#var slot3pic := ""
 var toolGunType:int = 0
 var playerTags:Array = []
 
@@ -38,7 +38,7 @@ var current_tip:String
 #version shit
 var version_number := [
 	"1.1.0" ,#the number
-	"Super Cool Update", #the name
+	"Final Touch", #the name
 	"_beta", #like beta or like aplha
 ]
 
