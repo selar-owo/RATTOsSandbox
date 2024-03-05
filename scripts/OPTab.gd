@@ -7,6 +7,9 @@ onready var click_detector = $ClickDetector
 onready var tab
 onready var icon = $Icon
 
+onready var stjupd = $"../.."
+onready var nameshower = $"../../NameShower/Name"
+
 func _ready() -> void:
 	hide_all_tabs()
 	tab = get_node(path_tab)
@@ -27,6 +30,8 @@ func on_hover() -> void:
 	tween.tween_property(self,"rect_scale",Vector2(1.03,1.03),1)
 	tween_rotation.tween_property(icon,"rotation_degrees",-5,1)
 	tween_scale.tween_property(icon,"scale",Vector2(2.45,2.45),1)
+	nameshower.text = self.name
+	stjupd.toggle_nameshower_state("show")
 
 func on_de_hover() -> void:
 	var tween := get_tree().create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_BOUNCE)
@@ -35,6 +40,7 @@ func on_de_hover() -> void:
 	tween.tween_property(self,"rect_scale",Vector2(1,1),1)
 	tween_rotation.tween_property(icon,"rotation_degrees",0,1)
 	tween_scale.tween_property(icon,"scale",Vector2(2.25,2.25),1)
+	stjupd.toggle_nameshower_state("hide")
 
 func hide_all_tabs():
 	for i in tabs.get_children():

@@ -1,4 +1,4 @@
-[gd_scene load_steps=66 format=2]
+[gd_scene load_steps=75 format=2]
 
 [ext_resource path="res://MinecraftFive-Bold.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://sprites/heart.png" type="Texture" id=2]
@@ -55,6 +55,15 @@
 [ext_resource path="res://sprites/arrowicon.png" type="Texture" id=53]
 [ext_resource path="res://sprites/trashicon.png" type="Texture" id=54]
 [ext_resource path="res://scripts/ActionButtons.gd" type="Script" id=55]
+[ext_resource path="res://sprites/ObjectSpawnerIcons/OP-Funny.png" type="Texture" id=56]
+[ext_resource path="res://sprites/thebuba.jpg" type="Texture" id=57]
+[ext_resource path="res://scenes/mobs/Faggotrat.tscn" type="PackedScene" id=58]
+[ext_resource path="res://scenes/funny/bumba.tscn" type="PackedScene" id=59]
+[ext_resource path="res://sprites/2Q.webp" type="Texture" id=60]
+[ext_resource path="res://sprites/ObjectSpawnerIcons/OP-Connectors.png" type="Texture" id=61]
+[ext_resource path="res://sprites/ObjectSpawnerIcons/OP-Vehicles.png" type="Texture" id=62]
+[ext_resource path="res://sprites/ObjectSpawnerIcons/OP-Builders.png" type="Texture" id=63]
+[ext_resource path="res://sprites/ObjectSpawnerIcons/OP-Items.png" type="Texture" id=64]
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0.45098, 0.815686, 0.407843, 1 )
@@ -275,7 +284,6 @@ text = "+ 100"
 valign = 1
 
 [node name="ObjectSpawners" type="Node2D" parent="."]
-modulate = Color( 1, 1, 1, 0 )
 position = Vector2( 497, 276 )
 
 [node name="Blur" type="Sprite" parent="ObjectSpawners"]
@@ -327,11 +335,11 @@ __meta__ = {
 
 [node name="Blocks" type="NinePatchRect" parent="ObjectSpawners/Centered/TabButtons"]
 self_modulate = Color( 1, 1, 1, 0.607843 )
-margin_left = 68.0
+margin_left = 67.0
 margin_top = 69.0
-margin_right = 241.0
+margin_right = 108.0
 margin_bottom = 110.0
-rect_pivot_offset = Vector2( 86.5, 20.5 )
+rect_pivot_offset = Vector2( 20.5, 20.5 )
 texture = ExtResource( 10 )
 patch_margin_left = 3
 patch_margin_top = 3
@@ -346,6 +354,7 @@ scale = Vector2( 2.25, 2.25 )
 texture = ExtResource( 17 )
 
 [node name="Name" type="Label" parent="ObjectSpawners/Centered/TabButtons/Blocks"]
+visible = false
 margin_left = 6.0
 margin_top = 5.0
 margin_right = 168.0
@@ -358,16 +367,16 @@ valign = 1
 
 [node name="ClickDetector" type="Button" parent="ObjectSpawners/Centered/TabButtons/Blocks"]
 self_modulate = Color( 1, 1, 1, 0 )
-margin_right = 173.0
+margin_right = 41.0
 margin_bottom = 41.0
 
 [node name="Mobs" type="NinePatchRect" parent="ObjectSpawners/Centered/TabButtons"]
 self_modulate = Color( 1, 1, 1, 0.607843 )
-margin_left = 246.0
+margin_left = 111.0
 margin_top = 69.0
-margin_right = 419.0
+margin_right = 152.0
 margin_bottom = 110.0
-rect_pivot_offset = Vector2( 86.5, 20.5 )
+rect_pivot_offset = Vector2( 20.5, 20.5 )
 texture = ExtResource( 10 )
 patch_margin_left = 3
 patch_margin_top = 3
@@ -382,6 +391,7 @@ scale = Vector2( 2.25, 2.25 )
 texture = ExtResource( 16 )
 
 [node name="Name" type="Label" parent="ObjectSpawners/Centered/TabButtons/Mobs"]
+visible = false
 margin_left = 6.0
 margin_top = 5.0
 margin_right = 168.0
@@ -394,16 +404,16 @@ valign = 1
 
 [node name="ClickDetector" type="Button" parent="ObjectSpawners/Centered/TabButtons/Mobs"]
 self_modulate = Color( 1, 1, 1, 0 )
-margin_right = 173.0
+margin_right = 41.0
 margin_bottom = 41.0
 
-[node name="Useable" type="NinePatchRect" parent="ObjectSpawners/Centered/TabButtons"]
+[node name="Interactable" type="NinePatchRect" parent="ObjectSpawners/Centered/TabButtons"]
 self_modulate = Color( 1, 1, 1, 0.607843 )
-margin_left = 423.0
+margin_left = 155.0
 margin_top = 69.0
-margin_right = 596.0
+margin_right = 196.0
 margin_bottom = 110.0
-rect_pivot_offset = Vector2( 86.5, 20.5 )
+rect_pivot_offset = Vector2( 20.5, 20.5 )
 texture = ExtResource( 10 )
 patch_margin_left = 3
 patch_margin_top = 3
@@ -412,12 +422,13 @@ patch_margin_bottom = 3
 script = ExtResource( 18 )
 path_tab = NodePath("../../Tabs/Useable")
 
-[node name="Icon" type="Sprite" parent="ObjectSpawners/Centered/TabButtons/Useable"]
+[node name="Icon" type="Sprite" parent="ObjectSpawners/Centered/TabButtons/Interactable"]
 position = Vector2( 20, 21 )
 scale = Vector2( 2.25, 2.25 )
 texture = ExtResource( 15 )
 
-[node name="Name" type="Label" parent="ObjectSpawners/Centered/TabButtons/Useable"]
+[node name="Name" type="Label" parent="ObjectSpawners/Centered/TabButtons/Interactable"]
+visible = false
 margin_left = 6.0
 margin_top = 5.0
 margin_right = 168.0
@@ -428,18 +439,18 @@ text = "useable"
 align = 1
 valign = 1
 
-[node name="ClickDetector" type="Button" parent="ObjectSpawners/Centered/TabButtons/Useable"]
+[node name="ClickDetector" type="Button" parent="ObjectSpawners/Centered/TabButtons/Interactable"]
 self_modulate = Color( 1, 1, 1, 0 )
-margin_right = 173.0
+margin_right = 41.0
 margin_bottom = 41.0
 
 [node name="Weapons" type="NinePatchRect" parent="ObjectSpawners/Centered/TabButtons"]
 self_modulate = Color( 1, 1, 1, 0.607843 )
-margin_left = 600.0
+margin_left = 199.0
 margin_top = 69.0
-margin_right = 773.0
+margin_right = 240.0
 margin_bottom = 110.0
-rect_pivot_offset = Vector2( 86.5, 20.5 )
+rect_pivot_offset = Vector2( 20.5, 20.5 )
 texture = ExtResource( 10 )
 patch_margin_left = 3
 patch_margin_top = 3
@@ -454,6 +465,7 @@ scale = Vector2( 2.25, 2.25 )
 texture = ExtResource( 14 )
 
 [node name="Name" type="Label" parent="ObjectSpawners/Centered/TabButtons/Weapons"]
+visible = false
 margin_left = 6.0
 margin_top = 5.0
 margin_right = 168.0
@@ -466,14 +478,199 @@ valign = 1
 
 [node name="ClickDetector" type="Button" parent="ObjectSpawners/Centered/TabButtons/Weapons"]
 self_modulate = Color( 1, 1, 1, 0 )
-margin_right = 173.0
+margin_right = 41.0
+margin_bottom = 41.0
+
+[node name="Funny" type="NinePatchRect" parent="ObjectSpawners/Centered/TabButtons"]
+self_modulate = Color( 1, 1, 1, 0.607843 )
+margin_left = 243.0
+margin_top = 69.0
+margin_right = 284.0
+margin_bottom = 110.0
+rect_pivot_offset = Vector2( 20.5, 20.5 )
+texture = ExtResource( 10 )
+patch_margin_left = 3
+patch_margin_top = 3
+patch_margin_right = 3
+patch_margin_bottom = 3
+script = ExtResource( 18 )
+path_tab = NodePath("../../Tabs/Funny")
+
+[node name="Icon" type="Sprite" parent="ObjectSpawners/Centered/TabButtons/Funny"]
+position = Vector2( 20, 21 )
+scale = Vector2( 2.25, 2.25 )
+texture = ExtResource( 56 )
+
+[node name="Name" type="Label" parent="ObjectSpawners/Centered/TabButtons/Funny"]
+visible = false
+margin_left = 6.0
+margin_top = 5.0
+margin_right = 168.0
+margin_bottom = 36.0
+theme = ExtResource( 12 )
+custom_fonts/font = ExtResource( 11 )
+text = "Weapons"
+align = 1
+valign = 1
+
+[node name="ClickDetector" type="Button" parent="ObjectSpawners/Centered/TabButtons/Funny"]
+self_modulate = Color( 1, 1, 1, 0 )
+margin_right = 41.0
+margin_bottom = 41.0
+
+[node name="Connectors" type="NinePatchRect" parent="ObjectSpawners/Centered/TabButtons"]
+self_modulate = Color( 1, 1, 1, 0.607843 )
+margin_left = 287.0
+margin_top = 69.0
+margin_right = 328.0
+margin_bottom = 110.0
+rect_pivot_offset = Vector2( 20.5, 20.5 )
+texture = ExtResource( 10 )
+patch_margin_left = 3
+patch_margin_top = 3
+patch_margin_right = 3
+patch_margin_bottom = 3
+script = ExtResource( 18 )
+path_tab = NodePath("../../Tabs/Connectors")
+
+[node name="Icon" type="Sprite" parent="ObjectSpawners/Centered/TabButtons/Connectors"]
+position = Vector2( 20, 21 )
+scale = Vector2( 2.25, 2.25 )
+texture = ExtResource( 61 )
+
+[node name="Name" type="Label" parent="ObjectSpawners/Centered/TabButtons/Connectors"]
+visible = false
+margin_left = 6.0
+margin_top = 5.0
+margin_right = 168.0
+margin_bottom = 36.0
+theme = ExtResource( 12 )
+custom_fonts/font = ExtResource( 11 )
+text = "Weapons"
+align = 1
+valign = 1
+
+[node name="ClickDetector" type="Button" parent="ObjectSpawners/Centered/TabButtons/Connectors"]
+self_modulate = Color( 1, 1, 1, 0 )
+margin_right = 41.0
+margin_bottom = 41.0
+
+[node name="Vehicles" type="NinePatchRect" parent="ObjectSpawners/Centered/TabButtons"]
+self_modulate = Color( 1, 1, 1, 0.607843 )
+margin_left = 331.0
+margin_top = 69.0
+margin_right = 372.0
+margin_bottom = 110.0
+rect_pivot_offset = Vector2( 20.5, 20.5 )
+texture = ExtResource( 10 )
+patch_margin_left = 3
+patch_margin_top = 3
+patch_margin_right = 3
+patch_margin_bottom = 3
+script = ExtResource( 18 )
+path_tab = NodePath("../../Tabs/Vehicles")
+
+[node name="Icon" type="Sprite" parent="ObjectSpawners/Centered/TabButtons/Vehicles"]
+position = Vector2( 20, 21 )
+scale = Vector2( 2.25, 2.25 )
+texture = ExtResource( 62 )
+
+[node name="Name" type="Label" parent="ObjectSpawners/Centered/TabButtons/Vehicles"]
+visible = false
+margin_left = 6.0
+margin_top = 5.0
+margin_right = 168.0
+margin_bottom = 36.0
+theme = ExtResource( 12 )
+custom_fonts/font = ExtResource( 11 )
+text = "Weapons"
+align = 1
+valign = 1
+
+[node name="ClickDetector" type="Button" parent="ObjectSpawners/Centered/TabButtons/Vehicles"]
+self_modulate = Color( 1, 1, 1, 0 )
+margin_right = 41.0
+margin_bottom = 41.0
+
+[node name="Builders" type="NinePatchRect" parent="ObjectSpawners/Centered/TabButtons"]
+self_modulate = Color( 1, 1, 1, 0.607843 )
+margin_left = 375.0
+margin_top = 69.0
+margin_right = 416.0
+margin_bottom = 110.0
+rect_pivot_offset = Vector2( 20.5, 20.5 )
+texture = ExtResource( 10 )
+patch_margin_left = 3
+patch_margin_top = 3
+patch_margin_right = 3
+patch_margin_bottom = 3
+script = ExtResource( 18 )
+path_tab = NodePath("../../Tabs/Builders")
+
+[node name="Icon" type="Sprite" parent="ObjectSpawners/Centered/TabButtons/Builders"]
+position = Vector2( 20, 21 )
+scale = Vector2( 2.25, 2.25 )
+texture = ExtResource( 63 )
+
+[node name="Name" type="Label" parent="ObjectSpawners/Centered/TabButtons/Builders"]
+visible = false
+margin_left = 6.0
+margin_top = 5.0
+margin_right = 168.0
+margin_bottom = 36.0
+theme = ExtResource( 12 )
+custom_fonts/font = ExtResource( 11 )
+text = "Weapons"
+align = 1
+valign = 1
+
+[node name="ClickDetector" type="Button" parent="ObjectSpawners/Centered/TabButtons/Builders"]
+self_modulate = Color( 1, 1, 1, 0 )
+margin_right = 41.0
+margin_bottom = 41.0
+
+[node name="Items" type="NinePatchRect" parent="ObjectSpawners/Centered/TabButtons"]
+self_modulate = Color( 1, 1, 1, 0.607843 )
+margin_left = 419.0
+margin_top = 69.0
+margin_right = 460.0
+margin_bottom = 110.0
+rect_pivot_offset = Vector2( 20.5, 20.5 )
+texture = ExtResource( 10 )
+patch_margin_left = 3
+patch_margin_top = 3
+patch_margin_right = 3
+patch_margin_bottom = 3
+script = ExtResource( 18 )
+path_tab = NodePath("../../Tabs/Items")
+
+[node name="Icon" type="Sprite" parent="ObjectSpawners/Centered/TabButtons/Items"]
+position = Vector2( 20, 21 )
+scale = Vector2( 2.25, 2.25 )
+texture = ExtResource( 64 )
+
+[node name="Name" type="Label" parent="ObjectSpawners/Centered/TabButtons/Items"]
+visible = false
+margin_left = 6.0
+margin_top = 5.0
+margin_right = 168.0
+margin_bottom = 36.0
+theme = ExtResource( 12 )
+custom_fonts/font = ExtResource( 11 )
+text = "Weapons"
+align = 1
+valign = 1
+
+[node name="ClickDetector" type="Button" parent="ObjectSpawners/Centered/TabButtons/Items"]
+self_modulate = Color( 1, 1, 1, 0 )
+margin_right = 41.0
 margin_bottom = 41.0
 
 [node name="Mods" type="NinePatchRect" parent="ObjectSpawners/Centered/TabButtons"]
 self_modulate = Color( 1, 1, 1, 0.607843 )
 margin_left = 777.0
 margin_top = 69.0
-margin_right = 946.0
+margin_right = 948.0
 margin_bottom = 110.0
 rect_pivot_offset = Vector2( 86.5, 20.5 )
 texture = ExtResource( 10 )
@@ -544,6 +741,7 @@ items_in_tab = [ {
 "block_scene": ExtResource( 36 )
 } ]
 auto_load_tab = true
+auto_open_tab = true
 
 [node name="Items" type="Node2D" parent="ObjectSpawners/Centered/Tabs/Blocks"]
 
@@ -600,6 +798,55 @@ script = ExtResource( 20 )
 auto_load_tab = true
 
 [node name="Items" type="Node2D" parent="ObjectSpawners/Centered/Tabs/Weapons"]
+
+[node name="Funny" type="Node2D" parent="ObjectSpawners/Centered/Tabs"]
+visible = false
+position = Vector2( 424, 303 )
+script = ExtResource( 20 )
+items_in_tab = [ {
+"block_icon": ExtResource( 60 ),
+"block_name": "cancerous rat",
+"block_scene": ExtResource( 58 )
+}, {
+"block_icon": ExtResource( 57 ),
+"block_name": "UGLY ASS FUCKING CAT",
+"block_scene": ExtResource( 59 )
+} ]
+auto_load_tab = true
+
+[node name="Items" type="Node2D" parent="ObjectSpawners/Centered/Tabs/Funny"]
+
+[node name="Connectors" type="Node2D" parent="ObjectSpawners/Centered/Tabs"]
+visible = false
+position = Vector2( 424, 303 )
+script = ExtResource( 20 )
+auto_load_tab = true
+
+[node name="Items" type="Node2D" parent="ObjectSpawners/Centered/Tabs/Connectors"]
+
+[node name="Vehicles" type="Node2D" parent="ObjectSpawners/Centered/Tabs"]
+visible = false
+position = Vector2( 424, 303 )
+script = ExtResource( 20 )
+auto_load_tab = true
+
+[node name="Items" type="Node2D" parent="ObjectSpawners/Centered/Tabs/Vehicles"]
+
+[node name="Builders" type="Node2D" parent="ObjectSpawners/Centered/Tabs"]
+visible = false
+position = Vector2( 424, 303 )
+script = ExtResource( 20 )
+auto_load_tab = true
+
+[node name="Items" type="Node2D" parent="ObjectSpawners/Centered/Tabs/Builders"]
+
+[node name="Items" type="Node2D" parent="ObjectSpawners/Centered/Tabs"]
+visible = false
+position = Vector2( 424, 303 )
+script = ExtResource( 20 )
+auto_load_tab = true
+
+[node name="Items" type="Node2D" parent="ObjectSpawners/Centered/Tabs/Items"]
 
 [node name="Mods" type="Node2D" parent="ObjectSpawners/Centered/Tabs"]
 visible = false

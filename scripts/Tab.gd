@@ -5,10 +5,13 @@ export(Array) var items_in_tab := [
 onready var items = $Items
 
 export var auto_load_tab := false
+export var auto_open_tab := false
 
 func _ready() -> void:
 	if auto_load_tab:
 		load_tabs()
+	if auto_open_tab:
+		open_tab()
 
 func load_tabs():
 	print("loading tab")
