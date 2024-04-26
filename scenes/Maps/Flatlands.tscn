@@ -1,9 +1,9 @@
-[gd_scene load_steps=31 format=2]
+[gd_scene load_steps=32 format=2]
 
 [ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/Camera2D.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scripts/MainWorld.gd" type="Script" id=3]
-[ext_resource path="res://scenes/UI.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scenes/UIs/HUD.tscn" type="PackedScene" id=4]
 [ext_resource path="res://scenes/DefaultWorldEnv.tres" type="Environment" id=5]
 [ext_resource path="res://scenes/nonuserblocks/Decorations.tscn" type="PackedScene" id=6]
 [ext_resource path="res://scenes/nonuserblocks/Foliage.tscn" type="PackedScene" id=7]
@@ -20,13 +20,14 @@
 [ext_resource path="res://sprites/teeth.png" type="Texture" id=18]
 [ext_resource path="res://sprites/SoCool.png" type="Texture" id=19]
 [ext_resource path="res://caption.png" type="Texture" id=20]
+[ext_resource path="res://scenes/components/FlowerArea.tscn" type="PackedScene" id=21]
 
 [sub_resource type="NavigationPolygon" id=3]
 vertices = PoolVector2Array( -1155, -1204, 1310, -1038, 1374, 1073, -1117, 937 )
 polygons = [ PoolIntArray( 0, 1, 2, 3 ) ]
 outlines = [ PoolVector2Array( -1155, -1204, 1310, -1038, 1374, 1073, -1117, 937 ) ]
 
-[sub_resource type="Animation" id=1]
+[sub_resource type="Animation" id=10]
 resource_name = "Clog"
 tracks/0/type = "value"
 tracks/0/path = NodePath("Clog2:modulate")
@@ -41,7 +42,7 @@ tracks/0/keys = {
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
 }
 
-[sub_resource type="Animation" id=2]
+[sub_resource type="Animation" id=11]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/path = NodePath("AudioStreamPlayer:playing")
@@ -68,7 +69,7 @@ tracks/1/keys = {
 "values": [ Color( 1, 1, 1, 0 ) ]
 }
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=12]
 resource_name = "HeCums"
 length = 5.0
 tracks/0/type = "value"
@@ -84,7 +85,7 @@ tracks/0/keys = {
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0.215686 ), Color( 1, 1, 1, 0.215686 ), Color( 1, 0, 0, 0.215686 ) ]
 }
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id=13]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:modulate")
@@ -115,7 +116,7 @@ shader_param/fire_speed = Vector2( 0, 1 )
 shader_param/fire_aperture = 0.22
 shader_param/noise_tex = SubResource( 9 )
 
-[sub_resource type="Animation" id=10]
+[sub_resource type="Animation" id=14]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/path = NodePath("TopHolder/TopRow:position")
@@ -142,7 +143,7 @@ tracks/1/keys = {
 "values": [ Vector2( 516, 721 ) ]
 }
 
-[sub_resource type="Animation" id=11]
+[sub_resource type="Animation" id=15]
 resource_name = "idle"
 length = 5.0
 loop = true
@@ -197,6 +198,11 @@ tile_data = PoolIntArray( -2031643, 10, 196610, -2031642, 10, 196611, -2031641, 
 
 [node name="Decorations" parent="Decorations" instance=ExtResource( 6 )]
 
+[node name="FlowerArea" parent="Decorations" instance=ExtResource( 21 )]
+pos1 = Vector2( -416, -496 )
+pos2 = Vector2( 640, 159 )
+flower_amount_range = [ 20, 30 ]
+
 [node name="Player" parent="." instance=ExtResource( 1 )]
 position = Vector2( 151, -205 )
 
@@ -231,9 +237,6 @@ dont_spawn = true
 position = Vector2( 124, -175 )
 zoom = Vector2( 1.5, 1.5 )
 
-[node name="asItGrows" type="CanvasModulate" parent="."]
-visible = false
-
 [node name="UI" parent="." instance=ExtResource( 4 )]
 
 [node name="Clog2" type="ColorRect" parent="UI"]
@@ -255,8 +258,8 @@ texture = ExtResource( 13 )
 expand = true
 
 [node name="Clog" type="AnimationPlayer" parent="UI"]
-anims/Clog = SubResource( 1 )
-anims/RESET = SubResource( 2 )
+anims/Clog = SubResource( 10 )
+anims/RESET = SubResource( 11 )
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="UI"]
 stream = ExtResource( 14 )
@@ -286,8 +289,8 @@ scale = Vector2( 5.86878, 3.62946 )
 texture = ExtResource( 19 )
 
 [node name="SoCool" type="AnimationPlayer" parent="UI/SoCool/SoCool"]
-anims/HeCums = SubResource( 4 )
-anims/RESET = SubResource( 5 )
+anims/HeCums = SubResource( 12 )
+anims/RESET = SubResource( 13 )
 
 [node name="P2CerebrusNoise" type="AudioStreamPlayer" parent="UI/SoCool"]
 stream = ExtResource( 17 )
@@ -324,10 +327,11 @@ flip_v = true
 
 [node name="Teethidle" type="AnimationPlayer" parent="UI/Teeth"]
 autoplay = "idle"
-anims/RESET = SubResource( 10 )
-anims/idle = SubResource( 11 )
+anims/RESET = SubResource( 14 )
+anims/idle = SubResource( 15 )
+
+[node name="asItGrows" type="CanvasModulate" parent="."]
+visible = false
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = ExtResource( 5 )
-
-[connection signal="animation_finished" from="UI/Clog" to="UI" method="_on_Clog_animation_finished"]

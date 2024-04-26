@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://scripts/FlowerArea.gd" type="Script" id=1]
+
+[node name="FlowerArea" type="Node2D"]
+script = ExtResource( 1 )

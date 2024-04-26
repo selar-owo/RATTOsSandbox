@@ -1,5 +1,7 @@
 extends Node2D
 
+onready var handler = $HeldItemHandler
+
 onready var timer := $Timer
 onready var raycast := $RayCast2D
 onready var sprite := $GunSprite
@@ -167,10 +169,7 @@ func recoil() -> void:
 	tween.play()
 
 func gun_handler():
-	if slot == 0:
-		self.visible = Globals.slot2held
-	if slot == 1:
-		self.visible = Globals.slot3held
+	self.visible = Globals.slot2held
 	
 	if Input.is_action_pressed("left_click") and !Globals.QmenuOpen and auto_shoot or Input.is_action_just_pressed("left_click") and !Globals.QmenuOpen and !auto_shoot:
 		if !cooldown:
@@ -185,42 +184,6 @@ func gun_handler():
 		tween.play()
 
 func setup_gun():
-#	match gun_id:
-#		0: #pistol
-#			print("pistol")
-#			damage = 15
-#			cooldown_time = 0.3
-#			slot = 1
-#			projectile = false
-#			UI_sprite = "res://sprites/actualpistolspriteforreal.png"
-#			projectile_sprite = "res://sprites/`missingtexture.png"
-#		1: #assault rifle
-#			print("ass rifle")
-#			damage = 6
-#			cooldown_time = 0.1
-#			slot = 0
-#			projectile = false
-#			UI_sprite = "res://sprites/assaultrifleUI.png"
-#			projectile_sprite = "res://sprites/`missingtexture.png"
-#		2: #shotgun
-#			print("shotgun")
-#			damage = 50
-#			cooldown_time = 2
-#			slot = 0
-#			projectile = false
-#			UI_sprite = "res://sprites/shotgunUI.png"
-#			projectile_sprite = "res://sprites/`missingtexture.png"
-#		3: #revolver
-#			print("revolver")
-#			damage = 30
-#			cooldown_time = 0.6
-#			slot = 1
-#			projectile = false
-#			UI_sprite = "res://sprites/actualpistolspriteforreal.png"
-#			projectile_sprite = "res://sprites/`missingtexture.png"
-#		327: #uh oh!
-#			print("err gun loading")
-	
 	match slot:
 		0:
 			Globals.slot2pic = UI_sprite

@@ -2,6 +2,7 @@ extends Node
 
 export var path_item:NodePath
 export var id:int
+export var hud_sprite:Resource
 var item
 var current_slot:int
 

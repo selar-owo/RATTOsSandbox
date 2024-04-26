@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://sounds/GunNoises/RevolverShoot.mp3" type="AudioStream" id=1]
 [ext_resource path="res://sprites/pistolsprite.png" type="Texture" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://sprites/pewpew.png" type="Texture" id=5]
 [ext_resource path="res://sprites/pistolIconNew.png" type="Texture" id=6]
 [ext_resource path="res://sprites/pistolItemNewUYNDER.png" type="Texture" id=7]
+[ext_resource path="res://scenes/components/HeldItemHandler.tscn" type="PackedScene" id=8]
 
 [sub_resource type="AtlasTexture" id=1]
 flags = 1
@@ -343,6 +344,8 @@ recoil_amount = 8.0
 auto_shoot = false
 slot = 1
 UI_sprite = "res://sprites/pistolIconNew.png"
+
+[node name="HeldItemHandler" parent="." instance=ExtResource( 8 )]
 
 [node name="Grass" type="ColorRect" parent="."]
 visible = false

@@ -1,4 +1,4 @@
-[gd_scene load_steps=75 format=2]
+[gd_scene load_steps=77 format=2]
 
 [ext_resource path="res://MinecraftFive-Bold.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://sprites/heart.png" type="Texture" id=2]
@@ -64,6 +64,8 @@
 [ext_resource path="res://sprites/ObjectSpawnerIcons/OP-Vehicles.png" type="Texture" id=62]
 [ext_resource path="res://sprites/ObjectSpawnerIcons/OP-Builders.png" type="Texture" id=63]
 [ext_resource path="res://sprites/ObjectSpawnerIcons/OP-Items.png" type="Texture" id=64]
+[ext_resource path="res://sprites/MM-NineSexTransparent.png" type="Texture" id=65]
+[ext_resource path="res://sprites/physgunicon.png" type="Texture" id=66]
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0.45098, 0.815686, 0.407843, 1 )
@@ -281,6 +283,96 @@ rect_scale = Vector2( 0.6, 0.6 )
 custom_colors/font_color = Color( 1, 1, 1, 0.811765 )
 custom_fonts/font = SubResource( 5 )
 text = "+ 100"
+valign = 1
+
+[node name="Inventory" type="Node2D" parent="."]
+position = Vector2( 198, 115 )
+scale = Vector2( 0.8, 0.8 )
+
+[node name="BG" type="NinePatchRect" parent="Inventory"]
+self_modulate = Color( 1, 1, 1, 0.517647 )
+margin_left = 726.0
+margin_top = 566.0
+margin_right = 1022.0
+margin_bottom = 598.0
+texture = ExtResource( 10 )
+patch_margin_left = 3
+patch_margin_top = 3
+patch_margin_right = 3
+patch_margin_bottom = 3
+
+[node name="Slot1" type="NinePatchRect" parent="Inventory"]
+margin_left = 844.0
+margin_top = 535.0
+margin_right = 899.0
+margin_bottom = 590.0
+texture = ExtResource( 65 )
+patch_margin_left = 3
+patch_margin_top = 3
+patch_margin_right = 3
+patch_margin_bottom = 3
+
+[node name="Icon" type="TextureRect" parent="Inventory/Slot1"]
+margin_left = 1.0
+margin_top = 1.0
+margin_right = 54.0
+margin_bottom = 54.0
+rect_rotation = -15.0
+rect_pivot_offset = Vector2( 26.5, 26.5 )
+texture = ExtResource( 66 )
+expand = true
+stretch_mode = 1
+
+[node name="Slot2" type="NinePatchRect" parent="Inventory"]
+margin_left = 902.0
+margin_top = 535.0
+margin_right = 957.0
+margin_bottom = 590.0
+texture = ExtResource( 65 )
+patch_margin_left = 3
+patch_margin_top = 3
+patch_margin_right = 3
+patch_margin_bottom = 3
+
+[node name="Icon" type="TextureRect" parent="Inventory/Slot2"]
+margin_left = 1.0
+margin_top = 1.0
+margin_right = 54.0
+margin_bottom = 54.0
+rect_rotation = -15.0
+rect_pivot_offset = Vector2( 26.5, 26.5 )
+expand = true
+stretch_mode = 1
+
+[node name="Slot3" type="NinePatchRect" parent="Inventory"]
+margin_left = 959.0
+margin_top = 535.0
+margin_right = 1014.0
+margin_bottom = 590.0
+texture = ExtResource( 65 )
+patch_margin_left = 3
+patch_margin_top = 3
+patch_margin_right = 3
+patch_margin_bottom = 3
+
+[node name="Icon" type="TextureRect" parent="Inventory/Slot3"]
+margin_left = 1.00012
+margin_top = 1.0
+margin_right = 54.0001
+margin_bottom = 54.0
+rect_rotation = -15.0
+rect_pivot_offset = Vector2( 26.5, 26.5 )
+expand = true
+stretch_mode = 1
+
+[node name="AmmoCount" type="Label" parent="Inventory"]
+margin_left = 653.0
+margin_top = 566.0
+margin_right = 918.0
+margin_bottom = 596.0
+theme = ExtResource( 12 )
+text = "30/30"
+align = 1
 valign = 1
 
 [node name="ObjectSpawners" type="Node2D" parent="."]

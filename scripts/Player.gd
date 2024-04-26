@@ -107,7 +107,6 @@ func _ready():
 			continue
 		slots[idx]["id"] = i.get_child(0).handler.id
 		idx += 1
-
 func set_player_texture(path,hand_path = null):
 	sprite.set_texture(ResourceLoader.load(path))
 	if hand_path != null:

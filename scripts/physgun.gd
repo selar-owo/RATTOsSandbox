@@ -13,6 +13,7 @@ onready var heavy_particles = $physgunAnimations/HeavyParticles
 onready var heavy_particles_2 = $physgunAnimations/HeavyParticles2
 onready var glowing_energy = $physgunAnimations/GlowingEnergy
 onready var light_2d = $physgunAnimations/GlowingEnergy/Light2D
+onready var glowanims = $physglow/glowanims
 
 onready var open = $physgunAnimations/Open
 onready var close = $physgunAnimations/Close
@@ -33,6 +34,14 @@ func _ready():
 func _process(delta):
 	weapon_handler()
 	physColor()
+	physssadasd()
+
+var imsotired
+func physssadasd() -> void:
+	if Globals.physgunPicking != imsotired:
+		if Globals.physgunPicking: glowanims.play("touch")
+		else: glowanims.play("notouch")
+		imsotired = Globals.physgunPicking
 
 func physColor():
 	held_sprite.self_modulate = SaveSettings.load_cfg("VisualsAudio","PhysColor")
@@ -65,10 +74,11 @@ func weapon_handler():
 	else:
 		physgun_animations.hide()
 	
-	if Globals.physgunPicking == true and Globals.insideVehicle == false and handler.is_equipped() == true:
+	if Input.is_action_pressed("left_click") and handler.is_equipped():
 		render_line()
 		physglow.show()
-		physglow.global_position = get_global_mouse_position()
+		if Globals.insideVehicle == false:
+			physglow.global_position = get_global_mouse_position()
 	else:
 		physglow.hide()
 	
@@ -86,6 +96,8 @@ func render_line() -> void:
 		line.z_index = -1
 		line.material = preload("res://BulletCanvas.tres")
 		line.default_color = SaveSettings.load_cfg("VisualsAudio","PhysColor")
+		line.self_modulate.a = 0.5
+		line.modulate = physglow.modulate
 		line.add_point(held_sprite_unanim.global_position)
 		line.add_point(get_global_mouse_position())
 		var tween = get_tree().create_tween().set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_QUINT)
